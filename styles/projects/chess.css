@@ -1,0 +1,249 @@
+.bordered_box, #description {
+  background: #7bcafc;
+  border: medium solid #0d3049;
+  margin: 5px;
+  padding: 5px; }
+
+.nodrag, nav, .interface {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #56aff7; }
+
+article {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1000px;
+  min-width: 894px;
+  margin: auto;
+  font-family: arial, helvetica, clean, sans-serif;
+  padding: 5px; }
+
+h1 {
+  font-size: 138.5%;
+  margin-top: 14px;
+  margin-bottom: 14px; }
+
+h1, h2 {
+  font-family: Times New Roman; }
+
+nav {
+  width: 100%;
+  max-width: 1000px;
+  min-width: 894px;
+  margin: auto;
+  background: #2382c6;
+  box-sizing: border-box;
+  border-top: medium solid #0d3049;
+  border-bottom: medium solid #0d3049;
+  border-right: medium solid #0d3049; }
+
+nav > ul {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  align-content: stretch;
+  width: 100%;
+  padding: 0;
+  margin: 0; }
+
+nav > ul > li {
+  flex-grow: 1;
+  flex-basis: 20%;
+  list-style: none;
+  display: flex;
+  table-layout: fixed;
+  align-items: stretch;
+  align-content: stretch;
+  box-sizing: border-box;
+  border-left: medium solid #0d3049; }
+
+nav > ul > li > a {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  padding: 6px;
+  color: inherit;
+  text-decoration: none; }
+  @media (min-width: 600px) {
+    nav > ul > li > a {
+      padding: 10px;
+      padding-left: 3px;
+      padding-right: 3px; } }
+  nav > ul > li > a:hover {
+    background-color: #7bcafc; }
+  nav > ul > li > a div {
+    width: 100%;
+    text-align: center;
+    font-size: 15px; }
+    @media (min-width: 600px) {
+      nav > ul > li > a div {
+        font-size: 20px; } }
+
+#site_logo {
+  text-align: center;
+  min-width: 894px; }
+
+#site_logo img {
+  max-width: 100%; }
+
+footer {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px; }
+
+article {
+  width: 905px;
+  margin: auto; }
+
+#game {
+  display: inline-block;
+  border: 2px solid black;
+  vertical-align: top;
+  height: 640px;
+  margin: auto; }
+
+#board_area {
+  width: 640px;
+  margin: auto;
+  position: relative;
+  display: inline-block; }
+
+#board {
+  border-collapse: collapse;
+  border-spacing: 0;
+  z-index: 4; }
+
+#board td {
+  width: 80px;
+  height: 80px;
+  padding: 0px;
+  z-index: 4; }
+
+#pieces {
+  position: absolute;
+  pointer-events: none;
+  background: white;
+  filter: Alpha(opacity=0);
+  /* IE support */ }
+
+.piece {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  position: absolute;
+  z-index: 5; }
+
+#win_screen, #settings_screen, #game_mode_screen {
+  width: 320px;
+  height: 240px;
+  position: absolute;
+  background: silver;
+  left: 160px;
+  top: 160px;
+  border: 5px solid gray;
+  border-radius: 5px;
+  text-align: center; }
+
+#win_screen, #settings_screen, #instructions_screen {
+  display: none; }
+
+#settings_screen table {
+  margin: auto; }
+
+#settings_screen td {
+  padding: 5px; }
+
+#settings_screen input {
+  font-family: monospace; }
+
+#instructions_screen {
+  width: 640px;
+  height: 640px;
+  position: absolute;
+  background: silver;
+  left: 0px;
+  top: 0px;
+  border: 5px solid gray;
+  border-radius: 5px;
+  text-align: center; }
+
+#instructions_screen img {
+  width: 50px;
+  height: 50px; }
+
+#instructions_screen table td {
+  text-align: left; }
+
+#instructions_screen table td:first-child {
+  vertical-align: top; }
+
+.interface {
+  z-index: 10;
+  font-family: Times New Roman;
+  box-sizing: border-box; }
+
+.interface li {
+  background: #eeeeee;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: arial, helvetica, clean, sans-serif;
+  font-size: 1em;
+  height: 16px;
+  margin: 6px;
+  padding: 0.4em;
+  list-style-type: none;
+  font-size: 16px;
+  text-align: center; }
+
+.close_button {
+  position: absolute;
+  right: 0px;
+  border-left: 3px solid gray;
+  border-bottom: 3px solid gray;
+  padding: 2px;
+  background: #eeeeee; }
+
+#side_menu {
+  width: 250px;
+  height: 640px;
+  background: silver;
+  display: inline-block;
+  border-right: 3px solid black;
+  margin-right: -4px;
+  vertical-align: top;
+  font-size: 20px; }
+
+.black {
+  background: #9b7b40; }
+
+.white {
+  background: #e6cfaf; }
+
+.highlight {
+  background: orange; }
+
+.movableTile {
+  background: yellow; }
+
+#description {
+  margin: 0px;
+  margin-top: 15px;
+  box-sizing: border-box;
+  width: 100%; }
+
+/*# sourceMappingURL=chess.css.map */

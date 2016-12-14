@@ -1,0 +1,15 @@
+@import "base";
+@import "nav";
+
+table{
+	@extend .bordered_box;
+    width: 100%;
+	box-sizing:border-box;
+	border-radius: 5px;
+	margin:0px;
+	margin-bottom: 5px;
+	padding: 10px;
+}
+h1{
+	display: inline-block;
+}

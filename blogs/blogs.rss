@@ -1,0 +1,141 @@
+<?xml version='1.0'?>
+				<rss version='0.91'>
+<channel>
+<title>Voya's blog RSS</title>
+<link>http://www.voyacode.com</link>
+<description>RSS feed for all blogs posted on Voyacode.</description>
+<language>en-us</language><item>
+			<title>My very first Android app (progress 2)</title>
+			<link>http://www.voyacode.com</link>
+			<description>Like I mentioned in my last blog, I've been working on a simple Hangman game for Android. In that blog I already mentioned what new features I'm planning for it, but in this blog I'll focus more on technology side of things.The current version of the app is made with Ionic framework which uses AngularJS. However, the newer version of Angular, AngularJS 2, was released quite recently. It has many improvements to the old one, such as increased performance and being closer to OOP (Object Oriented Programming). While it is still very new, it seems to be "the way" to do Angular in the future.I did an online course at CodeSchool for Angular 2 just a week ago, and I already slightly prefer it over Angular 1. The biggest challenge is that it's very different - it is a full rewrite of the framework, so old AngularJS code won't work with it.At the moment I plan to move the Hangman game over to the AngularJS 2 (and Ionic 2, which uses it), but because of that it will take slightly more time. Ionic 2 also supports Windows apps, so I could in theory do it also for that platform.Another thing that I want to try with this project is TypeScript, which makes Javascript coding slightly easier and allows the use of new Javascript standards even on browsers that don't support them yet, such as proper support for classes.I also plan to do this with git version control, and this will be my first project where I'll try to use it properly. I plan to also put it to Github, so you can see the code if you wish.That's all I have for now. I have much to learn before I can fully start the project again, but I'm hoping to finish it during winter holidays.</description>
+			</item><item>
+			<title>My very first Android app (progress)</title>
+			<link>http://www.voyacode.com/blogs#10</link>
+			<description>It has been quite some time since my last blog, so I plan to make up for it by making two blogs this week, this being the first of them. 
+
+I have been quite busy with my university studies, so I haven’t had much time for my personal projects. I however had one project in August I haven’t told you about yet. As you may have guessed from the title, it is my very first mobile app for Android.
+
+For my first app I decided to make a Hangman game – I assume that you all are familiar with how it works, so I won’t go into greater detail about the rules (if not, Google it). Hangman is a very common game to code when practising programming or doing programming courses. I have done it with at least three programming languages before, so the core mechanics of implementation are quite familiar to me. I chose that, because it is good to start with something simple when trying out something new – in this case making an Android app.
+
+At first I tried to look how to make Android apps “the traditional way”, with Java. I have however never used Java or studied it, so tutorials were slightly hard to follow. Then I found another way: Ionic framework. Ionic framework allows making Android apps with AngularJS, which I started studying last summer. Ionic basically runs the program inside browser-like environment, but as a local app (downloadable from Google Play, as an example), which can use local mobile functionalities. It is very similar to web programming, which I’m very familiar with.
+
+Another reason for picking ionic is that same code can, in theory, work on many different platforms, such as iOS, and much code can be used in browser too with some changes. Building iOS apps however requires iOS operating system (which I don't have), and requirements for iOS apps are more strict than with Android. So I likely won't be making apps for iOS anytime soon.
+
+Despite having done an online course with AngularJS, the transition wasn’t the easiest. Previously I had been using mostly jQuery, which works very differently compared to Angular. It needs a different kind of thinking compared to most programming languages/frameworks. In the end, I managed to make a basic version of the Hangman game:
+
+
+
+This version does all the mandatory things a good Hangman game should do: player can select characters, each choice can advance the building of the gallows or fill blanks on the word (in my version it is only the gallows being built and prepared – no building stick men limb at a time), and once the player has lost/won, losing/victory interface will pop up and player can choose to play again. A big difference to my older Hangman games I did during programming courses (other than graphical user interface) is that the words aren’t limited to few options – instead they are fetched from the Internet, using Wordnik’s random word generator API.
+
+Some could say that the app is now completely ready, since it can be played without any problems, but it’s not enough for me. Like I did with my very first Javascript project (Rock, Paper, Scissors), I want to add extra features like statistics, settings, more difficulties and maybe even possibility to switch language. With these features I wish to learn how to do transitions between views and how to save data to memory, which are essential features if I want to make bigger applications in the future.
+
+Once I get the app finished, I may add it to the Google play store, so that you can try it out too (right now it’s only playable on my phone and test environment). The project has been on a break since my studies began in August, but I should have more time to work on it during the winter holidays. I will tell more of my future plans for the app in my next blog.</description>
+			</item><item>
+			<title>6.8.2016: Scaling and Sass</title>
+			<link>http://www.voyacode.com/blogs#9</link>
+			<description>I have now done some big changes to the page template and styling. Most importantly, the website is now scaleable. The site should now be easier to read with mobile devices. If you are on a computer, you can see the scaling if you change the browser size. This is most noticeable on the front page, where right side of the page goes to bottom if the screen width is small (less than 600px). Project pages don't scale as much, because they weren't made with scaling in mind, and they are slightly more complicated.
+
+With this change the site in general also looks slightly different, but I have kept it quite similar to the old one. There are some small improvements, but nothing drastic.
+
+Another thing that is different is that I'm now using Sassy CSS (SCSS), where Sass stands for Syntactically Awesome StyleSheets. It is basically an extension to CSS, which allows the use of variables, loops and various other useful features. The SCSS code is interpreted into an ordinary CSS file, which is used like any other CSS file. This means that it doesn't allow any new features on the website, but the style code is a lot easier to organize.
+
+As an example, I have a file for general variables the site uses. Among those variables are the main colors the site uses. So, if I as an example wanted to change the whole website pink, I could do that by adjusting those variables. The changes would affect whole website.
+
+The changes I've made may not change a lot for you, the users, but behind the scenes they will make site upkeep and updates a lot easier.</description>
+			</item><item>
+			<title>27.6.2016: Chess (project)</title>
+			<link>http://www.voyacode.com/blogs#8</link>
+			<description>I have now finished my latest game project: Chess! This version of Chess has various game modes - you can play either against a friend or the smart computer AI I've made. Alternatively you can just watch the AI challenge itself.
+
+It has been some time since I released my previous project. I originally started this project many months ago, but put it on halt because I also had some other big projects which kept me occupied.
+
+The goal of this was to make a Chess game, which can be be played with a friend or a computer AI. This is my first big Javascript project where I have tried to fully utilize OOP (Object-orientated programming). I have used OOP on some of my smaller projects (not on this site) and on some programming courses, but this is my biggest one so far.
+
+At first I only wanted to make an AI that made some logical moves and wasn't just random. When I finally got its first version complete, I was really surprised how well it worked. Since then I've done even further improvements, and it has beaten me more times than I'd like to admit. I'm really proud of how it worked out. I'm of course not saying it's perfect - there are still many things that could be improved, and my coding skills aren't quite enough to code a virtual version of a human brain. But it will still give quite a good challenge - try it out if you haven't already!
+
+Development of Chess
+
+I have done quite thorough commenting on my code, which you can find here and here. First file doesn't require any coding experience to understand - the actual implementation is in the second one.
+
+One of the first things I had to implement was the base mechanics. I knew that I wanted the game to work with both human and computer players, so I implemented it so that it handles both the same way. Only difference is where the move commands come from (by user input, or by computer when its turn comes). This was also efficient coding wise, because there isn't need for duplication.
+
+I made five main classes for the game: Interface, Game, Tile, Player and Piece. Interface handles interface related operations, like opening and closing screens and updating information on the side panel. Game handles all higher level things, like setting the game, restarting, settings and turn changes. Game contains the game board, which has all board tiles in a multidimensional array. They include all information related to them, such as which piece is on them (if any) and which pieces could potentially move onto them.
+
+Player contains all information related to player, such as player's color, pieces and decision making functions for the computer AI. Pieces contain their current location tile, possible moves and other relevant information. Each piece type has their own subclass, which specifies their type name, value (used by AI) and how they can move.
+
+First major step was figuring out where each piece can move. For player vs. player I could have just made it check on every move attempt and just determine is it okay or not, but that wouldn't have worked so well for the computer, which needs all the options. I also wanted it to show all possible movement tiles, when a piece is clicked. So I instead decided to make it check all possible move tiles at the start of each turn, and save them to arrays in pieces.
+
+When I started working on AI, I needed to save more information. In addition to move tiles, I also needed "potential capture tiles" ("hit tiles" in the code). These represent the tiles where the piece could move to, if they had an opponent's piece on it. This means that they also include tiles which have player's own pieces on them, and tiles pawns could capture.
+
+The computer AI has two working mechanics: priorities and risk value. When the computer's turn starts, the computer goes through it's priorities in order. If certain criteria is met and it finds a fitting move for the priority, it will stop and return the movable piece and the target tile, which are then selected using same methods the human players use. With each priority there can be many possible moves. This is where risk value comes in. Risk value is a value which can evaluate 'risk' of any move (piece/tile combination). The least risky option is then selected - if there are many with same risk value, it will pick it by random. This helps making the AI less predictable.
+
+I have told more about priorities in chess.js file, so I won't go into too much detail here.
+
+The most important priorities are capturing enemy king's tile and protecting the player's own king, because those both relate to the ending of the game. If there is some possible move that helps protecting king from threat, the AI will find it - whether it is capturing the threat, moving the king or blocking. The AI also knows which tiles are protecting the king (are between the king and threats) - AI won't move them, unless there is no other option.
+
+After those main priorities AI will focus on other things, such as capturing enemy tiles, moving pieces to safer locations and moving pieces to locations where they could target the opponent's king on the next turn. It does these by using risk values. Risk value takes into account many relevant things: threats of target tile and current tile, whether those tiles are defended or not, what the piece's value is and if the move captures enemy's tile. Basically it represents risk vs. reward. If it gains more than it loses (captures more valuable piece, moves to safer location with less risks, etc.), it will consider it to be worth the risk. Effectively it tries to prevent valuable pieces from being captured by avoiding risky tiles, but is more willing to risk less valuable pieces if it can that way capture more valuable pieces.
+
+The strength of the AI is that if it sees a good opportunity, it will take it - it can really take advantage of opponent's mistakes. The AI itself makes mistakes very rarely. It is also efficient at chasing the king - if it sees a safe tile where it could target the king next turn (forcing the opponent to either move the king or block it), it will move there. Sometimes this can lead to nearly endless chases, but there are mechanisms in place to reduce that kind of behaviour. As an example, if it moves a specific piece too many times in a row, it will try to move some other piece. Randomization also helps.
+
+The weakness of the AI is that it isn't good at making long-term plans. It can barely 'see' one move to the future by knowing all possible moves opponent could do, and that way knowing which tiles are best to avoid. It sees only the immediate threats, and makes the decision best suited for the current situation. That often involves capturing opponent's pieces while keeping the AI's own pieces safe, which works in most cases, but doesn't always protect from a well planned strategy.
+
+One good thing with the AI is that I've developed it so that it's quite easy to add new priorities or modify the risk value formula. I could have added some more priority layers to it, but I decided that it's already challenging enough - so far it has beaten most players who have tried it. I may consider adding them in the future, but for now it'll stay as it is.
+
+Hoping to do some more coding later this summer, so stay tuned. ;)</description>
+			</item><item>
+			<title>24.4.2016: Other projects</title>
+			<link>http://www.voyacode.com/blogs#7</link>
+			<description>At the moment my projects page looks quite empty, and they all are some of my very first coding projects. The reason why there aren't any others is that for the past 16 months I've been making content for another site, Runepoli. I have done there several projects - both small and big - by using Javascript and PHP/MySQL. I've worked on new features, new admin tools, calculators, databases, among other things. The site itself is quite old, so I have also needed to work with older, slightly outdated code.Working on Runepoli has been a very teaching experience. Even though I do the coding myself, I've worked closely with other site 'staff' to figure what new features would be useful to the site, and how existing content could be improved.Now that I have my own website, I will most likely also do some personal projects in the future. I have one project in the works, which I hope to finish in the summer after I've finished another Runepoli project.I've written in more detail of my Runepoli projects on my other projects page.</description>
+			</item><item>
+			<title>18.2.2016: RSS feed</title>
+			<link>http://www.voyacode.com/blogs#6</link>
+			<description>I have now added a RSS feed for the blogs. With it you can subscribe to my blogs and then be notified when new ones are published. It can be useful if you wish to keep up to date with the site updates.</description>
+			</item><item>
+			<title>17.1.2016: Comment page</title>
+			<link>http://www.voyacode.com/blogs#5</link>
+			<description>I have now added a page for comments. There you can post any feedback or comments you have regarding this site and its projects.
+
+Development of the Comments
+
+When I started making the comments section, I was aware that there are already many existing forum/guestbook applications that I could have used quite easily on my website. I however wanted to have full control over what it was going to be like, and that I could easily modify it in the future. I also haven't made comment sections before, so it worked also as a coding practice.
+
+One helpful thing while making this was the fact that I have quite a lot of experience in making forms which save information to (MySQL) database. I have also done some tag systems before (many of which are a lot more complicated than these), so that functionality was also quite easy to implement.
+
+This functionality isn't shown to you, but I (as the admin) can edit messages in the comments section - and it works quite nicely. How it works is that there is an edit button in the message, and when I click it, it turns the message contents into a textarea which I can edit (turning HTML tags into [b]-styled tags in the process). Then I can just do the changes I want and press save, without needing to go to a seperate comment editing page. If I allow making user accounts in the future, I would most likely try to give you the ability to edit the messages you have posted yourself.</description>
+			</item><item>
+			<title>12.1.2016: Slay the Dragon (project) and site update</title>
+			<link>http://www.voyacode.com/blogs#4</link>
+			<description>A new game project has been added: Slay the Dragon. In this game you will have to traverse the map to find the dragon slaying equipment required to kill the dragon while battling enemies that come in your way. I made this game originally in summer 2014, and it was my second programming project. I have fixed some bugs in it and also added some sound effects.
+
+Also, I have now made a seperate project page where all of my projects can be found. The slideshow on the frontpage should also now be working as intended.
+
+Development of Slay the Dragon
+
+When I originally made the game in summer 2014, I had many new challenges - this being only my second coding project at the time. One of the major things was that this had a lot of visual elements. The rock, paper, scissors project worked quite well as a test run, when I experimented with animation. This however had a lot of different animations and the timings were quite important.
+
+Graphics itself were also one challenge to overcome. I had some experience in image editing, but not so much in making something completely new. I don't consider myself as a very good artist, but I'm quite pleased with how the graphics turned out.
+
+Unlike rock, paper, scissors, this game needed more balancing work. I needed to plan how strong the enemies and different skills were, so that the game isn't too easy or too hard. Each skill needed to be impactful, so that the player would need to use them variedly.
+
+When I first started making the game, I didn't think too far ahead. The game became a little more complicated than I had anticipated, and it shows in the code. The code could have been a lot clearer if I had used OOP (Object Orientated Programming) and I could probably have made it shorter, but I didn't have any experience of projects of that size. 'Cleaning' the code isn't a quick task, so I haven't done it yet. I may look at it again some day, but I have other projects to do first.</description>
+			</item><item>
+			<title>9.1.2016: Blogging upgrade</title>
+			<link>http://www.voyacode.com/blogs#3</link>
+			<description>I have now managed to make an admin page which will make making these blogs a lot easier. Previously I would always have needed to edit the blog entries directly to the source code. Now I can just write it on the page where it will automatically be saved in MySQL database and then be visible on all relevant pages.
+
+Also, I have now done a page where all of my blogs can be found. The front page will show only the newest one.
+
+Today I also changed the 404 error page so that it looks a little better and offers better advice.</description>
+			</item><item>
+			<title>9.1.2016: Rock, paper, scissors (project)</title>
+			<link>http://www.voyacode.com/blogs#2</link>
+			<description>The website and many of its core features aren't ready yet, but I have now put one of my older projects/games to this site: Rock, paper, scissors.
+
+Rock, paper, scissors was in fact my very first coding project that I did myself 1.5 years ago. It being one of my first coding projects, there were quite many bugs that I couldn't solve completely at the time, so I have now revised the code a little. Basic functionality and outlook is same, with small improvements. The code could still be written in a better way, but at least it's functional. I may take another look at it some other day, but there are other projects I'd like to finish first.
+With this first code project added to the page, I have now replaced "placeholder" slot on the front page with a slider that shows my different projects on the website. But because there is only one of them at the moment, the buttons don't do anything yet.
+If you are reading this from the front page, then I haven't made a page for the blogs yet. Because of that I will keep all of my blogs on the front page, until I have got that done. </description>
+			</item><item>
+			<title>8.1.2016: The Beginning</title>
+			<link>http://www.voyacode.com/blogs#1</link>
+			<description>Here it is - my very own website! I have been working on setting it up the whole day and it's now starting to look like it could become a functional web page. I have of course only done (part of) the front page so far, so there is still a lot of work to do.Also, this is my very first blog. If you are reading this, then welcome to my website! Like you may have already read from the front page, this site is mainly focused on my coding projects, and is mostly for coding practice. Because of that you may find some unfinished projects in here, once I have got everything up and running. But in any case, feel free to test them when I have managed to put some here. And leave any feedback you like in the comments page, assuming it is set up by the time you are reading this.In these blogs I will be telling more about development of this website and all sorts of coding projects I'm making. These ramblings are mostly for myself, but you are free to read them if interested.</description>
+			</item></channel></rss>

@@ -1,0 +1,45 @@
+@import "base";
+@import "nav";
+
+.block{
+@extend .bordered_box;
+width:100%;
+width:calc(100% - 4px);
+padding:10px;
+margin:2px;
+box-sizing: border-box;
+}
+
+.project, .project2{
+@extend .bordered_box;
+display: inline-block;
+text-align: center;
+margin-right:2px;
+margin-left: 2px;
+margin-top:15px;
+padding:10px;
+box-sizing: border-box;
+vertical-align: top;
+}
+
+.project2{
+	width:100%;
+}
+.project{
+	width:100%;
+	@media (min-width: 600px){
+	width:48%;
+	width:calc(50% - 4px);
+	float: left;
+	}
+}
+
+.project img{
+margin-top: 5px;
+}
+
+article::after {
+    content:"";
+    display:block;
+    clear:both;
+}
