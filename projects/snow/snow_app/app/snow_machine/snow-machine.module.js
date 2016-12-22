@@ -9,21 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var snow_machine_module_1 = require('./snow_machine/snow-machine.module');
-var AppModule = (function () {
-    function AppModule() {
+var description_box_component_1 = require('../shared/description-box.component');
+var snow_machine_component_1 = require('./snow-machine.component');
+var snow_settings_component_1 = require('./snow-settings.component');
+var SnowMachineModule = (function () {
+    function SnowMachineModule() {
     }
-    AppModule = __decorate([
+    SnowMachineModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, snow_machine_module_1.SnowMachineModule],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
+            imports: [],
+            declarations: [description_box_component_1.DescriptionBoxComponent, snow_machine_component_1.SnowMachineComponent, snow_settings_component_1.SnowSettingsComponent],
+            exports: [description_box_component_1.DescriptionBoxComponent, snow_machine_component_1.SnowMachineComponent, snow_settings_component_1.SnowSettingsComponent],
+            providers: [],
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], SnowMachineModule);
+    return SnowMachineModule;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.SnowMachineModule = SnowMachineModule;
+//# sourceMappingURL=snow-machine.module.js.map

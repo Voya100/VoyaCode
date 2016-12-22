@@ -9,21 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var snow_machine_module_1 = require('./snow_machine/snow-machine.module');
-var AppModule = (function () {
-    function AppModule() {
+var DescriptionBoxComponent = (function () {
+    function DescriptionBoxComponent() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, snow_machine_module_1.SnowMachineModule],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], DescriptionBoxComponent.prototype, "text", void 0);
+    DescriptionBoxComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'description-box',
+            templateUrl: './description-box.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], DescriptionBoxComponent);
+    return DescriptionBoxComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.DescriptionBoxComponent = DescriptionBoxComponent;
+//# sourceMappingURL=description-box.component.js.map

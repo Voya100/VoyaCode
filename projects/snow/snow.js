@@ -51,8 +51,8 @@ function Rain_handler(settings){
 		color: "white",
 		font: [20, 40], 		//[Minimum font size, font variation]
 		count: 30,
-		xSpeed: [-0.60,0.14] , 	//wind, [minimum speed, variation]
-		ySpeed: [1.5,8], 		//Fall speed [minimum speed, variation]
+		xSpeed: [-0.60,0.15] , 	//wind, [minimum speed, variation]
+		ySpeed: [2,8], 		//Fall speed [minimum speed, variation]
 		interval: 25
 	};
 
