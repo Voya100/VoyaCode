@@ -7,7 +7,7 @@ export class SnowFlake{
   private x: number;
   private y: number;
   private fontSize: number;
-  private e: Node;
+  private e: any;
   private settings: SnowSettings;
 
   constructor(private s: SnowSettings){
@@ -26,15 +26,21 @@ export class SnowFlake{
   }
 
 	// Creates a flake element, is done right after initialisation
-	createFlake = function(){
+	createFlake(){
 		this.e = document.createElement('div');
 		this.e.setAttribute("style", 'position: fixed; width: 3px;z-index:50; font-size: ' + this.fontSize + 'px; color: ' + this.settings.color);
+		this.e.setAttribute("class", "flake");
 		this.e.appendChild(document.createTextNode(this.settings.symbol));
 		this.e = document.body.appendChild(this.e);
 	}
 
+	// Destroys flake element
+	destroy(){
+		this.e.remove();
+	}
+
 	// Moves flake by one step/frame
-	move = function(){
+	move(){
 		this.x -= this.xSp;
 		this.y += this.ySp;
 		// If drop moves over left/bottom side of the window, move it back up and randomize x position

@@ -20,8 +20,8 @@ var SnowSettingsComponent = (function () {
         this.snow_controller.createFlakes();
         this.snow_controller.moveRain();
     };
-    SnowSettingsComponent.prototype.range = function (value, min, max) {
-        return min <= value && value <= max;
+    SnowSettingsComponent.prototype.reset = function () {
+        this.snow_controller.reset(this.settings);
     };
     SnowSettingsComponent = __decorate([
         core_1.Component({

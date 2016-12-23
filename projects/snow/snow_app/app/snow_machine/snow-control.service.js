@@ -23,6 +23,13 @@ var SnowControlService = (function () {
             this.flakes[id] = flake;
         }
     };
+    // Deletes all flake elements from dom and array
+    SnowControlService.prototype.deleteFlakes = function () {
+        var flake;
+        while (flake = this.flakes.pop()) {
+            flake.destroy();
+        }
+    };
     // Moves all flakes by one step/frame
     SnowControlService.prototype.moveRain = function () {
         for (var id = 0; id < this.flakes.length; id++) {
@@ -33,6 +40,9 @@ var SnowControlService = (function () {
     };
     // Resets snow rain, gives new settings
     SnowControlService.prototype.reset = function (new_setting) {
+        if (this.settings.reset) {
+            this.deleteFlakes();
+        }
         this.settings = new_setting ? new_setting : this.settings;
         this.flakes = [];
         this.createFlakes();

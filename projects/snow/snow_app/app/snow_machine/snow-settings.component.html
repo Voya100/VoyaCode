@@ -1,5 +1,5 @@
 <div>
-  <form>
+  <form novalidate>
     <div>
       <div>Symbol: </div>
       <div><input type="text" name="symbol" [(ngModel)]="settings.symbol"></div>
@@ -16,6 +16,7 @@
     <form-row [settings]="settings" name="Max wind" id="max_wind" description="Maximum wind speed (px/frame)" step="0.2"></form-row>
     <form-row [settings]="settings" name="Max FPS" id="fps" description="Maximum theoretical FPS - actual FPS is slightly lower." step="1"></form-row>
     <form-row [settings]="settings" name="Count" id="count" description="How many flakes/drops there are at screen at once." step="1"></form-row>
+    <br><button (click)="reset()">Reset snow/rain</button>
   </form>
 
 </div>
