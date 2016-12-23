@@ -25,7 +25,7 @@ var SnowControlService = (function () {
     };
     // Moves all flakes by one step/frame
     SnowControlService.prototype.moveRain = function () {
-        for (var id = 0; id < this.settings.count; id++) {
+        for (var id = 0; id < this.flakes.length; id++) {
             this.flakes[id].move();
         }
         var self = this;

@@ -23,6 +23,10 @@ export class SnowSettingsComponent {
     this.snow_controller.moveRain();
    }
 
+   range(value: number, min: number, max: number){
+     return min <= value && value <= max;
+   }
+
    
 
 }

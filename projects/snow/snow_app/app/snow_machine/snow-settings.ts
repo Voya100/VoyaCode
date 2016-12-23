@@ -6,8 +6,8 @@ export class SnowSettings{
   max_speed: number = 10;
   min_wind: number = 0.45;
   max_wind: number = 0.6;
-  font_min: number = 20;
-  font_max: number = 60;
+  min_font: number = 20;
+  max_font: number = 60;
   fps: number = 40;
 
   readonly xMax: number = document.documentElement.clientWidth-50;
@@ -16,4 +16,25 @@ export class SnowSettings{
                                     document.documentElement.clientHeight, 
                                     document.documentElement.scrollHeight, 
                                     document.documentElement.offsetHeight );
+
+  readonly max_values = {
+    count: () => 100,
+    min_speed: () => this.max_speed,
+    max_speed: () => 200,
+    min_wind: () => this.max_wind,
+    max_wind: () => 10,
+    min_font: () => this.max_font,
+    max_font: () => 100,
+    fps: () => 100
+  }
+  readonly min_values = {
+    count: () => 1,
+    min_speed: () => 0,
+    max_speed: () => this.min_speed,
+    min_wind: () => 0,
+    max_wind: () => this.min_wind,
+    min_font: () => 1,
+    max_font: () => this.min_font,
+    fps: () => 1
+  }
 }

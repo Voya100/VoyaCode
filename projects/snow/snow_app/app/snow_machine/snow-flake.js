@@ -11,7 +11,7 @@ var SnowFlake = (function () {
         };
         // Moves flake by one step/frame
         this.move = function () {
-            this.x += this.xSp;
+            this.x -= this.xSp;
             this.y += this.ySp;
             // If drop moves over left/bottom side of the window, move it back up and randomize x position
             if (this.x < -50 || this.y > this.settings.yMax) {
@@ -28,7 +28,7 @@ var SnowFlake = (function () {
         this.x = Math.random() * s.xMax;
         this.y = -10 - Math.random() * 100;
         // Font size is randomized
-        this.fontSize = s.font_min + Math.random() * (s.font_max - s.font_min);
+        this.fontSize = s.min_font + Math.random() * (s.max_font - s.min_font);
         this.settings = s;
         this.createFlake();
     }

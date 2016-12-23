@@ -1,1 +1,21 @@
-<h2>Snow Machine</h2>
+<div>
+  <form>
+    <div>
+      <div>Symbol: </div>
+      <div><input type="text" name="symbol" [(ngModel)]="settings.symbol"></div>
+    </div>
+    <div>
+      <div>Color: </div>
+      <div><input type="text" name="color" [(ngModel)]="settings.color"></div>
+    </div>
+    <form-row [settings]="settings" name="Min font" id="min_font" description="Minimum font-size (px)" step="1"></form-row>
+    <form-row [settings]="settings" name="Max font" id="max_font" description="Maximum font-size (px)" step="1"></form-row>
+    <form-row [settings]="settings" name="Min speed" id="min_speed" description="Minimum fall speed (px/frame)" step="0.2"></form-row>
+    <form-row [settings]="settings" name="Max speed" id="max_speed" description="Maximum fall speed (px/frame)" step="0.2"></form-row>
+    <form-row [settings]="settings" name="Min wind" id="min_wind" description="Minimum wind speed (px/frame)" step="0.2"></form-row>
+    <form-row [settings]="settings" name="Max wind" id="max_wind" description="Maximum wind speed (px/frame)" step="0.2"></form-row>
+    <form-row [settings]="settings" name="Max FPS" id="fps" description="Maximum theoretical FPS - actual FPS is slightly lower." step="1"></form-row>
+    <form-row [settings]="settings" name="Count" id="count" description="How many flakes/drops there are at screen at once." step="1"></form-row>
+  </form>
+
+</div>

@@ -1,0 +1,6 @@
+<div>
+<div title='{{description}}'>{{name}}: </div>
+<div><input type="number" name="id" 
+            [attr.min]="min()" [attr.max]="max()" [attr.step]="step" [(ngModel)]="settings[id]">
+<span *ngIf="!valid()" class='errorText'>Value must be between {{min()}}-{{max()}}.</span></div>
+</div>
