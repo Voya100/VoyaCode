@@ -3,7 +3,7 @@ var SnowFlake = (function () {
     function SnowFlake(s) {
         this.s = s;
         // Creates a flake element, is done right after initialisation
-        this.createDrop = function () {
+        this.createFlake = function () {
             this.e = document.createElement('div');
             this.e.setAttribute("style", 'position: fixed; width: 3px;z-index:50; font-size: ' + this.fontSize + 'px; color: ' + this.settings.color);
             this.e.appendChild(document.createTextNode(this.settings.symbol));
@@ -29,8 +29,8 @@ var SnowFlake = (function () {
         this.y = -10 - Math.random() * 100;
         // Font size is randomized
         this.fontSize = s.font_min + Math.random() * (s.font_max - s.font_min);
-        this.createDrop();
         this.settings = s;
+        this.createFlake();
     }
     return SnowFlake;
 }());

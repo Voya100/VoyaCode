@@ -19,8 +19,7 @@ var SnowMachineModule = (function () {
         core_1.NgModule({
             imports: [],
             declarations: [description_box_component_1.DescriptionBoxComponent, snow_machine_component_1.SnowMachineComponent, snow_settings_component_1.SnowSettingsComponent],
-            exports: [description_box_component_1.DescriptionBoxComponent, snow_machine_component_1.SnowMachineComponent, snow_settings_component_1.SnowSettingsComponent],
-            providers: [],
+            exports: [description_box_component_1.DescriptionBoxComponent, snow_machine_component_1.SnowMachineComponent, snow_settings_component_1.SnowSettingsComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], SnowMachineModule);

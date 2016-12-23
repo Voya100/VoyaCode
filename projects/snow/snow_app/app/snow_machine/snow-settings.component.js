@@ -9,18 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var snow_control_service_1 = require('./snow-control.service');
+var snow_settings_1 = require('./snow-settings');
 var SnowSettingsComponent = (function () {
-    function SnowSettingsComponent() {
+    function SnowSettingsComponent(snow_controller) {
+        this.snow_controller = snow_controller;
+        this.settings = this.snow_controller.settings;
     }
     SnowSettingsComponent.prototype.ngOnInit = function () {
+        this.snow_controller.createFlakes();
+        this.snow_controller.moveRain();
     };
     SnowSettingsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'snow-settings',
-            templateUrl: 'snow-settings.component.html'
+            templateUrl: './snow-settings.component.html',
+            providers: [snow_control_service_1.SnowControlService, snow_settings_1.SnowSettings]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [snow_control_service_1.SnowControlService])
     ], SnowSettingsComponent);
     return SnowSettingsComponent;
 }());

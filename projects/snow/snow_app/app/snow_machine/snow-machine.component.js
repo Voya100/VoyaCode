@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var snow_control_service_1 = require('./snow-control.service');
 var SnowMachineComponent = (function () {
     function SnowMachineComponent() {
     }
@@ -16,7 +17,8 @@ var SnowMachineComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'snow-machine',
-            templateUrl: './snow-machine.component.html'
+            templateUrl: './snow-machine.component.html',
+            providers: [snow_control_service_1.SnowControlService]
         }), 
         __metadata('design:paramtypes', [])
     ], SnowMachineComponent);

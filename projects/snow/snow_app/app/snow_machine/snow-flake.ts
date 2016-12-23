@@ -21,12 +21,12 @@ export class SnowFlake{
 
     // Font size is randomized
     this.fontSize = s.font_min + Math.random()*(s.font_max - s.font_min);
-    this.createDrop();
     this.settings = s;
+    this.createFlake();
   }
 
 	// Creates a flake element, is done right after initialisation
-	createDrop = function(){
+	createFlake = function(){
 		this.e = document.createElement('div');
 		this.e.setAttribute("style", 'position: fixed; width: 3px;z-index:50; font-size: ' + this.fontSize + 'px; color: ' + this.settings.color);
 		this.e.appendChild(document.createTextNode(this.settings.symbol));
