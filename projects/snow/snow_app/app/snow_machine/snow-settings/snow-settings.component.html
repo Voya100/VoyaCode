@@ -7,19 +7,19 @@
       </label>
     </div>
     <div>
-      <label title="URL for image. This setting will override symbol, color and min/max font settings.">
+      <label title="URL for image. This setting will override symbol and color settings. Uses default size if min and max size settings are 0.">
         Image: 
         <input type="text" name="img" [(ngModel)]="settings.img">
       </label>
     </div>
     <div>
-      <label title="Symbol's color - can be in any format accepted by CSS.'">
+      <label title="Symbol's color - can be in any format accepted by CSS.">
       Color: 
       <input type="text" name="color" [(ngModel)]="settings.color">
       </label>
     </div>
-    <form-row [settings]="settings" name="Min font" id="min_font" description="Minimum font-size (px)" step="1"></form-row>
-    <form-row [settings]="settings" name="Max font" id="max_font" description="Maximum font-size (px)" step="1"></form-row>
+    <form-row [settings]="settings" name="Min size" id="min_size" description="Minimum size for symbols (font-size) and images (width) (px)." step="1"></form-row>
+    <form-row [settings]="settings" name="Max size" id="max_size" description="Maximum size for symbols (font-size) and images (width) (px)." step="1"></form-row>
     <form-row [settings]="settings" name="Min speed" id="min_speed" description="Minimum fall speed (px/frame)" step="1"></form-row>
     <form-row [settings]="settings" name="Max speed" id="max_speed" description="Maximum fall speed (px/frame)" step="1"></form-row>
     <form-row [settings]="settings" name="Min wind" id="min_wind" description="Minimum wind speed (px/frame)" step="1"></form-row>

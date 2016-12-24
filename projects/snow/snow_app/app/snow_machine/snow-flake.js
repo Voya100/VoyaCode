@@ -9,18 +9,21 @@ var SnowFlake = (function () {
         this.x = Math.random() * s.xMax;
         this.y = -10 - Math.random() * 100;
         // Font size is randomized
-        this.fontSize = s.min_font + Math.random() * (s.max_font - s.min_font);
+        this.size = s.min_size + Math.random() * (s.max_size - s.min_size);
         this.settings = s;
         this.createFlake();
     }
     // Creates a flake element, is done right after initialisation
     SnowFlake.prototype.createFlake = function () {
         this.e = document.createElement('div');
-        this.e.setAttribute("style", 'position: fixed; pointer-events:none; width: 3px;z-index:50; font-size: ' + this.fontSize + 'px; color: ' + this.settings.color);
+        this.e.setAttribute("style", 'position: fixed; pointer-events:none; width: 3px;z-index:50; font-size: ' + this.size + 'px; color: ' + this.settings.color);
         this.e.setAttribute("class", "flake");
         if (this.settings.img) {
             var img = new Image();
             img.setAttribute('src', this.settings.img);
+            if (this.size) {
+                img.style.width = this.size + "px";
+            }
             this.e.appendChild(img);
         }
         else {
