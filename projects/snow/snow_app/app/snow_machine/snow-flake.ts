@@ -28,7 +28,7 @@ export class SnowFlake{
 	// Creates a flake element, is done right after initialisation
 	createFlake(){
 		this.e = document.createElement('div');
-		this.e.setAttribute("style", 'position: fixed; width: 3px;z-index:50; font-size: ' + this.fontSize + 'px; color: ' + this.settings.color);
+		this.e.setAttribute("style", 'position: fixed; pointer-events:none; width: 3px;z-index:50; font-size: ' + this.fontSize + 'px; color: ' + this.settings.color);
 		this.e.setAttribute("class", "flake");
 		this.e.appendChild(document.createTextNode(this.settings.symbol));
 		this.e = document.body.appendChild(this.e);
