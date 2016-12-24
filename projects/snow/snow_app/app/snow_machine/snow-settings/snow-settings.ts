@@ -2,10 +2,10 @@ export class SnowSettings{
   symbol: string = " * ";
   color: string = "white";
   count: number = 30;
-  min_speed: number = 1.5;
+  min_speed: number = 2;
   max_speed: number = 10;
-  min_wind: number = 0.45;
-  max_wind: number = 0.6;
+  min_wind: number = 0;
+  max_wind: number = 1;
   min_font: number = 20;
   max_font: number = 60;
   fps: number = 40;
@@ -19,13 +19,13 @@ export class SnowSettings{
                                     document.documentElement.offsetHeight );
 
   readonly max_values = {
-    count: () => 100,
+    count: () => 1000,
     min_speed: () => this.max_speed,
-    max_speed: () => 200,
+    max_speed: () => 1000,
     min_wind: () => this.max_wind,
-    max_wind: () => 10,
+    max_wind: () => 1000,
     min_font: () => this.max_font,
-    max_font: () => 100,
+    max_font: () => 1000,
     fps: () => 100
   }
   readonly min_values = {

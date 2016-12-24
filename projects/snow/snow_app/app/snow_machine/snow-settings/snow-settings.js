@@ -5,10 +5,10 @@ var SnowSettings = (function () {
         this.symbol = " * ";
         this.color = "white";
         this.count = 30;
-        this.min_speed = 1.5;
+        this.min_speed = 2;
         this.max_speed = 10;
-        this.min_wind = 0.45;
-        this.max_wind = 0.6;
+        this.min_wind = 0;
+        this.max_wind = 1;
         this.min_font = 20;
         this.max_font = 60;
         this.fps = 40;
@@ -16,13 +16,13 @@ var SnowSettings = (function () {
         this.xMax = document.documentElement.clientWidth - 50;
         this.yMax = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
         this.max_values = {
-            count: function () { return 100; },
+            count: function () { return 1000; },
             min_speed: function () { return _this.max_speed; },
-            max_speed: function () { return 200; },
+            max_speed: function () { return 1000; },
             min_wind: function () { return _this.max_wind; },
-            max_wind: function () { return 10; },
+            max_wind: function () { return 1000; },
             min_font: function () { return _this.max_font; },
-            max_font: function () { return 100; },
+            max_font: function () { return 1000; },
             fps: function () { return 100; }
         };
         this.min_values = {
