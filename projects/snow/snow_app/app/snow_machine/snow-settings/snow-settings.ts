@@ -1,5 +1,6 @@
 export class SnowSettings{
   symbol: string = " * ";
+  img: string = "";
   color: string = "white";
   count: number = 30;
   min_speed: number = 2;

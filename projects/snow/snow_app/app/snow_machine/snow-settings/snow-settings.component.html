@@ -1,13 +1,19 @@
 <div class="bordered_box">
   <form novalidate>
     <div>
-      <label>
+      <label title="Symbol for flake/drop, can be any text.">
         Symbol: 
         <input type="text" name="symbol" [(ngModel)]="settings.symbol">
       </label>
     </div>
     <div>
-      <label>
+      <label title="URL for image. This setting will override symbol, color and min/max font settings.">
+        Image: 
+        <input type="text" name="img" [(ngModel)]="settings.img">
+      </label>
+    </div>
+    <div>
+      <label title="Symbol's color - can be in any format accepted by CSS.'">
       Color: 
       <input type="text" name="color" [(ngModel)]="settings.color">
       </label>

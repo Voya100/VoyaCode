@@ -18,7 +18,14 @@ var SnowFlake = (function () {
         this.e = document.createElement('div');
         this.e.setAttribute("style", 'position: fixed; pointer-events:none; width: 3px;z-index:50; font-size: ' + this.fontSize + 'px; color: ' + this.settings.color);
         this.e.setAttribute("class", "flake");
-        this.e.appendChild(document.createTextNode(this.settings.symbol));
+        if (this.settings.img) {
+            var img = new Image();
+            img.setAttribute('src', this.settings.img);
+            this.e.appendChild(img);
+        }
+        else {
+            this.e.appendChild(document.createTextNode(this.settings.symbol));
+        }
         this.e = document.body.appendChild(this.e);
     };
     // Destroys flake element
