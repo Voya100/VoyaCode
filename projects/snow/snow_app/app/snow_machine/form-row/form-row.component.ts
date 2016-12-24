@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SnowSettings } from './snow-settings'
+import { SnowSettings } from '../snow-settings/snow-settings'
 
 @Component({
   moduleId: module.id,

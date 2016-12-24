@@ -12,9 +12,9 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
 var description_box_component_1 = require('../shared/description-box.component');
-var form_row_component_1 = require('./form-row.component');
+var form_row_component_1 = require('./form-row/form-row.component');
 var snow_machine_component_1 = require('./snow-machine.component');
-var snow_settings_component_1 = require('./snow-settings.component');
+var snow_settings_component_1 = require('./snow-settings/snow-settings.component');
 var SnowMachineModule = (function () {
     function SnowMachineModule() {
     }

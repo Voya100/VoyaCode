@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var snow_flake_1 = require('./snow-flake');
-var snow_settings_1 = require('./snow-settings');
+var snow_settings_1 = require('./snow-settings/snow-settings');
 var SnowControlService = (function () {
     function SnowControlService(settings) {
         this.settings = settings;

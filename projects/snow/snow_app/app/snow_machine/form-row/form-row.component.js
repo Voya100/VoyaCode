@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var snow_settings_1 = require('./snow-settings');
+var snow_settings_1 = require('../snow-settings/snow-settings');
 var FormRowComponent = (function () {
     function FormRowComponent() {
         var _this = this;

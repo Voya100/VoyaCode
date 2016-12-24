@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 
-import { FormRowComponent } from './form-row.component'
-import { SnowControlService } from './snow-control.service'
+import { FormRowComponent } from '../form-row/form-row.component'
+import { SnowControlService } from '../snow-control.service'
 import { SnowSettings } from './snow-settings';
 
 

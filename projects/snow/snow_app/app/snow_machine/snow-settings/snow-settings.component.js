@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var form_row_component_1 = require('./form-row.component');
-var snow_control_service_1 = require('./snow-control.service');
+var form_row_component_1 = require('../form-row/form-row.component');
+var snow_control_service_1 = require('../snow-control.service');
 var snow_settings_1 = require('./snow-settings');
 var SnowSettingsComponent = (function () {
     function SnowSettingsComponent(snow_controller) {
