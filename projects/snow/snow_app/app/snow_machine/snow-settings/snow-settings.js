@@ -2,7 +2,7 @@
 var SnowSettings = (function () {
     function SnowSettings() {
         var _this = this;
-        this.symbol = " * ";
+        this.symbol = "*";
         this.img = "";
         this.color = "white";
         this.count = 30;

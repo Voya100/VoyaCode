@@ -1,5 +1,5 @@
 export class SnowSettings{
-  symbol: string = " * ";
+  symbol: string = "*";
   img: string = "";
   color: string = "white";
   count: number = 30;
