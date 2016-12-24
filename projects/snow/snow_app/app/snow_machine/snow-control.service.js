@@ -15,6 +15,8 @@ var SnowControlService = (function () {
     function SnowControlService(settings) {
         this.settings = settings;
         this.flakes = [];
+        // Stores flakes that are kept on the screen (don't move anymore) so that they can be easily deleted later
+        this.oldFlakes = [];
     }
     // Creates flakes according to settings
     SnowControlService.prototype.createFlakes = function () {
@@ -23,10 +25,13 @@ var SnowControlService = (function () {
             this.flakes[id] = flake;
         }
     };
-    // Deletes all flake elements from dom and array
+    // Deletes all current and old flakes
     SnowControlService.prototype.deleteFlakes = function () {
         var flake;
         while (flake = this.flakes.pop()) {
+            flake.destroy();
+        }
+        while (flake = this.oldFlakes.pop()) {
             flake.destroy();
         }
     };
@@ -43,8 +48,11 @@ var SnowControlService = (function () {
         if (this.settings.reset) {
             this.deleteFlakes();
         }
+        else {
+            this.oldFlakes = this.oldFlakes.concat(this.flakes);
+            this.flakes = [];
+        }
         this.settings = new_setting ? new_setting : this.settings;
-        this.flakes = [];
         this.createFlakes();
     };
     SnowControlService = __decorate([
