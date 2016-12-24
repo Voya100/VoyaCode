@@ -20,7 +20,8 @@ var DescriptionBoxComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'description-box',
-            templateUrl: './description-box.component.html'
+            templateUrl: './description-box.component.html',
+            styleUrls: ['./description-box.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], DescriptionBoxComponent);
