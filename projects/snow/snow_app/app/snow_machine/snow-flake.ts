@@ -1,4 +1,4 @@
-import {SnowSettings} from './snow-settings';
+import {SnowSettings} from './snow-settings/snow-settings';
 
 export class SnowFlake{
 
