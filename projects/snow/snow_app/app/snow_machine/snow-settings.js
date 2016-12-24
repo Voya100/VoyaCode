@@ -12,6 +12,7 @@ var SnowSettings = (function () {
         this.min_font = 20;
         this.max_font = 60;
         this.fps = 40;
+        this.reset = true;
         this.xMax = document.documentElement.clientWidth - 50;
         this.yMax = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
         this.max_values = {

@@ -9,7 +9,7 @@ export class SnowSettings{
   min_font: number = 20;
   max_font: number = 60;
   fps: number = 40;
-  reset: false;
+  reset: boolean = true;
 
   readonly xMax: number = document.documentElement.clientWidth-50;
 	readonly yMax: number = Math.max( document.body.scrollHeight, 
