@@ -39,6 +39,7 @@ var SnowSettingsComponent = (function () {
             moduleId: module.id,
             selector: 'snow-settings',
             templateUrl: './snow-settings.component.html',
+            styleUrls: ['./snow-settings.component.css', '../form-row/form-row.component.css'],
             providers: [snow_control_service_1.SnowControlService, snow_settings_1.SnowSettings]
         }), 
         __metadata('design:paramtypes', [snow_control_service_1.SnowControlService])

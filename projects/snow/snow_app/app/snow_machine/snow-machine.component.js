@@ -18,6 +18,7 @@ var SnowMachineComponent = (function () {
             moduleId: module.id,
             selector: 'snow-machine',
             templateUrl: './snow-machine.component.html',
+            styleUrls: ['./snow-machine.component.css'],
             providers: [snow_control_service_1.SnowControlService]
         }), 
         __metadata('design:paramtypes', [])

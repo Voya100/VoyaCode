@@ -44,7 +44,8 @@ var FormRowComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'form-row',
-            templateUrl: 'form-row.component.html'
+            templateUrl: 'form-row.component.html',
+            styleUrls: ['form-row.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], FormRowComponent);

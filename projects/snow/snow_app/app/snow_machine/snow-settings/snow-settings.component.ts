@@ -9,6 +9,7 @@ import { SnowSettings } from './snow-settings';
   moduleId: module.id,
   selector: 'snow-settings',
   templateUrl: './snow-settings.component.html',
+  styleUrls: ['./snow-settings.component.css', '../form-row/form-row.component.css'],
   providers: [SnowControlService, SnowSettings]
 })
 export class SnowSettingsComponent {
