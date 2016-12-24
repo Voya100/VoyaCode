@@ -27,7 +27,7 @@
     <form-row [settings]="settings" name="Max FPS" id="fps" description="Maximum theoretical FPS - actual FPS is slightly lower." step="1"></form-row>
     <form-row [settings]="settings" name="Count" id="count" description="How many flakes/drops there are at screen at once." step="1"></form-row>
     <div>
-      <label><input type='checkbox' name="reset" [checked]="!settings.reset" (change)="settings.reset = !settings.reset"> Keep old flakes</label>
+      <label title="If set, will keep the current flakes even after reset."><input type='checkbox' name="reset" [checked]="!settings.reset" (change)="settings.reset = !settings.reset"> Keep old flakes</label>
     </div>
     <br><button (click)="reset()">Reset snow/rain</button>
   </form>
