@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 
+import { FormRowComponent } from './form-row.component'
 import { SnowControlService } from './snow-control.service'
 import { SnowSettings } from './snow-settings';
+
 
 @Component({
   moduleId: module.id,
@@ -11,6 +13,9 @@ import { SnowSettings } from './snow-settings';
 })
 export class SnowSettingsComponent {
 
+  @ViewChildren(FormRowComponent) formRowsQuery: QueryList<FormRowComponent>;
+
+  private formRows: FormRowComponent[];
   private settings: SnowSettings;
   
   constructor(private snow_controller: SnowControlService){
@@ -23,8 +28,15 @@ export class SnowSettingsComponent {
     this.snow_controller.moveRain();
    }
 
+   ngAfterViewInit(){
+     this.formRows = this.formRowsQuery.toArray();
+   }
+
+   // Reset snow and apply new settings, if all new settings are valid.
    reset(){
-     this.snow_controller.reset(this.settings);
+     if(this.formRows.every((row) => row.valid())){
+      this.snow_controller.reset(this.settings);
+     }
    }
 
    
