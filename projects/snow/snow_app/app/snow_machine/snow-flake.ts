@@ -1,5 +1,11 @@
 import {SnowSettings} from './snow-settings/snow-settings';
 
+// SnowFlake contains all information of a specific SnowFlake.
+// SnowFlake's values are randomized according to settings at initialisation.
+
+// Note: This class could also have been implemented as a component, but I chose to stick
+// with the original method (similar to snow.js). I believe this to be slightly more effective that it would be with Angular component.
+
 export class SnowFlake{
 
   private xSp: number;
@@ -19,17 +25,19 @@ export class SnowFlake{
     this.x = Math.random()*s.xMax;
     this.y = -10-Math.random()*100;
 
-    // Font size is randomized
+    // Font/image size is randomized
 		this.size = s.min_size + Math.random()*(s.max_size - s.min_size);
+
     this.settings = s;
     this.createFlake();
   }
 
-	// Creates a flake element, is done right after initialisation
+	// Creates a flake element, is done with initialisation
 	createFlake(){
 		this.e = document.createElement('div');
 		this.e.setAttribute("style", 'position: fixed; pointer-events:none; width: 3px;z-index:50; font-size: ' + this.size + 'px; color: ' + this.settings.color);
 		this.e.setAttribute("class", "flake");
+
 		if(this.settings.img){
 			let img: HTMLImageElement = new Image();
 			img.setAttribute('src', this.settings.img);
@@ -58,6 +66,6 @@ export class SnowFlake{
 			this.x = Math.random()*this.settings.xMax;
 		}
 		this.e.style.left = this.x + "px";
-		this.e.style.top = this.y + "px" // document.body.scrollTop + "px";
+		this.e.style.top = this.y + "px"
 	}
 }

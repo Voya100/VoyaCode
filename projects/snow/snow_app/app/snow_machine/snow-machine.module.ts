@@ -9,6 +9,9 @@ import { SnowSettingsComponent }   from './snow-settings/snow-settings.component
 
 import { SnowControlService } from './snow-control.service'
 
+// This module contains all components and dependencies needed by Snow Machine APP
+// Made by Voya @ www.voyacode.com
+
 @NgModule({
   imports: [CommonModule, FormsModule],
   declarations: [DescriptionBoxComponent, FormRowComponent, SnowMachineComponent, SnowSettingsComponent],
