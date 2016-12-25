@@ -25,7 +25,7 @@
 		<a href='projects/chess' id="project2">
 			<div title='Chess' style="background-image:url('images/chess_banner.jpg');"></div>
 		</a>
-		<a href='projects/snow_machine' id="project3">
+		<a href='projects/snow' id="project3">
 			<div title='Snow Machine' style="background-image:url('images/snow_machine_banner.jpg');display:block;"></div>
 		</a>
 		

@@ -16,7 +16,7 @@
     <div>
 		<div class="project" title='Create all kinds of snow and rain with Snow Machine!'>
 		    Snow Machine
-		    <a href="snow_machine"><img src="icons/snow_machine_icon.jpg"></a>
+		    <a href="snow"><img src="icons/snow_machine_icon.jpg"></a>
 	    </div>
 	    <div class="project" title='Play a game of chess against a friend or a computer AI!'>
 		    Chess
