@@ -6,6 +6,7 @@
 <link type="text/css" href='styles/homepage.css' rel="stylesheet"></link>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src='project_slider.js' type="text/javascript"></script>
+<script src='projects/snow/snow.js' type="text/javascript"></script>
 </head>
 <body>
 <?php include 'header.inc';?>
