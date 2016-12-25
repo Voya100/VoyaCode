@@ -1,3 +1,5 @@
+// Note: this code is old and thus isn't very well organized. Read at your own risk.
+
 var pHealth =10;
 var pMana =10;
 var pMaxHealth=10;
