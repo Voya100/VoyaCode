@@ -14,6 +14,10 @@
     <article>
     <h1>Projects</h1>
     <div>
+		<div class="project" title='Create all kinds of snow and rain with Snow Machine!'>
+		    Chess
+		    <a href="snow_machine"><img src="icons/snow_machine_icon.jpg"></a>
+	    </div>
 	    <div class="project" title='Play a game of chess against a friend or a computer AI!'>
 		    Chess
 		    <a href="chess"><img src="icons/chess_icon.jpg"></a>

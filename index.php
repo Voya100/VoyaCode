@@ -23,7 +23,10 @@
 			<div title='Slay the Dragon' style="background-image:url('images/slay_the_dragon_banner.jpg');"></div>
 		</a>          
 		<a href='projects/chess' id="project2">
-			<div title='Chess' style="background-image:url('images/chess_banner.jpg');display:block;"></div>
+			<div title='Chess' style="background-image:url('images/chess_banner.jpg');"></div>
+		</a>
+		<a href='projects/snow_machine' id="project3">
+			<div title='Snow Machine' style="background-image:url('images/snow_machine_banner.jpg');display:block;"></div>
 		</a>
 		
 	</div>
