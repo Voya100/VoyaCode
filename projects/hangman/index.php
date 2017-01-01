@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Hangman</title>
-<?php include '../../head.inc';?>
-<link type="text/css" href='../../styles/projects/projects.css' rel="stylesheet"></link>
-<script type="text/javascript" src="script.js"></script>
-<style>
-.game_images img{
-  width: 24%;
-}
-.google_badge img{
-  width: 240px;
-}
-.bordered_box{
-  text-align: left;
-}
-</style>
+  <title>Hangman</title>
+  <?php include '../../head.inc';?>
+  <link type="text/css" href='../../styles/projects/projects.css' rel="stylesheet"></link>
+  <script type="text/javascript" src="script.js"></script>
+  <style>
+    .game_images img{
+      width: 24%;
+    }
+    .google_badge img{
+      width: 240px;
+    }
+    .bordered_box{
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
 <?php include_once("../../header.inc");?>
 <article>
   <h1 style="text-align:center;">Hangman</h1>
   <div class='game_images'>
-    <img src='img/hangman1'>
-    <img src='img/hangman2'>
-    <img src='img/statistics'>
-    <img src='img/settings'>
+    <img src='img/hangman1.png'>
+    <img src='img/hangman2.png'>
+    <img src='img/statistics.png'>
+    <img src='img/settings.png'>
   </div>
   <a class='google_badge' href='https://play.google.com/store/apps/details?id=com.voyacode.hangman&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
     <img alt='Get it on Google Play' src='img/google-play-badge.png'/>
