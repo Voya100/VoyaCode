@@ -44,6 +44,7 @@
     <br>- Story that finally explains why you would want to guess words while someone is being hanged
     <br>- Scaling interface
     <br>- Navigation with icons, swiping left/right and back button 
+    <br><br><i>Google Play and the Google Play logo are trademarks of Google Inc.</i>
   </p>
   </div>
 </article>
