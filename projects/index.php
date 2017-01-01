@@ -14,7 +14,11 @@
     <article>
     <h1>Projects</h1>
     <div>
-		<div class="project" title='Create all kinds of snow and rain with Snow Machine!'>
+			<div class="project" title='Hangman mobile app for Android.'>
+		    Hangman
+		    <a href="hangman"><img src="icons/hangman_icon.jpg"></a>
+	    </div>
+			<div class="project" title='Create all kinds of snow and rain with Snow Machine!'>
 		    Snow Machine
 		    <a href="snow"><img src="icons/snow_machine_icon.jpg"></a>
 	    </div>

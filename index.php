@@ -29,6 +29,9 @@
 		<a href='projects/snow' id="project3">
 			<div title='Snow Machine' style="background-image:url('images/snow_machine_banner.jpg');display:block;"></div>
 		</a>
+		<a href='projects/hangman' id="project4">
+			<div title='Hangman' style="background-image:url('images/hangman_banner.jpg');display:block;"></div>
+		</a>
 		
 	</div>
 	          

@@ -1,7 +1,7 @@
 // Note to self: should implement slider with Angular and save projects to JSON file.
 
 $(document).ready(function(){
-	var count = 4;
+	var count = 5;
 	var i = count;
 	var changed = false;
 	
