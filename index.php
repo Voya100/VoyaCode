@@ -69,7 +69,7 @@
 	<h1>About me:</h1>
 	<p>I'm a 20-year-old Finnish university student, with a huge passion for
 	   coding. At the moment I have experience in HTML, Javascript, PHP,
-	   Scala and Python.<br>
+	   Scala, Python and C++.<br>
 	</p>          
 	<a href="blogs/blogs.rss"><img alt="RSS" title="RSS" src="images/rss.png"></a>
 	</div>
