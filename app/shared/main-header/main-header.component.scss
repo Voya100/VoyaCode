@@ -1,7 +1,8 @@
 @import "../../../sass/variables";
 
-:host{
+header{
   text-align:center;
+  margin: 0 8px;
 }
 
 nav{
@@ -28,7 +29,7 @@ nav{
     color:inherit;
     text-decoration: none;
     text-align:center;
-    
+
     display:flex;
     flex-basis: 20%;
     flex-grow: 1;

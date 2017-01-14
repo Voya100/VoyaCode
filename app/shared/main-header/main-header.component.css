@@ -6,8 +6,9 @@
   -ms-user-select: none;
   user-select: none; }
 
-:host {
-  text-align: center; }
+header {
+  text-align: center;
+  margin: 0 8px; }
 
 nav {
   max-width: 1000px;
