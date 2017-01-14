@@ -18,7 +18,8 @@ footer {
   text-align: center;
   padding: 10px;
   z-index: 2;
-  position: relative; }
+  position: relative;
+  margin: auto; }
 
 .background {
   position: absolute;
