@@ -15,8 +15,8 @@ var AppComponent = (function () {
     }
     AppComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "<h1>Hello {{name}}</h1>",
+            selector: 'voya-app',
+            template: "<header>\n                <nav>Navigation\n                  <a routerLink=\"\">Home</a>\n                  <a routerLink=\"blogs\">Blogs</a>\n                </nav>\n              </header>\n              <router-outlet></router-outlet>\n              <footer>@ VoyaCode</footer>",
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
