@@ -12,15 +12,21 @@ var core_1 = require('@angular/core');
 var form_row_component_1 = require('../form-row/form-row.component');
 var snow_control_service_1 = require('../snow-control.service');
 var snow_settings_1 = require('./snow-settings');
+// This component contains all input fields which will alter settings of SnowControlService.
+// This component also has a button to apply these changes, assuming that all inputs are valid
+// (= are in certain value range) and will initialise snow effect.
+// Changes to FPS setting are applied immediately.
 var SnowSettingsComponent = (function () {
     function SnowSettingsComponent(snow_controller) {
         this.snow_controller = snow_controller;
         this.settings = this.snow_controller.settings;
     }
+    // Creates snow/rain effect
     SnowSettingsComponent.prototype.ngOnInit = function () {
         this.snow_controller.createFlakes();
         this.snow_controller.moveRain();
     };
+    // Gets row components so that their valid() method can be checked
     SnowSettingsComponent.prototype.ngAfterViewInit = function () {
         this.formRows = this.formRowsQuery.toArray();
     };

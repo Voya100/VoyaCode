@@ -15,6 +15,8 @@ var description_box_component_1 = require('../shared/description-box.component')
 var form_row_component_1 = require('./form-row/form-row.component');
 var snow_machine_component_1 = require('./snow-machine.component');
 var snow_settings_component_1 = require('./snow-settings/snow-settings.component');
+// This module contains all components and dependencies needed by Snow Machine APP
+// Made by Voya @ www.voyacode.com
 var SnowMachineModule = (function () {
     function SnowMachineModule() {
     }

@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var snow_flake_1 = require('./snow-flake');
 var snow_settings_1 = require('./snow-settings/snow-settings');
+// SnowControlService controls snow/rain effect.
+// It creates, deletes and moves flakes.
 var SnowControlService = (function () {
     function SnowControlService(settings) {
         this.settings = settings;
@@ -21,8 +23,7 @@ var SnowControlService = (function () {
     // Creates flakes according to settings
     SnowControlService.prototype.createFlakes = function () {
         for (var id = 0; id < this.settings.count; id++) {
-            var flake = new snow_flake_1.SnowFlake(this.settings);
-            this.flakes[id] = flake;
+            this.flakes.push(new snow_flake_1.SnowFlake(this.settings));
         }
     };
     // Deletes all current and old flakes
@@ -43,8 +44,9 @@ var SnowControlService = (function () {
         var self = this;
         setTimeout(function () { self.moveRain(); }, 1000 / this.settings.fps);
     };
-    // Resets snow rain, gives new settings
+    // Resets snow/rain, activates new settings
     SnowControlService.prototype.reset = function (new_setting) {
+        this.settings = new_setting ? new_setting : this.settings;
         if (this.settings.reset) {
             this.deleteFlakes();
         }
@@ -52,7 +54,6 @@ var SnowControlService = (function () {
             this.oldFlakes = this.oldFlakes.concat(this.flakes);
             this.flakes = [];
         }
-        this.settings = new_setting ? new_setting : this.settings;
         this.createFlakes();
     };
     SnowControlService = __decorate([
