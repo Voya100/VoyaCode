@@ -9,17 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var MainFooterComponent = (function () {
+    function MainFooterComponent() {
+        this.year = new Date().getFullYear();
     }
-    AppComponent = __decorate([
+    MainFooterComponent.prototype.ngOnInit = function () { };
+    MainFooterComponent = __decorate([
         core_1.Component({
-            selector: 'voya-app',
-            template: "<main-header></main-header>\n              <main>\n                <router-outlet></router-outlet>\n              </main>\n              <main-footer></main-footer>",
+            moduleId: module.id,
+            selector: 'main-footer',
+            templateUrl: 'main-footer.component.html',
+            styleUrls: ['./main-footer.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], MainFooterComponent);
+    return MainFooterComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.MainFooterComponent = MainFooterComponent;
+//# sourceMappingURL=main-footer.component.js.map

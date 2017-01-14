@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
+var main_footer_component_1 = require('./shared/main-footer/main-footer.component');
 var main_header_component_1 = require('./shared/main-header/main-header.component');
 var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
@@ -19,7 +20,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_1.routing],
-            declarations: [app_component_1.AppComponent, main_header_component_1.MainHeaderComponent],
+            declarations: [app_component_1.AppComponent, main_header_component_1.MainHeaderComponent, main_footer_component_1.MainFooterComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
