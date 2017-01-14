@@ -9,18 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.name = 'Angular';
+// This is a header component which contains all main navigation and a logo.
+var MainHeaderComponent = (function () {
+    function MainHeaderComponent() {
     }
-    AppComponent = __decorate([
+    MainHeaderComponent.prototype.ngOnInit = function () { };
+    MainHeaderComponent = __decorate([
         core_1.Component({
-            selector: 'voya-app',
-            template: "<main-header></main-header>\n              <router-outlet></router-outlet>\n              <footer>@ VoyaCode</footer>",
+            moduleId: module.id,
+            selector: 'main-header',
+            templateUrl: 'main-header.component.html',
+            styleUrls: ['./main-header.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], MainHeaderComponent);
+    return MainHeaderComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.MainHeaderComponent = MainHeaderComponent;
+//# sourceMappingURL=main-header.component.js.map

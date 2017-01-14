@@ -1,0 +1,45 @@
+@import "../sass/variables";
+
+html, body{
+  font-size:16px;
+  background: $color_light;
+  line-height:1.4;
+  font-family: $main_font;
+  color: $color_dark2;
+}
+
+h1, h2, h3{
+  font-family: $header_font;
+}
+
+h1{
+  font-size: 200%;
+}
+
+h2{
+  font-size: 150%;
+}
+
+h3{
+  font-size: 120%;
+}
+
+main-header{
+  width:100%;
+}
+
+main-footer{
+  width:100%;
+}
+
+@media screen and (max-width: 600px){
+  html, body{
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 450px){
+  html, body{
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,41 @@
+.nodrag {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+html, body {
+  font-size: 16px;
+  background: #7AC7FF;
+  line-height: 1.4;
+  font-family: Helvetica, Verdana, sans-serif;
+  color: #1C2E3B; }
+
+h1, h2, h3 {
+  font-family: "Times New Roman", serif, Times; }
+
+h1 {
+  font-size: 200%; }
+
+h2 {
+  font-size: 150%; }
+
+h3 {
+  font-size: 120%; }
+
+main-header {
+  width: 100%; }
+
+main-footer {
+  width: 100%; }
+
+@media screen and (max-width: 600px) {
+  html, body {
+    font-size: 12px; } }
+@media screen and (max-width: 450px) {
+  html, body {
+    font-size: 10px; } }
+
+/*# sourceMappingURL=styles.css.map */
