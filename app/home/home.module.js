@@ -9,16 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var home_component_1 = require('./home.component');
+var banner_component_1 = require('./banner/banner.component');
 var home_routing_1 = require('./home.routing');
 var HomeModule = (function () {
     function HomeModule() {
     }
     HomeModule = __decorate([
         core_1.NgModule({
-            imports: [home_routing_1.routing],
+            imports: [common_1.CommonModule, home_routing_1.routing],
             exports: [],
-            declarations: [home_component_1.HomeComponent],
+            declarations: [home_component_1.HomeComponent, banner_component_1.BannerComponent],
             providers: [],
         }), 
         __metadata('design:paramtypes', [])

@@ -25,16 +25,18 @@ voya-app{
 }
 
 main{
+  box-sizing: border-box;
+  padding: 8px;
   min-height: 300px;
   min-width: $min_width;
   max-width: $max_width;
   width: 100%;
-  padding: 8px;
   margin: auto;
 }
 
 h1, h2, h3{
   font-family: $header_font;
+  margin: 12px 0;
 }
 
 h1{

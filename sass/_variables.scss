@@ -1,4 +1,4 @@
-$color_main1: #2EA7FF; // Main color
+$color_main1: #5bbaff; // Main color
 $color_main2: #2586CC; // Darker main color
 $color_light: #7AC7FF; // Light color
 $color_dark1: #17537F; // Dark
@@ -17,4 +17,19 @@ $header_font: "Times New Roman", serif, Times;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+%clearfix{
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+%bordered-box{
+	background: $color_main1;
+  border: medium solid $color_dark2;
+  margin: 5px;
+  padding: 5px;
 }

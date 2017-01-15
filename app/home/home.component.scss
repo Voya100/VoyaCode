@@ -1,0 +1,27 @@
+@import "../../sass/variables";
+
+section{
+  @extend %clearfix;
+  width: 100%;
+  box-sizing: border-box;
+  margin:auto; 
+}
+
+.main-content{
+  box-sizing: border-box;
+  width: 65%;
+  float: left;
+}
+
+aside{
+  @extend %bordered-box;
+  box-sizing: border-box;
+  width: 30%;
+  float: right;
+}
+
+@media screen and (max-width: 600px){
+  section, aside{
+    width:100%;
+  }
+}
