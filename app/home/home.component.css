@@ -33,7 +33,7 @@ aside {
   float: right; }
 
 @media screen and (max-width: 600px) {
-  section, aside {
+  .main-content, aside {
     width: 100%; } }
 
 /*# sourceMappingURL=home.component.css.map */
