@@ -6,6 +6,13 @@
   -ms-user-select: none;
   user-select: none; }
 
+html {
+  height: 100%; }
+
+body {
+  min-height: 100%;
+  display: flex; }
+
 html, body {
   font-size: 16px;
   line-height: 1.4;
@@ -14,8 +21,17 @@ html, body {
   background: #7AC7FF;
   margin: 0; }
 
+voya-app {
+  min-height: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column; }
+
 main {
   min-height: 300px;
+  min-width: 360px;
+  max-width: 1000px;
+  width: 100%;
   padding: 8px;
   margin: auto; }
 

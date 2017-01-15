@@ -6,28 +6,21 @@
   -ms-user-select: none;
   user-select: none; }
 
+:host {
+  background: #2586CC;
+  flex-grow: 1; }
+
 footer {
   width: 100%;
-  border-top: 3px solid #1C2E3B;
-  position: relative;
-  overflow-y: visible; }
+  min-height: 100px;
+  height: 100%;
+  border-top: 3px solid #1C2E3B; }
 
 .content {
   max-width: 1000px;
   min-width: 360px;
   text-align: center;
   padding: 10px;
-  z-index: 2;
-  position: relative;
   margin: auto; }
-
-.background {
-  position: absolute;
-  float: left;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 9999px;
-  background: #2586CC; }
 
 /*# sourceMappingURL=main-footer.component.css.map */

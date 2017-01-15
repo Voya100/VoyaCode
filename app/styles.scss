@@ -1,5 +1,12 @@
 @import "../sass/variables";
 
+html{
+  height: 100%;
+}
+body{
+  min-height: 100%;
+  display: flex;
+}
 
 html, body{
   font-size:16px;
@@ -10,8 +17,18 @@ html, body{
   margin:0;
 }
 
+voya-app{
+  min-height: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
 main{
   min-height: 300px;
+  min-width: $min_width;
+  max-width: $max_width;
+  width: 100%;
   padding: 8px;
   margin: auto;
 }
