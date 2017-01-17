@@ -15,7 +15,8 @@ aside {
   background: #5bbaff;
   border: medium solid #1C2E3B;
   margin: 5px;
-  padding: 5px; }
+  padding: 5px;
+  box-sizing: border-box; }
 
 section {
   width: 100%;
@@ -34,6 +35,7 @@ aside {
 
 @media screen and (max-width: 600px) {
   .main-content, aside {
-    width: 100%; } }
+    width: 100%;
+    float: none; } }
 
 /*# sourceMappingURL=home.component.css.map */
