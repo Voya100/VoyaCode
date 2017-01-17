@@ -27,10 +27,17 @@ $header_font: "Times New Roman", serif, Times;
   }
 }
 
+%main-content{
+  min-width: $min_width;
+  max-width: $max_width;
+  margin: auto;
+  width: 100%;
+  display: block;
+}
+
 %bordered-box{
 	background: $color_main1;
   border: medium solid $color_dark2;
-  margin: 5px;
   padding: 5px;
   box-sizing: border-box;
 }

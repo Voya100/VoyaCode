@@ -11,10 +11,16 @@ section:after {
   display: table;
   clear: both; }
 
+:host {
+  min-width: 360px;
+  max-width: 1000px;
+  margin: auto;
+  width: 100%;
+  display: block; }
+
 aside {
   background: #5bbaff;
   border: medium solid #1C2E3B;
-  margin: 5px;
   padding: 5px;
   box-sizing: border-box; }
 
@@ -30,12 +36,17 @@ section {
 
 aside {
   box-sizing: border-box;
-  width: 30%;
-  float: right; }
+  width: 33%;
+  float: right;
+  margin-right: 0px; }
 
 @media screen and (max-width: 600px) {
   .main-content, aside {
     width: 100%;
-    float: none; } }
+    float: none;
+    margin-left: 0px; }
+
+  aside {
+    margin-top: 8px; } }
 
 /*# sourceMappingURL=home.component.css.map */

@@ -10,7 +10,8 @@
   width: 100%;
   height: 290px;
   background: #5bbaff;
-  border: 1px solid #1C2E3B; }
+  border: 1px solid #1C2E3B;
+  box-sizing: border-box; }
 
 .img-container {
   width: 100%;
