@@ -1,4 +1,8 @@
-@import "../../../sass/variables";
+@import "../../../../sass/variables";
+
+:host{
+  display: block;
+}
 
 table{
   @extend %bordered-box;

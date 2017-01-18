@@ -12,6 +12,9 @@ table {
   padding: 5px;
   box-sizing: border-box; }
 
+:host {
+  display: block; }
+
 table {
   padding: 10px;
   width: 100%;

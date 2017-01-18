@@ -10,22 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var shared_module_1 = require('../shared/shared.module');
-var blogs_component_1 = require('./blogs.component');
-var blogs_routing_1 = require('./blogs.routing');
-var BlogsModule = (function () {
-    function BlogsModule() {
+var blog_post_component_1 = require('./components/blog-post/blog-post.component');
+var blogs_service_1 = require('./services/blogs.service');
+var SharedModule = (function () {
+    function SharedModule() {
     }
-    BlogsModule = __decorate([
+    SharedModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, shared_module_1.SharedModule, blogs_routing_1.routing],
-            exports: [],
-            declarations: [blogs_component_1.BlogsComponent],
-            providers: [],
+            imports: [common_1.CommonModule],
+            exports: [blog_post_component_1.BlogPostComponent],
+            declarations: [blog_post_component_1.BlogPostComponent],
+            providers: [blogs_service_1.BlogsService],
         }), 
         __metadata('design:paramtypes', [])
-    ], BlogsModule);
-    return BlogsModule;
+    ], SharedModule);
+    return SharedModule;
 }());
-exports.BlogsModule = BlogsModule;
-//# sourceMappingURL=blogs.module.js.map
+exports.SharedModule = SharedModule;
+//# sourceMappingURL=shared.module.js.map
