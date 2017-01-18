@@ -13,7 +13,26 @@
   width: 100%;
   display: block; }
 
+.filters {
+  background: #5bbaff;
+  border: medium solid #1C2E3B;
+  padding: 5px;
+  box-sizing: border-box; }
+
+.container {
+  display: flex;
+  justify-content: space-between; }
+
 blog-post {
   margin-bottom: 10px; }
+
+section {
+  width: 70%; }
+
+aside {
+  width: 25%; }
+
+.filters {
+  width: 100%; }
 
 /*# sourceMappingURL=blogs.component.css.map */

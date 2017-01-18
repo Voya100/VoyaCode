@@ -3,7 +3,24 @@
 :host{
   @extend %main-content;
 }
+.container{
+  display: flex;
+  justify-content: space-between;
+}
 
 blog-post{
   margin-bottom: 10px;
+}
+
+section{
+  width: 70%;
+}
+
+aside{
+  width: 25%;
+}
+
+.filters{
+  @extend %bordered-box;
+  width: 100%;
 }

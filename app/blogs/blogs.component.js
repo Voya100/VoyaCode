@@ -13,11 +13,25 @@ var blogs_service_1 = require('../shared/services/blogs.service');
 var BlogsComponent = (function () {
     function BlogsComponent(blogsService) {
         this.blogsService = blogsService;
+        this.filteredBlogs = [];
+        this.yearCheck = { '2016': false, '2017': true };
+        this.years = [];
         this.blogs = [];
     }
     BlogsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.blogsService.getBlogs().subscribe(function (blogs) { return _this.blogs = blogs; });
+        this.blogsService.getBlogs().subscribe(function (blogs) { return _this.blogInit(blogs); });
+    };
+    BlogsComponent.prototype.blogInit = function (blogs) {
+        if (blogs.length > 0) {
+            this.blogs = blogs;
+            var yearMin = 2016;
+            var yearMax = blogs[0].year;
+            for (var y = yearMax; y >= yearMin; y--) {
+                this.years.push(y);
+                this.yearCheck[y] = true;
+            }
+        }
     };
     BlogsComponent = __decorate([
         core_1.Component({
