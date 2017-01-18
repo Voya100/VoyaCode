@@ -1,0 +1,9 @@
+@import "../../sass/variables";
+
+:host{
+  @extend %main-content;
+}
+
+blog-post{
+  margin-bottom: 10px;
+}

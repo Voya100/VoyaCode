@@ -1,0 +1,19 @@
+.nodrag {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+:host {
+  min-width: 360px;
+  max-width: 1000px;
+  margin: auto;
+  width: 100%;
+  display: block; }
+
+blog-post {
+  margin-bottom: 10px; }
+
+/*# sourceMappingURL=blogs.component.css.map */

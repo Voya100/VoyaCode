@@ -9,16 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var blogs_service_1 = require('../shared/services/blogs.service');
 var BlogsComponent = (function () {
-    function BlogsComponent() {
+    function BlogsComponent(blogsService) {
+        this.blogsService = blogsService;
+        this.blogs = [];
     }
-    BlogsComponent.prototype.ngOnInit = function () { };
+    BlogsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.blogsService.getBlogs().subscribe(function (blogs) { return _this.blogs = blogs; });
+    };
     BlogsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: 'blogs.component.html'
+            templateUrl: 'blogs.component.html',
+            styleUrls: ['./blogs.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [blogs_service_1.BlogsService])
     ], BlogsComponent);
     return BlogsComponent;
 }());
