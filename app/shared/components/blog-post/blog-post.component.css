@@ -6,36 +6,35 @@
   -ms-user-select: none;
   user-select: none; }
 
-table {
+blog-post table {
   background: #5bbaff;
   border: medium solid #1C2E3B;
   padding: 5px;
   box-sizing: border-box; }
 
-:host {
+blog-post {
   display: block; }
-
-table {
-  padding: 10px;
-  width: 100%;
-  margin: 0; }
-
-.blog-header button {
-  float: right;
-  background: #2586CC;
-  width: 24px;
-  height: 24px;
-  font-size: 20px;
-  text-align: center;
-  padding: 0px;
-  border: 1px solid #1C2E3B; }
-
-.blog-date {
-  font-size: 75%;
-  font-weight: normal; }
-
-.blog-text {
-  border-top: 1px solid #1C2E3B;
-  padding-top: 5px; }
+  blog-post table {
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0; }
+  blog-post .blog-header button {
+    float: right;
+    background: #2586CC;
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+    text-align: center;
+    padding: 0px;
+    border: 1px solid #1C2E3B; }
+  blog-post .blog-date {
+    font-size: 75%;
+    font-weight: normal; }
+  blog-post .blog-text {
+    border-top: 1px solid #1C2E3B;
+    padding-top: 5px; }
+  blog-post img {
+    max-width: 100%; }
 
 /*# sourceMappingURL=blog-post.component.css.map */

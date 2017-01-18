@@ -33,7 +33,8 @@ var BlogPostComponent = (function () {
             moduleId: module.id,
             selector: 'blog-post',
             templateUrl: 'blog-post.component.html',
-            styleUrls: ['./blog-post.component.css']
+            styleUrls: ['./blog-post.component.css'],
+            encapsulation: core_1.ViewEncapsulation.None
         }), 
         __metadata('design:paramtypes', [])
     ], BlogPostComponent);
