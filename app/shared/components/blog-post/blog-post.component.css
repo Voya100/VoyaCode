@@ -12,6 +12,16 @@ blog-post table {
   padding: 5px;
   box-sizing: border-box; }
 
+blog-post .blog-header button {
+  background: #2586CC;
+  text-align: center;
+  border: 1px solid #1C2E3B;
+  cursor: pointer; }
+  blog-post .blog-header button:focus {
+    outline: none; }
+  blog-post .blog-header button:hover {
+    background: #7AC7FF; }
+
 blog-post {
   display: block; }
   blog-post table {
@@ -21,13 +31,11 @@ blog-post {
     margin: 0; }
   blog-post .blog-header button {
     float: right;
-    background: #2586CC;
     width: 24px;
     height: 24px;
     font-size: 20px;
     text-align: center;
-    padding: 0px;
-    border: 1px solid #1C2E3B; }
+    padding: 0px; }
   blog-post .blog-date {
     font-size: 75%;
     font-weight: normal; }

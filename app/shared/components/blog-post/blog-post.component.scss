@@ -12,14 +12,13 @@ blog-post{
   }
 
   .blog-header button{
+    @extend %button;
     float: right;
-    background: $color_main2;
     width: 24px;
     height: 24px;
     font-size: 20px;
     text-align: center;
     padding: 0px;
-    border: 1px solid $color_dark2;
   }
 
   .blog-date{

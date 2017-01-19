@@ -13,7 +13,6 @@ var BlogFilterPipe = (function () {
     function BlogFilterPipe() {
     }
     BlogFilterPipe.prototype.transform = function (blogs, years) {
-        console.log(blogs, years);
         return blogs.filter(function (blog) { return !years.hasOwnProperty(blog.year) || years[blog.year]; });
     };
     BlogFilterPipe = __decorate([

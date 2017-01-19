@@ -1,28 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChildren, OnInit, QueryList, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { BlogsService } from '../shared/services/blogs.service';
 import { BlogFilterPipe } from './blog-filter.pipe';
+
+import { BlogPostComponent } from '../shared/components/blog-post/blog-post.component'
+
+// Blogs page contains all blogs.
+// User can open/close blog contents either individually or all at once with buttons.
+// Blogs can be filtered by year.
 
 @Component({
   moduleId: module.id,
   templateUrl: 'blogs.component.html',
   styleUrls: ['./blogs.component.css']
 })
-export class BlogsComponent implements OnInit {
+export class BlogsComponent implements OnInit, AfterViewChecked {
 
-  filteredBlogs: any = [];
-  yearCheck: any = {'2016': false, '2017': true};
+  @ViewChildren(BlogPostComponent) blogPosts: QueryList<BlogPostComponent>;
+
+  yearCheck: any = {};
 
   private years: any = [];
   private blogs: any = [];
+  private initialised: boolean = false;
 
-  constructor(private blogsService: BlogsService) { }
+  constructor(private blogsService: BlogsService, private cdRef: ChangeDetectorRef) { }
 
+  // Get blogs from BlogsService
   ngOnInit() { 
     this.blogsService.getBlogs().subscribe(
       blogs => this.blogInit(blogs)
     );
   }
 
+  // To prevent "expression has changed after it was checked" exception
+  ngAfterViewChecked(){
+    this.initialised = true;
+    this.cdRef.detectChanges();
+  }
+
+  // Initialises filter settings
   blogInit(blogs: any){
     if(blogs.length > 0){
       this.blogs = blogs;
@@ -33,5 +49,23 @@ export class BlogsComponent implements OnInit {
         this.yearCheck[y] = true;
       }
     }
+  }
+
+  // Opens all blog content
+  openAll(){
+    if(this.initialised){
+      this.blogPosts.forEach(blog => blog.toggle(true));
+    }
+  }
+  // Closes all blog content
+  closeAll(){
+    if(this.initialised){
+      this.blogPosts.forEach(blog => blog.toggle(false));
+    }
+  }
+
+  // Returns false if page has blog posts (that fit filters), otherwise true
+  noBlogs(){
+    return !this.initialised || this.blogPosts.length === 0;
   }
 }

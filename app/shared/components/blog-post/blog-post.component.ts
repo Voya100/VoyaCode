@@ -19,4 +19,8 @@ export class BlogPostComponent implements OnInit {
   ngOnInit() { 
   }
 
+  toggle(open: boolean = !this.visible){
+    this.visible = open;
+  }
+
 }

@@ -16,6 +16,10 @@ var BlogPostComponent = (function () {
     }
     BlogPostComponent.prototype.ngOnInit = function () {
     };
+    BlogPostComponent.prototype.toggle = function (open) {
+        if (open === void 0) { open = !this.visible; }
+        this.visible = open;
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)

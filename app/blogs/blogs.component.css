@@ -19,6 +19,16 @@
   padding: 5px;
   box-sizing: border-box; }
 
+.filters button {
+  background: #2586CC;
+  text-align: center;
+  border: 1px solid #1C2E3B;
+  cursor: pointer; }
+  .filters button:focus {
+    outline: none; }
+  .filters button:hover {
+    background: #7AC7FF; }
+
 .container {
   display: flex;
   justify-content: space-between; }
@@ -27,12 +37,26 @@ blog-post {
   margin-bottom: 10px; }
 
 section {
-  width: 70%; }
+  width: 75%; }
 
 aside {
-  width: 25%; }
+  width: 24%; }
 
 .filters {
-  width: 100%; }
+  width: 100%;
+  text-align: center; }
+  .filters button {
+    padding: 7px;
+    margin-top: 5px; }
+
+@media screen and (max-width: 600px) {
+  .container {
+    flex-direction: column-reverse; }
+    .container section, .container aside {
+      width: 100%; }
+    .container aside {
+      margin-bottom: 8px; }
+    .container .filters .checkbox-container {
+      display: inline-block; } }
 
 /*# sourceMappingURL=blogs.component.css.map */
