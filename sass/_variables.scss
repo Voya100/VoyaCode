@@ -41,3 +41,16 @@ $header_font: "Times New Roman", serif, Times;
   padding: 5px;
   box-sizing: border-box;
 }
+
+%button{
+  background: $color_main2;
+  text-align: center;
+  border: 1px solid $color_dark2;
+  cursor: pointer;
+  &:focus{
+    outline: none;
+  }
+  &:hover{
+    background: $color_light;
+  }
+}
