@@ -37,7 +37,7 @@ $header_font: "Times New Roman", serif, Times;
 
 %bordered-box{
 	background: $color_main1;
-  border: medium solid $color_dark2;
+  border: 2px solid $color_dark2;
   padding: 5px;
   box-sizing: border-box;
 }

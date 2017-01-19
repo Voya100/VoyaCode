@@ -20,7 +20,7 @@ section:after {
 
 aside {
   background: #5bbaff;
-  border: medium solid #1C2E3B;
+  border: 2px solid #1C2E3B;
   padding: 5px;
   box-sizing: border-box; }
 
