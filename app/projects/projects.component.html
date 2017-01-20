@@ -1,1 +1,5 @@
-This is projects page.
+<h1>Projects</h1>
+<div *ngFor="let project of projects" class="project" [title]="project.description">
+  <div class='project-header'>{{project.name}}</div>
+  <a [routerLink]="project.path"><img [src]="project.iconUrl"></a>
+</div>

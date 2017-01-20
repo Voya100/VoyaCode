@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
 var projects_component_1 = require('./projects.component');
 var projects_routing_1 = require('./projects.routing');
 var ProjectsModule = (function () {
@@ -16,7 +17,7 @@ var ProjectsModule = (function () {
     }
     ProjectsModule = __decorate([
         core_1.NgModule({
-            imports: [projects_routing_1.routing],
+            imports: [common_1.CommonModule, projects_routing_1.routing],
             exports: [],
             declarations: [projects_component_1.ProjectsComponent],
             providers: [],

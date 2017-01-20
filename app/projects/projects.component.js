@@ -9,14 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var projects_1 = require('../shared/data/projects');
 var ProjectsComponent = (function () {
     function ProjectsComponent() {
+        this.projects = projects_1.projectList;
     }
     ProjectsComponent.prototype.ngOnInit = function () { };
     ProjectsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: 'projects.component.html'
+            templateUrl: 'projects.component.html',
+            styleUrls: ['./projects.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], ProjectsComponent);
