@@ -32,14 +32,14 @@ exports.projectList = [
         description: 'Slay the dragon in the game "Slay the Dragon!"',
         path: 'projects/slay-the-dragon',
         bannerUrl: 'http://voyacode.com/images/slay_the_dragon_banner.jpg',
-        iconUrl: 'http://voyacode.com/projects/icons/slay_the_dragon_icon.jpg',
+        iconUrl: 'http://voyacode.com/projects/icons/slay_the_dragon_icon.png',
         onBanner: true
     }, {
         name: 'Rock, Paper, Scissors',
         description: 'Beat the computer in a very challenging game of Rock, Paper, Scissors.',
         path: 'projects/rock-paper-scissors',
         bannerUrl: 'http://voyacode.com/images/rock_paper_scissors_banner.jpg',
-        iconUrl: 'http://voyacode.com/projects/icons/rock_paper_scissors_icon.jpg',
+        iconUrl: 'http://voyacode.com/projects/icons/rock_paper_scissors_icon.png',
         onBanner: true
     },
 ];
