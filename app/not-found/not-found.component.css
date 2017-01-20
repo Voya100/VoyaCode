@@ -1,0 +1,22 @@
+.nodrag {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+:host {
+  min-width: 360px;
+  max-width: 1000px;
+  margin: auto;
+  width: 100%;
+  display: block; }
+
+p {
+  background: #5bbaff;
+  border: 2px solid #1C2E3B;
+  padding: 5px;
+  box-sizing: border-box; }
+
+/*# sourceMappingURL=not-found.component.css.map */
