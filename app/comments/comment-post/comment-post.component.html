@@ -1,0 +1,14 @@
+<article>
+  <div class='username'>
+    {{data.username}}
+    <span *ngIf="data.username == 'Voya'">Site Admin</span>
+    <span *ngIf="data.private"><i>Private message</i></span>
+  </div>
+  <div class='comment-content'>
+    <span class='post-date'>
+      {{data.publishTime}}<span *ngIf="data.publishTime != data.editTime">, edited at {{data.editTime}}</span>
+    </span>
+    <hr>
+    <div [innerHtml]="data.content"></div>
+  </div>
+</article>
