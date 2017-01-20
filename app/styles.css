@@ -47,6 +47,9 @@ h2 {
 h3 {
   font-size: 120%; }
 
+a {
+  color: #17537F; }
+
 @media screen and (max-width: 600px) {
   html, body {
     font-size: 12px; } }

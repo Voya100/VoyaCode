@@ -50,6 +50,10 @@ h3{
   font-size: 120%;
 }
 
+a{
+  color: $color_dark1;
+}
+
 @media screen and (max-width: 600px){
   html, body{
     font-size: 12px;
