@@ -20,6 +20,10 @@
     color: inherit;
   }
 
+  &:hover{
+    background: $color_light;
+  }
+
   .project-header{
     height: 25px;
     font-size: 16px;

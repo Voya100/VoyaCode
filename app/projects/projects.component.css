@@ -28,6 +28,8 @@
   .project a, .project a:hover, .project a:visited, .project a:link, .project a:active {
     text-decoration: none;
     color: inherit; }
+  .project:hover {
+    background: #7AC7FF; }
   .project .project-header {
     height: 25px;
     font-size: 16px; }
