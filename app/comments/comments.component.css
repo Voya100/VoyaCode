@@ -1,0 +1,40 @@
+.nodrag {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.header:after {
+  content: '';
+  display: table;
+  clear: both; }
+
+:host {
+  min-width: 360px;
+  max-width: 1000px;
+  margin: auto;
+  width: 100%;
+  display: block; }
+
+.comment-container {
+  width: 100%;
+  border: 1px solid #1C2E3B; }
+
+.header {
+  background: #2586CC;
+  text-align: center;
+  font-weight: bold; }
+  .header .username-header, .header .comments-header {
+    float: left;
+    border: 1px solid #1C2E3B;
+    box-sizing: border-box;
+    padding: 5px; }
+  .header .username-header {
+    width: 25%;
+    min-width: 25%; }
+  .header .comments-header {
+    width: 75%; }
+
+/*# sourceMappingURL=comments.component.css.map */

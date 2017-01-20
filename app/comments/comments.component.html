@@ -1,1 +1,9 @@
-This is comments page.
+<h1>Comments</h1>
+
+<section class='comment-container'>
+  <div class='header'>
+    <div class='username-header'>Username</div>
+    <div class='comments-header'>Comments</div>
+  </div>
+  <comment-post *ngFor="let post of comments" [data]="post"></comment-post>
+</section>

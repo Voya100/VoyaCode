@@ -1,0 +1,31 @@
+@import "../../sass/variables";
+
+:host{
+  @extend %main-content;
+}
+
+.comment-container{
+  width: 100%;
+  border: 1px solid $color_dark2;
+}
+
+.header{
+  @extend %clearfix;
+  background: $color_main2;
+  text-align: center;
+  font-weight: bold;
+
+  .username-header, .comments-header{
+    float: left;
+    border: 1px solid $color_dark2;
+    box-sizing: border-box;
+    padding:5px;
+  }
+  .username-header{
+    width: 25%;
+    min-width: 25%;
+  }
+  .comments-header{
+    width: 75%;
+  }
+}
