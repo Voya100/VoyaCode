@@ -16,7 +16,8 @@ var OtherProjectsComponent = (function () {
     OtherProjectsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: 'other-projects.component.html'
+            templateUrl: 'other-projects.component.html',
+            styleUrls: ['./other-projects.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], OtherProjectsComponent);
