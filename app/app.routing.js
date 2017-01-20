@@ -7,7 +7,10 @@ var routes = [
     { path: 'projects', loadChildren: 'app/projects/projects.module#ProjectsModule' },
     { path: 'comments', loadChildren: 'app/comments/comments.module#CommentsModule' },
     // Project paths
-    { path: 'projects/other-projects', loadChildren: 'app/projects/other-projects/other-projects.module#OtherProjectsModule' }
+    { path: 'projects/other-projects', loadChildren: 'app/projects/other-projects/other-projects.module#OtherProjectsModule' },
+    // 404
+    { path: '404', loadChildren: 'app/not-found/not-found.module#NotFoundModule' },
+    { path: '**', redirectTo: '/404' }
 ];
 exports.routing = router_1.RouterModule.forRoot(routes);
 //# sourceMappingURL=app.routing.js.map
