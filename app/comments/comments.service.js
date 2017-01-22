@@ -16,27 +16,25 @@ var CommentsService = (function () {
     function CommentsService(http) {
         this.http = http;
         this.url = "http://voyacode.com/php/getComments.php";
+        this.postUrl = "http://voyacode.com/php/postComment.php";
     }
-    // 
+    // Gets comments from the server
     CommentsService.prototype.getComments = function () {
         return this.http.get(this.url).map(function (res) {
             return res.json().data;
         }).catch(function (err) {
             return null;
         });
-        /*
-        return [{
-          username: 'Voya',
-          content: "I have now got the comments page ready. You can give here feedback regarding projects or the website itself, or just comment whatever you like (as long as it isn't spam). <br><br>At the moment commenting don't require registration, but I may do a system for it at a later date. ",
-          publishTime: '17.01.2016 19:36',
-          editTime: '05.08.2016 22:46',
-          admin: true,
-          private: false
-        }];
-        */
     };
-    CommentsService.prototype.postComment = function () {
-        return null;
+    // Posts a comment to server
+    CommentsService.prototype.postComment = function (username, message, privateM) {
+        var data = new http_1.URLSearchParams();
+        data.append('username', username);
+        data.append('message', message);
+        data.append('private', privateM ? '1' : '0');
+        return this.http.post(this.postUrl, data).map(function (res) {
+            return res.json();
+        });
     };
     CommentsService = __decorate([
         core_1.Injectable(), 

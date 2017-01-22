@@ -19,6 +19,7 @@ var CommentsComponent = (function () {
         this.private = false;
         this.msgError = "";
         this.usernameError = "";
+        this.postError = "";
         this.posting = false;
         this.forbiddenNames = ['voya', 'admin'];
     }
@@ -65,6 +66,7 @@ var CommentsComponent = (function () {
         input.setSelectionRange(start, end);
         input.focus();
     };
+    // Checks if message is valid
     CommentsComponent.prototype.messageCheck = function () {
         if (this.message.length < 5) {
             this.msgError = "Message is too short!";
@@ -75,6 +77,7 @@ var CommentsComponent = (function () {
         }
         return false;
     };
+    // Checks if name is valid
     CommentsComponent.prototype.nameCheck = function () {
         if (this.forbiddenNames.indexOf(this.username.toLowerCase()) != -1) {
             this.usernameError = "This name is forbidden, use another.";
@@ -88,17 +91,26 @@ var CommentsComponent = (function () {
         }
         return false;
     };
-    // Posts comment (placeholder)
+    // Posts comment
     CommentsComponent.prototype.postComment = function () {
-        if (this.nameCheck() && this.messageCheck()) {
-            var comment = {
-                username: this.username,
-                content: this.message,
-                publishTime: 'now',
-                editTime: 'now',
-                private: this.private
-            };
-            this.comments.push(comment);
+        var _this = this;
+        if (this.nameCheck() && this.messageCheck) {
+            this.posting = true;
+            this.commentService.postComment(this.username, this.message, this.private).subscribe(function (data) {
+                if (data.error == "") {
+                    _this.message = "";
+                    _this.comments.push(data.data);
+                    console.log('success', data);
+                }
+                else {
+                    _this.postError = data.error;
+                    console.log('failure', data);
+                }
+            }, function (error) {
+                _this.postError = "Connection failed. Check your internet connection and try again.";
+            }, function () {
+                _this.posting = false;
+            });
         }
     };
     __decorate([

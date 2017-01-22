@@ -34,8 +34,9 @@
     </td>
   </tr>
   <tr class="row">
-    <td colspan="2">
-      <button (click)="postComment()">Submit</button>
+    <td colspan="2" style='text-align:center;'>
+      <div class='error' *ngIf="postError">{{postError}}</div>
+      <button (click)="postComment()" [class.disable]="posting">Submit</button>
     </td>
   </tr>
 </table>

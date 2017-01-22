@@ -21,6 +21,7 @@ export class CommentsComponent implements OnInit {
 
   msgError: string = "";
   usernameError: string = "";
+  postError: string = "";
 
   posting: boolean = false;
 
@@ -75,6 +76,7 @@ export class CommentsComponent implements OnInit {
     input.focus();
   }
 
+  // Checks if message is valid
   messageCheck(){
     if(this.message.length < 5){
       this.msgError = "Message is too short!";
@@ -85,6 +87,7 @@ export class CommentsComponent implements OnInit {
     return false;
   }
 
+  // Checks if name is valid
   nameCheck(){
     if(this.forbiddenNames.indexOf(this.username.toLowerCase()) != -1){
       this.usernameError = "This name is forbidden, use another.";
@@ -97,19 +100,32 @@ export class CommentsComponent implements OnInit {
     return false;
   }
 
-  // Posts comment (placeholder)
+  // Posts comment
   postComment(){
-    if(this.nameCheck() && this.messageCheck()){
-      let comment: CommentData = {
-        username: this.username,
-        content: this.message,
-        publishTime: 'now',
-        editTime: 'now',
-        private: this.private
-      }
-      this.comments.push(comment);
-    }
 
+    if(this.nameCheck() && this.messageCheck){
+
+      this.posting = true;
+
+      this.commentService.postComment(this.username, this.message, this.private).subscribe(
+        (data) => {
+          if(data.error == ""){
+            this.message = "";
+            this.comments.push(data.data);
+            console.log('success', data);
+          }else{
+            this.postError = data.error;
+            console.log('failure', data);
+          }
+        },
+        (error) => {
+          this.postError = "Connection failed. Check your internet connection and try again.";
+        },
+        () => {
+          this.posting = false;
+        }
+      );
+    }
   }
 
 }
