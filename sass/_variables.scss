@@ -10,7 +10,7 @@ $min_width: 360px;
 $main_font: Helvetica, Verdana, sans-serif;
 $header_font: "Times New Roman", serif, Times;
 
-.nodrag{
+%nodrag{
 	-webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

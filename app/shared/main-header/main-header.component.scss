@@ -6,7 +6,7 @@ header{
 }
 
 nav{
-	@extend .nodrag;
+	@extend %nodrag;
   max-width: $max_width;
   min-width: $min_width;
   width:100%;
