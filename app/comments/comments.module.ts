@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { CommentsComponent }   from './comments.component';
 import { CommentPostComponent } from './comment-post/comment-post.component';
@@ -9,7 +10,7 @@ import { CommentsService } from './comments.service';
 import { routing } from './comments.routing';
 
 @NgModule({
-  imports: [CommonModule, routing],
+  imports: [CommonModule, FormsModule, routing],
   exports: [],
   declarations: [CommentsComponent, CommentPostComponent],
   providers: [CommentsService],

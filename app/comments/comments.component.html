@@ -7,3 +7,35 @@
   </div>
   <comment-post *ngFor="let post of comments" [data]="post"></comment-post>
 </section>
+<table class="leave-comment">
+  <tr class="header-row">
+    <td colspan="2">Leave a comment:</td>
+  </tr>
+  <tr class="row">
+    <td class='first-cell'>Username:</td>
+    <td>
+      <input class='username' maxlength="15" size="75" name="username" tabindex="1" type="text" [(ngModel)]="username">
+      <div class='error' *ngIf='usernameError'>{{usernameError}}</div>
+    </td>
+  </tr>
+  <tr class="row">
+    <td>Message:</td>
+    <td>
+      <button (click)="tag('b', messageBox)" title="Bold"><b>B</b></button>
+      <button (click)="tag('i', messageBox)" title="Italic"><i>i</i></button>
+      <button (click)="tag('u', messageBox)" title="Underline"><u>u</u></button>
+      <button (click)="tag('url', messageBox)" title="[url=link]link text[/url]">URL</button>
+      <button (click)="tag('color', messageBox)" title="[color=colorName]Color text[/color]">Color</button><br>
+
+      <textarea #messageBox rows="8" cols="75" name="message" tabindex="2"  [(ngModel)]="message"></textarea><br>
+      <div class='error' *ngIf="msgError">{{msgError}}</div>
+      <label for="private" title="If the comment is set as private, only the site admin can see it.">
+      <input id="private" name="private" [checked]="private" (change)="private = !private" type="checkbox">Private comment</label>
+    </td>
+  </tr>
+  <tr class="row">
+    <td colspan="2">
+      <button (click)="postComment()">Submit</button>
+    </td>
+  </tr>
+</table>

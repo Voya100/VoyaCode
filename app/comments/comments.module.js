@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var forms_1 = require('@angular/forms');
 var comments_component_1 = require('./comments.component');
 var comment_post_component_1 = require('./comment-post/comment-post.component');
 var comments_service_1 = require('./comments.service');
@@ -19,7 +20,7 @@ var CommentsModule = (function () {
     }
     CommentsModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, comments_routing_1.routing],
+            imports: [common_1.CommonModule, forms_1.FormsModule, comments_routing_1.routing],
             exports: [],
             declarations: [comments_component_1.CommentsComponent, comment_post_component_1.CommentPostComponent],
             providers: [comments_service_1.CommentsService],

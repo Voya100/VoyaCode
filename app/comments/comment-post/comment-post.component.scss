@@ -2,6 +2,7 @@
 
 article{
   display: flex;
+  background: $color_main1;
 }
 
 .username, .comment-content{
@@ -33,4 +34,8 @@ article{
 
 hr{
   border-color: $color_dark1;
+}
+
+.private{
+  background: lightgray;
 }

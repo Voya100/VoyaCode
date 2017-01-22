@@ -1,4 +1,4 @@
-<article>
+<article [class.private]="data.private">
   <div class='username'>
     {{data.username}}
     <span *ngIf="data.username == 'Voya'">Site Admin</span>

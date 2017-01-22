@@ -1,4 +1,4 @@
-.nodrag {
+.leave-comment label {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -18,6 +18,16 @@
   width: 100%;
   display: block; }
 
+.leave-comment button {
+  background: #2586CC;
+  text-align: center;
+  border: 1px solid #1C2E3B;
+  cursor: pointer; }
+  .leave-comment button:focus {
+    outline: none; }
+  .leave-comment button:hover {
+    background: #7AC7FF; }
+
 .comment-container {
   width: 100%;
   border: 1px solid #1C2E3B; }
@@ -36,5 +46,29 @@
     min-width: 25%; }
   .header .comments-header {
     width: 75%; }
+
+.leave-comment {
+  width: 100%;
+  background: #5bbaff;
+  border-collapse: collapse;
+  margin-top: 10px; }
+  .leave-comment .header-row {
+    background: #2586CC;
+    text-align: center; }
+  .leave-comment td {
+    border: 2px solid #1C2E3B;
+    padding: 5px; }
+  .leave-comment .first-cell {
+    width: 25%; }
+  .leave-comment button {
+    padding: 2px 5px;
+    margin: 5px 2px;
+    min-width: 24px; }
+  .leave-comment textarea, .leave-comment .username {
+    max-width: 450px;
+    width: 80%; }
+
+.error {
+  color: #f90000; }
 
 /*# sourceMappingURL=comments.component.css.map */

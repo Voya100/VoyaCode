@@ -1,13 +1,6 @@
-.nodrag {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
 article {
-  display: flex; }
+  display: flex;
+  background: #5bbaff; }
 
 .username, .comment-content {
   float: left;
@@ -33,5 +26,8 @@ article {
 
 hr {
   border-color: #17537F; }
+
+.private {
+  background: lightgray; }
 
 /*# sourceMappingURL=comment-post.component.css.map */

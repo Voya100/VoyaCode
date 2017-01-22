@@ -29,3 +29,42 @@
     width: 75%;
   }
 }
+
+.leave-comment{
+  width: 100%;
+  background: $color_main1;
+  border-collapse: collapse;
+  margin-top: 10px;
+
+  .header-row{
+    background: $color_main2;
+    text-align: center;
+  }
+
+  td{
+    border: 2px solid $color_dark2;
+    padding: 5px;
+  }
+
+  .first-cell{
+    width: 25%;
+  }
+
+  button{
+    @extend %button;
+    padding: 2px 5px;
+    margin: 5px 2px;
+    min-width: 24px;
+  }
+  textarea, .username{
+    max-width: 450px;
+    width: 80%;
+  }
+  label{
+    @extend %nodrag;
+  }
+}
+
+.error{
+  color: #f90000;
+}
