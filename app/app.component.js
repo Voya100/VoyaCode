@@ -8,16 +8,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+require('rxjs/add/operator/filter');
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/mergeMap');
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var platform_browser_1 = require('@angular/platform-browser');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(router, activatedRoute, titleService) {
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.titleService = titleService;
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.router.events
+            .filter(function (event) { return event instanceof router_1.NavigationEnd; })
+            .map(function () { return _this.activatedRoute; })
+            .map(function (route) {
+            while (route.firstChild)
+                route = route.firstChild;
+            return route;
+        })
+            .filter(function (route) { return route.outlet === 'primary'; })
+            .mergeMap(function (route) { return route.data; })
+            .subscribe(function (event) { return _this.titleService.setTitle('Voya Code' + (event['title'] == '' ? '' : ' - ' + event['title'])); });
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'voya-app',
             template: "<main-header></main-header>\n              <main>\n                <router-outlet></router-outlet>\n              </main>\n              <main-footer></main-footer>",
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, platform_browser_1.Title])
     ], AppComponent);
     return AppComponent;
 }());
