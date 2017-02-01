@@ -1,5 +1,9 @@
 @import "../../../sass/variables";
 
+:host{
+  display: block;
+}
+
 article{
   display: flex;
   background: $color_main1;

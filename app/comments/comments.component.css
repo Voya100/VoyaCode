@@ -66,10 +66,11 @@
     min-width: 24px; }
   .leave-comment textarea, .leave-comment .username {
     max-width: 450px;
-    width: 80%; }
+    width: 80%;
+    font-family: Helvetica, Verdana, sans-serif; }
 
 .error {
-  color: #f90000; }
+  color: #c10000; }
 
 .disabled {
   opacity: 0.7; }
