@@ -8,6 +8,7 @@ var routes = [
     { path: 'comments', loadChildren: 'app/comments/comments.module#CommentsModule', data: { title: 'Comments' } },
     // Project paths
     { path: 'projects/other-projects', loadChildren: 'app/projects/other-projects/other-projects.module#OtherProjectsModule', data: { title: 'Other Projects' } },
+    { path: 'projects/snow-machine', loadChildren: 'app/projects/snow-machine/snow-machine.module#SnowMachineModule', data: { title: 'Snow Machine' } },
     // 404
     { path: '404', loadChildren: 'app/not-found/not-found.module#NotFoundModule', data: { title: 'Page not found' } },
     { path: '**', redirectTo: '/404' }
