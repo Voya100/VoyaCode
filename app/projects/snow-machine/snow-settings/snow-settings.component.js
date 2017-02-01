@@ -26,6 +26,10 @@ var SnowSettingsComponent = (function () {
         this.snow_controller.createFlakes();
         this.snow_controller.moveRain();
     };
+    // Destroy flakes after page is closed
+    SnowSettingsComponent.prototype.ngOnDestroy = function () {
+        this.snow_controller.deleteFlakes();
+    };
     // Gets row components so that their valid() method can be checked
     SnowSettingsComponent.prototype.ngAfterViewInit = function () {
         this.formRows = this.formRowsQuery.toArray();

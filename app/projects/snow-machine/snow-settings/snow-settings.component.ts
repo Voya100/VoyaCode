@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import {AfterViewInit, Component, OnInit, OnDestroy, ViewChildren, QueryList } from '@angular/core';
 
 import { FormRowComponent } from '../form-row/form-row.component'
 import { SnowControlService } from '../snow-control.service'
@@ -31,6 +31,11 @@ export class SnowSettingsComponent {
   ngOnInit() {
     this.snow_controller.createFlakes();
     this.snow_controller.moveRain();
+   }
+
+   // Destroy flakes after page is closed
+   ngOnDestroy(){
+     this.snow_controller.deleteFlakes();
    }
 
    // Gets row components so that their valid() method can be checked
