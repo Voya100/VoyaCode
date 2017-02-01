@@ -24,11 +24,14 @@ export class CommentsService {
   }
 
   // Posts a comment to server
-  postComment(username: string, message: string, privateM: boolean): Observable<any>{
+  postComment(username: string, message: string, privateM: boolean, preview: boolean = false): Observable<any>{
     let data = new URLSearchParams();
     data.append('username', username);
     data.append('message', message);
     data.append('private', privateM ? '1' : '0');
+    if(preview){
+      data.append('preview', '1');
+    }
 
     return this.http.post(this.postUrl, data).map((res: Response) => {
       return res.json();

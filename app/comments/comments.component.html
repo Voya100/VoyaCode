@@ -7,6 +7,10 @@
   </div>
   <comment-post *ngFor="let post of comments" [data]="post"></comment-post>
 </section>
+<section class='preview-container' *ngIf="previewPost !== null">
+  <h2>Preview</h2>
+  <comment-post [data]="previewPost"></comment-post>
+</section>
 <table class="leave-comment">
   <tr class="header-row">
     <td colspan="2">Leave a comment:</td>
@@ -35,6 +39,7 @@
   <tr class="row">
     <td colspan="2" style='text-align:center;'>
       <div class='error' *ngIf="postError">{{postError}}</div>
+      <button (click)="postComment(true)" [class.disabled]="posting" title="Shows what the comment would look like if posted.">Preview</button>
       <button (click)="postComment()" [class.disabled]="posting">Submit</button>
     </td>
   </tr>

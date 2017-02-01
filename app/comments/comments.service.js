@@ -27,11 +27,15 @@ var CommentsService = (function () {
         });
     };
     // Posts a comment to server
-    CommentsService.prototype.postComment = function (username, message, privateM) {
+    CommentsService.prototype.postComment = function (username, message, privateM, preview) {
+        if (preview === void 0) { preview = false; }
         var data = new http_1.URLSearchParams();
         data.append('username', username);
         data.append('message', message);
         data.append('private', privateM ? '1' : '0');
+        if (preview) {
+            data.append('preview', '1');
+        }
         return this.http.post(this.postUrl, data).map(function (res) {
             return res.json();
         });

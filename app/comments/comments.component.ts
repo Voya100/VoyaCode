@@ -23,6 +23,8 @@ export class CommentsComponent implements OnInit {
   usernameError: string = "";
   postError: string = "";
 
+  previewPost: CommentData = null;
+
   posting: boolean = false;
 
   private forbiddenNames = ['voya', 'admin'];
@@ -52,8 +54,6 @@ export class CommentsComponent implements OnInit {
       setTimeout(() => {
         this.setCaretPosition(start.length + startTag.length, start.length + startTag.length + (ending - beginning), textarea);
       }, 100)
-    } else {
-      alert("Error");
     }
   }
 
@@ -101,17 +101,23 @@ export class CommentsComponent implements OnInit {
   }
 
   // Posts comment
-  postComment(){
+  postComment(preview: boolean = false){
 
     if(this.nameCheck() && this.messageCheck() && !this.posting){
 
       this.posting = true;
 
-      this.commentService.postComment(this.username, this.message, this.private).subscribe(
+      this.commentService.postComment(this.username, this.message, this.private, preview).subscribe(
         (data) => {
-          if(data.error == ""){
-            this.message = "";
-            this.comments.push(data.data);
+          if(data.error === ""){
+            
+            if(preview){
+              this.previewPost = data.data;
+            }else{
+              this.comments.push(data.data);
+              this.previewPost = null;
+              this.message = "";
+            }
             console.log('success', data);
           }else{
             this.postError = data.error;

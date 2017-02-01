@@ -20,6 +20,7 @@ var CommentsComponent = (function () {
         this.msgError = "";
         this.usernameError = "";
         this.postError = "";
+        this.previewPost = null;
         this.posting = false;
         this.forbiddenNames = ['voya', 'admin'];
     }
@@ -44,9 +45,6 @@ var CommentsComponent = (function () {
             setTimeout(function () {
                 _this.setCaretPosition(start_1.length + startTag.length, start_1.length + startTag.length + (ending - beginning), textarea);
             }, 100);
-        }
-        else {
-            alert("Error");
         }
     };
     // Adds the tag to textarea
@@ -92,14 +90,21 @@ var CommentsComponent = (function () {
         return false;
     };
     // Posts comment
-    CommentsComponent.prototype.postComment = function () {
+    CommentsComponent.prototype.postComment = function (preview) {
         var _this = this;
+        if (preview === void 0) { preview = false; }
         if (this.nameCheck() && this.messageCheck() && !this.posting) {
             this.posting = true;
-            this.commentService.postComment(this.username, this.message, this.private).subscribe(function (data) {
-                if (data.error == "") {
-                    _this.message = "";
-                    _this.comments.push(data.data);
+            this.commentService.postComment(this.username, this.message, this.private, preview).subscribe(function (data) {
+                if (data.error === "") {
+                    if (preview) {
+                        _this.previewPost = data.data;
+                    }
+                    else {
+                        _this.comments.push(data.data);
+                        _this.previewPost = null;
+                        _this.message = "";
+                    }
                     console.log('success', data);
                 }
                 else {
