@@ -1,7 +1,7 @@
 "use strict";
 var router_1 = require('@angular/router');
 var routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', loadChildren: 'app/home/home.module#HomeModule', pathMatch: 'full' },
     { path: 'home', loadChildren: 'app/home/home.module#HomeModule' },
     { path: 'blogs', loadChildren: 'app/blogs/blogs.module#BlogsModule' },
     { path: 'projects', loadChildren: 'app/projects/projects.module#ProjectsModule' },
