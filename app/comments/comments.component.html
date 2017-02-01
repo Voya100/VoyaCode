@@ -19,7 +19,6 @@
     <td class='first-cell'>Username:</td>
     <td>
       <input class='username' maxlength="15" size="75" name="username" tabindex="1" type="text" [(ngModel)]="username" [disabled]="posting">
-      <div class='error' *ngIf='usernameError'>{{usernameError}}</div>
     </td>
   </tr>
   <tr class="row">
@@ -31,7 +30,6 @@
       <button (click)="tag('url', messageBox)" title="[url=link]link text[/url]">URL</button><br>
 
       <textarea #messageBox rows="8" cols="75" name="message" tabindex="2"  [(ngModel)]="message" [disabled]="posting"></textarea><br>
-      <div class='error' *ngIf="msgError">{{msgError}}</div>
       <label for="private" title="If the comment is set as private, only the site admin can see it.">
       <input id="private" name="private" [checked]="private" (change)="private = !private" type="checkbox">Private comment</label>
     </td>

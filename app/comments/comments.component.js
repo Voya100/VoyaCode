@@ -17,12 +17,9 @@ var CommentsComponent = (function () {
         this.username = "";
         this.message = "";
         this.private = false;
-        this.msgError = "";
-        this.usernameError = "";
         this.postError = "";
         this.previewPost = null;
         this.posting = false;
-        this.forbiddenNames = ['voya', 'admin'];
     }
     CommentsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -64,36 +61,11 @@ var CommentsComponent = (function () {
         input.setSelectionRange(start, end);
         input.focus();
     };
-    // Checks if message is valid
-    CommentsComponent.prototype.messageCheck = function () {
-        if (this.message.length < 5) {
-            this.msgError = "Message is too short!";
-        }
-        else {
-            this.msgError = "";
-            return true;
-        }
-        return false;
-    };
-    // Checks if name is valid
-    CommentsComponent.prototype.nameCheck = function () {
-        if (this.forbiddenNames.indexOf(this.username.toLowerCase()) != -1) {
-            this.usernameError = "This name is forbidden, use another.";
-        }
-        else if (this.username.length < 4) {
-            this.usernameError = "Username is too short.";
-        }
-        else {
-            this.usernameError = "";
-            return true;
-        }
-        return false;
-    };
     // Posts comment
     CommentsComponent.prototype.postComment = function (preview) {
         var _this = this;
         if (preview === void 0) { preview = false; }
-        if (this.nameCheck() && this.messageCheck() && !this.posting) {
+        if (!this.posting) {
             this.posting = true;
             this.commentService.postComment(this.username, this.message, this.private, preview).subscribe(function (data) {
                 if (data.error === "") {

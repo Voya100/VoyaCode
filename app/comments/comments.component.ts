@@ -19,18 +19,14 @@ export class CommentsComponent implements OnInit {
   message: string = "";
   private: boolean = false;
 
-  msgError: string = "";
-  usernameError: string = "";
   postError: string = "";
 
   previewPost: CommentData = null;
 
   posting: boolean = false;
 
-  private forbiddenNames = ['voya', 'admin'];
-
   constructor(private commentService: CommentsService) {
-   }
+  }
 
   ngOnInit() {
     this.commentService.getComments().subscribe(
@@ -76,34 +72,10 @@ export class CommentsComponent implements OnInit {
     input.focus();
   }
 
-  // Checks if message is valid
-  messageCheck(){
-    if(this.message.length < 5){
-      this.msgError = "Message is too short!";
-    }else{
-      this.msgError = "";
-      return true;
-    }
-    return false;
-  }
-
-  // Checks if name is valid
-  nameCheck(){
-    if(this.forbiddenNames.indexOf(this.username.toLowerCase()) != -1){
-      this.usernameError = "This name is forbidden, use another.";
-    }else if(this.username.length < 4){
-      this.usernameError = "Username is too short.";
-    }else{
-      this.usernameError = "";
-      return true;
-    }
-    return false;
-  }
-
   // Posts comment
   postComment(preview: boolean = false){
 
-    if(this.nameCheck() && this.messageCheck() && !this.posting){
+    if(!this.posting){
 
       this.posting = true;
 
