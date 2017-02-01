@@ -23,7 +23,9 @@ export class CommentsService {
     });
   }
 
-  // Posts a comment to server
+  // Posts a comment to server - comment validation is handled by server, and it can be rejected.
+  // Returns observable with object {error: errorString, data: commentData}
+  // errorString is an empty string, if no errors are found and comment post is successful.
   postComment(username: string, message: string, privateM: boolean, preview: boolean = false): Observable<any>{
     let data = new URLSearchParams();
     data.append('username', username);

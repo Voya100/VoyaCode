@@ -26,7 +26,9 @@ var CommentsService = (function () {
             return null;
         });
     };
-    // Posts a comment to server
+    // Posts a comment to server - comment validation is handled by server, and it can be rejected.
+    // Returns observable with object {error: errorString, data: commentData}
+    // errorString is an empty string, if no errors are found and comment post is successful.
     CommentsService.prototype.postComment = function (username, message, privateM, preview) {
         if (preview === void 0) { preview = false; }
         var data = new http_1.URLSearchParams();

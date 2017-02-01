@@ -32,6 +32,15 @@ export class CommentsComponent implements OnInit {
     this.commentService.getComments().subscribe(
       data => {
         this.comments = data
+      },
+      error => {
+        this.comments.push({
+          username: 'Error',
+          content: "Connection to server failed and comments couldn't be fetched. Check your internet connection and try again. If problem persists, contact the admin.",
+          private: false,
+          publishTime: '',
+          editTime: ''
+        })
       }
     );
   }
@@ -72,17 +81,19 @@ export class CommentsComponent implements OnInit {
     input.focus();
   }
 
-  // Posts comment
+  // Posts comment if it meets the requirements determined in backend and there isn't another comment in processing.
+  // If preview is true, comment won't be sent to server's comment database - instead comment is shown under "Preview" section.
+  // Message field is cleared after comment is submitted.
   postComment(preview: boolean = false){
 
     if(!this.posting){
-
+      // Prevent posting while comment is being posted
       this.posting = true;
 
       this.commentService.postComment(this.username, this.message, this.private, preview).subscribe(
         (data) => {
+          this.postError = data.error;
           if(data.error === ""){
-            
             if(preview){
               this.previewPost = data.data;
             }else{
@@ -90,10 +101,6 @@ export class CommentsComponent implements OnInit {
               this.previewPost = null;
               this.message = "";
             }
-            console.log('success', data);
-          }else{
-            this.postError = data.error;
-            console.log('failure', data);
           }
         },
         (error) => {

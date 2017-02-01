@@ -25,6 +25,14 @@ var CommentsComponent = (function () {
         var _this = this;
         this.commentService.getComments().subscribe(function (data) {
             _this.comments = data;
+        }, function (error) {
+            _this.comments.push({
+                username: 'Error',
+                content: "Connection to server failed and comments couldn't be fetched. Check your internet connection and try again. If problem persists, contact the admin.",
+                private: false,
+                publishTime: '',
+                editTime: ''
+            });
         });
     };
     // Adds tags around the current selection. Selection is moved between the tags.
@@ -61,13 +69,17 @@ var CommentsComponent = (function () {
         input.setSelectionRange(start, end);
         input.focus();
     };
-    // Posts comment
+    // Posts comment if it meets the requirements determined in backend and there isn't another comment in processing.
+    // If preview is true, comment won't be sent to server's comment database - instead comment is shown under "Preview" section.
+    // Message field is cleared after comment is submitted.
     CommentsComponent.prototype.postComment = function (preview) {
         var _this = this;
         if (preview === void 0) { preview = false; }
         if (!this.posting) {
+            // Prevent posting while comment is being posted
             this.posting = true;
             this.commentService.postComment(this.username, this.message, this.private, preview).subscribe(function (data) {
+                _this.postError = data.error;
                 if (data.error === "") {
                     if (preview) {
                         _this.previewPost = data.data;
@@ -77,11 +89,6 @@ var CommentsComponent = (function () {
                         _this.previewPost = null;
                         _this.message = "";
                     }
-                    console.log('success', data);
-                }
-                else {
-                    _this.postError = data.error;
-                    console.log('failure', data);
                 }
             }, function (error) {
                 _this.postError = "Connection failed. Check your internet connection and try again.";
