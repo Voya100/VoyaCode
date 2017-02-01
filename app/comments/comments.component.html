@@ -14,7 +14,7 @@
   <tr class="row">
     <td class='first-cell'>Username:</td>
     <td>
-      <input class='username' maxlength="15" size="75" name="username" tabindex="1" type="text" [(ngModel)]="username">
+      <input class='username' maxlength="15" size="75" name="username" tabindex="1" type="text" [(ngModel)]="username" [disabled]="posting">
       <div class='error' *ngIf='usernameError'>{{usernameError}}</div>
     </td>
   </tr>
@@ -27,7 +27,7 @@
       <button (click)="tag('url', messageBox)" title="[url=link]link text[/url]">URL</button>
       <button (click)="tag('color', messageBox)" title="[color=colorName]Color text[/color]">Color</button><br>
 
-      <textarea #messageBox rows="8" cols="75" name="message" tabindex="2"  [(ngModel)]="message"></textarea><br>
+      <textarea #messageBox rows="8" cols="75" name="message" tabindex="2"  [(ngModel)]="message" [disabled]="posting"></textarea><br>
       <div class='error' *ngIf="msgError">{{msgError}}</div>
       <label for="private" title="If the comment is set as private, only the site admin can see it.">
       <input id="private" name="private" [checked]="private" (change)="private = !private" type="checkbox">Private comment</label>
@@ -36,7 +36,7 @@
   <tr class="row">
     <td colspan="2" style='text-align:center;'>
       <div class='error' *ngIf="postError">{{postError}}</div>
-      <button (click)="postComment()" [class.disable]="posting">Submit</button>
+      <button (click)="postComment()" [class.disabled]="posting">Submit</button>
     </td>
   </tr>
 </table>

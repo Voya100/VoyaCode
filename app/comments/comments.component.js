@@ -40,6 +40,7 @@ var CommentsComponent = (function () {
             var end = this.message.substring(ending);
             this.message = start_1 + startTag + middle + endTag + end;
             // Small delay so that position is set after view has updated
+            // Caret position is set between the tags
             setTimeout(function () {
                 _this.setCaretPosition(start_1.length + startTag.length, start_1.length + startTag.length + (ending - beginning), textarea);
             }, 100);
@@ -94,7 +95,7 @@ var CommentsComponent = (function () {
     // Posts comment
     CommentsComponent.prototype.postComment = function () {
         var _this = this;
-        if (this.nameCheck() && this.messageCheck) {
+        if (this.nameCheck() && this.messageCheck() && !this.posting) {
             this.posting = true;
             this.commentService.postComment(this.username, this.message, this.private).subscribe(function (data) {
                 if (data.error == "") {

@@ -48,6 +48,7 @@ export class CommentsComponent implements OnInit {
       let end = this.message.substring(ending);
       this.message = start + startTag + middle + endTag + end;
       // Small delay so that position is set after view has updated
+      // Caret position is set between the tags
       setTimeout(() => {
         this.setCaretPosition(start.length + startTag.length, start.length + startTag.length + (ending - beginning), textarea);
       }, 100)
@@ -103,7 +104,7 @@ export class CommentsComponent implements OnInit {
   // Posts comment
   postComment(){
 
-    if(this.nameCheck() && this.messageCheck){
+    if(this.nameCheck() && this.messageCheck() && !this.posting){
 
       this.posting = true;
 

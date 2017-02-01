@@ -71,4 +71,7 @@
 .error {
   color: #f90000; }
 
+.disabled {
+  opacity: 0.7; }
+
 /*# sourceMappingURL=comments.component.css.map */
