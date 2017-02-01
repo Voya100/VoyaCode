@@ -4,9 +4,11 @@ import { CommonModule } from '@angular/common'
 import { BlogPostComponent }   from './components/blog-post/blog-post.component';
 import { BlogsService } from './services/blogs.service'
 
+import { DescriptionBoxComponent } from './components/description-box/description-box.component'
+
 @NgModule({
   imports: [CommonModule],
-  exports: [BlogPostComponent],
+  exports: [BlogPostComponent, DescriptionBoxComponent],
   declarations: [BlogPostComponent],
   providers: [BlogsService],
 })

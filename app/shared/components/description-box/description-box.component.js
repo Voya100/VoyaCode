@@ -9,23 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var blog_post_component_1 = require('./components/blog-post/blog-post.component');
-var blogs_service_1 = require('./services/blogs.service');
-var description_box_component_1 = require('./components/description-box/description-box.component');
-var SharedModule = (function () {
-    function SharedModule() {
+// This component creates a simple description box which takes content text as an input.
+var DescriptionBoxComponent = (function () {
+    function DescriptionBoxComponent() {
     }
-    SharedModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule],
-            exports: [blog_post_component_1.BlogPostComponent, description_box_component_1.DescriptionBoxComponent],
-            declarations: [blog_post_component_1.BlogPostComponent],
-            providers: [blogs_service_1.BlogsService],
+    DescriptionBoxComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'description-box',
+            templateUrl: './description-box.component.html',
+            styleUrls: ['./description-box.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], SharedModule);
-    return SharedModule;
+    ], DescriptionBoxComponent);
+    return DescriptionBoxComponent;
 }());
-exports.SharedModule = SharedModule;
-//# sourceMappingURL=shared.module.js.map
+exports.DescriptionBoxComponent = DescriptionBoxComponent;
+//# sourceMappingURL=description-box.component.js.map
