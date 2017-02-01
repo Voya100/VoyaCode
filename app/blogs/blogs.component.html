@@ -9,7 +9,9 @@
       <b>Filters</b>
       <br>
       <div class='checkbox-container' *ngFor="let year of years">
-        <input type='checkbox' name='year' value="{{year}}" [checked]="yearCheck[year]" (change)="yearCheck[year]=$event.target.checked"> {{year}}
+        <label>
+          <input type='checkbox' name='year' value="{{year}}" [checked]="yearCheck[year]" (change)="yearCheck[year]=$event.target.checked"> {{year}}
+        </label>
       </div>
       <div>
         <button (click)="openAll()">Open all</button>

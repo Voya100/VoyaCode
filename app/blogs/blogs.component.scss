@@ -29,6 +29,9 @@ aside{
     padding:7px;
     margin-top: 5px;
   }
+  label{
+    @extend %nodrag;
+  }
 }
 
 @media screen and (max-width: 600px){
