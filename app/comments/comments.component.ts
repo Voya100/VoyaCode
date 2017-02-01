@@ -66,7 +66,6 @@ export class CommentsComponent implements OnInit {
       this.addTag("[" + tag + "]","[/" + tag + "]", textarea)
       break;
     case "url":
-    case "color":
       this.addTag("[" + tag + "=]","[/" + tag + "]", textarea);
     }
   }
