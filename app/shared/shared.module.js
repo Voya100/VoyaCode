@@ -20,7 +20,7 @@ var SharedModule = (function () {
         core_1.NgModule({
             imports: [common_1.CommonModule],
             exports: [blog_post_component_1.BlogPostComponent, description_box_component_1.DescriptionBoxComponent],
-            declarations: [blog_post_component_1.BlogPostComponent],
+            declarations: [blog_post_component_1.BlogPostComponent, description_box_component_1.DescriptionBoxComponent],
             providers: [blogs_service_1.BlogsService],
         }), 
         __metadata('design:paramtypes', [])

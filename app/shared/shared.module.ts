@@ -9,7 +9,7 @@ import { DescriptionBoxComponent } from './components/description-box/descriptio
 @NgModule({
   imports: [CommonModule],
   exports: [BlogPostComponent, DescriptionBoxComponent],
-  declarations: [BlogPostComponent],
+  declarations: [BlogPostComponent, DescriptionBoxComponent],
   providers: [BlogsService],
 })
 export class SharedModule { }
