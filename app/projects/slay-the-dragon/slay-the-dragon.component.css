@@ -1,0 +1,18 @@
+:host {
+  min-width: 360px;
+  max-width: 1000px;
+  margin: auto;
+  width: 100%;
+  display: block; }
+
+iframe {
+  width: 800px;
+  height: 560px;
+  border: none;
+  margin: auto;
+  display: block; }
+
+h1 {
+  text-align: center; }
+
+/*# sourceMappingURL=slay-the-dragon.component.css.map */
