@@ -1,0 +1,16 @@
+@import "../../../sass/variables";
+
+:host{
+  @extend %main-content;
+}
+
+h1{
+  text-align: center;
+}
+
+.game_images img{
+  width: 24%;
+}
+.google_badge img{
+  width: 240px;
+}
