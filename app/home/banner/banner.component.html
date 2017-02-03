@@ -1,6 +1,8 @@
 <div class='banner-container'>
-  <div class='img-container'>
-  <a [routerLink]="activeProject.path" [title]="activeProject.name"><img [src]="activeProject.bannerUrl" [alt]="activeProject.name"></a>
+  <div class='img-container' [style.width]="projects.length * 100 + '%'" [style.left]="id * -100 + '%'">
+  <a *ngFor="let project of projects" [routerLink]="project.path" [title]="project.name">
+    <img [src]="project.bannerUrl" [alt]="project.name" [style.width]="100 / projects.length + '%'">
+  </a>
   </div>
   <div class='button-container'>
     <button class='left' (click)="change(this.id-1, true)"><span class='left-arrow'></span></button>

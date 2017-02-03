@@ -18,11 +18,10 @@ var BannerComponent = (function () {
         this.id = 0;
         this.auto = false;
         this.projects = projects_1.projectList.filter(function (o) { return o.onBanner; });
-        this.activeProject = this.projects[this.id];
         this.len = this.projects.length;
     }
     BannerComponent.prototype.ngOnInit = function () {
-        this.autoChange(5000);
+        this.autoChange(6000);
     };
     // Changes banner automatically, if it hasn't been changed manually since last auto change
     BannerComponent.prototype.autoChange = function (time) {
@@ -34,7 +33,7 @@ var BannerComponent = (function () {
             this.auto = true;
         }
         setTimeout(function () {
-            _this.autoChange(4000);
+            _this.autoChange(5000);
         }, time);
     };
     // Changes active project to id.
@@ -47,7 +46,6 @@ var BannerComponent = (function () {
             this.auto = false;
         }
         this.id = id < 0 ? this.len - 1 : id % this.len;
-        this.activeProject = this.projects[this.id];
     };
     BannerComponent = __decorate([
         core_1.Component({

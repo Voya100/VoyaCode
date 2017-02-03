@@ -15,19 +15,17 @@ import { Project, projectList} from '../../shared/data/projects'
 export class BannerComponent implements OnInit {
 
   projects: Project[];
-  activeProject: Project;
   len: number;
   id: number = 0;
   auto: boolean = false;
 
   constructor() { 
     this.projects = projectList.filter((o) => o.onBanner);
-    this.activeProject = this.projects[this.id];
     this.len = this.projects.length;
   }
 
   ngOnInit() { 
-    this.autoChange(5000);
+    this.autoChange(6000);
   }
 
   // Changes banner automatically, if it hasn't been changed manually since last auto change
@@ -38,7 +36,7 @@ export class BannerComponent implements OnInit {
       this.auto = true;
     }
     setTimeout(() => {
-      this.autoChange(4000);
+      this.autoChange(5000);
     }, time);
   }
 
@@ -51,7 +49,6 @@ export class BannerComponent implements OnInit {
       this.auto = false;
     }
     this.id = id < 0 ? this.len - 1 : id % this.len;
-    this.activeProject = this.projects[this.id];
   }
   
 }
