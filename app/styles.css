@@ -4,7 +4,11 @@ html {
 
 body {
   min-height: 100%;
-  display: flex; }
+  display: flex;
+  flex-direction: column; }
+  @media screen\0 {
+    body {
+      height: 100%; } }
 
 html, body {
   font-size: 16px;
@@ -23,8 +27,9 @@ voya-app {
 main {
   box-sizing: border-box;
   padding: 8px;
-  min-height: 70%;
-  width: 100%; }
+  width: 100%;
+  flex-grow: 10;
+  flex-shrink: 0; }
 
 h1, h2, h3 {
   font-family: "Times New Roman", serif, Times;

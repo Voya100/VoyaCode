@@ -1,12 +1,14 @@
 :host {
   background: #2586CC;
-  flex-grow: 1; }
+  flex-grow: 1;
+  display: block; }
 
 footer {
   width: 100%;
   min-height: 100px;
   height: 100%;
-  border-top: 3px solid #1C2E3B; }
+  border-top: 3px solid #1C2E3B;
+  box-sizing: border-box; }
 
 .content {
   max-width: 1000px;

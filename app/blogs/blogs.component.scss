@@ -28,6 +28,7 @@ aside{
     @extend %button;
     padding:7px;
     margin-top: 5px;
+    line-height: 1;
   }
   label{
     @extend %nodrag;

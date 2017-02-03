@@ -3,6 +3,7 @@
 :host{
   background: $color_main2;
   flex-grow: 1;
+  display: block;
 }
 
 footer{
@@ -10,6 +11,7 @@ footer{
   min-height: 100px;
   height: 100%;
   border-top: 3px solid $color_dark2;
+  box-sizing: border-box;
 }
 
 .content{

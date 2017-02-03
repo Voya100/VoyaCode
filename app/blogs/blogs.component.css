@@ -47,7 +47,8 @@ aside {
   text-align: center; }
   .filters button {
     padding: 7px;
-    margin-top: 5px; }
+    margin-top: 5px;
+    line-height: 1; }
 
 @media screen and (max-width: 600px) {
   .container {
