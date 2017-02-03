@@ -18,7 +18,7 @@ export class BannerComponent implements OnInit {
   activeProject: Project;
   len: number;
   id: number = 0;
-  auto: boolean = true;
+  auto: boolean = false;
 
   constructor() { 
     this.projects = projectList.filter((o) => o.onBanner);

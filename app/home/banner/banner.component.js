@@ -16,7 +16,7 @@ var projects_1 = require('../../shared/data/projects');
 var BannerComponent = (function () {
     function BannerComponent() {
         this.id = 0;
-        this.auto = true;
+        this.auto = false;
         this.projects = projects_1.projectList.filter(function (o) { return o.onBanner; });
         this.activeProject = this.projects[this.id];
         this.len = this.projects.length;
