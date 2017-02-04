@@ -1,1 +1,0 @@
-<footer>© Voya Code 2017</footer>
