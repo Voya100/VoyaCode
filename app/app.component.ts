@@ -2,10 +2,11 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute, Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { MdProgressCircle } from '@angular/material'
+import { MdProgressCircle } from '@angular/material';
+import { PerfectScrollbarComponent } from 'angular2-perfect-scrollbar';
 
 @Component({
   moduleId: module.id,
@@ -14,6 +15,8 @@ import { MdProgressCircle } from '@angular/material'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit {
+
+  @ViewChild(PerfectScrollbarComponent) scrollbar: PerfectScrollbarComponent;
 
   private loadingOpen = true;
   private loading: boolean = true;
@@ -36,7 +39,10 @@ export class AppComponent  implements OnInit {
       })
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
-      .subscribe((event) => this.titleService.setTitle('Voya Code' + (event['title'] == '' ? '' : ' - ' + event['title'])));
+      .subscribe((event) =>{
+        this.titleService.setTitle('Voya Code' + (event['title'] == '' ? '' : ' - ' + event['title']));
+        this.scrollbar.update();
+      });
 
     // There may be a way to combine these subscribes, but I'm not sure what's the best way to do it.
     this.router.events.subscribe((event: Event) => this.loadHandler(event));

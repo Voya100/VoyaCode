@@ -14,6 +14,7 @@ require('rxjs/add/operator/mergeMap');
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var platform_browser_1 = require('@angular/platform-browser');
+var angular2_perfect_scrollbar_1 = require('angular2-perfect-scrollbar');
 var AppComponent = (function () {
     function AppComponent(router, activatedRoute, titleService) {
         this.router = router;
@@ -36,7 +37,10 @@ var AppComponent = (function () {
         })
             .filter(function (route) { return route.outlet === 'primary'; })
             .mergeMap(function (route) { return route.data; })
-            .subscribe(function (event) { return _this.titleService.setTitle('Voya Code' + (event['title'] == '' ? '' : ' - ' + event['title'])); });
+            .subscribe(function (event) {
+            _this.titleService.setTitle('Voya Code' + (event['title'] == '' ? '' : ' - ' + event['title']));
+            _this.scrollbar.update();
+        });
         // There may be a way to combine these subscribes, but I'm not sure what's the best way to do it.
         this.router.events.subscribe(function (event) { return _this.loadHandler(event); });
     };
@@ -68,6 +72,10 @@ var AppComponent = (function () {
             }
         }, 100);
     };
+    __decorate([
+        core_1.ViewChild(angular2_perfect_scrollbar_1.PerfectScrollbarComponent), 
+        __metadata('design:type', angular2_perfect_scrollbar_1.PerfectScrollbarComponent)
+    ], AppComponent.prototype, "scrollbar", void 0);
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
