@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Blog } from './blog';
 
 @Pipe({
   name: 'blogFilter',
@@ -6,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 
 export class BlogFilterPipe implements PipeTransform {
-  transform(blogs: any, years: any[]): any {
+  transform(blogs: Blog[], years: any[]): any {
     return blogs.filter((blog:any) => !years.hasOwnProperty(blog.year) || years[blog.year]);
   }
 }

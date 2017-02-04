@@ -26,14 +26,16 @@ var BlogsService = (function () {
                     id: 0,
                     name: "Blog search failed.",
                     text: "Sorry, something went wrong. If this problem persists, report to the admin through comments page.",
-                    date: ""
+                    date: "",
+                    year: 0
                 }];
         }).catch(function (err) {
             return [[{
                         id: 0,
-                        name: "Blog search failed (error: " + err + ").",
+                        name: "Blog search failed.",
                         text: "Sorry, something went wrong and blog couldn't be fetched from the server. Check your internet connection and refresh the page.<br><br>If problem persists, report to the admin through comments page.",
-                        date: ""
+                        date: "",
+                        year: 0
                     }]];
         });
     };

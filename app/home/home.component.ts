@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BlogsService } from '../shared/services/blogs.service'
+import { Blog } from '../blogs/blog';
+import { BlogsService } from '../shared/services/blogs.service';
 
 @Component({
   moduleId: module.id,
@@ -8,7 +9,7 @@ import { BlogsService } from '../shared/services/blogs.service'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  blog: any = {};
+  blog: Blog = null;
   constructor(private blogs: BlogsService) { 
 
   }

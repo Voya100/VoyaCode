@@ -2,7 +2,9 @@ import { Component, ViewChildren, OnInit, QueryList, ChangeDetectorRef, AfterVie
 import { BlogsService } from '../shared/services/blogs.service';
 import { BlogFilterPipe } from './blog-filter.pipe';
 
-import { BlogPostComponent } from '../shared/components/blog-post/blog-post.component'
+import { BlogPostComponent } from '../shared/components/blog-post/blog-post.component';
+
+import { Blog } from './blog';
 
 // Blogs page contains all blogs.
 // User can open/close blog contents either individually or all at once with buttons.
@@ -20,7 +22,7 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
   yearCheck: any = {};
 
   private years: any = [];
-  private blogs: any = [];
+  private blogs: Blog[] = [];
   private initialised: boolean = false;
 
   constructor(private blogsService: BlogsService, private cdRef: ChangeDetectorRef) { }
@@ -39,7 +41,7 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
   }
 
   // Initialises filter settings
-  blogInit(blogs: any){
+  blogInit(blogs: Blog[]){
     if(blogs.length > 0){
       this.blogs = blogs;
       let yearMin = 2016;

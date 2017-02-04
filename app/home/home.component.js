@@ -13,7 +13,7 @@ var blogs_service_1 = require('../shared/services/blogs.service');
 var HomeComponent = (function () {
     function HomeComponent(blogs) {
         this.blogs = blogs;
-        this.blog = {};
+        this.blog = null;
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;

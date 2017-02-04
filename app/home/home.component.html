@@ -3,7 +3,8 @@
     <h1>Projects</h1>
     <banner></banner>
     <h1>Newest blog</h1>
-    <blog-post [blogData]="blog" [visible]="true"></blog-post>
+    <blog-post *ngIf="blog != null" [blogData]="blog" [visible]="true"></blog-post>
+    <div *ngIf="blog == null">Loading blog...</div>
   </div>
   <aside>
     <h1>Welcome!</h1>
