@@ -20,4 +20,19 @@ footer{
   text-align: center;
   padding: 10px;
   margin:auto;
+  position: relative;
+}
+
+.links{
+  position: absolute;
+  right: 20px;
+  img{
+    margin: 5px;
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+  #github{
+    height: 32px;
+  }
 }

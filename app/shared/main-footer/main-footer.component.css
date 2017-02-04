@@ -15,6 +15,17 @@ footer {
   min-width: 360px;
   text-align: center;
   padding: 10px;
-  margin: auto; }
+  margin: auto;
+  position: relative; }
+
+.links {
+  position: absolute;
+  right: 20px; }
+  .links img {
+    margin: 5px; }
+    .links img:hover {
+      opacity: 0.6; }
+  .links #github {
+    height: 32px; }
 
 /*# sourceMappingURL=main-footer.component.css.map */
