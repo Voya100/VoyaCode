@@ -26,7 +26,7 @@
   .leave-comment button:focus {
     outline: none; }
   .leave-comment button:hover {
-    background: #7AC7FF; }
+    background: #99d4ff; }
 
 .comment-container {
   width: 100%;
@@ -49,7 +49,7 @@
 
 .leave-comment {
   width: 100%;
-  background: #5bbaff;
+  background: #5ac0f3;
   border-collapse: collapse;
   margin-top: 10px; }
   .leave-comment .header-row {

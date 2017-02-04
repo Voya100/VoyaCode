@@ -14,7 +14,7 @@
   .loading-error button:focus {
     outline: none; }
   .loading-error button:hover {
-    background: #7AC7FF; }
+    background: #99d4ff; }
 
 md-progress-circle {
   stroke: #17537F;
@@ -29,7 +29,7 @@ md-progress-circle {
   left: 0;
   right: 0;
   margin: 50px auto;
-  background: #5bbaff;
+  background: #5ac0f3;
   border: 2px solid #1C2E3B;
   z-index: 10;
   text-align: center;

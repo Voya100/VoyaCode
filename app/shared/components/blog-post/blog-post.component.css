@@ -1,5 +1,5 @@
 blog-post table {
-  background: #5bbaff;
+  background: #5ac0f3;
   border: 2px solid #1C2E3B;
   padding: 5px;
   box-sizing: border-box; }
@@ -12,7 +12,7 @@ blog-post .blog-header button {
   blog-post .blog-header button:focus {
     outline: none; }
   blog-post .blog-header button:hover {
-    background: #7AC7FF; }
+    background: #99d4ff; }
 
 blog-post {
   display: block; }
@@ -27,7 +27,8 @@ blog-post {
     height: 24px;
     font-size: 20px;
     text-align: center;
-    padding: 0px; }
+    padding: 0px;
+    line-height: 1; }
   blog-post .blog-date {
     font-size: 75%;
     font-weight: normal; }

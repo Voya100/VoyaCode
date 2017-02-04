@@ -11,7 +11,7 @@ section:after {
   display: block; }
 
 aside {
-  background: #5bbaff;
+  background: #5ac0f3;
   border: 2px solid #1C2E3B;
   padding: 5px;
   box-sizing: border-box; }
@@ -30,7 +30,8 @@ aside {
   box-sizing: border-box;
   width: 33%;
   float: right;
-  margin-right: 0px; }
+  margin-right: 0px;
+  padding: 10px; }
 
 @media screen and (max-width: 600px) {
   .main-content, aside {

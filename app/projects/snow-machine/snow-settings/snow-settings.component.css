@@ -1,5 +1,5 @@
 :host {
-  background: #5bbaff;
+  background: #5ac0f3;
   border: 2px solid #1C2E3B;
   padding: 5px;
   box-sizing: border-box; }
@@ -12,7 +12,7 @@ button {
   button:focus {
     outline: none; }
   button:hover {
-    background: #7AC7FF; }
+    background: #99d4ff; }
 
 :host {
   display: block;
