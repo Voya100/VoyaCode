@@ -3,24 +3,30 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute, Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { MdProgressCircle } from '@angular/material'
 
 @Component({
+  moduleId: module.id,
   selector: 'voya-app',
-  template:  `<main-header></main-header>
-              <main>
-                <router-outlet></router-outlet>
-              </main>
-              <main-footer></main-footer>`,
+  templateUrl: 'app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit {
+
+  private loadingOpen = true;
+  private loading: boolean = true;
+  private error: boolean = true;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private titleService: Title
   ) {}
+
   ngOnInit() {
+    // Change title when navigating to new page
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
@@ -31,5 +37,38 @@ export class AppComponent  implements OnInit {
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
       .subscribe((event) => this.titleService.setTitle('Voya Code' + (event['title'] == '' ? '' : ' - ' + event['title'])));
+
+    // There may be a way to combine these subscribes, but I'm not sure what's the best way to do it.
+    this.router.events.subscribe((event: Event) => this.loadHandler(event));
+  }
+
+  loadHandler(event: Event): void {
+    if (event instanceof NavigationStart) {
+      this.loading = true;
+      this.error = false;
+      this.showLoading();
+    }
+    if (event instanceof NavigationEnd) {
+      this.loading = false;
+      this.loadingOpen = false;
+    }
+
+    // Set loading state to false in both of the below events to hide the spinner in case a request fails
+    if (event instanceof NavigationCancel || event instanceof NavigationError) {
+      this.loading = false;
+      this.loadingOpen = false;
+    }
+    if (event instanceof NavigationError) {
+      this.error = true;
+    }
+  }
+
+  // Show loading screen after small delay, if page hasn't loaded yet
+  showLoading(){
+    setTimeout(() => {
+      if(this.loading){
+        this.loadingOpen = true;
+      }
+    }, 100);
   }
 }

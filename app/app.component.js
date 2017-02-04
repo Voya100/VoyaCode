@@ -19,9 +19,13 @@ var AppComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.titleService = titleService;
+        this.loadingOpen = true;
+        this.loading = true;
+        this.error = true;
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
+        // Change title when navigating to new page
         this.router.events
             .filter(function (event) { return event instanceof router_1.NavigationEnd; })
             .map(function () { return _this.activatedRoute; })
@@ -33,11 +37,43 @@ var AppComponent = (function () {
             .filter(function (route) { return route.outlet === 'primary'; })
             .mergeMap(function (route) { return route.data; })
             .subscribe(function (event) { return _this.titleService.setTitle('Voya Code' + (event['title'] == '' ? '' : ' - ' + event['title'])); });
+        // There may be a way to combine these subscribes, but I'm not sure what's the best way to do it.
+        this.router.events.subscribe(function (event) { return _this.loadHandler(event); });
+    };
+    AppComponent.prototype.loadHandler = function (event) {
+        if (event instanceof router_1.NavigationStart) {
+            this.loading = true;
+            this.error = false;
+            this.showLoading();
+        }
+        if (event instanceof router_1.NavigationEnd) {
+            this.loading = false;
+            this.loadingOpen = false;
+        }
+        // Set loading state to false in both of the below events to hide the spinner in case a request fails
+        if (event instanceof router_1.NavigationCancel || event instanceof router_1.NavigationError) {
+            this.loading = false;
+            this.loadingOpen = false;
+        }
+        if (event instanceof router_1.NavigationError) {
+            this.error = true;
+        }
+    };
+    // Show loading screen after small delay, if page hasn't loaded yet
+    AppComponent.prototype.showLoading = function () {
+        var _this = this;
+        setTimeout(function () {
+            if (_this.loading) {
+                _this.loadingOpen = true;
+            }
+        }, 100);
     };
     AppComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'voya-app',
-            template: "<main-header></main-header>\n              <main>\n                <router-outlet></router-outlet>\n              </main>\n              <main-footer></main-footer>",
+            templateUrl: 'app.component.html',
+            styleUrls: ['./app.component.css']
         }), 
         __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, platform_browser_1.Title])
     ], AppComponent);

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
+var material_1 = require('@angular/material');
 var app_component_1 = require('./app.component');
 var main_footer_component_1 = require('./shared/main-footer/main-footer.component');
 var main_header_component_1 = require('./shared/main-header/main-header.component');
@@ -20,7 +21,7 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, app_routing_1.routing],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, material_1.MdProgressCircleModule, app_routing_1.routing],
             declarations: [app_component_1.AppComponent, main_header_component_1.MainHeaderComponent, main_footer_component_1.MainFooterComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 

@@ -1,0 +1,19 @@
+<main-header></main-header>
+              
+
+
+<main>
+  <section class='loading' *ngIf="loadingOpen">
+    <md-progress-circle mode="indeterminate"></md-progress-circle>
+    Loading
+  </section>
+
+  <section class='loading-error' *ngIf="error">
+    Loading failed. Please check  your internet connection. If problem isn't with internet connection, contact the admin.
+    <button (click)='error = false;'>Close</button>
+  </section>
+
+  <router-outlet></router-outlet>
+</main>
+
+<main-footer></main-footer>

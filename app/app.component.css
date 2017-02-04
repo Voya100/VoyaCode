@@ -1,0 +1,48 @@
+.loading, .loading-error {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.loading-error button {
+  background: #2586CC;
+  text-align: center;
+  border: 1px solid #1C2E3B;
+  cursor: pointer; }
+  .loading-error button:focus {
+    outline: none; }
+  .loading-error button:hover {
+    background: #7AC7FF; }
+
+md-progress-circle {
+  stroke: #17537F;
+  width: 60px;
+  height: 60px;
+  margin: 30px auto 10px auto; }
+
+.loading, .loading-error {
+  width: 250px;
+  height: 150px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 50px auto;
+  background: #5bbaff;
+  border: 2px solid #1C2E3B;
+  z-index: 10;
+  text-align: center;
+  color: #17537F;
+  font-size: 180%;
+  padding: 10px; }
+
+.loading-error {
+  font-size: 100%;
+  width: 300px;
+  height: 100px; }
+  .loading-error button {
+    display: block;
+    margin: 8px auto; }
+
+/*# sourceMappingURL=app.component.css.map */

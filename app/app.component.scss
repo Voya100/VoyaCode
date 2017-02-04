@@ -1,0 +1,37 @@
+@import "../sass/variables";
+
+md-progress-circle{
+  stroke: $color_dark1;
+  width: 60px;
+  height: 60px;
+  margin: 30px auto 10px auto;
+}
+
+.loading, .loading-error{
+  @extend %nodrag;
+  width: 250px;
+  height: 150px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 50px auto;
+  background: $color_main1;
+  border: 2px solid $color_dark2;
+  z-index: 10;
+  text-align: center;
+  color: $color_dark1;
+  font-size: 180%;
+  padding: 10px;
+}
+
+.loading-error{
+  font-size: 100%;
+  width: 300px;
+  height: 100px;
+  
+  button{
+    @extend %button;
+    display: block;
+    margin: 8px auto;
+  }
+}

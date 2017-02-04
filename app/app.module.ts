@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http'
+import { HttpModule } from '@angular/http';
+import { MdProgressCircleModule } from '@angular/material';
 
 import { AppComponent }  from './app.component';
 
@@ -10,7 +11,7 @@ import { MainHeaderComponent} from './shared/main-header/main-header.component'
 import { routing } from './app.routing';
  
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, routing ],
+  imports:      [ BrowserModule, HttpModule, MdProgressCircleModule, routing ],
   declarations: [ AppComponent, MainHeaderComponent, MainFooterComponent ],
   bootstrap:    [ AppComponent ]
 })
