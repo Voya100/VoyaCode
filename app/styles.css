@@ -20,7 +20,8 @@ perfect-scrollbar {
   position: static !important;
   overflow: auto;
   height: 100%;
-  display: flex !important; }
+  display: flex !important;
+  flex-direction: column; }
 
 .ps-content {
   flex-grow: 1;
