@@ -8,11 +8,11 @@
 
 html {
   width: 894px;
-  height: 644px;
-  overflow: hidden; }
+  height: 644px; }
 
 body {
-  margin: 0px; }
+  margin: 0px;
+  overflow: hidden; }
 
 #game {
   display: inline-block;
