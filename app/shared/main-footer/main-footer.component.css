@@ -1,7 +1,8 @@
 :host {
   background: #2586CC;
   flex-grow: 1;
-  display: block; }
+  display: block;
+  min-width: 360px; }
 
 footer {
   width: 100%;

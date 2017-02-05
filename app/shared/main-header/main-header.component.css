@@ -6,6 +6,9 @@ nav {
   -ms-user-select: none;
   user-select: none; }
 
+:host {
+  min-width: 360px; }
+
 header {
   text-align: center;
   margin: 0 8px;

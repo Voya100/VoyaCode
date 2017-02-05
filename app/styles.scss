@@ -34,22 +34,29 @@ perfect-scrollbar{
   display: flex;
   flex-direction: column;
 }
-.ps-container:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y {
+.ps-container:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y, .ps-container:hover > .ps-scrollbar-x-rail:hover > .ps-scrollbar-x {
     background-color: $color_main2 !important;
 }
 
-.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y{
+.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y, .ps-container > .ps-scrollbar-x-rail > .ps-scrollbar-x{
   background-color: $color_dark1 !important;
 }
 .ps-scrollbar-y-rail{
   opacity: 0.6 !important;
   top: 0 !important;
+  right: 0 !important;
+}
+.ps-scrollbar-x-rail{
+  opacity: 0.6 !important;
+  left: 0 !important;
+  bottom: 0 !important;
 }
 
 main{
   box-sizing: border-box;
   padding: 8px;
   width: 100%;
+  min-width: $min_width;
   flex-grow: 10;
   flex-shrink: 0;
 }

@@ -4,6 +4,7 @@
   background: $color_main2;
   flex-grow: 1;
   display: block;
+  min-width: $min_width;
 }
 
 footer{

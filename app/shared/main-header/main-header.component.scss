@@ -1,5 +1,9 @@
 @import "../../../sass/variables";
 
+:host{
+  min-width: $min_width;
+}
+
 header{
   text-align:center;
   margin: 0 8px;
