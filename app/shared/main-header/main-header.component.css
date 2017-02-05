@@ -7,12 +7,12 @@ nav {
   user-select: none; }
 
 :host {
-  min-width: 360px; }
+  min-width: 320px; }
 
 header {
   text-align: center;
   margin: 0 8px;
-  min-width: 344px; }
+  min-width: 304px; }
 
 nav {
   max-width: 1000px;
@@ -46,7 +46,7 @@ nav {
 
 #site_logo {
   text-align: center;
-  min-width: 360px; }
+  min-width: 320px; }
 
 #site_logo img {
   max-width: 100%; }

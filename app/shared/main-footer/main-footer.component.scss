@@ -37,4 +37,9 @@ footer{
   #github{
     height: 32px;
   }
+  @media screen and (max-width: 360px){
+    position: static;
+    right: auto;
+    margin: auto;
+  }
 }

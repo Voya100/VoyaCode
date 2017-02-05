@@ -48,7 +48,7 @@ main {
   box-sizing: border-box;
   padding: 8px;
   width: 100%;
-  min-width: 360px;
+  min-width: 320px;
   flex-grow: 10;
   flex-shrink: 0; }
 

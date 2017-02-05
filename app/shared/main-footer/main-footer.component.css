@@ -2,7 +2,7 @@
   background: #2586CC;
   flex-grow: 1;
   display: block;
-  min-width: 360px; }
+  min-width: 320px; }
 
 footer {
   width: 100%;
@@ -13,7 +13,7 @@ footer {
 
 .content {
   max-width: 1000px;
-  min-width: 340px;
+  min-width: 300px;
   text-align: center;
   padding: 10px;
   margin: auto;
@@ -29,5 +29,10 @@ footer {
       opacity: 0.6; }
   .links #github {
     height: 32px; }
+  @media screen and (max-width: 360px) {
+    .links {
+      position: static;
+      right: auto;
+      margin: auto; } }
 
 /*# sourceMappingURL=main-footer.component.css.map */
