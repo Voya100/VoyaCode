@@ -7,7 +7,7 @@
   user-select: none; }
 
 :host {
-  min-width: 360px;
+  min-width: 344px;
   max-width: 1000px;
   margin: auto;
   width: 100%;

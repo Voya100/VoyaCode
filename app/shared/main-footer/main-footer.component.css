@@ -12,11 +12,12 @@ footer {
 
 .content {
   max-width: 1000px;
-  min-width: 360px;
+  min-width: 340px;
   text-align: center;
   padding: 10px;
   margin: auto;
-  position: relative; }
+  position: relative;
+  box-sizing: border-box; }
 
 .links {
   position: absolute;

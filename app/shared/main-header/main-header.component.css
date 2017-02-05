@@ -8,11 +8,11 @@ nav {
 
 header {
   text-align: center;
-  margin: 0 8px; }
+  margin: 0 8px;
+  min-width: 344px; }
 
 nav {
   max-width: 1000px;
-  min-width: 360px;
   width: 100%;
   padding: 0;
   display: flex;

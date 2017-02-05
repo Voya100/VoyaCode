@@ -3,12 +3,12 @@
 header{
   text-align:center;
   margin: 0 8px;
+  min-width: $min_width - 16px;
 }
 
 nav{
 	@extend %nodrag;
   max-width: $max_width;
-  min-width: $min_width;
   width:100%;
   padding: 0;
   display:flex;
