@@ -14,7 +14,6 @@ var http_1 = require('@angular/http');
 var material_1 = require('@angular/material');
 var angular2_perfect_scrollbar_1 = require('angular2-perfect-scrollbar');
 var PERFECT_SCROLLBAR_CONFIG = {
-    suppressScrollX: true,
     wheelSpeed: 2.5
 };
 var app_component_1 = require('./app.component');

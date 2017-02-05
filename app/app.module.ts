@@ -5,7 +5,6 @@ import { MdProgressCircleModule } from '@angular/material';
 import { PerfectScrollbarModule, PerfectScrollbarConfigInterface } from 'angular2-perfect-scrollbar';
  
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true,
   wheelSpeed: 2.5
 };
 import { AppComponent }  from './app.component';
