@@ -18,10 +18,11 @@ export class AppComponent  implements OnInit {
 
   @ViewChild(PerfectScrollbarComponent) scrollbar: PerfectScrollbarComponent;
 
-  private loadingOpen = true;
-  private loading: boolean = true;
-  private error: boolean = true;
+  loadingOpen = true;
+  error: boolean = true;
 
+  private loading: boolean = true;
+  
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
