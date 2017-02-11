@@ -3,7 +3,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CommentData } from '../comment-data';
 
 @Component({
-  moduleId: module.id,
   selector: 'comment-post',
   templateUrl: 'comment-post.component.html',
   styleUrls: ['./comment-post.component.css']

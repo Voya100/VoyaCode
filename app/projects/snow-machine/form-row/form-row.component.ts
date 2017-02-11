@@ -2,20 +2,19 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SnowSettings } from '../snow-settings/snow-settings'
 
 @Component({
-  moduleId: module.id,
   selector: 'form-row',
   templateUrl: 'form-row.component.html',
   styleUrls: ['form-row.component.css']
 })
 export class FormRowComponent{
-  @Input() private settings: SnowSettings;
-  @Input() private name: string;
-  @Input() private id: string;
-  @Input() private description: string;
-  @Input() private step: number;
+  @Input() settings: SnowSettings;
+  @Input() name: string;
+  @Input() id: string;
+  @Input() description: string;
+  @Input() step: number;
   
-  private min = () => this.settings.min_values[this.id]();
-  private max = () => this.settings.max_values[this.id]();
+  min: any = () => this.settings.min_values[this.id]();
+  max: any = () => this.settings.max_values[this.id]();
 
   valid(): boolean{
       return this.min() <= this.settings[this.id] && 

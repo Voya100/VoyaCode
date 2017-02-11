@@ -7,7 +7,6 @@ import { Project, projectList} from '../../shared/data/projects'
 // User can alternatively select which banner is shown.
 
 @Component({
-  moduleId: module.id,
   selector: 'banner',
   templateUrl: 'banner.component.html',
   styleUrls: ['./banner.component.css']

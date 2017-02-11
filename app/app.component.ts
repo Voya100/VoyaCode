@@ -9,9 +9,8 @@ import { MdProgressCircle } from '@angular/material';
 import { PerfectScrollbarComponent } from 'angular2-perfect-scrollbar';
 
 @Component({
-  moduleId: module.id,
   selector: 'voya-app',
-  templateUrl: 'app.component.html',
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit {

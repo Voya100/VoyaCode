@@ -4,7 +4,6 @@ import { Blog } from '../blogs/blog';
 import { BlogsService } from '../shared/services/blogs.service';
 
 @Component({
-  moduleId: module.id,
   templateUrl: 'home.component.html',
   styleUrls: ['./home.component.css']
 })

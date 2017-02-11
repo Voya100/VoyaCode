@@ -11,7 +11,6 @@ import { Blog } from './blog';
 // Blogs can be filtered by year.
 
 @Component({
-  moduleId: module.id,
   templateUrl: 'blogs.component.html',
   styleUrls: ['./blogs.component.css']
 })
@@ -20,9 +19,9 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
   @ViewChildren(BlogPostComponent) blogPosts: QueryList<BlogPostComponent>;
 
   yearCheck: any = {};
-
-  private years: any = [];
-  private blogs: Blog[] = [];
+  blogs: Blog[] = [];
+  years: any = [];
+  
   private initialised: boolean = false;
 
   constructor(private blogsService: BlogsService, private cdRef: ChangeDetectorRef) { }

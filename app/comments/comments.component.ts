@@ -5,7 +5,6 @@ import { CommentData } from './comment-data';
 import { CommentsService } from './comments.service'
 
 @Component({
-  moduleId: module.id,
   templateUrl: 'comments.component.html',
   styleUrls: ['./comments.component.css']
 })

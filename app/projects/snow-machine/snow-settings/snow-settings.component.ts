@@ -10,7 +10,6 @@ import { SnowSettings } from './snow-settings';
 // Changes to FPS setting are applied immediately.
 
 @Component({
-  moduleId: module.id,
   selector: 'snow-settings',
   templateUrl: './snow-settings.component.html',
   styleUrls: ['./snow-settings.component.css', '../form-row/form-row.component.css'],
@@ -20,8 +19,9 @@ export class SnowSettingsComponent {
 
   @ViewChildren(FormRowComponent) formRowsQuery: QueryList<FormRowComponent>;
 
+  settings: SnowSettings;
+  
   private formRows: FormRowComponent[];
-  private settings: SnowSettings;
   
   constructor(private snow_controller: SnowControlService){
     this.settings = this.snow_controller.settings;

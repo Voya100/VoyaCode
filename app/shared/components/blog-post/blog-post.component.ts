@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
-  moduleId: module.id,
   selector: 'blog-post',
-  templateUrl: 'blog-post.component.html',
+  templateUrl: './blog-post.component.html',
   styleUrls: ['./blog-post.component.css'],
   encapsulation: ViewEncapsulation.None
 })
