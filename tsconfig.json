@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "app/app.module.ts",
+    "app/home/home.module.ts",
+    "app/blogs/blogs.module.ts",
+    "app/projects/projects.module.ts",
+    "app/comments/comments.module.ts",
+    "app/not-found/not-found.module.ts",
+
+    "app/projects/rock-paper-scissors/rock-paper-scissors.module.ts",
+    "app/projects/slay-the-dragon/slay-the-dragon.module.ts",
+    "app/projects/chess/chess.module.ts",
+    "app/projects/snow-machine/snow-machine.module.ts",
+    "app/projects/hangman/hangman.module.ts",
+    "app/projects/other-projects/other-projects.module.ts",
+    
+    "app/main.ts"
+  ],
+  "exclude": [
+    "node_modules/",
+    "aot/"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
+}
