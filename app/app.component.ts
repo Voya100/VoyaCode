@@ -2,7 +2,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute, Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MdProgressCircle } from '@angular/material';
@@ -13,7 +13,7 @@ import { PerfectScrollbarComponent } from 'angular2-perfect-scrollbar';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  implements OnInit {
+export class AppComponent  implements OnInit, AfterViewInit {
 
   @ViewChild(PerfectScrollbarComponent) scrollbar: PerfectScrollbarComponent;
 
@@ -41,11 +41,14 @@ export class AppComponent  implements OnInit {
       .mergeMap(route => route.data)
       .subscribe((event) =>{
         this.titleService.setTitle('Voya Code' + (event['title'] == '' ? '' : ' - ' + event['title']));
-        this.scrollbar.update();
       });
 
     // There may be a way to combine these subscribes, but I'm not sure what's the best way to do it.
     this.router.events.subscribe((event: Event) => this.loadHandler(event));
+  }
+
+  ngAfterViewInit() {
+    this.scrollbar.update();
   }
 
   loadHandler(event: Event): void {
