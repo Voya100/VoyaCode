@@ -1,13 +1,10 @@
 Hi!
 
-This is a repository for my website, www.voyacode.com. 
+This is a repository for my website, www.voyacode.com, which I use for my personal projects. The website is implemented with Angular 2, and it uses AOT (Ahead-of-time) compilation. Styling is done with Sass (scss).
 
-This repository contains most of the site files, not including admin files. Repository also has many of my projects, 
-which are on my website.
+Actual Angular code can be found from app/ directory. Website uses lazy loading, so each web page has their own module, which are in their own directories. All of my projects can be found in app/projects/ directory.
 
-At the time of writing this (14.12.2016) Voya Code still has much that could be improved. My older projects (Rock, Paper, 
-Scissors and Slay the Dragon) are also badly outdated. I have plans to make improvements to them some time in the future, but
-I'm not sure when.
+This repository is missing some of the files, such as admin and server side (PHP) files, to prevent potential security issues.
 
 If you have any improvement suggestions (or suggestions for future coding projects), feel free to suggest. :)
 
