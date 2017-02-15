@@ -2,6 +2,8 @@ import { Player } from './player';
 import { ChessGameService } from '../chess-game.service';
 import { Piece } from './piece';
 
+import * as _ from 'underscore';
+
 export class Tile{
 
   x: number;

@@ -2,6 +2,7 @@ import { King } from './king';
 import { ChessGameService } from '../chess-game.service';
 import { Piece } from './piece';
 import { Tile } from './tile';
+import * as _ from 'underscore';
 
 function randVal(array: any[]){
 	return array[Math.floor(Math.random()*array.length)];

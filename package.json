@@ -32,6 +32,7 @@
     "@angular/platform-server": "^4.0.2",
     "@angular/router": "^4.0.0",
     "angular-2-local-storage": "^1.0.1",
+    "@types/underscore": "^1.7.36",
     "angular-in-memory-web-api": "~0.2.4",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
