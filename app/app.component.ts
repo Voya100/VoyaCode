@@ -2,7 +2,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute, Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MdProgressCircle } from '@angular/material';
@@ -13,7 +13,7 @@ import { PerfectScrollbarComponent } from 'angular2-perfect-scrollbar';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  implements OnInit, AfterViewInit {
+export class AppComponent  implements OnInit, AfterViewChecked {
 
   @ViewChild(PerfectScrollbarComponent) scrollbar: PerfectScrollbarComponent;
 
@@ -47,7 +47,8 @@ export class AppComponent  implements OnInit, AfterViewInit {
     this.router.events.subscribe((event: Event) => this.loadHandler(event));
   }
 
-  ngAfterViewInit() {
+
+  ngAfterViewChecked() {
     this.scrollbar.update();
   }
 
