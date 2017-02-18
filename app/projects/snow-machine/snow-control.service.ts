@@ -35,11 +35,14 @@ export class SnowControlService {
   
   // Moves all flakes by one step/frame
   moveRain(){
+    if(this.flakes.length == 0){
+      return;
+    }
 		for(let id=0; id < this.flakes.length; id++){
 			this.flakes[id].move();
 		}
 		var self = this;
-		setTimeout(function(){self.moveRain();}, 1000 / this.settings.fps);
+    requestAnimationFrame(() => this.moveRain());
 	}
 
   // Resets snow/rain, activates new settings
