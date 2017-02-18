@@ -35,7 +35,7 @@ export class SnowFlake{
 	// Creates a flake element, is done with initialisation
 	createFlake(){
 		this.e = document.createElement('div');
-		this.e.setAttribute("style", 'position: fixed; pointer-events:none; width: 3px;z-index:50; font-size: ' + this.size + 'px; color: ' + this.settings.color);
+		this.e.setAttribute("style", 'position: fixed; top:0px; left: 0px; pointer-events:none; width: 3px;z-index:50; font-size: ' + this.size + 'px; color: ' + this.settings.color);
 		this.e.setAttribute("class", "flake");
 
 		if(this.settings.img){
@@ -65,7 +65,6 @@ export class SnowFlake{
 			this.y = -40;
 			this.x = Math.random()*this.settings.xMax;
 		}
-		this.e.style.left = this.x + "px";
-		this.e.style.top = this.y + "px"
+		this.e.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
 	}
 }
