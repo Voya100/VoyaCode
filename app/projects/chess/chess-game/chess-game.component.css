@@ -7,17 +7,21 @@
   user-select: none; }
 
 :host {
-  display: inline-block;
+  display: block;
   border: 2px solid black;
-  vertical-align: top;
-  height: 640px;
   margin: auto; }
 
-#board_area {
-  width: 640px;
-  margin: auto;
+.container {
+  max-width: 640px;
+  width: 80%;
+  padding-top: 100%;
+  background: black;
   position: relative;
-  display: inline-block; }
+  float: left; }
+
+.side-menu {
+  width: 20%;
+  float: left; }
 
 #board {
   border-collapse: collapse;

@@ -5,11 +5,7 @@
   width: 100%;
   display: block; }
 
-iframe {
-  width: 894px;
-  height: 646px;
-  border: none;
-  margin: auto;
+:host {
   display: block; }
 
 h1 {

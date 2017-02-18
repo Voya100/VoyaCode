@@ -1,18 +1,25 @@
 @import "../../../../sass/variables";
 
 :host{
-display:inline-block;
-border: 2px solid black;
-vertical-align:top;
-height: 640px;
-margin:auto;
+  display:block;
+  border: 2px solid black;
+  margin:auto;
 }
-#board_area{
-width: 640px;
-margin: auto;
-position: relative;
-display:inline-block;
+
+.container{
+  max-width: 640px;
+  width: 80%;
+  padding-top: 100%;
+  background: black;
+  position: relative;
+  float: left;
 }
+
+.side-menu{
+  width: 20%;
+  float: left;
+}
+
 #board{
 border-collapse: collapse;
 border-spacing: 0;
