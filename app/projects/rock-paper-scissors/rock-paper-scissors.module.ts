@@ -1,3 +1,4 @@
+import { RockPaperScissorsGameComponent } from './rock-paper-scissors-game/rock-paper-scissors-game.component';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../../shared/shared.module';
@@ -12,7 +13,7 @@ import { routing } from './rock-paper-scissors.routing';
 @NgModule({
   imports: [routing, SharedModule],
   exports: [],
-  declarations: [RockPaperScissorsComponent],
+  declarations: [RockPaperScissorsComponent, RockPaperScissorsGameComponent],
   providers: [],
 })
 export class RockPaperScissorsModule { }
