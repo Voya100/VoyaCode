@@ -1,0 +1,12 @@
+div {
+  margin-top: 10px; }
+
+button {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 5px; }
+  button:hover {
+    background: skyblue; }
+
+/*# sourceMappingURL=rps-username.component.css.map */
