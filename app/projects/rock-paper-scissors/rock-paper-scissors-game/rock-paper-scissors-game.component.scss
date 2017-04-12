@@ -2,11 +2,15 @@
   display: block;
   max-width: 780px;
   width: 100%;
-  height: 470px;
+  min-height: 470px;
   background-color: cadetblue;
   color: powderblue;
   border: solid #0d3049;
   margin: auto;
+}
+
+main{
+  min-height: 350px;
 }
 
 %rps-box{
