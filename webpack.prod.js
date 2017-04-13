@@ -10,7 +10,7 @@ module.exports = {
   },
 
   output: {
-    path: './',
+    path: __dirname + '/',
     filename: 'js-aot/[name]-[hash:8].bundle.js',
     chunkFilename: 'js-aot/[id].-[hash:8].chunk.js',
   },

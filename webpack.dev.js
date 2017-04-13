@@ -16,7 +16,7 @@ module.exports = {
 
     output: {
         path: __dirname + '/',
-        filename: '/js-jit/[name].bundle.js'
+        filename: 'js-jit/[name].bundle.js'
     },
 
     resolve: {
