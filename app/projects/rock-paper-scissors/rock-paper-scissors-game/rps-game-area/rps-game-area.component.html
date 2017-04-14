@@ -1,1 +1,22 @@
-Game
+<section class='rps-dialog'  *ngIf="choicesVisible" [@fadeIn]="choicesVisible" (@fadeIn.done)="makeChoiceCallback($event)">
+  Make your choice
+  <a (click)="makeChoice('rock')">Rock</a>
+  <a (click)="makeChoice('paper')">Paper</a>
+  <a (click)="makeChoice('scissors')">Scissors</a>
+</section>
+
+<div class='images' *ngIf="choiceImagesVisible" [@fadeIn]="choiceImagesVisible" (@fadeIn.done)="choiceImagesCallback()">
+  <img class='image1' [src]="image1">
+  <img class='image2' [src]="image2">
+</div>
+
+<div class='rps-round-result' *ngIf="roundResultVisible" [@fadeIn]="roundResultVisible" (@fadeIn.done)="roundResultCallback()">
+  <section>{{roundResult}}</section>
+  <img class='image3' [src]="image3">
+</div>
+
+<section class='rps-dialog' *ngIf="gameResultVisible" [@fadeIn]="gameResultVisible" (@fadeIn.done)="gameResultCallback()">
+  {{gameResult}}
+  <a (click)="newGame()">Play again</a>
+  <a routerLink="../">Return to menu</a>
+</section>

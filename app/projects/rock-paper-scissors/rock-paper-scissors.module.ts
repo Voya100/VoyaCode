@@ -1,5 +1,6 @@
 import { RockPaperScissorsGameComponent } from './rock-paper-scissors-game/rock-paper-scissors-game.component';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -10,8 +11,9 @@ import { RpsMenuComponent } from './rock-paper-scissors-game/rps-menu/rps-menu.c
 import { RpsUsernameComponent } from './rock-paper-scissors-game/rps-menu/rps-username/rps-username.component';
 import { RpsGameLogicService } from './rps-game-logic.service';
 
+
 @NgModule({
-  imports: [routing, SharedModule],
+  imports: [routing, SharedModule, CommonModule],
   exports: [],
   declarations: [RockPaperScissorsComponent, RockPaperScissorsGameComponent, RpsGameAreaComponent, RpsMenuComponent, RpsUsernameComponent],
   providers: [RpsGameLogicService],

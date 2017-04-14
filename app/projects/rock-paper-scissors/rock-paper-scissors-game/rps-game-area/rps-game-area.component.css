@@ -1,3 +1,55 @@
+:host {
+  position: relative;
+  display: block; }
 
+section {
+  background-color: darkcyan;
+  border: 4px solid lightseagreen;
+  border-radius: 10px;
+  margin: auto;
+  position: relative;
+  text-align: center;
+  padding: 10px; }
+
+.rps-dialog {
+  height: 300px;
+  width: 400px; }
+
+.rps-round-result {
+  text-align: center; }
+  .rps-round-result section {
+    width: 400px;
+    margin: auto;
+    height: 70px;
+    margin-bottom: 20px; }
+
+a {
+  display: block;
+  background: white;
+  text-align: center;
+  padding: 3px;
+  margin: 6px;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer; }
+  a:hover {
+    background: lightskyblue;
+    color: white; }
+
+.images {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center; }
+  .images img {
+    margin-top: 80px; }
+  .images .image1 {
+    float: left;
+    margin-left: 30px; }
+  .images .image2 {
+    float: right;
+    margin-right: 30px; }
 
 /*# sourceMappingURL=rps-game-area.component.css.map */
