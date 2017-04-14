@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-interface RpsPlayerData{
+export interface RpsPlayerData{
   name: string;
   choice: string;
   score: number;
@@ -108,6 +108,10 @@ export class RpsGameLogicService {
   newGame(){
     this.player1.score = 0;
     this.player2.score = 0;
+  }
+
+  setPlayerName(name: string){
+    this.player1.name = name;
   }
 
 }

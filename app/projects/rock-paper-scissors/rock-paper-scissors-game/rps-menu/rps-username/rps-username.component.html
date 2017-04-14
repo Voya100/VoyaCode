@@ -1,5 +1,5 @@
 Write your name here:
 <div>
-  <input type="text">
-  <button>Save</button>
+  <input type="text" [(ngModel)]="name" maxLength="9">
+  <button (click)="savePlayerName()">Save</button>
 </div>
