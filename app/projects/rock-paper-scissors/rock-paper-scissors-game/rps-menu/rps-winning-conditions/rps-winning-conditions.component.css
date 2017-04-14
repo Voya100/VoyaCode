@@ -1,5 +1,6 @@
 :host {
-  text-align: center; }
+  text-align: center;
+  display: block; }
 
 button {
   background-color: lightseagreen;

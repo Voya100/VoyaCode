@@ -9,7 +9,7 @@
   margin: auto; }
 
 main {
-  min-height: 350px; }
+  min-height: 340px; }
 
 .score, .rps-header h1, .playerData img, .computerData img, .playerData p, .computerData p {
   background-color: darkcyan;
@@ -20,8 +20,11 @@ main {
   width: 50px;
   margin-left: 7px;
   margin-right: 7px;
-  font-size: 34px;
+  font-size: 250%;
   line-height: 70px; }
+  @media screen and (max-width: 400px) {
+    .score {
+      width: 40px; } }
 
 .rps-header {
   display: flex;

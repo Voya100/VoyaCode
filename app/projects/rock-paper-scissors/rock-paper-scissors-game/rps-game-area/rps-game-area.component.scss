@@ -16,13 +16,13 @@ section{
 .rps-dialog{
   margin-top: 20px;
   height: 150px;
-  width: 400px;
+  max-width: 400px;
 }
 
 .rps-round-result{
   text-align: center;
   section{
-    width: 400px;
+    max-width: 400px;
     margin: auto;
     height: 50px;
     margin-top: 20px;
@@ -58,6 +58,7 @@ a{
 
   img{
     margin-top: 80px;
+    max-width: 40%;
   }
 
   .image1{

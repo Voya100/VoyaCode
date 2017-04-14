@@ -4,8 +4,9 @@
   display: block; }
 
 section {
-  width: 140px;
+  max-width: 140px;
   margin: auto;
+  margin-top: 10px;
   text-align: left; }
   section span {
     float: right; }
