@@ -1,0 +1,13 @@
+:host {
+  font-size: 120%;
+  text-align: center;
+  display: block; }
+
+section {
+  width: 140px;
+  margin: auto;
+  text-align: left; }
+  section span {
+    float: right; }
+
+/*# sourceMappingURL=rps-statistics.component.css.map */

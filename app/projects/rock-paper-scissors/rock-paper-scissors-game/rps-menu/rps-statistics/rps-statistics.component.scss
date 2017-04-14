@@ -1,0 +1,14 @@
+:host{
+  font-size: 120%;
+  text-align: center;
+  display: block;
+}
+
+section{
+  width:140px;
+  margin: auto;
+  text-align: left;
+  span{
+    float: right;
+  }
+}
