@@ -6,14 +6,14 @@ export interface RpsPlayerData{
   score: number;
 }
 
-interface RpsStatistics{
+export interface RpsStatistics{
   playTimes: number;
   victories: number;
   ties: number;
   losses: number;
 }
 
-interface RpsSettings{
+export interface RpsSettings{
   pointsToWin: number;
 }
 
@@ -112,6 +112,12 @@ export class RpsGameLogicService {
 
   setPlayerName(name: string){
     this.player1.name = name;
+  }
+
+  setPoinsToWin(points: number){
+    if(0 < points && points <= 99){
+      this.settings.pointsToWin = points;
+    }
   }
 
 }
