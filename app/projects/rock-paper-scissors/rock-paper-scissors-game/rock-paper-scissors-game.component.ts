@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RpsGameLogicService } from '../rps-game-logic.service';
 
 interface PlayerData{
   score: number;
@@ -14,9 +15,9 @@ export class RockPaperScissorsGameComponent {
     player: PlayerData;
     computer: PlayerData;
 
-    constructor(){
-      this.player = {score: 0, name: "Player"};
-      this.computer = {score: 0, name: "Computer"};
+    constructor(gameData: RpsGameLogicService){
+      this.player = gameData.player1;
+      this.computer = gameData.player2;
     }
 
 }
