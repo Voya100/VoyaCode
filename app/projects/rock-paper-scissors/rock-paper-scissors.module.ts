@@ -11,12 +11,14 @@ import { RpsMenuComponent } from './rock-paper-scissors-game/rps-menu/rps-menu.c
 import { RpsUsernameComponent } from './rock-paper-scissors-game/rps-menu/rps-username/rps-username.component';
 import { RpsGameLogicService } from './rps-game-logic.service';
 import { FormsModule } from '@angular/forms';
+import { RpsWinningConditionsComponent } from './rock-paper-scissors-game/rps-menu/rps-winning-conditions/rps-winning-conditions.component';
 
 
 @NgModule({
   imports: [routing, SharedModule, CommonModule, FormsModule],
   exports: [],
-  declarations: [RockPaperScissorsComponent, RockPaperScissorsGameComponent, RpsGameAreaComponent, RpsMenuComponent, RpsUsernameComponent],
+  declarations: [RockPaperScissorsComponent, RockPaperScissorsGameComponent, RpsGameAreaComponent, 
+                  RpsMenuComponent, RpsUsernameComponent, RpsWinningConditionsComponent],
   providers: [RpsGameLogicService],
 })
 export class RockPaperScissorsModule { }

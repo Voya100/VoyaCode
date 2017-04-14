@@ -1,0 +1,31 @@
+:host{
+  text-align: center;
+}
+
+button{
+  background-color: lightseagreen;
+  border: 1px solid black;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 40px;
+  height: 50px;
+  text-align: center;
+  width: 50px;
+  margin: 10px;
+  &:hover{
+    background: skyblue;
+  }
+}
+
+.pointsToWin{
+  background-color: lightseagreen;
+  border: 1px solid black;
+  color: black;
+  border-radius: 7px;
+  cursor: default;
+  font-size: 50px;
+  height: 70px;
+  text-align: center;
+  width: 70px;
+  margin: auto;
+}
