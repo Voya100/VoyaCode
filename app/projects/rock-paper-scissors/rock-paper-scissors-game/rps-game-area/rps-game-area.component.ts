@@ -1,5 +1,5 @@
 import { RpsGameLogicService } from '../../rps-game-logic.service';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes} from '@angular/animations';
 
 @Component({
@@ -14,7 +14,7 @@ import { trigger, state, style, animate, transition, keyframes} from '@angular/a
         ])
     ]
 })
-export class RpsGameAreaComponent {
+export class RpsGameAreaComponent implements OnDestroy {
     imagePath: string;
     image1: string;
     image2: string;
@@ -30,6 +30,10 @@ export class RpsGameAreaComponent {
     constructor(gameData: RpsGameLogicService){
         this.gameData = gameData;
         this.imagePath = "images/rock-paper-scissors/";
+    }
+
+    ngOnDestroy(){
+        this.gameData.newGame();
     }
 
     image(name: string){
