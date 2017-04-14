@@ -22,10 +22,11 @@ export class RpsGameLogicService {
 
   player1: RpsPlayerData;
   player2: RpsPlayerData;
+  roundWinner: RpsPlayerData;
   statistics: RpsStatistics;
   settings: RpsSettings;
 
-  private readonly options: string[] = ["rock", "paper", "scissor"];
+  private readonly options: string[] = ["rock", "paper", "scissors"];
 
   // choicePairs[winningChoice] == losingChoice
   private readonly choicePairs = {
@@ -38,6 +39,7 @@ export class RpsGameLogicService {
     this.player1 = {name: "Player", choice: "", score: 0};
     this.player2 = {name: "Computer", choice: "", score: 0};
     this.statistics = {playTimes: 0, victories: 0, ties: 0, losses: 0}
+    this.settings = {pointsToWin: 3}
   }
 
   computerChoice(){
@@ -45,24 +47,15 @@ export class RpsGameLogicService {
     return this.options[random-1];
   }
 
-  setRoundChoiceForPlayer1(choice: string){
-    this.player1.choice = choice;
-  }
-
-  setRoundChoiceForPlayer2(choice: string){
-    this.player2.choice = choice;
-  }
-
   playRound(){
-    let winner = this.getRoundWinner();
-    if(winner == null){
+    this.roundWinner = this.getRoundWinner();
+    if(this.isTie()){
       this.player1.score += 0.5;
       this.player2.score += 0.5;
-      return null;
     }else{
-      winner.score++;
+      this.roundWinner.score++;
     }
-    return winner;
+
   }
 
   // Returns winner of the round or null if it's a tie
@@ -76,6 +69,45 @@ export class RpsGameLogicService {
     }else{
       return this.player2;
     }
+  }
+
+  getOpponent(player: RpsPlayerData){
+    return player == this.player1 ? this.player2 : this.player1;
+  }
+
+  isTie(){
+    return this.player1.choice == this.player2.choice;
+  }
+
+  gameHasEnded(){
+    return this.player1.score >= this.settings.pointsToWin || this.player2.score >= this.settings.pointsToWin;
+  }
+
+  getGameWinner(){
+    if(this.player1.score == this.player2.score){
+      return null;
+    }else if(this.player1.score > this.player2.score){
+      return this.player1;
+    }else{
+      return this.player2;
+    }
+  }
+
+  addGameResultToStatistics(){
+    let winner = this.getGameWinner();
+    if(winner == null){
+      this.statistics.ties++;
+    }else if(winner == this.player1){
+      this.statistics.victories++;
+    }else{
+      this.statistics.losses++;
+    }
+    this.statistics.playTimes++;
+  }
+
+  newGame(){
+    this.player1.score = 0;
+    this.player2.score = 0;
   }
 
 }
