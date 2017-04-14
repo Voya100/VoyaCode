@@ -67,20 +67,28 @@ export class RpsGameAreaComponent {
         let choice1 = this.gameData.player1.choice;
         let choice2 = this.gameData.player2.choice;
         this.image3 = this.image(choice1 + "-" + choice2 + ".png");
+        this.gameData.playRound();
+        if(this.gameData.isTie()){
+            this.roundResult = "It's a tie, both players get 0.5 points."
+        }else{
+            let winner = this.gameData.roundWinner;
+            let loser = this.gameData.getOpponent(winner);
+            let winnerChoiceCapitalized = winner.choice[0].toUpperCase() + winner.choice.slice(1); 
+            this.roundResult = winnerChoiceCapitalized + " beats " + loser.choice + ", " + winner.name + " gets 1 point.";
+        }
         this.roundResultVisible = true;
     }
 
     roundResultCallback(){
         if(this.roundResultVisible){
             setTimeout(() => {this.roundResultVisible = false;}, 1500);    
-            this.choiceImagesVisible = false;
         }else{
             this.showChoiceOptions();
         }
     }
 
     showChoiceOptions(){
-        if(this.gameEnded()){
+        if(this.gameData.gameHasEnded()){
             this.showGameResult();
             return;
         }
@@ -88,11 +96,18 @@ export class RpsGameAreaComponent {
     }
 
     showGameResult(){
+        let winner = this.gameData.getGameWinner();
+        if(winner == null){
+            this.gameResult = "It's a tie!"
+        }else{
+            this.gameResult = winner.name + " wins!";
+        }
+        this.gameData.addGameResultToStatistics();
         this.gameResultVisible = true;
     }
 
-    // TODO: Reset game
     newGame(){
+        this.gameData.newGame();
         this.gameResultVisible = false;
     }
 
@@ -101,10 +116,4 @@ export class RpsGameAreaComponent {
             this.choicesVisible = true;
         }
     }
-
-    // TODO: Implement
-    gameEnded(){
-        return true;
-    }
-
 }
