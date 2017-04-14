@@ -13,7 +13,7 @@ button {
   width: 50px;
   margin: 10px; }
   button:hover {
-    background: skyblue; }
+    background: lightskyblue; }
 
 .pointsToWin {
   background-color: lightseagreen;

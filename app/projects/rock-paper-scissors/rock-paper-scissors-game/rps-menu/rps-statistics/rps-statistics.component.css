@@ -1,7 +1,8 @@
 :host {
   font-size: 120%;
   text-align: center;
-  display: block; }
+  display: block;
+  padding-top: 20px; }
 
 section {
   max-width: 140px;

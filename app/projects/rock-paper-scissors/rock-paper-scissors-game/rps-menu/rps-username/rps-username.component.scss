@@ -1,3 +1,5 @@
+@import '../../../rps-variables';
+
 div{
   margin-top: 10px;
 }
@@ -8,7 +10,7 @@ button{
   border-radius: 3px;
   padding: 5px;
   &:hover{
-    background: skyblue;
+    background: $hoverColor;
   }
 }
 

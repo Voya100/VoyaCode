@@ -7,7 +7,7 @@ button {
   border-radius: 3px;
   padding: 5px; }
   button:hover {
-    background: skyblue; }
+    background: lightskyblue; }
 
 button, input {
   max-width: 90%;
