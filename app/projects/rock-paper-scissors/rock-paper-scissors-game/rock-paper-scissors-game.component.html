@@ -1,0 +1,22 @@
+<div class='rps-header'>
+  <div class='playerData'>
+    <div>
+      <img src="images/rock-paper-scissors/human.png"/>
+      <p>{{player?.name}}</p>
+    </div>
+    <div class="score">{{player?.score}}</div>
+  </div>
+  <h1>Rock, paper, scissors</h1>
+
+  <div class='computerData'>
+    <div class="score">{{computer?.score}}</div>
+    <div>
+      <img src="images/rock-paper-scissors/computer.png"/>
+      <p>{{computer?.name}}</p>
+    </div>
+  </div>
+</div>
+<hr>
+<main>
+  <router-outlet></router-outlet>
+</main>
