@@ -1,4 +1,4 @@
-<section class='rps-dialog'  *ngIf="choicesVisible" [@fadeIn]="choicesVisible" (@fadeIn.done)="makeChoiceCallback($event)">
+<section class='rps-dialog'  *ngIf="choicesVisible" [@fadeIn]="choicesVisible" (@fadeIn.done)="makeChoiceCallback()">
   Make your choice
   <a (click)="makeChoice('rock')">Rock</a>
   <a (click)="makeChoice('paper')">Paper</a>

@@ -1,6 +1,6 @@
 import { RpsGameLogicService } from '../../rps-game-logic.service';
 import { Component, OnDestroy } from '@angular/core';
-import { trigger, state, style, animate, transition, keyframes} from '@angular/animations';
+import { trigger, state, style, animate, transition} from '@angular/animations';
 
 @Component({
     selector: 'rps-game-area',
@@ -25,9 +25,8 @@ export class RpsGameAreaComponent implements OnDestroy {
     roundResult: string;
     gameResultVisible: boolean = false;
     gameResult: string;
-    gameData: RpsGameLogicService;
 
-    constructor(gameData: RpsGameLogicService){
+    constructor(private gameData: RpsGameLogicService){
         this.gameData = gameData;
         this.imagePath = "images/rock-paper-scissors/";
     }
@@ -72,6 +71,7 @@ export class RpsGameAreaComponent implements OnDestroy {
         let choice2 = this.gameData.player2.choice;
         this.image3 = this.image(choice1 + "-" + choice2 + ".png");
         this.gameData.playRound();
+        
         if(this.gameData.isTie()){
             this.roundResult = "It's a tie, both players get 0.5 points."
         }else{

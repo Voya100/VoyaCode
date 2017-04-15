@@ -50,7 +50,6 @@ export class RpsGameLogicService {
       this.statistics = <RpsStatistics> storage.get('statistics');
       this.settings = <RpsSettings> storage.get('settings');
       this.player1.name = <string> storage.get('playerName');
-      console.log(storage.get('playerName'));
     }
   }
 
@@ -60,11 +59,11 @@ export class RpsGameLogicService {
   }
 
   playRound(){
-    this.roundWinner = this.getRoundWinner();
     if(this.isTie()){
       this.player1.score += 0.5;
       this.player2.score += 0.5;
     }else{
+      this.roundWinner = this.getRoundWinner();
       this.roundWinner.score++;
     }
 

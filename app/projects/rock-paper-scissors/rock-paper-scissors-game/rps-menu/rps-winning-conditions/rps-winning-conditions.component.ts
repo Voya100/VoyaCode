@@ -9,9 +9,8 @@ import { RpsGameLogicService, RpsSettings } from '../../../rps-game-logic.servic
 export class RpsWinningConditionsComponent {
 
     settings: RpsSettings;
-    gameData: RpsGameLogicService;
 
-    constructor(gameData: RpsGameLogicService){
+    constructor(private gameData: RpsGameLogicService){
         this.settings = gameData.settings;
         this.gameData = gameData;
     }
