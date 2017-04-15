@@ -27,12 +27,30 @@ export class RpsGameAreaComponent implements OnDestroy {
     gameResult: string;
 
     constructor(private gameData: RpsGameLogicService){
-        this.gameData = gameData;
         this.imagePath = "images/rock-paper-scissors/";
+        this.preloadImages();
     }
 
     ngOnDestroy(){
         this.gameData.newGame();
+    }
+    
+    preloadImages(){
+        let optionNames = ['rock', 'paper', 'scissors'];
+
+        for (let i = 0; i < optionNames.length; i++) {
+            this.preloadImage(this.image(optionNames[i] + "1.png"));
+            this.preloadImage(this.image(optionNames[i] + "2.png"));
+            
+            for(let j = 0; j < optionNames.length; j++){
+                this.preloadImage(this.image(optionNames[i] + "-" + optionNames[j] + ".png"));
+            }
+        }
+    }
+
+    preloadImage(imagePath: string){
+        let image = new Image();
+        image.src = imagePath;
     }
 
     image(name: string){
