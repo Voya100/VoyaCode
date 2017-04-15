@@ -1,6 +1,7 @@
 import { RockPaperScissorsGameComponent } from './rock-paper-scissors-game/rock-paper-scissors-game.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LocalStorageModule, LocalStorageService } from 'angular-2-local-storage';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -17,10 +18,13 @@ import { RpsStatisticsComponent } from './rock-paper-scissors-game/rps-menu/rps-
 
 
 @NgModule({
-  imports: [routing, SharedModule, CommonModule, FormsModule],
+  imports: [routing, SharedModule, CommonModule, FormsModule, LocalStorageModule.withConfig({
+            prefix: 'voyacode-rock-paper-scissors',
+            storageType: 'localStorage'
+        })],
   exports: [],
   declarations: [RockPaperScissorsComponent, RockPaperScissorsGameComponent, RpsGameAreaComponent, 
                   RpsMenuComponent, RpsUsernameComponent, RpsWinningConditionsComponent, RpsRulesComponent, RpsStatisticsComponent],
-  providers: [RpsGameLogicService],
+  providers: [RpsGameLogicService, LocalStorageService],
 })
 export class RockPaperScissorsModule { }

@@ -11,12 +11,12 @@ export class RpsUsernameComponent {
     player: RpsPlayerData;
     name: string;
 
-    constructor(gameData: RpsGameLogicService){
+    constructor(private gameData: RpsGameLogicService){
         this.player = gameData.player1;
         this.name = this.player.name;
     }
 
     savePlayerName(){
-        this.player.name = this.name;
+        this.gameData.setPlayerName(this.name);
     }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 export interface RpsPlayerData{
   name: string;
@@ -35,11 +36,22 @@ export class RpsGameLogicService {
     scissors: "paper"
   }
   
-  constructor() { 
+  constructor(private storage: LocalStorageService) { 
     this.player1 = {name: "Player", choice: "", score: 0};
     this.player2 = {name: "Computer", choice: "", score: 0};
-    this.statistics = {playTimes: 0, victories: 0, ties: 0, losses: 0}
-    this.settings = {pointsToWin: 3}
+
+    if(storage.get('statistics') == null){
+      this.statistics = {playTimes: 0, victories: 0, ties: 0, losses: 0}
+      this.settings = {pointsToWin: 3}
+      storage.set('statistics', this.statistics);
+      storage.set('settings', this.settings);
+      storage.set('playerName', this.player1.name);
+    }else{
+      this.statistics = <RpsStatistics> storage.get('statistics');
+      this.settings = <RpsSettings> storage.get('settings');
+      this.player1.name = <string> storage.get('playerName');
+      console.log(storage.get('playerName'));
+    }
   }
 
   computerChoice(){
@@ -103,6 +115,7 @@ export class RpsGameLogicService {
       this.statistics.losses++;
     }
     this.statistics.playTimes++;
+    this.storage.set('statistics', this.statistics);
   }
 
   newGame(){
@@ -112,11 +125,13 @@ export class RpsGameLogicService {
 
   setPlayerName(name: string){
     this.player1.name = name;
+    this.storage.set('playerName', name);
   }
 
   setPoinsToWin(points: number){
     if(0 < points && points <= 99){
       this.settings.pointsToWin = points;
+      this.storage.set('settings', this.settings);
     }
   }
 
