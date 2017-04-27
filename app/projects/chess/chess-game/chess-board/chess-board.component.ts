@@ -5,6 +5,8 @@ import { Piece } from '../../classes/piece';
 
 const whiteTileColor = "#e6cfaf";
 const blackTileColor = "#9b7b40";
+const highlightTileColor = "orange";
+const movableTileColor = "yellow";
 
 @Component({
     selector: 'chess-board',
@@ -19,7 +21,13 @@ export class ChessBoardComponent {
     }
 
     tileColor(tile: Tile){
-        return (tile.x + tile.y) % 2 == 0 ? blackTileColor : whiteTileColor;
+        if(tile.highlighted()){
+            return highlightTileColor;
+        }else if(tile.markedMovable()){
+            return movableTileColor;
+        }else{
+            return (tile.x + tile.y) % 2 == 0 ? blackTileColor : whiteTileColor;
+        }
     }
 
     pieceTopLocation(piece: Piece){
@@ -36,6 +44,10 @@ export class ChessBoardComponent {
 
     coordinateToPercentage(coordinate: number){
         return (coordinate * 12.5) + "%";
+    }
+
+    selectTile(tile: Tile){
+        tile.select(this.game.activePlayer);
     }
 
 

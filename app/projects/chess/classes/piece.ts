@@ -65,7 +65,7 @@ export abstract class Piece{
 			this.player.game.addPiece(this.tile.x,this.tile.y,this.player,"Q")
 		}
 		var gameId = this.player.game.gameId;
-		setTimeout(function(){
+		setTimeout(() =>{
 			this.player.game.changeTurn(gameId);
 		},650);
 	}

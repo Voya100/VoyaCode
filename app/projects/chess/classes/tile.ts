@@ -6,9 +6,11 @@ import * as _ from 'underscore';
 
 export class Tile{
 
+	static highligtedTile: Tile = null;
+	static highlightedMovableTiles: Tile[] = [];
+
   x: number;
   y: number;
-  highlighted: boolean = false;
   game: ChessGameService;
   piece: Piece;
   board: any[];
@@ -26,8 +28,60 @@ export class Tile{
     this.board = game.board;
   }
 
+	
+	//User clicks on the tile
+	select(player: Player){
+		
+		if(!this.game.gameActive || !this.game.turn){ // || this.game.interfaces.screenOpen()){
+			// TODO: Add inteface open check?
+			return false;
+		}
+		
+		if(!this.empty() && this.piece.color == player.color){
+			// Chooses the tile, if it's the player's
+			this.highlight(true);
+			player.activePiece = this.piece;
+      // TODO: Remove movable tile
+			for(var i = 0; i < this.piece.moveTiles.length; i++){
+				this.piece.moveTiles[i].highlight(false);
+			}
+		}else if(player.activePiece != null && player.activePiece.canMove(this)){
+			this.game.turn = false;
+			player.activePiece.move(this.x,this.y);
+			this.highlight(true);
+			player.activePiece = null;
+		}else{
+			this.clearHighlights();
+			player.activePiece = null;
+		}
+	}
+
   // True if there is a piece on the tile, false otherwise
 	empty(){return this.piece == null;} 
+	
+	// Adds highlight to tile
+	// If highlight is set to clickedTile, all previous highlights are cleared
+	highlight(clickedTile: boolean = false){
+		if(clickedTile){
+			Tile.highligtedTile = this;
+			Tile.highlightedMovableTiles = [];
+		}else{
+			Tile.highlightedMovableTiles.push(this);
+		}
+	}
+
+	clearHighlights(){
+			Tile.highligtedTile = null;
+			Tile.highlightedMovableTiles = [];
+	}
+
+	highlighted(){
+		return this == Tile.highligtedTile;
+	}
+
+	markedMovable(){
+		return _.contains(Tile.highlightedMovableTiles, this);
+	}
 
 	// True if this tile has a piece with same color as piece given by parameter
 	isFriend(piece: Piece | Player){
@@ -155,11 +209,6 @@ export class Tile{
 		return risk;		
 	}
 	
-	// Removes same highlight from other tiles and gives it to this one
-	highlight(type: string, unique?: boolean){
-    // TODO: remove highlight from other tiles
-		this.highlighted = true;
-	}
 	// Adds a piece that can move to this tile
 	addMover(piece: Piece){
 		if(piece.white){
@@ -256,33 +305,5 @@ export class Tile{
 			tiles = tiles.concat(this.checkDirection(-x_add,-y_add,count));
 		}
 		return tiles;
-	}
-	
-	//User clicks on the tile
-	select(player: Player){
-		
-		if(!this.game.gameActive || !this.game.turn){ // || this.game.interfaces.screenOpen()){
-			// TODO: Add inteface open check?
-			return false;
-		}
-		
-		// TODO: Remove highlight from all tiles
-		
-		if(!this.empty() && this.piece.color == player.color){
-			// Chooses the tile, if it's the player's
-			this.highlight("highlight",true);
-			player.activePiece = this.piece;
-      // TODO: Remove movable tile
-			for(var i = 0; i < this.piece.moveTiles.length; i++){
-				this.piece.moveTiles[i].highlight("movableTile");
-			}
-		}else if(player.activePiece != null && player.activePiece.canMove(this)){
-			this.game.turn = false;
-			player.activePiece.move(this.x,this.y);
-			this.highlight("highlight",true);
-			player.activePiece = null;
-		}else{
-			player.activePiece = null;
-		}
 	}
 }
