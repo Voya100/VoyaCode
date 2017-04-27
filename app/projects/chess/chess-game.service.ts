@@ -32,6 +32,33 @@ export class ChessGameService {
 	round: number;
 	gameId = 0;
 	activePlayer: Player;
+
+	
+	reset(){
+		this.gameActive = false;
+		
+		this.gameId++;
+		
+		this.board = [];
+		
+		this.white = new Player("white",this, this.whiteComputer);
+		this.black = new Player("black",this, this.blackComputer);
+		
+		this.white.enemy = this.black;
+		this.black.enemy = this.white;
+		
+		this.activePlayer = this.white;
+		this.round = 1;
+    // TODO remove old pieces and remove highlights (?)
+		if(this.gameId > 1){ // Don't close interface when game is launched
+			//this.interfaces.closeInterfaces();
+		}
+		this.setUp();
+		this.updateStats();
+		this.gameActive = true;
+		this.turn = true;
+		this.computerCheck();
+	}
 	
 	// Sets the board and adds all the pieces
 	setUp(){
@@ -41,10 +68,10 @@ export class ChessGameService {
 		var row1b = row1.split("").reverse().join(""); // Black rows are mirrored
 		var row2b = row2.split("").reverse().join("");
 		for(var i = 0; i < 8; i++){
-			this.addPiece(0,i,this.white,row1[i]);
-			this.addPiece(7,i,this.black,row1b[i]);
-			this.addPiece(1,i,this.white,row2[i]);
-			this.addPiece(6,i,this.black,row2b[i]);
+			this.addPiece(7,i,this.white,row1[i]);
+			this.addPiece(0,i,this.black,row1b[i]);
+			this.addPiece(6,i,this.white,row2[i]);
+			this.addPiece(1,i,this.black,row2b[i]);
 		}
 
 		this.clearTiles();
@@ -95,36 +122,12 @@ export class ChessGameService {
 			piece = null;
 			return;
 		}
+		player.addPiece(piece);
 		this.board[x][y].piece = piece;
 		var id = player.color + player.pieceId;
 		//Promotion (TODO?)
 	}
 
-	reset(){
-		this.gameActive = false;
-		
-		this.gameId++;
-		
-		this.board = [];
-		
-		this.white = new Player("white",this, this.whiteComputer);
-		this.black = new Player("black",this, this.blackComputer);
-		
-		this.white.enemy = this.black;
-		this.black.enemy = this.white;
-		
-		this.activePlayer = this.white;
-		this.round = 1;
-    // TODO remove old pieces and remove highlights (?)
-		if(this.gameId > 1){ // Don't close interface when game is launched
-			//this.interfaces.closeInterfaces();
-		}
-		this.setUp();
-		this.updateStats();
-		this.gameActive = true;
-		this.turn = true;
-		this.computerCheck();
-	}
 	
 	// Update side interface
 	updateStats(){

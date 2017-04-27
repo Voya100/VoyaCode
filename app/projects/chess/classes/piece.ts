@@ -33,8 +33,6 @@ export abstract class Piece{
     this.white = this.color == "white;"
     this.tile = tile;
 		this.player = player;
-		//player.pieces.push(this);
-		//player[type + "s"].push(this);
 		this.tiles = player.game.board;
 		this.moveTiles = []; 
 		this.hitTiles = []; 

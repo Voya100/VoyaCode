@@ -36,20 +36,6 @@
   padding-right: 6px;
   margin-right: -3px; }
 
-#pieces {
-  position: absolute;
-  pointer-events: none;
-  background: white;
-  filter: Alpha(opacity=0);
-  /* IE support */ }
-
-.piece {
-  width: 80px;
-  height: 80px;
-  display: inline-block;
-  position: absolute;
-  z-index: 5; }
-
 #win-screen, #settings-screen, #game-mode-screen {
   width: 320px;
   height: 240px;

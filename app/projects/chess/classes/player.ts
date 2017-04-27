@@ -42,6 +42,11 @@ export class Player{
       this.game = game;
       this.pieceId = 0;
   }
+
+	addPiece(piece: Piece){
+		this.pieces.push(piece);
+		this[piece.type + "s"].push(piece);
+	}
 	
 	//Looks all possible tiles where pieces can move to
 	checkAllTiles(){
