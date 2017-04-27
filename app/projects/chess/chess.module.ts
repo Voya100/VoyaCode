@@ -9,11 +9,12 @@ import { ChessGameService } from './chess-game.service';
 import { routing } from './chess.routing';
 import { ChessBoardComponent } from './chess-game/chess-board/chess-board.component';
 import { ChessInstructionsComponent } from './chess-game/chess-instructions/chess-instructions.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [routing, SharedModule],
+  imports: [routing, SharedModule, CommonModule],
   exports: [],
   declarations: [ChessComponent, ChessGameComponent, ChessBoardComponent, ChessInstructionsComponent],
-  providers: [],
+  providers: [ChessGameService],
 })
 export class ChessModule { }

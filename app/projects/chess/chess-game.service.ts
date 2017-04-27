@@ -33,6 +33,28 @@ export class ChessGameService {
 	gameId = 0;
 	activePlayer: Player;
 	
+	// Sets the board and adds all the pieces
+	setUp(){
+		this.fillBoard();
+		var row1 = this.positions[0] + "_".repeat(8-this.positions[0].length);
+		var row2 = this.positions[1] + "_".repeat(8-this.positions[1].length);
+		var row1b = row1.split("").reverse().join(""); // Black rows are mirrored
+		var row2b = row2.split("").reverse().join("");
+		for(var i = 0; i < 8; i++){
+			this.addPiece(0,i,this.white,row1[i]);
+			this.addPiece(7,i,this.black,row1b[i]);
+			this.addPiece(1,i,this.white,row2[i]);
+			this.addPiece(6,i,this.black,row2b[i]);
+		}
+
+		this.clearTiles();
+		this.white.checkAllTiles();
+		this.black.checkAllTiles();
+		this.white.findKingProtectors();
+		this.black.findKingProtectors();
+		this.turn = true;
+	}
+
 	// Makes empty tiles for the board
 	fillBoard(){
 		this.board = [];
@@ -43,6 +65,7 @@ export class ChessGameService {
 			}
 		}
 	}
+	
 	
 	// Adds piece to the board
 	addPiece(x: number, y: number, player: Player, type: string){
@@ -76,29 +99,7 @@ export class ChessGameService {
 		var id = player.color + player.pieceId;
 		//Promotion (TODO?)
 	}
-	
-	// Sets the board and adds all the pieces
-	setUp(){
-		this.fillBoard();
-		var row1 = this.positions[0] + "_".repeat(8-this.positions[0].length);
-		var row2 = this.positions[1] + "_".repeat(8-this.positions[1].length);
-		var row1b = row1.split("").reverse().join(""); // Black rows are mirrored
-		var row2b = row2.split("").reverse().join("");
-		for(var i = 0; i < 8; i++){
-			this.addPiece(0,i,this.white,row1[i]);
-			this.addPiece(7,i,this.black,row1b[i]);
-			this.addPiece(1,i,this.white,row2[i]);
-			this.addPiece(6,i,this.black,row2b[i]);
-		}
 
-		this.clearTiles();
-		this.white.checkAllTiles();
-		this.black.checkAllTiles();
-		this.white.findKingProtectors();
-		this.black.findKingProtectors();
-		this.turn = true;
-	}
-	
 	reset(){
 		this.gameActive = false;
 		

@@ -2,27 +2,27 @@
   <table>
     <tr><td colspan="2"><b>Game stats</b></td></tr>
       <tr><td colspan="2" id="turn">White's turn</td></tr>
-      <tr><td>Round:</td><td><span id="round_count">1</span></td></tr>
-      <tr><td>White:</td><td><span id="white_count">16</span> pieces</td></tr>
-      <tr><td>Black:</td><td><span id="black_count">16</span> pieces</td></tr>
+      <tr><td>Round:</td><td><span id="round-count">1</span></td></tr>
+      <tr><td>White:</td><td><span id="white-count">16</span> pieces</td></tr>
+      <tr><td>Black:</td><td><span id="black-count">16</span> pieces</td></tr>
   </table>
-  <li class='play_again' title='Resets the game.'>Reset game</li>
-  <li class='game_mode_button' title='Choose game mode.'>Game mode</li>
-  <li class='settings_button' title='Change piece layout.'>Settings</li>
-  <li class='instructions_button' title='Read the instructions.'>Instructions</li>
+  <li class='play-again' title='Resets the game.'>Reset game</li>
+  <li class='game-mode-button' title='Choose game mode.'>Game mode</li>
+  <li class='settings-button' title='Change piece layout.'>Settings</li>
+  <li class='instructions-button' title='Read the instructions.'>Instructions</li>
 </div>
 <div class='container'>
 
     <router-outlet></router-outlet>
 
-    <div id="game_mode_screen" class="interface">
+    <div id="game-mode-screen" class="interface" *ngIf="false">
         <h1>Game modes</h1>
-        <li id="player_vs_computer" title='Play against the computer AI.'>Player vs computer</li>
-        <li id="local_multiplayer" title="Challenge a friend to a game of chess.">Local multiplayer</li>
-        <li id="computer_vs_computer" title="Watch while computer AIs try to annihilate each other.">Computer vs computer</li>
+        <li id="player-vs-computer" title='Play against the computer AI.'>Player vs computer</li>
+        <li id="local-multiplayer" title="Challenge a friend to a game of chess.">Local multiplayer</li>
+        <li id="computer-vs-computer" title="Watch while computer AIs try to annihilate each other.">Computer vs computer</li>
     </div>
 
-    <div id="settings_screen" class="interface">
+    <div id="settings-screen" class="interface" *ngIf="false">
         <h1>Settings</h1>
         Change piece layout<br>
         <form autocomplete="off">
@@ -34,15 +34,15 @@
                 <tr><td>Row 2: <input type='text' id='pieceRow2' maxlength='8' size='8' value='PPPPPPPP'>
             </table>
         </form>
-        <li id="save_settings" title='Changing settings will reset the game.'>Save settings</li>
-        <li id="reset_layout" title='Puts pieces to their original places and resets the game.'>Reset layout</li>
+        <li id="save-settings" title='Changing settings will reset the game.'>Save settings</li>
+        <li id="reset-layout" title='Puts pieces to their original places and resets the game.'>Reset layout</li>
     </div>
 
-    <div id="win_screen" class="interface">
-        <h1 id="win_message">White wins!</h1>
-        <li class="play_again">Play again</li>
-        <li class='game_mode_button' title='Choose game mode.'>Switch game mode</li>
-        <li class='settings_button' title='Change piece layout.'>Change settings</li>
+    <div id="win-screen" class="interface" *ngIf="false">
+        <h1 id="win-message">White wins!</h1>
+        <li class="play-again">Play again</li>
+        <li class='game-mode-button' title='Choose game mode.'>Switch game mode</li>
+        <li class='settings-button' title='Change piece layout.'>Change settings</li>
     </div>
 
 </div>

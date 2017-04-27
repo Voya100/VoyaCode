@@ -14,6 +14,7 @@
 :host {
   display: block;
   border: 2px solid black;
+  background: silver;
   margin: auto;
   max-width: 800px; }
 
@@ -23,23 +24,17 @@
   padding-top: 80%;
   background: black;
   position: relative;
-  float: left; }
+  float: left;
+  border-left: 3px solid black; }
 
 .side-menu {
   width: 20%;
+  height: 100%;
   max-width: 160px;
-  float: left; }
-
-#board {
-  border-collapse: collapse;
-  border-spacing: 0;
-  z-index: 4; }
-
-#board td {
-  width: 80px;
-  height: 80px;
-  padding: 0px;
-  z-index: 4; }
+  float: left;
+  padding: 3px;
+  padding-right: 6px;
+  margin-right: -3px; }
 
 #pieces {
   position: absolute;
@@ -55,7 +50,7 @@
   position: absolute;
   z-index: 5; }
 
-#win_screen, #settings_screen, #game_mode_screen {
+#win-screen, #settings-screen, #game-mode-screen {
   width: 320px;
   height: 240px;
   position: absolute;
@@ -66,22 +61,22 @@
   border-radius: 5px;
   text-align: center; }
 
-#win_screen, #settings_screen, #instructions_screen {
+#win-screen, #settings-screen, #instructions-screen {
   display: none; }
 
-#settings_screen table {
+#settings-screen table {
   margin: auto; }
 
-#settings_screen h1 {
+#settings-screen h1 {
   margin: 7px 0; }
 
-#settings_screen td {
+#settings-screen td {
   padding: 5px; }
 
-#settings_screen input {
+#settings-screen input {
   font-family: monospace; }
 
-#instructions_screen {
+#instructions-screen {
   width: 640px;
   height: 640px;
   position: absolute;
@@ -92,14 +87,14 @@
   border-radius: 5px;
   text-align: center; }
 
-#instructions_screen img {
+#instructions-screen img {
   width: 50px;
   height: 50px; }
 
-#instructions_screen table td {
+#instructions-screen table td {
   text-align: left; }
 
-#instructions_screen table td:first-child {
+#instructions-screen table td:first-child {
   vertical-align: top; }
 
 .interface {
@@ -120,23 +115,13 @@
   list-style-type: none;
   text-align: center; }
 
-.close_button {
+.close-button {
   position: absolute;
   right: 0px;
   border-left: 3px solid gray;
   border-bottom: 3px solid gray;
   padding: 2px;
   background: #eeeeee; }
-
-#side_menu {
-  width: 250px;
-  height: 640px;
-  background: silver;
-  display: inline-block;
-  border-right: 3px solid black;
-  margin-right: -4px;
-  vertical-align: top;
-  font-size: 20px; }
 
 .black {
   background: #9b7b40; }
