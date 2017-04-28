@@ -9,7 +9,7 @@ function randVal(array: any[]){
 }
 
 export class Player{
-	computer: false;
+	computer: boolean;
 	color: string;
 	game: ChessGameService;
 	pieceId: number = 0;
@@ -41,6 +41,7 @@ export class Player{
       this.color = color;
       this.game = game;
       this.pieceId = 0;
+			this.computer = computer;
   }
 
 	addPiece(piece: Piece){

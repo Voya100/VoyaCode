@@ -29,7 +29,7 @@
   margin-right:-3px; // Counters space taken by container's border
 }
 
-#win-screen, chess-settings,#game-mode-screen{
+#win-screen, chess-settings, chess-choose-mode{
   @extend %absolute-center;
   position: absolute;
   max-width: 90%;

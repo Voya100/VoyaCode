@@ -13,11 +13,13 @@ import { CommonModule } from '@angular/common';
 import { ChessSettingsService } from './chess-settings.service';
 import { ChessSettingsComponent } from './chess-game/chess-settings/chess-settings.component';
 import { FormsModule } from '@angular/forms';
+import { ChessChooseModeComponent } from './chess-game/chess-choose-mode/chess-choose-mode.component';
 
 @NgModule({
   imports: [routing, SharedModule, CommonModule, FormsModule],
   exports: [],
-  declarations: [ChessComponent, ChessGameComponent, ChessBoardComponent, ChessInstructionsComponent, ChessSettingsComponent],
+  declarations: [ChessComponent, ChessGameComponent, ChessBoardComponent, ChessInstructionsComponent, 
+                ChessSettingsComponent, ChessChooseModeComponent],
   providers: [ChessGameService, ChessSettingsService],
 })
 export class ChessModule { }

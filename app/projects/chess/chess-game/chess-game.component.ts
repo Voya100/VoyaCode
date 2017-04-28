@@ -20,11 +20,6 @@ export class ChessGameComponent implements OnInit {
         this.game.reset();
     }
 
-    switchGameMode(modeId: number){
-        this.settings.changeMode(modeId);
-        this.reset();
-    }
-
     activePlayerColor(){
         let player = this.game.activePlayer;
         if(player == null){
@@ -37,4 +32,10 @@ export class ChessGameComponent implements OnInit {
     capitalize(text: string){
         return text.charAt(0).toUpperCase() + text.slice(1);
     }
+
+    // Opens dialog, if not already open. Otherwise closes it.
+    switchDialog(dialogName: string){
+        this.visibleDialog = this.visibleDialog == dialogName ? "" : dialogName;
+    }
+
 }

@@ -11,7 +11,7 @@
   display: table;
   clear: both; }
 
-#win-screen, chess-settings, #game-mode-screen {
+#win-screen, chess-settings, chess-choose-mode {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -60,7 +60,7 @@
   padding-right: 6px;
   margin-right: -3px; }
 
-#win-screen, chess-settings, #game-mode-screen {
+#win-screen, chess-settings, chess-choose-mode {
   position: absolute;
   max-width: 90%;
   max-height: 90%;
