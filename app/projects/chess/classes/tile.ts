@@ -98,7 +98,7 @@ export class Tile{
 		if(this.x == targetTile.x){ // They are on same column, threats: rook and queen
 			var y_dir = this.y < targetTile.y ? -1 : 1;
 			for(var y=this.y+y_dir; 0 <= y && y < 8;y+= y_dir){
-				var tile = this.game.board[this.x][y];
+				var tile = this.game.board[y][this.x];
 				if(!tile.empty() && tile.piece.color != player.color && (tile.piece.type == 'rook' || tile.piece.type == 'queen')){
 					return true;
 				}else if(!tile.empty()){
@@ -109,7 +109,7 @@ export class Tile{
 		if(this.y == targetTile.y){ // They are on same row, threats: rook and queen
 			var x_dir = this.x < targetTile.x ? -1 : 1;
 			for(var x=this.x+x_dir; 0 <= x && x < 8;x+= x_dir){
-				var tile = this.game.board[x][this.y];
+				var tile = this.game.board[this.y][x];
 				if(!tile.empty() && tile.piece.color != player.color && (tile.piece.type == 'rook' || tile.piece.type == 'queen')){
 					return true;
 				}else if(!tile.empty()){
@@ -122,7 +122,7 @@ export class Tile{
 			var y_dir = this.y < targetTile.y ? -1 : 1;
 			
 			for(var x = this.x+x_dir, y = this.y+y_dir;0 <= x && x < 8 && 0 <= y && y < 8; x+= x_dir, y+= y_dir){
-				var tile = this.game.board[x][y];
+				var tile = this.game.board[y][x];
 				if(!tile.empty() && tile.piece.color != player.color && (tile.piece.type == 'bishop' || tile.piece.type == 'queen')){
 					return true;
 				}else if(!tile.empty()){
@@ -247,7 +247,7 @@ export class Tile{
 		}
 		var tiles: Tile[] = [];
 		for(var x=this.x+x_add, y=this.y+y_add; y != tile.y || x != tile.x; x += x_add, y += y_add){
-			tiles.push(this.game.board[x][y]);
+			tiles.push(this.game.board[y][x]);
 		}
 		return tiles;	
 	}
@@ -281,7 +281,7 @@ export class Tile{
 		var y = this.y;
 		for(var i = 1; i < count+1; i++){
 			if(x + x_add*i < 8 && x + x_add*i >= 0 && y + y_add*i < 8 && y + y_add*i >= 0){
-				var tile = this.board[x + x_add*i][y + y_add*i];
+				var tile = this.board[y + y_add*i][x + x_add*i];
 				tiles.push(tile);
 				if(!tile.empty()){
 					break;

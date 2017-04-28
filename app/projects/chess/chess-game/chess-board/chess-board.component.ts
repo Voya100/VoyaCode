@@ -31,11 +31,11 @@ export class ChessBoardComponent {
     }
 
     pieceTopLocation(piece: Piece){
-        return this.coordinateToPercentage(piece.tile.x);
+        return this.coordinateToPercentage(piece.tile.y);
     }
 
     pieceLeftLocation(piece: Piece){
-        return this.coordinateToPercentage(piece.tile.y);
+        return this.coordinateToPercentage(piece.tile.x);
     }
 
     pieceImageUrl(piece: Piece){

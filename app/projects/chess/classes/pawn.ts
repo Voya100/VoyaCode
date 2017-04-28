@@ -17,30 +17,30 @@ export class Pawn extends Piece{
   }
 	tileCheck(){
 		this.clearTiles();
-		var x = this.tile.x;
-		var y = this.tile.y;
-		var dir = this.white ? 1 : -1;
-		var tile = this.tiles[x+dir][y];
+		let x = this.tile.x;
+		let y = this.tile.y;
+		let dir = this.white ? -1 : 1;
+		let tile = this.tiles[y+dir][x];
 		
 		if(tile.empty()){
 			this.moveTiles.push(tile);
 		}
-		if(0 <= x+2*dir && x+2*dir < 8 && this.xStart == x && tile.empty()){
-			tile = this.tiles[x+2*dir][y];
+		if(0 <= y+2*dir && y+2*dir < 8 && this.yStart == y && tile.empty()){
+			tile = this.tiles[y+2*dir][x];
 			if(tile.empty()){
 				this.moveTiles.push(tile);
 			}
 		}
-		if(y+1 < 8){
-			tile = this.tiles[x+dir][y+1];
+		if(x+1 < 8){
+			tile = this.tiles[y+dir][x+1];
 			if(!tile.isFriend(this) && !tile.empty()){
 				this.moveTiles.push(tile);
 			}
 			this.hitTiles.push(tile);
 			tile.addHitter(this);
 		}
-		if(y-1 >= 0){
-			tile = this.tiles[x+dir][y-1];
+		if(x-1 >= 0){
+			tile = this.tiles[y+dir][x-1];
 			if(!tile.isFriend(this) && !tile.empty()){
 				this.moveTiles.push(tile);
 			}

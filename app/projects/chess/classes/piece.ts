@@ -30,7 +30,7 @@ export abstract class Piece{
 
   constructor(player: Player, tile: Tile){
     this.color = player.color;
-    this.white = this.color == "white;"
+    this.white = this.color == "white";
     this.tile = tile;
 		this.player = player;
 		this.tiles = player.game.board;
@@ -55,12 +55,12 @@ export abstract class Piece{
 		}
 		this.player.prevPiece = this;
 		this.player.moveCount++;
-		this.tile = this.player.game.board[x][y];
+		this.tile = this.player.game.board[y][x];
 		if(!this.tile.empty()){
 			this.tile.piece.die(200,300);
 		}
 		this.tile.piece = this;
-		if(this.type == "pawn" && (x == 0 || x == 7)){ // Promotion
+		if(this.type == "pawn" && (y == 0 || y == 7)){ // Promotion
 			this.die();
 			this.player.game.addPiece(this.tile.x,this.tile.y,this.player,"Q")
 		}
@@ -75,7 +75,7 @@ export abstract class Piece{
 	checkDirection(x_add: number,y_add: number,count: number,roundStart: boolean){
 		var moveTiles = this.tile.checkDirection(x_add,y_add,count);
 
-		for(var i=0;i<moveTiles.length;i++){
+		for(var i = 0; i < moveTiles.length; i++){
 			var target = moveTiles[i];
 			this.hitTiles.push(target);
 			target.addHitter(this);
