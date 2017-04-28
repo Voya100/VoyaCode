@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ChessGameService } from '../../chess-game.service';
 import { Tile } from '../../classes/tile';
 import { Piece } from '../../classes/piece';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 const whiteTileColor = "#e6cfaf";
 const blackTileColor = "#9b7b40";
@@ -11,7 +12,14 @@ const movableTileColor = "yellow";
 @Component({
     selector: 'chess-board',
     templateUrl: 'chess-board.component.html',
-    styleUrls: ['chess-board.component.css']
+    styleUrls: ['chess-board.component.css'],
+    animations: [
+        trigger('fadeIn', [
+            state('true', style({ opacity: 1 })),
+            state('void', style({ opacity: 0 })),
+            transition('* => *', animate('300ms'))
+        ])
+    ]
 })
 export class ChessBoardComponent {
 

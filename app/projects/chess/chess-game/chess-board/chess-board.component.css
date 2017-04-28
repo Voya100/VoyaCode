@@ -22,7 +22,9 @@
 #pieces div {
   width: 12.5%;
   height: 12.5%;
-  position: absolute; }
+  position: absolute;
+  -webkit-transition: top 0.5s ease-in-out 50ms, left 0.5s ease-in-out 50ms;
+  transition: top 0.5s ease-in-out 50ms, left 0.5s ease-in-out 50ms; }
   #pieces div img {
     width: 100%;
     height: 100%; }
