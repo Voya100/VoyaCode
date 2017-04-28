@@ -9,19 +9,13 @@ import { Knight } from './classes/knight';
 import { Pawn } from './classes/pawn';
 import { Queen } from './classes/queen';
 import { Rook } from './classes/rook';
+import { ChessSettingsService } from './chess-settings.service';
 
 
 @Injectable()
 export class ChessGameService {
 
-  constructor() { }
-	
-  readonly defaultPositions: string[] = ["RKBXQBKR",
-	                                       "PPPPPPPP"];
-	// Settings
-	positions: string[] = this.defaultPositions;
-	whiteComputer: boolean = false;
-	blackComputer: boolean = true;
+  constructor(private settings: ChessSettingsService) { }
 	
 	// Properties, are set in reset
 	board: any[] = [];
@@ -41,8 +35,8 @@ export class ChessGameService {
 		
 		this.board = [];
 		
-		this.white = new Player("white",this, this.whiteComputer);
-		this.black = new Player("black",this, this.blackComputer);
+		this.white = new Player("white",this, this.settings.whiteComputer);
+		this.black = new Player("black",this, this.settings.blackComputer);
 		
 		this.white.enemy = this.black;
 		this.black.enemy = this.white;
@@ -58,8 +52,8 @@ export class ChessGameService {
 	// Sets the board and adds all the pieces
 	setUp(){
 		this.fillBoard();
-		var row1 = this.positions[0] + "_".repeat(8-this.positions[0].length);
-		var row2 = this.positions[1] + "_".repeat(8-this.positions[1].length);
+		var row1 = this.settings.positions[0] + "_".repeat(8-this.settings.positions[0].length);
+		var row2 = this.settings.positions[1] + "_".repeat(8-this.settings.positions[1].length);
 		var row1b = row1.split("").reverse().join(""); // Black rows are mirrored
 		var row2b = row2.split("").reverse().join("");
 		for(var i = 0; i < 8; i++){
@@ -195,45 +189,5 @@ export class ChessGameService {
 				this.board[i][j].clear();
 			}
 		}
-	}
-	
-	// Changes piece layout back to default, and resets the game
-	resetLayout = function(){
-    // TODO: Is this needed?
-    /*
-		$('#pieceRow1').val(this.defaultPositions[0]);
-		$('#pieceRow2').val(this.defaultPositions[1]);
-    */
-		this.settingUpdate();
-	}
-	
-	// Changes piece layout to user input, and resets the game
-	settingUpdate(){
-    // TODO: Is this needed?
-    /*
-		var row1 = $('#pieceRow1').val();
-		var row2 = $('#pieceRow2').val();
-		this.positions = [row1,row2];
-    */
-		this.reset();
-	}
-	
-	// Changes game mode and resets the game
-	changeMode(mode: number){
-		switch(mode){
-		case 0: // Player vs computer
-			this.whiteComputer = false;
-			this.blackComputer = true;
-			break;
-		case 1: // Local multiplayer
-			this.whiteComputer = false;
-			this.blackComputer = false;
-			break;
-		case 2: // Computer vs computer
-			this.whiteComputer = true;
-			this.blackComputer = true;
-			break;
-		}
-		this.reset();
 	}
 }
