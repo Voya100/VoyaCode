@@ -60,10 +60,6 @@ export abstract class Piece{
 			this.tile.piece.die(200,300);
 		}
 		this.tile.piece = this;
-		if(this.type == "pawn" && (y == 0 || y == 7)){ // Promotion
-			this.die();
-			this.player.game.addPiece(this.tile.x,this.tile.y,this.player,"Q")
-		}
 		var gameId = this.player.game.gameId;
 		setTimeout(() =>{
 			this.player.game.changeTurn(gameId);

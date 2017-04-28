@@ -49,4 +49,16 @@ export class Pawn extends Piece{
 		}
 		this.addTiles();
 	}
+
+	move(x: number, y: number){
+		super.move(x, y);
+		// Promotion
+		if(y == 0 || y == 7){
+			setTimeout(() => {
+			this.die();
+			this.player.game.addPiece(this.tile.x,this.tile.y,this.player,"Q");
+			},500)
+		}
+	}
+
 }

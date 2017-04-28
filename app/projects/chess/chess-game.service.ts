@@ -125,7 +125,6 @@ export class ChessGameService {
 		player.addPiece(piece);
 		this.board[y][x].piece = piece;
 		var id = player.color + player.pieceId;
-		//Promotion (TODO?)
 	}
 
 	
