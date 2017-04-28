@@ -1,10 +1,10 @@
 <div class="side-menu interface">
   <table>
     <tr><td colspan="2"><b>Game stats</b></td></tr>
-      <tr><td colspan="2" id="turn">White's turn</td></tr>
-      <tr><td>Round:</td><td><span id="round-count">1</span></td></tr>
-      <tr><td>White:</td><td><span id="white-count">16</span> pieces</td></tr>
-      <tr><td>Black:</td><td><span id="black-count">16</span> pieces</td></tr>
+      <tr><td colspan="2" id="turn">{{activePlayerColor()}}'s turn</td></tr>
+      <tr><td>Round:</td><td>{{game.round}}</td></tr>
+      <tr><td>White:</td><td>{{game.white?.pieces.length}} pieces</td></tr>
+      <tr><td>Black:</td><td>{{game.black?.pieces.length}} pieces</td></tr>
   </table>
   <li class='play-again' title='Resets the game.'>Reset game</li>
   <li class='game-mode-button' title='Choose game mode.'>Game mode</li>

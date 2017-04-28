@@ -49,12 +49,7 @@ export class ChessGameService {
 		
 		this.activePlayer = this.white;
 		this.round = 1;
-    // TODO remove old pieces and remove highlights (?)
-		if(this.gameId > 1){ // Don't close interface when game is launched
-			//this.interfaces.closeInterfaces();
-		}
 		this.setUp();
-		this.updateStats();
 		this.gameActive = true;
 		this.turn = true;
 		this.computerCheck();
@@ -126,13 +121,6 @@ export class ChessGameService {
 		this.board[y][x].piece = piece;
 		var id = player.color + player.pieceId;
 	}
-
-	
-	// Update side interface
-	updateStats(){
-    // TODO: Remove this
-		//this.interfaces.updateStats(this.activePlayer.color,this.round,this.white.pieces.length,this.black.pieces.length);
-	}
 	
 	makeTurn(tile: Tile){
 		if(this.turn){
@@ -175,7 +163,6 @@ export class ChessGameService {
 			if(this.activePlayer.color == "white"){
 				this.round += 1;
 			}
-			this.updateStats();
 			this.computerCheck(); // Computer's possible move
 		}
 	}
