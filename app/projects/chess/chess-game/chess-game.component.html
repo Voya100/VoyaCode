@@ -1,4 +1,4 @@
-<div class="side-menu interface">
+<section class="side-menu interface">
   <table>
     <tr><td colspan="2"><b>Game stats</b></td></tr>
       <tr><td colspan="2" id="turn">{{activePlayerColor()}}'s turn</td></tr>
@@ -6,25 +6,15 @@
       <tr><td>White:</td><td>{{game.white?.pieces.length}} pieces</td></tr>
       <tr><td>Black:</td><td>{{game.black?.pieces.length}} pieces</td></tr>
   </table>
-  <li class='play-again' title='Resets the game.'>Reset game</li>
+  <li class='play-again' title='Resets the game.' (click)="reset()">Reset game</li>
   <li class='game-mode-button' title='Choose game mode.' (click)="switchDialog('chooseMode')">Game mode</li>
   <li class='settings-button' title='Change piece layout.' (click)="switchDialog('settings')">Settings</li>
   <li class='instructions-button' title='Read the instructions.'>Instructions</li>
-</div>
-<div class='container'>
+</section>
 
+<section class='container'>
     <router-outlet></router-outlet>
-
-
     <chess-settings *ngIf="visibleDialog == 'settings'" (close)="visibleDialog = ''"></chess-settings>
-
     <chess-choose-mode *ngIf="visibleDialog == 'chooseMode'" (close)="visibleDialog = ''"></chess-choose-mode>
-
-    <div id="win-screen" class="interface" *ngIf="false">
-        <h1 id="win-message">White wins!</h1>
-        <li class="play-again">Play again</li>
-        <li class='game-mode-button' title='Choose game mode.'>Switch game mode</li>
-        <li class='settings-button' title='Change piece layout.'>Change settings</li>
-    </div>
-
-</div>
+    <chess-winner-dialog *ngIf="visibleDialog == '' && game.winner != null" (switchDialogEvent)="switchDialog($event)"></chess-winner-dialog>
+</section>

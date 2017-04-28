@@ -14,12 +14,13 @@ import { ChessSettingsService } from './chess-settings.service';
 import { ChessSettingsComponent } from './chess-game/chess-settings/chess-settings.component';
 import { FormsModule } from '@angular/forms';
 import { ChessChooseModeComponent } from './chess-game/chess-choose-mode/chess-choose-mode.component';
+import { ChessWinnerDialogComponent } from './chess-game/chess-winner-dialog/chess-winner-dialog.component';
 
 @NgModule({
   imports: [routing, SharedModule, CommonModule, FormsModule],
   exports: [],
   declarations: [ChessComponent, ChessGameComponent, ChessBoardComponent, ChessInstructionsComponent, 
-                ChessSettingsComponent, ChessChooseModeComponent],
+                ChessSettingsComponent, ChessChooseModeComponent, ChessWinnerDialogComponent],
   providers: [ChessGameService, ChessSettingsService],
 })
 export class ChessModule { }

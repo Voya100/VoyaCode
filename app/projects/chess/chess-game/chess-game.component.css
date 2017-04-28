@@ -11,7 +11,7 @@
   display: table;
   clear: both; }
 
-#win-screen, chess-settings, chess-choose-mode {
+chess-settings, chess-choose-mode, chess-winner-dialog {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -60,7 +60,7 @@
   padding-right: 6px;
   margin-right: -3px; }
 
-#win-screen, chess-settings, chess-choose-mode {
+chess-settings, chess-choose-mode, chess-winner-dialog {
   position: absolute;
   max-width: 90%;
   max-height: 90%;
@@ -71,9 +71,6 @@
   border-radius: 5px;
   text-align: center;
   z-index: 10; }
-
-#win-screen, #instructions-screen {
-  display: none; }
 
 #instructions-screen {
   width: 640px;
@@ -95,13 +92,5 @@
 
 #instructions-screen table td:first-child {
   vertical-align: top; }
-
-.close-button {
-  position: absolute;
-  right: 0px;
-  border-left: 3px solid gray;
-  border-bottom: 3px solid gray;
-  padding: 2px;
-  background: #eeeeee; }
 
 /*# sourceMappingURL=chess-game.component.css.map */

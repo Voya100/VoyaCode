@@ -26,7 +26,7 @@ export class ChessGameService {
 	round: number;
 	gameId = 0;
 	activePlayer: Player;
-
+	winner: Player;
 	
 	reset(){
 		this.gameActive = false;
@@ -42,6 +42,8 @@ export class ChessGameService {
 		this.black.enemy = this.white;
 		
 		this.activePlayer = this.white;
+		this.winner = null;
+
 		this.round = 1;
 		this.setUp();
 		this.gameActive = true;
@@ -135,13 +137,8 @@ export class ChessGameService {
 	}
 	
   gameOver(loser: Player){
-		var winner = loser.enemy;
+		this.winner = loser.enemy;
 		this.gameActive = false;
-    // TODO: show win message
-    /*
-		interfaces.changeText("win_message",winner.color.capitalize() + " wins!");
-		interfaces.open("win_screen");
-    */
 	}
 	
 	// Changes turn and does situation checks one a turn has ended

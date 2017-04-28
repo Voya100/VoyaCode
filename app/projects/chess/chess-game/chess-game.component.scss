@@ -29,7 +29,7 @@
   margin-right:-3px; // Counters space taken by container's border
 }
 
-#win-screen, chess-settings, chess-choose-mode{
+chess-settings, chess-choose-mode, chess-winner-dialog{
   @extend %absolute-center;
   position: absolute;
   max-width: 90%;
@@ -41,9 +41,6 @@
   border-radius: 5px;
   text-align: center;
   z-index: 10;
-}
-#win-screen,  #instructions-screen{
-display:none;
 }
 
 #instructions-screen{
@@ -66,13 +63,4 @@ text-align:left;
 }
 #instructions-screen table td:first-child{
 vertical-align:top;
-}
-
-.close-button{
-position:absolute;
-right:0px;
-border-left:3px solid gray;
-border-bottom:3px solid gray;
-padding:2px;
-background:#eeeeee;
 }
