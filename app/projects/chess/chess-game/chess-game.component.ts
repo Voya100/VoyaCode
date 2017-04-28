@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, trigger, state, transition, animate, style } from '@angular/core';
 import { ChessGameService } from '../chess-game.service';
 import { ChessSettingsService } from '../chess-settings.service';
 
 @Component({
     selector: 'chess-game',
     templateUrl: 'chess-game.component.html',
-    styleUrls: ['chess-game.component.css']
+    styleUrls: ['chess-game.component.css'],
+    animations: [
+        trigger('fadeIn', [
+            state('true', style({ opacity: 1 })),
+            state('void', style({ opacity: 0 })),
+            transition('* => *', animate('300ms'))
+        ])
+    ]
 })
 export class ChessGameComponent implements OnInit {
 

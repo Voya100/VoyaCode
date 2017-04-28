@@ -14,7 +14,7 @@
 
 <section class='container'>
     <router-outlet></router-outlet>
-    <chess-settings *ngIf="visibleDialog == 'settings'" (close)="visibleDialog = ''"></chess-settings>
-    <chess-choose-mode *ngIf="visibleDialog == 'chooseMode'" (close)="visibleDialog = ''"></chess-choose-mode>
-    <chess-winner-dialog *ngIf="visibleDialog == '' && game.winner != null" (switchDialogEvent)="switchDialog($event)"></chess-winner-dialog>
+    <chess-settings *ngIf="visibleDialog == 'settings'" (close)="switchDialog('')" [@fadeIn]></chess-settings>
+    <chess-choose-mode *ngIf="visibleDialog == 'chooseMode'" (close)="switchDialog('')" [@fadeIn]></chess-choose-mode>
+    <chess-winner-dialog *ngIf="visibleDialog == '' && game.winner != null" (switchDialogEvent)="switchDialog($event)" [@fadeIn]></chess-winner-dialog>
 </section>

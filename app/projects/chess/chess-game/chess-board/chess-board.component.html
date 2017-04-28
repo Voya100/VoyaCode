@@ -5,10 +5,10 @@
 </section>
 
 <section id="pieces">
-  <div *ngFor="let piece of game.white.pieces" [style.top]="pieceTopLocation(piece)" [style.left]="pieceLeftLocation(piece)" [@fadeIn]="">
+  <div *ngFor="let piece of game.white.pieces" [style.top]="pieceTopLocation(piece)" [style.left]="pieceLeftLocation(piece)" [@fadeIn]>
     <img [src]="pieceImageUrl(piece)">
   </div>
-  <div *ngFor="let piece of game.black.pieces" [style.top]="pieceTopLocation(piece)" [style.left]="pieceLeftLocation(piece)" [@fadeIn]="">
+  <div *ngFor="let piece of game.black.pieces" [style.top]="pieceTopLocation(piece)" [style.left]="pieceLeftLocation(piece)" [@fadeIn]>
     <img [src]="pieceImageUrl(piece)">
   </div>
 </section>
