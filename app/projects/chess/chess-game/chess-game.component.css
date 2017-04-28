@@ -11,6 +11,30 @@
   display: table;
   clear: both; }
 
+#win-screen, chess-settings, #game-mode-screen {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%); }
+
+.interface {
+  z-index: 10;
+  font-family: "Times New Roman", serif, Times;
+  box-sizing: border-box; }
+
+.interface li {
+  background: #eeeeee;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Helvetica, Verdana, sans-serif;
+  height: 16px;
+  margin: 6px;
+  padding: 0.4em;
+  font-size: 90%;
+  list-style-type: none;
+  text-align: center; }
+
 :host {
   display: block;
   border: 2px solid black;
@@ -36,31 +60,20 @@
   padding-right: 6px;
   margin-right: -3px; }
 
-#win-screen, #settings-screen, #game-mode-screen {
+#win-screen, chess-settings, #game-mode-screen {
+  position: absolute;
+  max-width: 90%;
+  max-height: 90%;
   width: 320px;
   height: 240px;
-  position: absolute;
   background: silver;
-  left: 160px;
-  top: 160px;
   border: 5px solid gray;
   border-radius: 5px;
-  text-align: center; }
+  text-align: center;
+  z-index: 10; }
 
-#win-screen, #settings-screen, #instructions-screen {
+#win-screen, #instructions-screen {
   display: none; }
-
-#settings-screen table {
-  margin: auto; }
-
-#settings-screen h1 {
-  margin: 7px 0; }
-
-#settings-screen td {
-  padding: 5px; }
-
-#settings-screen input {
-  font-family: monospace; }
 
 #instructions-screen {
   width: 640px;
@@ -83,24 +96,6 @@
 #instructions-screen table td:first-child {
   vertical-align: top; }
 
-.interface {
-  z-index: 10;
-  font-family: "Times New Roman", serif, Times;
-  box-sizing: border-box; }
-
-.interface li {
-  background: #eeeeee;
-  border: 2px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: Helvetica, Verdana, sans-serif;
-  height: 16px;
-  margin: 6px;
-  padding: 0.4em;
-  font-size: 90%;
-  list-style-type: none;
-  text-align: center; }
-
 .close-button {
   position: absolute;
   right: 0px;
@@ -108,17 +103,5 @@
   border-bottom: 3px solid gray;
   padding: 2px;
   background: #eeeeee; }
-
-.black {
-  background: #9b7b40; }
-
-.white {
-  background: #e6cfaf; }
-
-.highlight {
-  background: orange; }
-
-.movableTile {
-  background: yellow; }
 
 /*# sourceMappingURL=chess-game.component.css.map */

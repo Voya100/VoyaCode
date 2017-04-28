@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChessGameService } from '../chess-game.service';
+import { ChessSettingsService } from '../chess-settings.service';
 
 @Component({
     selector: 'chess-game',
@@ -7,8 +8,10 @@ import { ChessGameService } from '../chess-game.service';
     styleUrls: ['chess-game.component.css']
 })
 export class ChessGameComponent implements OnInit {
+
+    visibleDialog: string = "";
     
-    constructor(public game: ChessGameService) { }
+    constructor(public game: ChessGameService, private settings: ChessSettingsService) { }
 
     ngOnInit() { }
 
@@ -18,7 +21,7 @@ export class ChessGameComponent implements OnInit {
     }
 
     switchGameMode(modeId: number){
-        this.game.changeMode(modeId);
+        this.settings.changeMode(modeId);
         this.reset();
     }
 

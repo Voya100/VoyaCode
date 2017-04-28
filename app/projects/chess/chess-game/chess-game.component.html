@@ -8,7 +8,7 @@
   </table>
   <li class='play-again' title='Resets the game.'>Reset game</li>
   <li class='game-mode-button' title='Choose game mode.'>Game mode</li>
-  <li class='settings-button' title='Change piece layout.'>Settings</li>
+  <li class='settings-button' title='Change piece layout.' (click)="visibleDialog = 'settings'">Settings</li>
   <li class='instructions-button' title='Read the instructions.'>Instructions</li>
 </div>
 <div class='container'>
@@ -22,21 +22,7 @@
         <li id="computer-vs-computer" title="Watch while computer AIs try to annihilate each other.">Computer vs computer</li>
     </div>
 
-    <div id="settings-screen" class="interface" *ngIf="false">
-        <h1>Settings</h1>
-        Change piece layout<br>
-        <form autocomplete="off">
-            <table>
-                <tr><td>Row 1: <input type='text' id='pieceRow1' maxlength='8' size='8' value='RKBXQBKR'>
-                    <td rowspan='2'>P: Pawn<br>R: Rook<br>X: King</td>
-                    <td rowspan='2'>K: Knight<br>B: Bishop<br>Q: Queen</td>
-                </tr>
-                <tr><td>Row 2: <input type='text' id='pieceRow2' maxlength='8' size='8' value='PPPPPPPP'>
-            </table>
-        </form>
-        <li id="save-settings" title='Changing settings will reset the game.'>Save settings</li>
-        <li id="reset-layout" title='Puts pieces to their original places and resets the game.'>Reset layout</li>
-    </div>
+    <chess-settings *ngIf="visibleDialog == 'settings'" (close)="visibleDialog = ''"></chess-settings>
 
     <div id="win-screen" class="interface" *ngIf="false">
         <h1 id="win-message">White wins!</h1>
