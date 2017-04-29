@@ -9,12 +9,13 @@
   <li class='play-again' title='Resets the game.' (click)="reset()">Reset game</li>
   <li class='game-mode-button' title='Choose game mode.' (click)="switchDialog('chooseMode')">Game mode</li>
   <li class='settings-button' title='Change piece layout.' (click)="switchDialog('settings')">Settings</li>
-  <li class='instructions-button' title='Read the instructions.'>Instructions</li>
+  <li class='instructions-button' title='Read the instructions.' (click)="switchDialog('instructions')">Instructions</li>
 </section>
 
 <section class='container'>
     <router-outlet></router-outlet>
-    <chess-settings *ngIf="visibleDialog == 'settings'" (close)="switchDialog('')" [@fadeIn]></chess-settings>
     <chess-choose-mode *ngIf="visibleDialog == 'chooseMode'" (close)="switchDialog('')" [@fadeIn]></chess-choose-mode>
+    <chess-settings *ngIf="visibleDialog == 'settings'" (close)="switchDialog('')" [@fadeIn]></chess-settings>
+    <chess-instructions *ngIf="visibleDialog == 'instructions'" (close)="switchDialog('')" [@fadeIn]></chess-instructions>
     <chess-winner-dialog *ngIf="visibleDialog == '' && game.winner != null" (switchDialogEvent)="switchDialog($event)" [@fadeIn]></chess-winner-dialog>
 </section>

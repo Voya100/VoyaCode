@@ -29,7 +29,7 @@
   margin-right:-3px; // Counters space taken by container's border
 }
 
-chess-settings, chess-choose-mode, chess-winner-dialog{
+chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog{
   @extend %absolute-center;
   position: absolute;
   max-width: 90%;
@@ -39,6 +39,11 @@ chess-settings, chess-choose-mode, chess-winner-dialog{
   border-radius: 5px;
   text-align: center;
   z-index: 10;
+}
+
+chess-instructions{
+  max-width: 98%;
+  max-height: 98%;
 }
 
 #instructions-screen{
@@ -51,14 +56,4 @@ top:0px;
 border: 5px solid gray;
 border-radius: 5px;
 text-align: center;
-}
-#instructions-screen img{
-width:50px;
-height:50px;
-}
-#instructions-screen table td{
-text-align:left;
-}
-#instructions-screen table td:first-child{
-vertical-align:top;
 }

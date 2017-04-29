@@ -11,7 +11,7 @@
   display: table;
   clear: both; }
 
-chess-settings, chess-choose-mode, chess-winner-dialog {
+chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -60,7 +60,7 @@ chess-settings, chess-choose-mode, chess-winner-dialog {
   padding-right: 6px;
   margin-right: -3px; }
 
-chess-settings, chess-choose-mode, chess-winner-dialog {
+chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog {
   position: absolute;
   max-width: 90%;
   max-height: 90%;
@@ -69,6 +69,10 @@ chess-settings, chess-choose-mode, chess-winner-dialog {
   border-radius: 5px;
   text-align: center;
   z-index: 10; }
+
+chess-instructions {
+  max-width: 98%;
+  max-height: 98%; }
 
 #instructions-screen {
   width: 640px;
@@ -80,15 +84,5 @@ chess-settings, chess-choose-mode, chess-winner-dialog {
   border: 5px solid gray;
   border-radius: 5px;
   text-align: center; }
-
-#instructions-screen img {
-  width: 50px;
-  height: 50px; }
-
-#instructions-screen table td {
-  text-align: left; }
-
-#instructions-screen table td:first-child {
-  vertical-align: top; }
 
 /*# sourceMappingURL=chess-game.component.css.map */
