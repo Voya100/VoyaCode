@@ -10,6 +10,6 @@ export class HumanPlayer extends Player{
 
   // Set's players decision to null (human players choose actions with ui)
   chooseAction(){
-    this.setAction(null, null)
+    this.setAction([null, null])
   }
 }
