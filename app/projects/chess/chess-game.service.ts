@@ -10,6 +10,8 @@ import { Pawn } from './classes/pawn';
 import { Queen } from './classes/queen';
 import { Rook } from './classes/rook';
 import { ChessSettingsService } from './chess-settings.service';
+import { HumanPlayer } from './classes/human-player';
+import { ComputerPlayer } from './classes/computer-player';
 
 
 @Injectable()
@@ -35,8 +37,8 @@ export class ChessGameService {
 		
 		this.board = [];
 		
-		this.white = new Player("white",this, this.settings.whiteComputer);
-		this.black = new Player("black",this, this.settings.blackComputer);
+		this.white = this.settings.whiteComputer ? new ComputerPlayer("white", this) : new HumanPlayer("white", this);
+		this.black = this.settings.blackComputer ? new ComputerPlayer("black", this) : new HumanPlayer("black", this);
 		
 		this.white.enemy = this.black;
 		this.black.enemy = this.white;
@@ -49,7 +51,7 @@ export class ChessGameService {
 		this.gameActive = true;
 		this.turn = true;
 		// Small delay so that ui has time to add pieces before computer starts its moves
-		setTimeout(() => this.computerCheck(), 500);
+		setTimeout(() => this.run(), 500);
 	}
 	
 	// Sets the board and adds all the pieces
@@ -119,22 +121,24 @@ export class ChessGameService {
 		var id = player.color + player.pieceId;
 	}
 	
-	makeTurn(tile: Tile){
-		if(this.turn){
-			tile.select(this.activePlayer);
+	// Plays a round, if possible (player must be computer)
+	run(){
+		if(this.gameActive && this.turn){
+			this.activePlayer.chooseAction();
+			let choice = this.activePlayer.getAction();
+			this.makeTurn(choice[0], choice[1]);
 		}
 	}
+
 	
-	// Checks if computer should make a move, and makes the move
-	computerCheck(){
-		if(this.activePlayer.computer && this.gameActive && this.turn){ //&& !this.interfaces.screenOpen()){
-			var choice = this.activePlayer.chooseTarget();
-			var piece = choice[0];
-			var tile = choice[1];
-			console.log(piece,tile);
-			this.makeTurn(piece.tile);
-			this.makeTurn(tile);
+	// Makes a turn, if action has been decided 
+	// (is used only by computer to simulate player's clicks)
+	makeTurn(piece: any, tile: any){
+		if(piece == null || tile == null){
+			return;
 		}
+		piece.tile.select(this.activePlayer);
+		tile.select(this.activePlayer);
 	}
 	
   gameOver(loser: Player){
@@ -142,7 +146,7 @@ export class ChessGameService {
 		this.gameActive = false;
 	}
 	
-	// Changes turn and does situation checks one a turn has ended
+	// Changes turn and does situation checks once a turn has ended
 	changeTurn(gameId: number){
 		if(gameId == this.gameId){ // Make sure the game hasn't been reset
 			this.clearTiles();
@@ -155,7 +159,7 @@ export class ChessGameService {
 			if(this.activePlayer.color == "white"){
 				this.round += 1;
 			}
-			this.computerCheck(); // Computer's possible move
+			this.run();
 		}
 	}
 	
