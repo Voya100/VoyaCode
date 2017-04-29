@@ -48,7 +48,8 @@ export class ChessGameService {
 		this.setUp();
 		this.gameActive = true;
 		this.turn = true;
-		this.computerCheck();
+		// Small delay so that ui has time to add pieces before computer starts its moves
+		setTimeout(() => this.computerCheck(), 500);
 	}
 	
 	// Sets the board and adds all the pieces
