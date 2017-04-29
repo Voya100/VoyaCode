@@ -3,6 +3,7 @@ import { ChessGameService } from '../../chess-game.service';
 import { Tile } from '../../classes/tile';
 import { Piece } from '../../classes/piece';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ChessSettingsService } from '../../chess-settings.service';
 
 const whiteTileColor = "#e6cfaf";
 const blackTileColor = "#9b7b40";
@@ -23,12 +24,14 @@ const movableTileColor = "yellow";
 })
 export class ChessBoardComponent {
 
-    constructor(public game: ChessGameService){
+    constructor(public game: ChessGameService, public settings: ChessSettingsService){
         game.reset();
-        console.log(game);
     }
 
-    tileColor(tile: Tile){
+    // Returns color of the tile in tilePosition
+    tileColor(tilePosition: number[]){
+        let tile = this.game.board[tilePosition[1]][tilePosition[0]];
+        
         if(tile.highlighted()){
             return highlightTileColor;
         }else if(tile.markedMovable()){
@@ -38,12 +41,21 @@ export class ChessBoardComponent {
         }
     }
 
+    // Distance from top side of the board (in percentages)
     pieceTopLocation(piece: Piece){
-        return this.coordinateToPercentage(piece.tile.y);
+        if(!this.settings.boardReversed){
+            return this.coordinateToPercentage(piece.tile.y);
+        }else{
+            return this.coordinateToPercentage(piece.tile.x);
+        }
     }
-
+    // Distance from left side of the board (in percentages)
     pieceLeftLocation(piece: Piece){
-        return this.coordinateToPercentage(piece.tile.x);
+        if(!this.settings.boardReversed){
+            return this.coordinateToPercentage(piece.tile.x);
+        }else{
+            return this.coordinateToPercentage(this.settings.boardSize - 1 - piece.tile.y);
+        }
     }
 
     pieceImageUrl(piece: Piece){
@@ -54,7 +66,8 @@ export class ChessBoardComponent {
         return (coordinate * 12.5) + "%";
     }
 
-    selectTile(tile: Tile){
+    selectTile(tilePosition: number[]){
+        let tile = this.game.board[tilePosition[1]][tilePosition[0]];
         tile.select(this.game.activePlayer);
     }
 

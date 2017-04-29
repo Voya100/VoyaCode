@@ -11,8 +11,15 @@ export class ChessSettingsService {
 	positions: string[] = this.defaultPositions;
 	whiteComputer: boolean = false;
 	blackComputer: boolean = true;
+  boardReversed: boolean = false;
 
-  constructor() { }
+	// Contains tile positions on the interface
+	// boardTilePositions[y][x][tile.x, tile.y]
+  boardTilePositions: number[][][];
+
+  constructor() { 
+		this.changeReversed(false);
+  }
 
 	// Changes game mode
 	changeMode(mode: number){
@@ -36,4 +43,16 @@ export class ChessSettingsService {
 	resetPositions(){
     this.positions = this.defaultPositions;
 	}
+
+	// Sets template for tile positions used by ChessBoardComponent
+  changeReversed(reversed: boolean){
+    this.boardReversed = reversed;
+
+		if(reversed){
+			this.boardTilePositions = Array(this.boardSize).fill(1).map((x,j) => Array(this.boardSize).fill(1).map((x,i) => [j, 7-i]));
+		}else{
+			this.boardTilePositions = Array(this.boardSize).fill(1).map((x,j) => Array(this.boardSize).fill(1).map((x,i) => [i, j]));
+		}
+		console.log(this.boardTilePositions);
+  }
 }

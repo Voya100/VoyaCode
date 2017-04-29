@@ -18,7 +18,7 @@ export class ChessGameService {
   constructor(private settings: ChessSettingsService) { }
 	
 	// Properties, are set in reset
-	board: any[] = [];
+	board: Tile[][] = [];
 	white: Player;
 	black: Player;
 	gameActive: boolean = false;
