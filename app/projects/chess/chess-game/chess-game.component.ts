@@ -24,6 +24,7 @@ export class ChessGameComponent implements OnInit {
 
     
     reset(){
+        this.visibleDialog = '';
         this.game.reset();
     }
 
