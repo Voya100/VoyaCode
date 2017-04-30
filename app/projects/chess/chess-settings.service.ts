@@ -38,6 +38,10 @@ export class ChessSettingsService {
 			break;
 		}
 	}
+
+	setPositions(topRow: string, bottomRow: string){
+		this.positions = [bottomRow, topRow];
+	}
   
 	// Changes piece layout back to default
 	resetPositions(){

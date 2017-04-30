@@ -23,8 +23,7 @@ export class ChessSettingsComponent {
     }
 
     saveSettings(){
-        this.settings.positions[0] = this.upperRow;
-        this.settings.positions[1] = this.lowerRow;
+        this.settings.setPositions(this.upperRow, this.lowerRow);
         if(this.boardReversed != this.settings.boardReversed){
             this.settings.changeReversed(this.boardReversed);
         }
