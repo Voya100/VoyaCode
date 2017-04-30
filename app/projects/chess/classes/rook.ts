@@ -6,10 +6,17 @@ export class Rook extends Piece{
 
   type: string = "rook";
   value: number = 5;
+	hasMoved: boolean = false;
 
   constructor(player: Player, tile: Tile){
     super(player, tile);
   }
+
+	
+	move(x: number, y: number, changeTurn: boolean = true){
+		super.move(x, y, changeTurn);
+		this.hasMoved = true;
+	}
 
 	tileCheck(){
 		this.clearTiles();

@@ -57,22 +57,8 @@ export class ChessGameService {
 	// Sets the board and adds all the pieces
 	setUp(){
 		this.fillBoard();
-		var row1 = this.settings.positions[0] + "_".repeat(8-this.settings.positions[0].length);
-		var row2 = this.settings.positions[1] + "_".repeat(8-this.settings.positions[1].length);
-		var row1b = row1.split("").reverse().join(""); // Black rows are mirrored
-		var row2b = row2.split("").reverse().join("");
-		for(var i = 0; i < 8; i++){
-			this.addPiece(i,7,this.white,row1[i]);
-			this.addPiece(i,0,this.black,row1b[i]);
-			this.addPiece(i,6,this.white,row2[i]);
-			this.addPiece(i,1,this.black,row2b[i]);
-		}
-
-		this.clearTiles();
-		this.white.checkAllTiles();
-		this.black.checkAllTiles();
-		this.white.findKingProtectors();
-		this.black.findKingProtectors();
+		this.addPieces();
+		this.doTileChecks();
 		this.turn = true;
 	}
 
@@ -87,6 +73,18 @@ export class ChessGameService {
 		}
 	}
 	
+	addPieces(){
+		var row1 = this.settings.positions[0] + "_".repeat(8-this.settings.positions[0].length);
+		var row2 = this.settings.positions[1] + "_".repeat(8-this.settings.positions[1].length);
+		var row1b = row1.split("").reverse().join(""); // Black rows are mirrored
+		var row2b = row2.split("").reverse().join("");
+		for(var i = 0; i < 8; i++){
+			this.addPiece(i,7,this.white,row1[i]);
+			this.addPiece(i,0,this.black,row1b[i]);
+			this.addPiece(i,6,this.white,row2[i]);
+			this.addPiece(i,1,this.black,row2b[i]);
+		}
+	}
 	
 	// Adds piece to the board
 	addPiece(x: number, y: number, player: Player, type: string){
@@ -120,6 +118,28 @@ export class ChessGameService {
 		this.board[y][x].piece = piece;
 		var id = player.color + player.pieceId;
 	}
+
+	doTileChecks(){
+		this.clearTiles();
+		// Looks all possible moves
+		this.white.checkAllTiles();
+		this.black.checkAllTiles();
+		// Looks all possible castling moves
+		this.white.checkCastlingMoves();
+		this.black.checkCastlingMoves();
+		// Checks which pieces are protecting their kings (used by AI)
+		this.white.findKingProtectors();
+		this.black.findKingProtectors();
+	}
+	
+	// Removes move information from all tiles (done before adding new move information)
+	clearTiles(){
+		for(var i = 0; i < 8; i++){
+			for(var j = 0; j < 8; j++){
+				this.board[i][j].clear();
+			}
+		}
+	}
 	
 	// Plays a round, if possible (player must be computer)
 	run(){
@@ -149,11 +169,7 @@ export class ChessGameService {
 	// Changes turn and does situation checks once a turn has ended
 	changeTurn(gameId: number){
 		if(gameId == this.gameId){ // Make sure the game hasn't been reset
-			this.clearTiles();
-			this.white.checkAllTiles();
-			this.black.checkAllTiles();
-			this.white.findKingProtectors();
-			this.black.findKingProtectors();
+			this.doTileChecks();
 			this.activePlayer = this.activePlayer.enemy;
 			this.turn = true;
 			if(this.activePlayer.color == "white"){
@@ -184,12 +200,4 @@ export class ChessGameService {
 		return tile;
 	}
 	
-	// Removes move information from all tiles (done before adding new ones)
-	clearTiles(){
-		for(var i = 0; i < 8; i++){
-			for(var j = 0; j < 8; j++){
-				this.board[i][j].clear();
-			}
-		}
-	}
 }

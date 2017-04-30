@@ -3,18 +3,23 @@ import { ChessGameService } from '../chess-game.service';
 import { Piece } from './piece';
 import { Tile } from './tile';
 import * as _ from 'underscore';
+import { Pawn } from './pawn';
+import { Knight } from './knight';
+import { Bishop } from './bishop';
+import { Rook } from './rook';
+import { Queen } from './queen';
 
 export abstract class Player{
 	color: string;
 	game: ChessGameService;
 	pieceId: number = 0;
 	pieces: Piece[] = [];
-	kings: Piece[] = [];
-	queens: Piece[] = [];
-	rooks: Piece[] = [];
-	bishops: Piece[] = [];
-	knights: Piece[] = [];
-	pawns: Piece[] = [];
+	kings: King[] = [];
+	queens: Queen[] = [];
+	rooks: Rook[] = [];
+	bishops: Bishop[] = [];
+	knights: Knight[] = [];
+	pawns: Pawn[] = [];
 	pieceCount(): number{return this.pieces.length};
 	kingCount(): number{return this.kings.length};
 
@@ -71,6 +76,12 @@ export abstract class Player{
 	findKingProtectors(){
 		for(var i = 0; i < this.pieceCount(); i++){
 			this.pieces[i].protectsKing = this.pieces[i].tile.protectsKing(this);
+		}
+	}
+
+	checkCastlingMoves(){
+		for(let i = 0; i < this.kingCount(); i++){
+			this.kings[i].castlingCheck();
 		}
 	}
 	
