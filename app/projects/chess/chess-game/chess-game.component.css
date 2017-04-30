@@ -74,15 +74,4 @@ chess-instructions {
   max-width: 98%;
   max-height: 98%; }
 
-#instructions-screen {
-  width: 640px;
-  height: 640px;
-  position: absolute;
-  background: silver;
-  left: 0px;
-  top: 0px;
-  border: 5px solid gray;
-  border-radius: 5px;
-  text-align: center; }
-
 /*# sourceMappingURL=chess-game.component.css.map */
