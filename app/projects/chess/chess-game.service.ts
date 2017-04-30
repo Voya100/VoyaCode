@@ -171,10 +171,14 @@ export class ChessGameService {
 		if(gameId == this.gameId){ // Make sure the game hasn't been reset
 			this.doTileChecks();
 			this.activePlayer = this.activePlayer.enemy;
-			this.turn = true;
 			if(this.activePlayer.color == "white"){
 				this.round += 1;
 			}
+			if(this.activePlayer.moveTiles.length == 0){
+				this.gameOver(this.activePlayer);
+				return;
+			}
+			this.turn = true;
 			this.run();
 		}
 	}
