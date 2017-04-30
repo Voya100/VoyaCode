@@ -8,12 +8,12 @@ export class Tile{
 
 	static highligtedTile: Tile = null;
 	static highlightedMovableTiles: Tile[] = [];
+	static board: Tile[][];
 
   x: number;
   y: number;
   game: ChessGameService;
   piece: Piece;
-  board: any[];
 
 	whites: Piece[] = []; // Whites who can move to the tile
 	whiteHits: Piece[] = []; // Whites who could hit the tile, if there was an enemy
@@ -25,9 +25,12 @@ export class Tile{
     this.x = x;
     this.y = y;
     this.game = game;
-    this.board = game.board;
+    Tile.board = game.board;
   }
 
+	static tileExists(x: number, y: number): boolean{
+		return 0 <= y && y < Tile.board.length && 0 <= x && x < Tile.board[y].length;
+	}
 	
 	//User clicks on the tile
 	select(player: Player){
@@ -83,9 +86,14 @@ export class Tile{
 		return _.contains(Tile.highlightedMovableTiles, this);
 	}
 
-	// True if this tile has a piece with same color as piece given by parameter
+	// True if this tile has a piece with same color as piece/player given by parameter
 	isFriend(piece: Piece | Player){
 		return !this.empty() && this.piece.color == piece.color; 
+	}
+
+	// True if this tile has a piece with same color as piece/player given by parameter
+	isEnemy(piece: Piece | Player){
+		return !this.empty() && this.piece.color != piece.color
 	}
 	
 	// Tells if piece on this tile is preventing enemy from going to target tile
@@ -281,7 +289,7 @@ export class Tile{
 		var y = this.y;
 		for(var i = 1; i < count+1; i++){
 			if(x + x_add*i < 8 && x + x_add*i >= 0 && y + y_add*i < 8 && y + y_add*i >= 0){
-				var tile = this.board[y + y_add*i][x + x_add*i];
+				var tile = Tile.board[y + y_add*i][x + x_add*i];
 				tiles.push(tile);
 				if(!tile.empty()){
 					break;
