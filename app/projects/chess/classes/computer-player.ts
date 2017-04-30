@@ -31,7 +31,7 @@ export class ComputerPlayer extends Player{
 
   chooseAction(){
     this.chooseTarget();
-    console.log(this.pieceDecision, this.tileDecision);
+    console.log(this.pieceDecision, this.pieceDecision.tile, this.tileDecision);
   }
 
   actionDecided(){
@@ -59,32 +59,35 @@ export class ComputerPlayer extends Player{
 		// 1. Kill the enemy king, if possible
     this.tryToKillTheKing();
     if(this.actionDecided()){
+			console.log("1. Kill the king");
       return;
     }
 		
 		// 2. Protect the kings (if in danger)
 		this.protectTheKings();
     if(this.actionDecided()){
+			console.log("2. Protect the king");
       return;
     }
 		
 		//3. Approach the enemy king (hitting distance, if safe)
     this.tryToGetCloseToEnemyKing();
 		if(this.actionDecided()){
+			console.log("3. Approach enemy king");
       return;
     }
 		
 		// 4. Kill enemy or move to safety, if risk is negative. 
-		console.log("4. Kill enemy or move to safety");
     this.tryToMakeARisklessMove();
 		if(this.actionDecided()){
+			console.log("4. Kill enemy or move to safety");
       return;
     }
 		
 		// 5. Approach king from further (go to tiles from which king could be approached in priority 3., if safe)
-		console.log("5. Approach king");
     this.tryToApproachEnemyKing(2);
 		if(this.actionDecided()){
+			console.log("5. Approach king");
       return;
     }
 		
@@ -152,13 +155,15 @@ export class ComputerPlayer extends Player{
   }
 
   protectKing(king: King){
+		this.movePiece = null;
     // 2.1. Move the king, if 2 or more enemies targetting
     if(king.threats.length > 1){
-      console.log("More than 1 threat");
       // More than 1 enemy, king must move (it's impossible to kill/block 2 enemies at the same time)
       this.tryToMovePieceToSafety(king);
+			this.setMoveToDecision();
 
       if(this.actionDecided()){
+				console.log("2.1 Move the king");
         return;
       }
       // If no safe moves, there is no way to safe the king - unless the opponent doesn't notice
@@ -169,7 +174,8 @@ export class ComputerPlayer extends Player{
     this.tryToKillKingsThreat(enemyThreat);
 
     if(this.actionDecided()){
-        return;
+			console.log("2.2 Kill enemy threat");
+      return;
     }
 
     // 2.3 Move king to safety (if killing is too risky)
