@@ -1,0 +1,14 @@
+<section id="board">
+  <div *ngFor="let row of settings.boardTilePositions" class='board-row'>
+    <div *ngFor="let tilePosition of row;" [style.background]="tileColor(tilePosition)" (click)="selectTile(tilePosition)" class='board-tile'></div>
+  </div>
+</section>
+
+<section id="pieces">
+  <div *ngFor="let piece of game.white.pieces" [style.top]="pieceTopLocation(piece)" [style.left]="pieceLeftLocation(piece)" [@fadeIn]>
+    <img [src]="pieceImageUrl(piece)">
+  </div>
+  <div *ngFor="let piece of game.black.pieces" [style.top]="pieceTopLocation(piece)" [style.left]="pieceLeftLocation(piece)" [@fadeIn]>
+    <img [src]="pieceImageUrl(piece)">
+  </div>
+</section>

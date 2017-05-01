@@ -1,0 +1,84 @@
+.interface {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+:host:after {
+  content: '';
+  display: table;
+  clear: both; }
+
+chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%); }
+
+.interface {
+  z-index: 10;
+  font-family: "Times New Roman", serif, Times;
+  box-sizing: border-box; }
+
+.interface li {
+  background: #eeeeee;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Helvetica, Verdana, sans-serif;
+  height: 16px;
+  margin: 6px;
+  padding: 0.4em;
+  font-size: 90%;
+  list-style-type: none;
+  text-align: center; }
+
+:host {
+  display: block;
+  border: 2px solid black;
+  background: silver;
+  margin: auto;
+  max-width: 800px; }
+
+.container {
+  max-width: 640px;
+  width: 80%;
+  padding-top: 80%;
+  background: black;
+  position: relative;
+  float: left;
+  border-left: 3px solid black; }
+
+.side-menu {
+  width: 20%;
+  height: 100%;
+  max-width: 160px;
+  float: left;
+  padding: 3px;
+  padding-right: 6px;
+  margin-right: -3px;
+  font-size: 90%; }
+  @media screen and (max-width: 450px) {
+    .side-menu {
+      font-size: 80%; }
+      .side-menu li {
+        padding: 3px;
+        margin: 3px; } }
+
+chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog {
+  position: absolute;
+  max-width: 90%;
+  max-height: 90%;
+  background: silver;
+  border: 5px solid gray;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 10; }
+
+chess-instructions {
+  max-width: 98%;
+  max-height: 98%; }
+
+/*# sourceMappingURL=chess-game.component.css.map */

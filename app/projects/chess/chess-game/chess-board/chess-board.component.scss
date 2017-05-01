@@ -1,0 +1,38 @@
+$size: 12.5%;
+
+:host, #board, #pieces{
+  display: block;
+  position: absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+}
+
+.board-row{
+  height: $size;
+  width: 100%;
+}
+
+.board-tile, #pieces div{
+  width: $size;
+  height: 100%;
+  float: left;
+}
+
+#pieces{
+  pointer-events:none;
+  z-index:5;
+}
+
+#pieces div{
+  width: $size;
+  height: $size;
+  position: absolute;
+  -webkit-transition: top 0.5s ease-in-out 50ms, left 0.5s ease-in-out 50ms;
+  transition: top 0.5s ease-in-out 50ms, left 0.5s ease-in-out 50ms;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,55 @@
+@import "../chess-variables";
+
+:host{
+  display:block;
+  border: 2px solid black;
+  background:silver;
+  margin:auto;
+  max-width: 800px;
+  @extend %clearfix;
+}
+
+.container{
+  max-width: 640px;
+  width: 80%;
+  padding-top: 80%;
+  background: black;
+  position: relative;
+  float: left;
+  border-left:3px solid black;
+}
+
+.side-menu{
+  width: 20%;
+  height: 100%;
+  max-width: 160px;
+  float: left;
+  padding:3px;
+  padding-right:6px;
+  margin-right:-3px; // Counters space taken by container's border
+  font-size: 90%;
+  @media screen and (max-width: 450px){
+    font-size: 80%;
+    li{
+      padding: 3px;
+      margin: 3px;
+    }
+  }
+}
+
+chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog{
+  @extend %absolute-center;
+  position: absolute;
+  max-width: 90%;
+  max-height: 90%;
+  background: silver;
+  border: 5px solid gray;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 10;
+}
+
+chess-instructions{
+  max-width: 98%;
+  max-height: 98%;
+}

@@ -27,6 +27,13 @@ $header_font: "Times New Roman", serif, Times;
   }
 }
 
+%absolute-center{
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+
 %main-content{
   min-width: $min_width - 16px;
   max-width: $max_width;

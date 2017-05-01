@@ -1,0 +1,22 @@
+@import "../../chess-variables";
+
+:host{
+  width: 320px;
+  height: 280px;
+}
+
+h1{
+  margin: 7px 0;
+}
+
+table{
+  margin:auto;
+}
+
+td{
+  padding:5px;
+}
+
+input{
+  font-family: monospace;
+}
