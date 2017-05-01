@@ -17,8 +17,8 @@ export class ChessSettingsComponent {
     boardReversed: boolean;
 
     constructor(private settings: ChessSettingsService, private game: ChessGameService){
-        this.upperRow = settings.positions[0];
-        this.lowerRow = settings.positions[1];
+        this.upperRow = settings.positions[1];
+        this.lowerRow = settings.positions[0];
         this.boardReversed = settings.boardReversed;
     }
 
