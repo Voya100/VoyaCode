@@ -27,6 +27,14 @@
   padding:3px;
   padding-right:6px;
   margin-right:-3px; // Counters space taken by container's border
+  font-size: 90%;
+  @media screen and (max-width: 450px){
+    font-size: 80%;
+    li{
+      padding: 3px;
+      margin: 3px;
+    }
+  }
 }
 
 chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog{

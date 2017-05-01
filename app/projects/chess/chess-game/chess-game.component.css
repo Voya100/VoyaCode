@@ -58,7 +58,14 @@ chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog {
   float: left;
   padding: 3px;
   padding-right: 6px;
-  margin-right: -3px; }
+  margin-right: -3px;
+  font-size: 90%; }
+  @media screen and (max-width: 450px) {
+    .side-menu {
+      font-size: 80%; }
+      .side-menu li {
+        padding: 3px;
+        margin: 3px; } }
 
 chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog {
   position: absolute;
