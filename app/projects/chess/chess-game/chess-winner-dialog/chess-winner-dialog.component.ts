@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ChessGameService } from '../../chess-game.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ChessGameService } from '../../chess-game.service';
     templateUrl: 'chess-winner-dialog.component.html',
     styleUrls: ['chess-winner-dialog.component.css']
 })
-export class ChessWinnerDialogComponent {
+export class ChessWinnerDialogComponent implements OnDestroy{
     
     // Tells owner to open another dialog
     @Output() switchDialogEvent = new EventEmitter<string>();
@@ -20,6 +20,10 @@ export class ChessWinnerDialogComponent {
 
     switchDialog(dialogName: string){
         this.switchDialogEvent.emit(dialogName);
+        this.game.winner = null;
+    }
+
+    ngOnDestroy(){
         this.game.winner = null;
     }
 }
