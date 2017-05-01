@@ -44,6 +44,12 @@ export class ChessGameComponent implements OnInit {
     // Opens dialog, if not already open. Otherwise closes it.
     switchDialog(dialogName: string){
         this.visibleDialog = this.visibleDialog == dialogName ? "" : dialogName;
+        if(this.visibleDialog == ''){
+            this.game.gamePaused = false;
+            this.game.run();
+        }else{
+            this.game.gamePaused = true;
+        }
     }
 
 }

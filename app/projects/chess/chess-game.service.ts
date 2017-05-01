@@ -24,6 +24,7 @@ export class ChessGameService {
 	white: Player;
 	black: Player;
 	gameActive: boolean = false;
+	gamePaused: boolean = false;
 	turn: boolean;
 	round: number;
 	gameId = 0;
@@ -143,7 +144,7 @@ export class ChessGameService {
 	
 	// Plays a round, if possible (player must be computer)
 	run(){
-		if(this.gameActive && this.turn){
+		if(this.gameActive && this.turn && !this.gamePaused){
 			this.activePlayer.chooseAction();
 			let choice = this.activePlayer.getAction();
 			this.makeTurn(choice[0], choice[1]);

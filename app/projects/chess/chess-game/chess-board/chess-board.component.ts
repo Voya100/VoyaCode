@@ -4,6 +4,7 @@ import { Tile } from '../../classes/tile';
 import { Piece } from '../../classes/piece';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ChessSettingsService } from '../../chess-settings.service';
+import { HumanPlayer } from '../../classes/human-player';
 
 const whiteTileColor = "#e6cfaf";
 const blackTileColor = "#9b7b40";
@@ -72,8 +73,10 @@ export class ChessBoardComponent {
     }
 
     selectTile(tilePosition: number[]){
-        let tile = this.game.board[tilePosition[1]][tilePosition[0]];
-        tile.select(this.game.activePlayer);
+        if(!this.game.gamePaused && this.game.activePlayer instanceof HumanPlayer){
+            let tile = this.game.board[tilePosition[1]][tilePosition[0]];
+            tile.select(this.game.activePlayer);
+        }
     }
 
 

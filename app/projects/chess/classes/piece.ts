@@ -61,7 +61,14 @@ export abstract class Piece{
 			setTimeout(() => this.player.game.changeTurn(gameId), 650);
 		}
 	}
+
 	canMove(tile: Tile){return this.moveTiles.indexOf(tile) != -1;}
+
+	highlightMovableTiles(){
+		for(let i = 0; i < this.moveTiles.length; i++){
+				this.moveTiles[i].highlight(false);
+			}
+	}
 
 	//Checks 1 direction. Stops if an obstacle comes in the way.
 	checkDirection(x_add: number,y_add: number,count: number,roundStart: boolean){

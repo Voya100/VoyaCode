@@ -32,7 +32,7 @@ export class Tile{
 		return 0 <= y && y < Tile.board.length && 0 <= x && x < Tile.board[y].length;
 	}
 	
-	//User clicks on the tile
+	// User clicks on the tile
 	select(player: Player){
 		
 		if(!this.game.gameActive || !this.game.turn){ // || this.game.interfaces.screenOpen()){
@@ -44,10 +44,7 @@ export class Tile{
 			// Chooses the tile, if it's the player's
 			this.highlight(true);
 			player.activePiece = this.piece;
-      // TODO: Remove movable tile
-			for(var i = 0; i < this.piece.moveTiles.length; i++){
-				this.piece.moveTiles[i].highlight(false);
-			}
+			this.piece.highlightMovableTiles();
 		}else if(player.activePiece != null && player.activePiece.canMove(this)){
 			this.game.turn = false;
 			player.activePiece.move(this.x,this.y);
@@ -104,9 +101,9 @@ export class Tile{
 		}
 		
 		if(this.x == targetTile.x){ // They are on same column, threats: rook and queen
-			var y_dir = this.y < targetTile.y ? -1 : 1;
-			for(var y=this.y+y_dir; 0 <= y && y < 8;y+= y_dir){
-				var tile = this.game.board[y][this.x];
+			let y_dir = this.y < targetTile.y ? -1 : 1;
+			for(let y=this.y+y_dir; 0 <= y && y < 8;y+= y_dir){
+				let tile = this.game.board[y][this.x];
 				if(!tile.empty() && tile.piece.color != player.color && (tile.piece.type == 'rook' || tile.piece.type == 'queen')){
 					return true;
 				}else if(!tile.empty()){
@@ -115,9 +112,9 @@ export class Tile{
 			}
 		}
 		if(this.y == targetTile.y){ // They are on same row, threats: rook and queen
-			var x_dir = this.x < targetTile.x ? -1 : 1;
-			for(var x=this.x+x_dir; 0 <= x && x < 8;x+= x_dir){
-				var tile = this.game.board[this.y][x];
+			let x_dir = this.x < targetTile.x ? -1 : 1;
+			for(let x=this.x+x_dir; 0 <= x && x < 8;x+= x_dir){
+				let tile = this.game.board[this.y][x];
 				if(!tile.empty() && tile.piece.color != player.color && (tile.piece.type == 'rook' || tile.piece.type == 'queen')){
 					return true;
 				}else if(!tile.empty()){
@@ -126,11 +123,11 @@ export class Tile{
 			}
 		}
 		if(Math.abs(this.y-targetTile.y) == Math.abs(this.x-targetTile.x)){ // They are diagonal, threats: bishop and queen
-			var x_dir = this.x < targetTile.x ? -1 : 1;
-			var y_dir = this.y < targetTile.y ? -1 : 1;
+			let x_dir = this.x < targetTile.x ? -1 : 1;
+			let y_dir = this.y < targetTile.y ? -1 : 1;
 			
-			for(var x = this.x+x_dir, y = this.y+y_dir;0 <= x && x < 8 && 0 <= y && y < 8; x+= x_dir, y+= y_dir){
-				var tile = this.game.board[y][x];
+			for(let x = this.x+x_dir, y = this.y+y_dir;0 <= x && x < 8 && 0 <= y && y < 8; x+= x_dir, y+= y_dir){
+				let tile = this.game.board[y][x];
 				if(!tile.empty() && tile.piece.color != player.color && (tile.piece.type == 'bishop' || tile.piece.type == 'queen')){
 					return true;
 				}else if(!tile.empty()){
@@ -146,16 +143,16 @@ export class Tile{
 		if(player.kings.length == 0 || (!this.empty() && this.piece.type == 'king')){
 			return false;
 		}
-		var kingTile = player.kings[0].tile;
+		let kingTile = player.kings[0].tile;
 		return this.protectsTile(kingTile,player);
 	}
 	
 	// Evaluates the risk vs reward of moving the piece to this tile. If risk is negative, it's generally worth doing.
 	riskValue(piece: Piece){
-		var risk = 0;
-		var threats = this[piece.player.enemy.color + "Hits"]; // Enemies who can attack tile
-		var friendlies = this[piece.color + "Hits"]; // Player's pieces which can attack the tile, if captured by enemy
-		var piecesThreats = piece.threats(); // Enemies who can attack piece's current location
+		let risk = 0;
+		let threats = this[piece.player.enemy.color + "Hits"]; // Enemies who can attack tile
+		let friendlies = this[piece.color + "Hits"]; // Player's pieces which can attack the tile, if captured by enemy
+		let piecesThreats = piece.threats(); // Enemies who can attack piece's current location
 		
 		// Enemy can hit this tile now, or after moving to it
 		if(threats.length > 0 || piece.tile.protectsTile(this,piece.player)){
@@ -188,14 +185,14 @@ export class Tile{
 		}
 		// Risk is increased, if current tile protects a more valuable tile
 		if(piece.value <= 5){
-			var valuablePieces: any[];
+			let valuablePieces: any[];
 			if(piece.type == 'pawn'){
 				valuablePieces = _.difference(piece.player.pieces,piece.player.pawns);
 			}else{
 				valuablePieces = piece.player.queens;
 			}
-			for(var i=0;i<valuablePieces.length;i++){
-				var valPiece = valuablePieces[i];
+			for(let i=0;i<valuablePieces.length;i++){
+				let valPiece = valuablePieces[i];
 				if(piece.tile.protectsTile(valPiece.tile,piece.player) && valPiece.friends().length == 0 && !this.protectsTile(valPiece.tile,piece.player)){
 					risk += valPiece.value / 2;
 					break;
@@ -242,7 +239,7 @@ export class Tile{
 	}
 	// Returns tiles between the two tiles
 	tilesBetween(tile: Tile): any{
-		var x_add = 0, y_add = 0;
+		let x_add = 0, y_add = 0;
 		// Checks that they are on same column/row or diagonal
 		if(this.x != tile.x && this.y != tile.y && Math.abs(this.x-tile.x) != Math.abs(this.y-tile.y)){
 			return false;
@@ -253,8 +250,8 @@ export class Tile{
 		if(this.y != tile.y){
 			y_add = this.y < tile.y ? 1 : -1;
 		}
-		var tiles: Tile[] = [];
-		for(var x=this.x+x_add, y=this.y+y_add; y != tile.y || x != tile.x; x += x_add, y += y_add){
+		let tiles: Tile[] = [];
+		for(let x=this.x+x_add, y=this.y+y_add; y != tile.y || x != tile.x; x += x_add, y += y_add){
 			tiles.push(this.game.board[y][x]);
 		}
 		return tiles;	
@@ -262,8 +259,8 @@ export class Tile{
 	
 	// Checks if tile is between 2 tiles
 	isBetween(targetTile: Tile, enemyTile: Tile){
-		var x_min = Math.min(targetTile.x,enemyTile.x), x_max = Math.max(targetTile.x,enemyTile.x);
-		var y_min = Math.min(targetTile.y,enemyTile.y), y_max = Math.max(targetTile.y,enemyTile.y);
+		let x_min = Math.min(targetTile.x,enemyTile.x), x_max = Math.max(targetTile.x,enemyTile.x);
+		let y_min = Math.min(targetTile.y,enemyTile.y), y_max = Math.max(targetTile.y,enemyTile.y);
 		
 		// Same row/column
 		if((this.x == targetTile.x && targetTile.x == enemyTile.x && y_min < this.y && this.y < y_max) 
@@ -284,12 +281,12 @@ export class Tile{
 		if(count != 1){
 			count = 8;
 		}
-		var tiles: Tile[] = [];
-		var x = this.x;
-		var y = this.y;
-		for(var i = 1; i < count+1; i++){
+		let tiles: Tile[] = [];
+		let x = this.x;
+		let y = this.y;
+		for(let i = 1; i < count+1; i++){
 			if(x + x_add*i < 8 && x + x_add*i >= 0 && y + y_add*i < 8 && y + y_add*i >= 0){
-				var tile = Tile.board[y + y_add*i][x + x_add*i];
+				let tile = Tile.board[y + y_add*i][x + x_add*i];
 				tiles.push(tile);
 				if(!tile.empty()){
 					break;
@@ -301,7 +298,7 @@ export class Tile{
 
 	//Checks all 4 directions
 	checkDirections(x_add: number, y_add: number, count: number){
-		var tiles: Tile[] = [];
+		let tiles: Tile[] = [];
 		tiles = tiles.concat(this.checkDirection(x_add,y_add,count));
 		if(x_add != 0){
 			tiles = tiles.concat(this.checkDirection(-x_add,y_add,count));
