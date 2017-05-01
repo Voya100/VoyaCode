@@ -27,7 +27,6 @@ const enemyTileColor = "rgb(189, 104, 53)";
 export class ChessBoardComponent {
 
     constructor(public game: ChessGameService, public settings: ChessSettingsService){
-        game.reset();
     }
 
     // Returns color of the tile in tilePosition

@@ -4,12 +4,12 @@
   <form autocomplete="off">
     <table>
       <tr>
-        <td>Row 1: <input type='text' id='pieceRow1' maxlength='8' size='8' [(ngModel)]="upperRow" name="upperRow">
+        <td>Row 1: <input type='text' maxlength='8' size='8' [(ngModel)]="upperRow" name="upperRow">
         <td rowspan='2'>P: Pawn<br>R: Rook<br>X: King</td>
         <td rowspan='2'>K: Knight<br>B: Bishop<br>Q: Queen</td>
       </tr>
       <tr>
-        <td>Row 2: <input type='text' id='pieceRow2' maxlength='8' size='8' [(ngModel)]="lowerRow" name="lowerRow"></td>
+        <td>Row 2: <input type='text' maxlength='8' size='8' [(ngModel)]="lowerRow" name="lowerRow"></td>
       </tr>
     </table>
   </form>

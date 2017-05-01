@@ -12,6 +12,7 @@ export class Bishop extends Piece{
     super(player, tile);
   }
 
+  // Moves diagonally
 	tileCheck(){
 		this.clearTiles();
 		this.moveTiles = this.moveTiles.concat(this.checkDirections(1,1,8,true));

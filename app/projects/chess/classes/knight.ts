@@ -10,6 +10,7 @@ export class Knight extends Piece{
   constructor(player: Player, tile: Tile){
     super(player, tile);
   }
+  
   tileCheck(){
     this.clearTiles();
     this.moveTiles = this.moveTiles.concat(this.checkDirections(2,1,1,true));

@@ -13,7 +13,7 @@ export class ChessSettingsService {
 	blackComputer: boolean = true;
   boardReversed: boolean = false;
 
-	// Contains tile positions on the interface
+	// Contains tile positions on the board interface
 	// boardTilePositions[y][x][tile.x, tile.y]
   boardTilePositions: number[][][];
 
@@ -57,6 +57,5 @@ export class ChessSettingsService {
 		}else{
 			this.boardTilePositions = Array(this.boardSize).fill(1).map((x,j) => Array(this.boardSize).fill(1).map((x,i) => [i, j]));
 		}
-		console.log(this.boardTilePositions);
   }
 }

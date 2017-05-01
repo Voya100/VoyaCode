@@ -20,7 +20,6 @@ export class Tile{
 	blacks: Piece[] = []; // Blacks who can move to the tile
 	blackHits: Piece[] = []; // Blacks who could hit the tile, if there was an enemy
 	
-
   constructor(x: number, y: number, game: ChessGameService){
     this.x = x;
     this.y = y;
@@ -32,11 +31,34 @@ export class Tile{
 		return 0 <= y && y < Tile.board.length && 0 <= x && x < Tile.board[y].length;
 	}
 	
+	// Adds a piece that can move to this tile
+	addMover(piece: Piece){
+		if(piece.white){
+			this.whites.push(piece);
+		}else{
+			this.blacks.push(piece);
+		}
+	}
+	// Adds a piece that could hit this tile (if there is an enemy)
+	addHitter(piece: Piece){
+		if(piece.white){
+			this.whiteHits.push(piece);
+		}else{
+			this.blackHits.push(piece);
+		}
+	}
+	
+	clear(){
+		this.whites = [];
+		this.whiteHits = [];
+		this.blacks = [];
+		this.blackHits = [];
+	}
+	
 	// User clicks on the tile
 	select(player: Player){
 		
-		if(!this.game.gameActive || !this.game.turn){ // || this.game.interfaces.screenOpen()){
-			// TODO: Add inteface open check?
+		if(!this.game.gameActive || !this.game.turn){
 			return false;
 		}
 		
@@ -54,6 +76,16 @@ export class Tile{
 			this.clearHighlights();
 			player.activePiece = null;
 		}
+	}
+
+	// True if this tile has a piece with same color as piece/player given by parameter
+	isFriendOf(pieceOrPlayer: Piece | Player){
+		return !this.empty() && this.piece.color == pieceOrPlayer.color; 
+	}
+
+	// True if this tile has a piece with different color as piece/player given by parameter
+	isEnemyOf(pieceOrPlayer: Piece | Player){
+		return !this.empty() && this.piece.color != pieceOrPlayer.color
 	}
 
   // True if there is a piece on the tile, false otherwise
@@ -82,61 +114,6 @@ export class Tile{
 	markedMovable(){
 		return _.contains(Tile.highlightedMovableTiles, this);
 	}
-
-	// True if this tile has a piece with same color as piece/player given by parameter
-	isFriend(piece: Piece | Player){
-		return !this.empty() && this.piece.color == piece.color; 
-	}
-
-	// True if this tile has a piece with same color as piece/player given by parameter
-	isEnemy(piece: Piece | Player){
-		return !this.empty() && this.piece.color != piece.color
-	}
-	
-	// Tells if piece on this tile is preventing enemy from going to target tile
-	protectsTile(targetTile: Tile, player: Player){
-		// Doesn't protect, if there are pieces between this and the tile
-		if(this.tilesBetween(targetTile) === false || this.tilesBetween(targetTile).filter((tile: Tile) => !tile.empty()).length > 0){
-			return false;
-		}
-		
-		if(this.x == targetTile.x){ // They are on same column, threats: rook and queen
-			let y_dir = this.y < targetTile.y ? -1 : 1;
-			for(let y=this.y+y_dir; 0 <= y && y < 8;y+= y_dir){
-				let tile = this.game.board[y][this.x];
-				if(!tile.empty() && tile.piece.color != player.color && (tile.piece.type == 'rook' || tile.piece.type == 'queen')){
-					return true;
-				}else if(!tile.empty()){
-					break;
-				}
-			}
-		}
-		if(this.y == targetTile.y){ // They are on same row, threats: rook and queen
-			let x_dir = this.x < targetTile.x ? -1 : 1;
-			for(let x=this.x+x_dir; 0 <= x && x < 8;x+= x_dir){
-				let tile = this.game.board[this.y][x];
-				if(!tile.empty() && tile.piece.color != player.color && (tile.piece.type == 'rook' || tile.piece.type == 'queen')){
-					return true;
-				}else if(!tile.empty()){
-					break;
-				}
-			}
-		}
-		if(Math.abs(this.y-targetTile.y) == Math.abs(this.x-targetTile.x)){ // They are diagonal, threats: bishop and queen
-			let x_dir = this.x < targetTile.x ? -1 : 1;
-			let y_dir = this.y < targetTile.y ? -1 : 1;
-			
-			for(let x = this.x+x_dir, y = this.y+y_dir;0 <= x && x < 8 && 0 <= y && y < 8; x+= x_dir, y+= y_dir){
-				let tile = this.game.board[y][x];
-				if(!tile.empty() && tile.piece.color != player.color && (tile.piece.type == 'bishop' || tile.piece.type == 'queen')){
-					return true;
-				}else if(!tile.empty()){
-					break;
-				}
-			}
-		}
-		return false;
-	}
 	
 	// Tells if tile is protecting king (is between it and enemy piece)
 	protectsKing(player: Player){
@@ -145,6 +122,49 @@ export class Tile{
 		}
 		let kingTile = player.kings[0].tile;
 		return this.protectsTile(kingTile,player);
+	}
+	
+	// Tells if piece on this tile is preventing enemy from going to target tile
+	protectsTile(targetTile: Tile, player: Player){
+		// Doesn't protect if there are pieces between this and the tile
+		if(this.tilesBetween(targetTile) === false || this.tilesBetween(targetTile).filter((tile: Tile) => !tile.empty()).length > 0){
+			return false;
+		}
+		
+		let xDir = this.x < targetTile.x ? -1 : 1;
+		let yDir = this.y < targetTile.y ? -1 : 1;
+		
+		if(this.x == targetTile.x){ // They are on same column, threats: rook and queen
+			for(let y = this.y+yDir; 0 <= y && y < 8; y += yDir){
+				let tile = this.game.board[y][this.x];
+				if(tile.isEnemyOf(player) && (tile.piece.type == 'rook' || tile.piece.type == 'queen')){
+					return true;
+				}else if(!tile.empty()){
+					break;
+				}
+			}
+		}
+		if(this.y == targetTile.y){ // They are on same row, threats: rook and queen
+			for(let x = this.x+xDir; 0 <= x && x < 8; x += xDir){
+				let tile = this.game.board[this.y][x];
+				if(tile.isEnemyOf(player) && (tile.piece.type == 'rook' || tile.piece.type == 'queen')){
+					return true;
+				}else if(!tile.empty()){
+					break;
+				}
+			}
+		}
+		if(Math.abs(this.y-targetTile.y) == Math.abs(this.x-targetTile.x)){ // They are diagonal, threats: bishop and queen
+			for(let x = this.x+xDir, y = this.y+yDir;0 <= x && x < 8 && 0 <= y && y < 8; x+= xDir, y+= yDir){
+				let tile = this.game.board[y][x];
+				if(tile.isEnemyOf(player)  && (tile.piece.type == 'bishop' || tile.piece.type == 'queen')){
+					return true;
+				}else if(!tile.empty()){
+					break;
+				}
+			}
+		}
+		return false;
 	}
 	
 	// Evaluates the risk vs reward of moving the piece to this tile. If risk is negative, it's generally worth doing.
@@ -174,24 +194,24 @@ export class Tile{
 		
 		// Prevents opening a weak spot, which can't be defended in start of the game
 		if(piece.type == 'pawn' 
-		  && ((piece.color == 'black' && piece.tile.x == 6 && piece.tile.y == 5) || (piece.color == 'white' && piece.tile.x == 1 && piece.tile.y == 2))
+		  && ((piece.color == 'black' && piece.tile.y == 6 && piece.tile.x == 5) || (piece.color == 'white' && piece.tile.y == 1 && piece.tile.x == 2))
 		  && piece.friends().length == 1){
 			risk += 2;
 		}
 		
 		// Risk is reduced if moving kills an enemy (risk vs reward)
-		if(!this.empty() && this.piece.color != piece.color){
+		if(this.isEnemyOf(piece)){
 			risk -= this.piece.value;
 		}
 		// Risk is increased, if current tile protects a more valuable tile
 		if(piece.value <= 5){
 			let valuablePieces: any[];
 			if(piece.type == 'pawn'){
-				valuablePieces = _.difference(piece.player.pieces,piece.player.pawns);
+				valuablePieces = _.difference(piece.player.pieces, piece.player.pawns);
 			}else{
 				valuablePieces = piece.player.queens;
 			}
-			for(let i=0;i<valuablePieces.length;i++){
+			for(let i = 0; i < valuablePieces.length; i++){
 				let valPiece = valuablePieces[i];
 				if(piece.tile.protectsTile(valPiece.tile,piece.player) && valPiece.friends().length == 0 && !this.protectsTile(valPiece.tile,piece.player)){
 					risk += valPiece.value / 2;
@@ -210,33 +230,10 @@ export class Tile{
 			risk += 0.1 * piece.player.moveCount;
 		}
 		
-		console.log("Risk",piece,this,risk);
+		//console.log("Risk",piece,this,risk);
 		return risk;		
 	}
 	
-	// Adds a piece that can move to this tile
-	addMover(piece: Piece){
-		if(piece.white){
-			this.whites.push(piece);
-		}else{
-			this.blacks.push(piece);
-		}
-	}
-	// Adds a piece that could hit this tile (if there is an enemy)
-	addHitter(piece: Piece){
-		if(piece.white){
-			this.whiteHits.push(piece);
-		}else{
-			this.blackHits.push(piece);
-		}
-	}
-	
-	clear(){
-		this.whites = [];
-		this.whiteHits = [];
-		this.blacks = [];
-		this.blackHits = [];
-	}
 	// Returns tiles between the two tiles
 	tilesBetween(tile: Tile): any{
 		let x_add = 0, y_add = 0;
@@ -251,7 +248,7 @@ export class Tile{
 			y_add = this.y < tile.y ? 1 : -1;
 		}
 		let tiles: Tile[] = [];
-		for(let x=this.x+x_add, y=this.y+y_add; y != tile.y || x != tile.x; x += x_add, y += y_add){
+		for(let x = this.x+x_add, y = this.y+y_add; y != tile.y || x != tile.x; x += x_add, y += y_add){
 			tiles.push(this.game.board[y][x]);
 		}
 		return tiles;	
@@ -275,6 +272,22 @@ export class Tile{
 			return false;
 		}		
 	}
+
+	//Checks all 4 directions
+	checkDirections(x_add: number, y_add: number, count: number){
+		let tiles: Tile[] = [];
+		tiles = tiles.concat(this.checkDirection(x_add,y_add,count));
+		if(x_add != 0){
+			tiles = tiles.concat(this.checkDirection(-x_add,y_add,count));
+		}
+		if(y_add != 0){
+			tiles = tiles.concat(this.checkDirection(x_add,-y_add,count));
+		}
+		if(x_add != 0 && y_add != 0){
+			tiles = tiles.concat(this.checkDirection(-x_add,-y_add,count));
+		}
+		return tiles;
+	}
 	
 	// Returns tiles in specific direction, until it meets an obstacle (end of board or piece)
 	checkDirection(x_add: number, y_add: number, count: number){
@@ -292,22 +305,6 @@ export class Tile{
 					break;
 				}
 			}
-		}
-		return tiles;
-	}
-
-	//Checks all 4 directions
-	checkDirections(x_add: number, y_add: number, count: number){
-		let tiles: Tile[] = [];
-		tiles = tiles.concat(this.checkDirection(x_add,y_add,count));
-		if(x_add != 0){
-			tiles = tiles.concat(this.checkDirection(-x_add,y_add,count));
-		}
-		if(y_add != 0){
-			tiles = tiles.concat(this.checkDirection(x_add,-y_add,count));
-		}
-		if(x_add != 0 && y_add != 0){
-			tiles = tiles.concat(this.checkDirection(-x_add,-y_add,count));
 		}
 		return tiles;
 	}

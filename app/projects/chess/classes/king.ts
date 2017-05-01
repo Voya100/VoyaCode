@@ -3,7 +3,6 @@ import { Player } from './player';
 import { Tile } from './tile';
 import { Rook } from './rook';
 
-
 export class King extends Piece{
 
   type: string = "king";
@@ -45,7 +44,7 @@ export class King extends Piece{
 		this.addTiles();
 	}
 
-	// Adds tiles related to castling. Must be done after all other tileChecks have bben done
+	// Adds tiles related to castling. Must be done after all other tileChecks have been done
 	castlingCheck(){
 		// King must not have moved and must not be in check
 		if(this.hasMoved || this.threats().length != 0){
@@ -76,6 +75,7 @@ export class King extends Piece{
 		return true;
 	}
 
+	// Tile to which king will move in castling
 	castlingTargetTile(rook: Rook){
 		let x = this.x() + 2*(rook.x() < this.x() ? -1 : 1);
 		if(!Tile.tileExists(x,this.y())){

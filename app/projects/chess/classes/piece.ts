@@ -23,8 +23,6 @@ export abstract class Piece{
 
 	tiles: Tile[][];
 
-	abstract tileCheck(): void;
-
   constructor(player: Player, tile: Tile){
     this.color = player.color;
     this.white = this.color == "white";
@@ -34,14 +32,19 @@ export abstract class Piece{
 		this.moveTiles = []; 
 		this.hitTiles = []; 
 		this.protectsKing = false;
-    }
+	}
 
-		// Returns friendlies which can move to the tile after death	
-		friends(){return this.tile[this.color + "Hits"]}; 	
-		// Returns enemies that can hit the next turn
-		threats(){return this.tile[this.player.enemy.color + "Hits"]};
-		x(): number{return this.tile.x};
-		y(): number{return this.tile.y};
+		
+	// Adds move and hit tiles (determines which tiles the piece can move to)
+	abstract tileCheck(): void;
+
+	// Returns friendlies which can move to the tile after death	
+	friends(){return this.tile[this.color + "Hits"]}; 	
+	// Returns enemies that can hit the next turn
+	threats(){return this.tile[this.player.enemy.color + "Hits"]};
+
+	x(): number{return this.tile.x};
+	y(): number{return this.tile.y};
 		
 	move(x: number,y: number, changeTurn: boolean = true){
 		this.tile.piece = null;
@@ -56,7 +59,7 @@ export abstract class Piece{
 			this.tile.piece.die();
 		}
 		this.tile.piece = this;
-		var gameId = this.player.game.gameId;
+		let gameId = this.player.game.gameId;
 		if(changeTurn){
 			setTimeout(() => this.player.game.changeTurn(gameId), 650);
 		}
@@ -64,27 +67,13 @@ export abstract class Piece{
 
 	canMove(tile: Tile){return this.moveTiles.indexOf(tile) != -1;}
 
+	// Marks all mobable tiles as highlighted
 	highlightMovableTiles(){
 		for(let i = 0; i < this.moveTiles.length; i++){
 				this.moveTiles[i].highlight(false);
 			}
 	}
-
-	//Checks 1 direction. Stops if an obstacle comes in the way.
-	checkDirection(x_add: number,y_add: number,count: number,roundStart: boolean){
-		var moveTiles = this.tile.checkDirection(x_add,y_add,count);
-
-		for(var i = 0; i < moveTiles.length; i++){
-			var target = moveTiles[i];
-			this.hitTiles.push(target);
-			target.addHitter(this);
-			if(target.isFriend(this)){
-				moveTiles = _.without(moveTiles,target);
-			}
-		}
-		return moveTiles;
-	}
-
+	
 	//Checks all 4 directions
 	checkDirections(x_add: number, y_add:number, count: number, roundStart: boolean){
 		let moveTiles: Tile[] = [];
@@ -101,6 +90,21 @@ export abstract class Piece{
 		return moveTiles;
 	}
 
+	// Adds tiles in 1 direction to hit/move tiles until an obstacle comes along
+	checkDirection(x_add: number,y_add: number,count: number,roundStart: boolean): Tile[]{
+		let moveTiles = this.tile.checkDirection(x_add,y_add,count);
+
+		for(let i = 0; i < moveTiles.length; i++){
+			let target = moveTiles[i];
+			this.hitTiles.push(target);
+			target.addHitter(this);
+			if(target.isFriendOf(this)){
+				moveTiles = _.without(moveTiles,target);
+			}
+		}
+		return moveTiles;
+	}
+
 	// Removes information of piece's current possible move locations from player/tiles. Done before checking them again.
 	clearTiles(){
 		this.player.moveTiles = _.without(this.player.moveTiles, this.tile);
@@ -108,10 +112,10 @@ export abstract class Piece{
 		this.hitTiles = [];
 	}
 
-	//Adds piece's possible move locations to player and tiles
+	// Adds piece's possible move locations to player and tiles
 	addTiles(){
 		let tiles = this.moveTiles;
-		for(var i = 0; i < tiles.length; i++){
+		for(let i = 0; i < tiles.length; i++){
 			this.player.moveTiles.push(tiles[i]);
 			tiles[i].addMover(this);
 		}
@@ -124,10 +128,8 @@ export abstract class Piece{
 		this.player[this.type + "s"] = _.without(this.player[this.type + "s"], this);
 		this.dead = true;
 		// Check if the game has ended
-		if(this.type == "king"){
-			if(this.player.kingCount() == 0){
-				this.player.game.gameOver(this.player);
-			}
+		if(this.type == "king" && this.player.kingCount() == 0){
+			this.player.game.gameOver(this.player);
 		}else if(this.player.pieceCount() == 0){
 			this.player.game.gameOver(this.player);
 		}

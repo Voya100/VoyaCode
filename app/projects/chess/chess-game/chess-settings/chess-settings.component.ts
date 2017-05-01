@@ -27,8 +27,8 @@ export class ChessSettingsComponent {
         if(this.boardReversed != this.settings.boardReversed){
             this.settings.changeReversed(this.boardReversed);
         }
-        this.game.reset();
         this.close.emit();
+        this.game.reset();
     }
 
     resetLayout(){
@@ -36,8 +36,8 @@ export class ChessSettingsComponent {
         if(this.boardReversed != this.settings.boardReversed){
             this.settings.changeReversed(this.boardReversed);
         }
-        this.game.reset();
         this.close.emit();
+        this.game.reset();
     }
 
 }

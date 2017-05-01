@@ -12,7 +12,6 @@ export class Rook extends Piece{
     super(player, tile);
   }
 
-	
 	move(x: number, y: number, changeTurn: boolean = true){
 		super.move(x, y, changeTurn);
 		this.hasMoved = true;

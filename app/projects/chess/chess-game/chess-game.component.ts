@@ -14,15 +14,14 @@ import { ChessSettingsService } from '../chess-settings.service';
         ])
     ]
 })
-export class ChessGameComponent implements OnInit {
+export class ChessGameComponent {
 
     visibleDialog: string = "";
     
-    constructor(public game: ChessGameService, private settings: ChessSettingsService) { }
+    constructor(public game: ChessGameService, private settings: ChessSettingsService) {
+        this.game.reset();
+     }
 
-    ngOnInit() { }
-
-    
     reset(){
         this.visibleDialog = '';
         this.game.reset();
@@ -42,6 +41,7 @@ export class ChessGameComponent implements OnInit {
     }
 
     // Opens dialog, if not already open. Otherwise closes it.
+    // Also ensures that game is paused while dialog is open, and continued once closed
     switchDialog(dialogName: string){
         this.visibleDialog = this.visibleDialog == dialogName ? "" : dialogName;
         if(this.visibleDialog == ''){

@@ -66,20 +66,20 @@ export class ChessGameService {
 	// Makes empty tiles for the board
 	fillBoard(){
 		this.board = [];
-		for(var j = 0; j < 8; j++){
+		for(let j = 0; j < 8; j++){
 			this.board[j] = [];
-			for(var i = 0; i < 8; i++){
+			for(let i = 0; i < 8; i++){
 				this.board[j][i] = new Tile(i,j,this);
 			}
 		}
 	}
 	
 	addPieces(){
-		var row1 = this.settings.positions[0] + "_".repeat(8-this.settings.positions[0].length);
-		var row2 = this.settings.positions[1] + "_".repeat(8-this.settings.positions[1].length);
-		var row1b = row1.split("").reverse().join(""); // Black rows are mirrored
-		var row2b = row2.split("").reverse().join("");
-		for(var i = 0; i < 8; i++){
+		let row1 = this.settings.positions[0] + "_".repeat(8-this.settings.positions[0].length);
+		let row2 = this.settings.positions[1] + "_".repeat(8-this.settings.positions[1].length);
+		let row1b = row1.split("").reverse().join(""); // Black rows are mirrored
+		let row2b = row2.split("").reverse().join("");
+		for(let i = 0; i < 8; i++){
 			this.addPiece(i,7,this.white,row1[i]);
 			this.addPiece(i,0,this.black,row1b[i]);
 			this.addPiece(i,6,this.white,row2[i]);
@@ -89,8 +89,8 @@ export class ChessGameService {
 	
 	// Adds piece to the board
 	addPiece(x: number, y: number, player: Player, type: string){
-		var piece: Piece;
-		var tile = this.board[y][x];
+		let piece: Piece;
+		let tile = this.board[y][x];
 		player.pieceId++;
 		switch(type){
 		case "P":
@@ -117,7 +117,7 @@ export class ChessGameService {
 		}
 		player.addPiece(piece);
 		this.board[y][x].piece = piece;
-		var id = player.color + player.pieceId;
+		let id = player.color + player.pieceId;
 	}
 
 	doTileChecks(){
@@ -135,8 +135,8 @@ export class ChessGameService {
 	
 	// Removes move information from all tiles (done before adding new move information)
 	clearTiles(){
-		for(var i = 0; i < 8; i++){
-			for(var j = 0; j < 8; j++){
+		for(let i = 0; i < 8; i++){
+			for(let j = 0; j < 8; j++){
 				this.board[i][j].clear();
 			}
 		}
@@ -184,22 +184,15 @@ export class ChessGameService {
 		}
 	}
 	
-	// Returns the tile that has a piece with lowest value (used to avoid excess risk)
-  // TODO: Move somewhere else, maybe?
-	lowestTile(tiles: any[], isTile: boolean){
-		var lowest = 100;
-		var tile = tiles[0];
-		for(var i=0;i<tiles.length;i++){
-			if(isTile){
-				if(!tiles[i].empty() && tiles[i].piece.value < lowest){
-					lowest = tiles[i].piece.value;
-					tile = tiles[i];
-				}
-			}else{ // "tiles" is array of pieces
-				if(tiles[i].value < lowest){
-					lowest = tiles[i].value;
-					tile = tiles[i].tile;
-				}
+	// Returns the tile that has a piece with lowest value
+	lowestTile(tilesOrPieces: any[], isTile: boolean){
+		let lowest = 100;
+		let tile = tilesOrPieces[0];
+		let tiles = isTile ? tilesOrPieces : tilesOrPieces.map((piece: Piece) => piece.tile);
+		for(let i = 0;i < tiles.length; i++){
+			if(!tiles[i].empty() && tiles[i].piece.value < lowest){
+				lowest = tiles[i].piece.value;
+				tile = tiles[i];
 			}
 		}
 		return tile;
