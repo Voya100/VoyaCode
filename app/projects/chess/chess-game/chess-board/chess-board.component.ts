@@ -9,6 +9,7 @@ const whiteTileColor = "#e6cfaf";
 const blackTileColor = "#9b7b40";
 const highlightTileColor = "orange";
 const movableTileColor = "yellow";
+const enemyTileColor = "rgb(189, 104, 53)";
 
 @Component({
     selector: 'chess-board',
@@ -35,7 +36,11 @@ export class ChessBoardComponent {
         if(tile.highlighted()){
             return highlightTileColor;
         }else if(tile.markedMovable()){
-            return movableTileColor;
+            if(tile.empty()){
+                return movableTileColor;
+            }else{
+                return enemyTileColor;
+            }
         }else{
             return (tile.x + tile.y) % 2 == 0 ? blackTileColor : whiteTileColor;
         }
