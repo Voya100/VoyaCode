@@ -36,26 +36,23 @@ If you open the console log while playing the game, you can see which priority t
 
 ## Risk value
 
-One of the very core elements of AI decision making is evaluating risk. There is a method that can give a number value for each piece and move tile
-combination. Risk value also includes "risk vs reward", so positive results (like capturing enemy pice) reduce risk.
-Negative risk means that the move has a positive outcome, like capturing valuable enemy piece or moving a piece from risky location. 
-0 risk is neutral. Positive risk means that the player will likely lose or risk something when they do the move.
+One of the very core elements of AI decision making is evaluating risk. There is a method that can give a number value for each piece and move tile combination. Risk value also includes "risk vs reward", so positive results (like capturing an enemy piece) reduce risk.
+Negative risk means that the move has a positive outcome, like capturing a valuable enemy piece or moving a piece from a risky location. 0 risk is neutral. Positive risk means that the player will likely lose or risk something when they do the move.
 
 Some vocabulary:
 - Threat: enemy piece, which has the tile as a hit tile
 - Friendly: friend piece, which has the tile as a hit tile
 
 Risk value of a move depends on following factors (among some others):
-- Threats of the tile increase risk. The more valuable movable the piece is, the greater the risk.
+- Threats of the tile increase risk. The more valuable the piece is, the greater the risk.
 - If tile has threats, but it also has friendlies, and threats aren't less valuable than the piece, risk is reduced.
-- If piece's current tile is already risky, the risk of moving is reduced. Reduction amount depends on piece's value and whether the current tile
-is defended by friendly pieces or not.
+- If piece's current tile is already risky, the risk of moving is reduced. Reduction amount depends on piece's value and whether the current tile is defended by friendly pieces or not.
 - Risk is reduced if moving captures an enemy piece, reduction depends on enemy piece's value
-- Risk is increased if moving the piece puts a vastly more valuable piece in danger. With pawns it is any other type of piece, with others queen.
+- Risk is increased if moving the piece puts a vastly more valuable piece in danger. With pawns it is any other type of piece, with others the queen.
 - If the moves are repetitive, risk is slightly increased. This is to prevent looping movements.
+- If pawn is close to promotion, risk is in some cases reduced.
 
-In all priority steps, if there is more than one possible move, the AI will check which of them has smallest risk. If many have same risk, 
-the move is randomized from them.
+In all priority steps, if there is more than one possible move, the AI will check which of them has the smallest risk. If many have same risk, the move is randomized from them.
 
 The AI is aware of which pieces are defending the king from enemy pieces (are in their way). Those pieces will never move so that they would leave
 the king exposed, unless there is no other option.
