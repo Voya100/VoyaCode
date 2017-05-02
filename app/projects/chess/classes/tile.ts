@@ -1,6 +1,7 @@
-import { Player } from './player';
 import { ChessGameService } from '../chess-game.service';
+import { Pawn } from './pawn';
 import { Piece } from './piece';
+import { Player } from './player';
 
 import * as _ from 'underscore';
 
@@ -228,6 +229,17 @@ export class Tile{
 		// Small prevention to moving between safe tiles with same piece
 		if(piece.player.prevPiece == piece){
 			risk += 0.1 * piece.player.moveCount;
+		}
+
+		// Encourages promotion near end of the game (when king chase loops are likely)
+		if(piece.type == 'pawn'){
+			let pawn = <Pawn> piece;
+			let distanceFromPromotion = Math.abs(pawn.yStart - pawn.y());
+			if(distanceFromPromotion == 1 && threats.length == 0){
+				risk -= 5;
+			}else if(piece.player.kingChaseCount > 5){
+				risk -= (7 - distanceFromPromotion)*0.3;
+			}
 		}
 		
 		//console.log("Risk",piece,this,risk);

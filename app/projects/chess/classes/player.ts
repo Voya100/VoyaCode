@@ -33,6 +33,7 @@ export abstract class Player{
 	prevPiece: Piece = null; 
   // How many times previous piece has been moved back-to-back
 	moveCount: number = 0; 
+	kingChaseCount: number = 0;
 	activePiece: Piece = null;
 	turn: boolean = false;
 	enemy: Player = null; //Defined after creation

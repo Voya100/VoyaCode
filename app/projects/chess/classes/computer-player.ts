@@ -78,8 +78,11 @@ export class ComputerPlayer extends Player{
     this.tryToGetCloseToEnemyKing();
 		if(this.actionDecided()){
 			console.log("3. Approach enemy king");
+			this.kingChaseCount++;
       return;
-    }
+    }else{
+			this.kingChaseCount = 0;
+		}
 		
 		// 4. Kill enemy or move to safety, if risk is negative. 
     this.tryToMakeARisklessMove();
@@ -243,7 +246,7 @@ export class ComputerPlayer extends Player{
 
 	// Tries to move a piece so close to enemy king that it can capture it the next turn
   tryToGetCloseToEnemyKing(){
-    if(this.moveCount <= 6){ // To reduce endless loops
+    if(this.moveCount <= 4 && this.kingChaseCount <= 6){ // To reduce endless loops
 			this.tryToApproachEnemyKing(1);
 		}
   }
@@ -368,6 +371,9 @@ export class ComputerPlayer extends Player{
 			}else{
 				for(let k = 0; k < tiles[j][this.color + "s"].length; k++){
 					let piece = tiles[j][this.color + "s"][k];
+					if(piece == this.prevPiece && this.moveCount > 3){ // To reduce endless loops
+						continue;
+					}
 					if(!piece.protectsKing  && _.contains(types, piece.type)){
 						piece_tile.push([piece, tiles[j]]);
 					}
