@@ -6,7 +6,7 @@ import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute, Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MdProgressCircle } from '@angular/material';
-import { PerfectScrollbarComponent } from 'angular2-perfect-scrollbar';
+import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'voya-app',
