@@ -20,12 +20,16 @@ $borderWidth: 1px;
   position: absolute;
   left: 0;
   height: 100%;
+  display: flex;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
 .scrollbar-container-inner{
-    width: 100%;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .scrollbar-track{
