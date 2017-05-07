@@ -33,7 +33,11 @@ export class ScrollbarComponent implements AfterViewInit {
 
 
   updateHandle(){
-    this.handleTop = this.trackHeight*(this.middle.nativeElement.scrollTop/this.innerHeight);
+    if(this.innerHeight != this.middle.nativeElement.scrollHeight){
+      this.setDimensions();
+    }else{
+      this.handleTop = this.trackHeight*(this.middle.nativeElement.scrollTop/this.innerHeight);
+    }
     console.log(this.handleTop);
   }
 
@@ -79,6 +83,7 @@ export class ScrollbarComponent implements AfterViewInit {
   }
 
   handleMouseDownHandler(e: MouseEvent){
+    e.preventDefault();
     this.dragging = true;
     this.scrollStart = this.middle.nativeElement.scrollTop;
     this.dragStart = e.pageY;
