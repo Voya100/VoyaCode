@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, HostListener, AfterViewInit, DoCheck } from '@angular/core';
+import { Component, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'scrollbar',
