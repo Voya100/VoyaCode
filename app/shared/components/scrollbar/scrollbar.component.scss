@@ -12,51 +12,49 @@ $borderWidth: 1px;
   width: 100%;
   height: 100%;
  
-  & .scrollbar-container-middle{
-    position: absolute;
-    left: 0;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-
     &::-webkit-scrollbar {
       display: none;
     }
+}
+.scrollbar-container-middle{
+  position: absolute;
+  left: 0;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 
-    & .scrollbar-container-inner{
-      width: 100%;
-      padding-right: 4vh;
+.scrollbar-container-inner{
+    width: 100%;
+}
+
+.scrollbar-track{
+  width: 15px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  background-color: transparent;
+  transition: background-color 0.2s linear 0s, opacity 0.2s linear 0s;
+  &:hover{
+    background-color: white;
+    .scrollbar-handle{
+      width:11px;
     }
   }
-
-  & .scrollbar-track{
-    width: 2vh;
-    height: calc(100% - 2vh);
-    position: absolute;
-    right: 1vh;
-    top: 1vh;
-    cursor: pointer;
-
-    &.hide{
-      display: none;
-    }
-
-    &::before{
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: $borderWidth;
-      height: 100%;
-    }
-
-    & .scrollbar-handle{
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      border: $borderWidth solid black;
-    }
+  &.hide{
+    visibility: hidden;
   }
+}
+
+.scrollbar-handle{
+  position: absolute;
+  right: 2px;
+  top: 0;
+  width: 6px;
+  border: $borderWidth solid black;
+  box-sizing: border-box;
+  border-radius: 6px;
+  transition: background-color 0.2s linear 0s, height 0.2s linear 0s, width 0.2s ease-in-out 0s, 
+              border-radius 0.2s ease-in-out 0s, -webkit-border-radius 0.2s ease-in-out 0s, -moz-border-radius 0.2s ease-in-out 0s;
 }

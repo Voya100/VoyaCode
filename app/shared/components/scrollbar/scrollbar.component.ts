@@ -46,20 +46,17 @@ export class ScrollbarComponent implements AfterViewInit {
     console.log(this.outer, this.inner, this.middle);
     this.outerHeight = this.outer.nativeElement.offsetHeight;
     this.outerWidth = this.outer.nativeElement.offsetWidth;
-    console.log(this.outerHeight, this.outerWidth, this.outer);
     this.innerWidth = this.outerWidth;
-    console.log("innerWidth")
 
     this.innerHeight = this.middle.nativeElement.scrollHeight;
     this.trackHeight = this.track.nativeElement.offsetHeight;
 
     let percentageVisible = this.outerHeight / this.innerHeight;
-    console.log(percentageVisible, this.trackHeight, this.track);
     this.handleHeight = percentageVisible > 1 ? this.trackHeight : this.trackHeight*percentageVisible;
-
+    console.log(this.handleHeight, this.trackHeight);
     if(this.handleHeight == this.trackHeight){
       console.log(this.handleHeight, this.trackHeight);
-      //this.hide = true;
+      this.hide = true;
     }else{
       this.hide = false;
     }
