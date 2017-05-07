@@ -1,0 +1,24 @@
+label{
+  width:180px;
+  display: inline-block;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+div label input{
+  float: right;
+  width: 60px;
+}
+
+.errorText{
+  color: crimson;
+  @media (max-width: 450px) {
+      font-size: 9px;
+  }
+}
+
+button{
+  margin:auto;
+  align-self: center;
+}
