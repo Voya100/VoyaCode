@@ -1,5 +1,5 @@
 <div class="scrollbar-container-outer" #outer [class.grabbing]="dragging">
-  <div class="scrollbar-container-middle" #middle (scroll)="scrollHandler($event)" [scrollTop]="middleScroll">
+  <div class="scrollbar-container-middle" #middle (scroll)="scrollHandler()" [scrollTop]="middleScroll">
     <div class="scrollbar-container-inner" #inner [style.width]="innerWidth + 'px'">
       <ng-content></ng-content>
     </div>
