@@ -12,11 +12,12 @@ import { AppComponent }  from './app.component';
 
 import { MainFooterComponent } from './shared/main-footer/main-footer.component'
 import { MainHeaderComponent} from './shared/main-header/main-header.component'
+import { ScrollbarModule } from './shared/components/scrollbar/scrollbar.module';
 
 import { routing } from './app.routing';
  
 @NgModule({
-  imports:      [ BrowserModule, BrowserAnimationsModule, HttpModule, MdProgressCircleModule, PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG), routing ],
+  imports:      [ BrowserModule, BrowserAnimationsModule, HttpModule, MdProgressCircleModule, ScrollbarModule, PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG), routing ],
   declarations: [ AppComponent, MainHeaderComponent, MainFooterComponent ],
   bootstrap:    [ AppComponent ]
 })

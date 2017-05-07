@@ -15,7 +15,7 @@ import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
 })
 export class AppComponent  implements OnInit, AfterViewChecked {
 
-  @ViewChild(PerfectScrollbarComponent) scrollbar: PerfectScrollbarComponent;
+  //@ViewChild(PerfectScrollbarComponent) scrollbar: PerfectScrollbarComponent;
 
   loadingOpen = true;
   error: boolean = true;
@@ -49,7 +49,7 @@ export class AppComponent  implements OnInit, AfterViewChecked {
 
 
   ngAfterViewChecked() {
-    this.scrollbar.update();
+    //this.scrollbar.update();
   }
 
   loadHandler(event: Event): void {
