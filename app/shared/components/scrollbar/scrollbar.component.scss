@@ -55,6 +55,6 @@ $borderWidth: 1px;
   border: $borderWidth solid black;
   box-sizing: border-box;
   border-radius: 6px;
-  transition: background-color 0.2s linear 0s, height 0.2s linear 0s, width 0.2s ease-in-out 0s, 
+  transition: background-color 0.2s linear 0s, width 0.2s ease-in-out 0s, 
               border-radius 0.2s ease-in-out 0s, -webkit-border-radius 0.2s ease-in-out 0s, -moz-border-radius 0.2s ease-in-out 0s;
 }
