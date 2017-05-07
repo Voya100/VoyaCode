@@ -2,7 +2,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewChecked, ElementRef } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute, Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MdProgressCircle } from '@angular/material';
@@ -16,9 +16,11 @@ import { ScrollbarComponent } from './shared/components/scrollbar/scrollbar.comp
 export class AppComponent  implements OnInit, AfterViewChecked {
 
   @ViewChild(ScrollbarComponent) scrollbar: ScrollbarComponent;
+  @ViewChild('main') main: ElementRef;
 
   loadingOpen = true;
   error: boolean = true;
+  height: number = 0;
 
   private loading: boolean = true;
   
@@ -49,7 +51,10 @@ export class AppComponent  implements OnInit, AfterViewChecked {
 
 
   ngAfterViewChecked() {
-    setTimeout(() => this.scrollbar.update());
+    if(this.main.nativeElement.clientHeight != this.height){
+      this.height = this.main.nativeElement.clientHeight;
+      setTimeout(() => this.scrollbar.update());
+    }
   }
 
   loadHandler(event: Event): void {
