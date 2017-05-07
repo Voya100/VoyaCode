@@ -21,35 +21,20 @@ voya-app{
   height: 100%;
 }
 
-// Perfect scrollbar
-perfect-scrollbar{
-  position: static !important;
-  overflow: auto;
+scrollbar{
   height: 100%;
-  display: flex !important;
-  flex-direction: column;
-}
-.ps-content{
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.ps-container:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y, .ps-container:hover > .ps-scrollbar-x-rail:hover > .ps-scrollbar-x {
-    background-color: $color_main2 !important;
 }
 
-.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y, .ps-container > .ps-scrollbar-x-rail > .ps-scrollbar-x{
-  background-color: $color_dark1 !important;
+.scrollbar-track:hover .scrollbar-handle {
+    background-color: $color_main2;
 }
-.ps-scrollbar-y-rail{
-  opacity: 0.6 !important;
-  top: 0 !important;
-  right: 0 !important;
+
+.scrollbar-track .scrollbar-handle{
+  background-color: $color_dark1;
 }
-.ps-scrollbar-x-rail{
-  opacity: 0.6 !important;
-  left: 0 !important;
-  bottom: 0 !important;
+
+.scrollbar-track{
+  opacity: 0.6;
 }
 
 main{

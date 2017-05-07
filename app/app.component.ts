@@ -6,7 +6,7 @@ import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute, Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MdProgressCircle } from '@angular/material';
-import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
+import { ScrollbarComponent } from './shared/components/scrollbar/scrollbar.component';
 
 @Component({
   selector: 'voya-app',
@@ -15,7 +15,7 @@ import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
 })
 export class AppComponent  implements OnInit, AfterViewChecked {
 
-  @ViewChild(PerfectScrollbarComponent) scrollbar: PerfectScrollbarComponent;
+  @ViewChild(ScrollbarComponent) scrollbar: ScrollbarComponent;
 
   loadingOpen = true;
   error: boolean = true;
@@ -49,7 +49,7 @@ export class AppComponent  implements OnInit, AfterViewChecked {
 
 
   ngAfterViewChecked() {
-    this.scrollbar.update();
+    setTimeout(() => this.scrollbar.update());
   }
 
   loadHandler(event: Event): void {
