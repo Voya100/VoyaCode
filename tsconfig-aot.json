@@ -30,7 +30,7 @@
     "app/projects/hangman/hangman.module.ts",
     "app/projects/other-projects/other-projects.module.ts",
     
-    "app/main.ts"
+    "app/main-aot.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "aot",
