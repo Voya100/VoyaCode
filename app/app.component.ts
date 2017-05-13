@@ -5,7 +5,6 @@ import 'rxjs/add/operator/mergeMap';
 import { Component, OnInit, ViewChild, AfterViewChecked, ElementRef } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute, Event } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { MdProgressCircle } from '@angular/material';
 import { ScrollbarComponent } from './shared/components/scrollbar/scrollbar.component';
 
 @Component({
