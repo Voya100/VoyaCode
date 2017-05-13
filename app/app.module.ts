@@ -2,7 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-import { MdProgressSpinner } from '@angular/material';
+import { MdProgressSpinnerModule } from '@angular/material';
  
 import { AppComponent }  from './app.component';
 
@@ -13,8 +13,8 @@ import { ScrollbarModule } from './shared/components/scrollbar/scrollbar.module'
 import { routing } from './app.routing';
  
 @NgModule({
-  imports:      [ BrowserModule, BrowserAnimationsModule, HttpModule, ScrollbarModule, routing ],
-  declarations: [ AppComponent, MainHeaderComponent, MainFooterComponent, MdProgressSpinner ],
+  imports:      [ BrowserModule, BrowserAnimationsModule, HttpModule, MdProgressSpinnerModule, ScrollbarModule, routing ],
+  declarations: [ AppComponent, MainHeaderComponent, MainFooterComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
