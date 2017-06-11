@@ -3,8 +3,18 @@
 :host{
   @extend %main-content;
   display: block;
+  position: relative;
 }
 
 h1{
   text-align: center;
+}
+
+.google_badge{
+  display: block;
+  width: 240px;
+  margin: auto;
+  img{
+    width: 240px;
+  }
 }
