@@ -42,7 +42,7 @@ export class ChessBoardComponent {
                 return enemyTileColor;
             }
         }else{
-            return (tile.x + tile.y) % 2 == 0 ? blackTileColor : whiteTileColor;
+            return (tile.x + tile.y) % 2 == 0 ? whiteTileColor : blackTileColor;
         }
     }
 

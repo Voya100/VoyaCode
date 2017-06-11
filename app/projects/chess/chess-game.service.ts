@@ -77,13 +77,11 @@ export class ChessGameService {
 	addPieces(){
 		let row1 = this.settings.positions[0] + "_".repeat(8-this.settings.positions[0].length);
 		let row2 = this.settings.positions[1] + "_".repeat(8-this.settings.positions[1].length);
-		let row1b = row1.split("").reverse().join(""); // Black rows are mirrored
-		let row2b = row2.split("").reverse().join("");
 		for(let i = 0; i < 8; i++){
 			this.addPiece(i,7,this.white,row1[i]);
-			this.addPiece(i,0,this.black,row1b[i]);
+			this.addPiece(i,0,this.black,row1[i]);
 			this.addPiece(i,6,this.white,row2[i]);
-			this.addPiece(i,1,this.black,row2b[i]);
+			this.addPiece(i,1,this.black,row2[i]);
 		}
 	}
 	

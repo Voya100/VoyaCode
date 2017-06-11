@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ChessSettingsService {
 
-  private readonly defaultPositions: string[] = ["RKBXQBKR",
+  private readonly defaultPositions: string[] = ["RKBQXBKR",
 	                                              "PPPPPPPP"];
 
   readonly boardSize: number = 8;
