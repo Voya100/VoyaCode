@@ -1,10 +1,13 @@
 # Chess game
 - Originally made with jQuery: February - June 2016
 - Current version made with Angular:  April 2017
+- Android version made with React Native: May - June 2017 ([repository](https://github.com/Voya100/ReactNativeChess))
 - Play here: http://www.voyacode.com/projects/chess
 
 This is a traditional chess game with the ability to choose custom piece layouts.
 The game has 2 players. Player can be either a human or computer AI. All combinations of the two are possible.
+
+This game has also a mobile version for android, made with React Native. You can find more about it in its [repository](https://github.com/Voya100/ReactNativeChess).
 
 ## Program's base mechanics
 
