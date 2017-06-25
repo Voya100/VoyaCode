@@ -48,7 +48,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(
         [
-            './js-aot/'
+          './public/js-aot/'
         ]
     ),
     new webpack.LoaderOptionsPlugin({
@@ -57,24 +57,24 @@ module.exports = {
     }),
     new webpack.optimize.UglifyJsPlugin({
         compress: {
-            warnings: false
+          warnings: false
         },
         output: {
-            comments: false
+          comments: false
         },
         sourceMap: false
-    }),/*
+    }),
     new CompressionPlugin({
-        asset: "[path].gz[query]",
-        algorithm: "gzip",
-        test: /\.js$|\.html$/,
-        threshold: 10240,
-        minRatio: 0.8
-    }),*/
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    }),
     new HtmlWebpackPlugin({
-        filename: 'index.html',
-        inject: 'body',
-        template: 'index-template.html'
+      filename: 'index.html',
+      inject: 'body',
+      template: 'index-template.html'
     }),
     new CopyWebpackPlugin([{from: './app/styles.css'}]),
   ]
