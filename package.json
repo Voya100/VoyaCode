@@ -2,6 +2,7 @@
   "name": "voyacode-json-package",
   "version": "1.0.0",
   "scripts": {
+    "main": "nodemon server/server.js",
     "start": "set NODE_ENV=development && concurrently \"webpack --watch\" \"lite-server -c lite-config.json\"",
     "start-old": "tsc && concurrently \"tsc -w\" \"lite-server -c lite-config.json\" ",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
@@ -34,7 +35,10 @@
     "@types/underscore": "^1.8.0",
     "angular-2-local-storage": "^1.0.1",
     "angular-in-memory-web-api": "~0.2.4",
+    "body-parser": "~1.5.2",
     "core-js": "^2.4.1",
+    "express": "~4.7.2",
+    "morgan": "^1.2.3",
     "rxjs": "^5.1.0",
     "systemjs": "0.19.40",
     "underscore": "^1.8.3",
