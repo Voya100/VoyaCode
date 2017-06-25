@@ -9,7 +9,7 @@ import { CommentData } from './comment-data'
 @Injectable()
 export class CommentsService {
 
-  private url = "http://voyacode.com/php/getComments.php";
+  private url = "/api/comments";
   private postUrl = "http://voyacode.com/php/postComment.php";
 
   constructor(private http: Http) { }

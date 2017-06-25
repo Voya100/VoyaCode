@@ -9,7 +9,7 @@ import { Blog } from '../../blogs/blog';
 @Injectable()
 export class BlogsService {
 
-  private url = "http://voyacode.com/php/blogs.php";
+  private url = "/api/blogs";
 
   constructor(private http: Http) { }
 
