@@ -1,5 +1,5 @@
 import { ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { ChessComponent } from './chess.component';
 import { ChessBoardComponent } from './chess-game/chess-board/chess-board.component';

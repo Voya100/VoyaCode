@@ -8,6 +8,6 @@ import { Blog } from './blog';
 
 export class BlogFilterPipe implements PipeTransform {
   transform(blogs: Blog[], years: any[]): any {
-    return blogs.filter((blog:any) => !years.hasOwnProperty(blog.year) || years[blog.year]);
+    return blogs.filter((blog: any) => !years.hasOwnProperty(blog.year) || years[blog.year]);
   }
 }

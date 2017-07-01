@@ -8,7 +8,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { routing } from './rock-paper-scissors.routing';
 
-import { RockPaperScissorsComponent }   from './rock-paper-scissors.component';
+import { RockPaperScissorsComponent } from './rock-paper-scissors.component';
 import { RpsGameAreaComponent } from './rock-paper-scissors-game/rps-game-area/rps-game-area.component';
 import { RpsMenuComponent } from './rock-paper-scissors-game/rps-menu/rps-menu.component';
 import { RpsUsernameComponent } from './rock-paper-scissors-game/rps-menu/rps-username/rps-username.component';
@@ -16,7 +16,6 @@ import { RpsGameLogicService } from './rps-game-logic.service';
 import { RpsWinningConditionsComponent } from './rock-paper-scissors-game/rps-menu/rps-winning-conditions/rps-winning-conditions.component';
 import { RpsRulesComponent } from './rock-paper-scissors-game/rps-menu/rps-rules/rps-rules.component';
 import { RpsStatisticsComponent } from './rock-paper-scissors-game/rps-menu/rps-statistics/rps-statistics.component';
-
 
 @NgModule({
   imports: [routing, SharedModule, CommonModule, FormsModule, LocalStorageModule.withConfig({
@@ -26,6 +25,6 @@ import { RpsStatisticsComponent } from './rock-paper-scissors-game/rps-menu/rps-
   exports: [],
   declarations: [RockPaperScissorsComponent, RockPaperScissorsGameComponent, RpsGameAreaComponent, 
                   RpsMenuComponent, RpsUsernameComponent, RpsWinningConditionsComponent, RpsRulesComponent, RpsStatisticsComponent],
-  providers: [RpsGameLogicService, LocalStorageService],
+  providers: [RpsGameLogicService, LocalStorageService]
 })
 export class RockPaperScissorsModule { }

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { ChessGameService } from '../../chess-game.service';
 
 @Component({
@@ -9,12 +9,12 @@ import { ChessGameService } from '../../chess-game.service';
 export class ChessWinnerDialogComponent implements OnDestroy{
     
     // Tells owner to open another dialog
-    @Output() switchDialogEvent = new EventEmitter<string>();
+    @Output() switchDialogEvent: EventEmitter<string> = new EventEmitter<string>();
 
     winnerColor: string;
     
     constructor(public game: ChessGameService){
-        let color = game.winner.color;
+        const color = game.winner.color;
         this.winnerColor = color[0].toUpperCase() + color.slice(1);
     }
 

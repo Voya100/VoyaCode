@@ -1,12 +1,12 @@
 <table>
   <tr>
-    <th class='blog-header'>
+    <th class="blog-header">
       {{blogData?.name}}
-      <button *ngIf="minimizable" class='minimize-button' [title]="visible ? 'Close' : 'Open'" (click)="toggle()">{{visible ? '‒' : '+'}}</button>
-      <br><span class='blog-date'>{{blogData?.date}}</span>      
+      <button *ngIf="minimizable" class="minimize-button" [title]="visible ? 'Close' : 'Open'" (click)="toggle()">{{visible ? '‒' : '+'}}</button>
+      <br><span class="blog-date">{{blogData?.date}}</span>      
     </th>
   </tr>
   <tr *ngIf="visible">
-    <td class='blog-text' [innerHtml]="blogData?.text"></td>
+    <td class="blog-text" [innerHtml]="blogData?.text"></td>
   </tr>
 </table>

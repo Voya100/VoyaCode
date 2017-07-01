@@ -2,8 +2,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { Component, OnInit, ViewChild, AfterViewChecked, ElementRef } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, ActivatedRoute, Event } from '@angular/router';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ScrollbarComponent } from './shared/components/scrollbar/scrollbar.component';
 
@@ -17,7 +17,7 @@ export class AppComponent  implements OnInit, AfterViewChecked {
   @ViewChild(ScrollbarComponent) scrollbar: ScrollbarComponent;
   @ViewChild('main') main: ElementRef;
 
-  loadingOpen = true;
+  loadingOpen: boolean = true;
   error: boolean = true;
   height: number = 0;
 
@@ -35,22 +35,23 @@ export class AppComponent  implements OnInit, AfterViewChecked {
       .filter(event => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
       .map(route => {
-        while (route.firstChild) route = route.firstChild;
+        while (route.firstChild){
+          route = route.firstChild
+        }
         return route;
       })
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
       .subscribe((event) =>{
-        this.titleService.setTitle('Voya Code' + (event['title'] == '' ? '' : ' - ' + event['title']));
+        this.titleService.setTitle('Voya Code' + (event['title'] === '' ? '' : ' - ' + event['title']));
       });
 
     // There may be a way to combine these subscribes, but I'm not sure what's the best way to do it.
     this.router.events.subscribe((event: Event) => this.loadHandler(event));
   }
 
-
   ngAfterViewChecked() {
-    if(this.main.nativeElement.clientHeight != this.height){
+    if(this.main.nativeElement.clientHeight !== this.height){
       this.height = this.main.nativeElement.clientHeight;
       setTimeout(() => this.scrollbar.update());
     }

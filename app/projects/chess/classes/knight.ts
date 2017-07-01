@@ -4,7 +4,7 @@ import { Tile } from './tile';
 
 export class Knight extends Piece{
 
-  type: string = "knight";
+  type: string = 'knight';
   value: number = 4;
 
   constructor(player: Player, tile: Tile){
@@ -13,8 +13,8 @@ export class Knight extends Piece{
   
   tileCheck(){
     this.clearTiles();
-    this.moveTiles = this.moveTiles.concat(this.checkDirections(2,1,1,true));
-    this.moveTiles = this.moveTiles.concat(this.checkDirections(1,2,1,true));
+    this.moveTiles = this.moveTiles.concat(this.checkDirections(2, 1, 1, true));
+    this.moveTiles = this.moveTiles.concat(this.checkDirections(1, 2, 1, true));
     this.addTiles();
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RpsStatistics, RpsGameLogicService } from '../../../rps-game-logic.service';
+import { RpsGameLogicService, RpsStatistics } from '../../../rps-game-logic.service';
 
 @Component({
     selector: 'rps-statistics',

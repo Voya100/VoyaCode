@@ -6,13 +6,13 @@
       <tr><td>White:</td><td>{{game.white?.pieces.length}} pieces</td></tr>
       <tr><td>Black:</td><td>{{game.black?.pieces.length}} pieces</td></tr>
   </table>
-  <li class='play-again' title='Resets the game.' (click)="reset()">Reset game</li>
-  <li class='game-mode-button' title='Choose game mode.' (click)="switchDialog('chooseMode')">Game mode</li>
-  <li class='settings-button' title='Change piece layout.' (click)="switchDialog('settings')">Settings</li>
-  <li class='instructions-button' title='Read the instructions.' (click)="switchDialog('instructions')">Instructions</li>
+  <li class="play-again" title="Resets the game." (click)="reset()">Reset game</li>
+  <li class="game-mode-button" title="Choose game mode." (click)="switchDialog('chooseMode')">Game mode</li>
+  <li class="settings-button" title="Change piece layout." (click)="switchDialog('settings')">Settings</li>
+  <li class="instructions-button" title="Read the instructions." (click)="switchDialog('instructions')">Instructions</li>
 </section>
 
-<section class='container'>
+<section class="container">
     <router-outlet></router-outlet>
     <chess-choose-mode *ngIf="visibleDialog == 'chooseMode'" (close)="switchDialog('')" [@fadeIn]></chess-choose-mode>
     <chess-settings *ngIf="visibleDialog == 'settings'" (close)="switchDialog('')" [@fadeIn]></chess-settings>

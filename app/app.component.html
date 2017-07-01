@@ -3,14 +3,14 @@
   <main-header></main-header>
 
   <main #main>
-    <section class='loading' *ngIf="loadingOpen">
+    <section class="loading" *ngIf="loadingOpen">
       <md-progress-spinner mode="indeterminate"></md-progress-spinner>
       Loading
     </section>
 
-    <section class='loading-error' *ngIf="error">
+    <section class="loading-error" *ngIf="error">
       Loading failed. Please check  your internet connection. If problem isn't with internet connection, contact the admin.
-      <button (click)='error = false;'>Close</button>
+      <button (click)="error = false;">Close</button>
     </section>
 
     <router-outlet></router-outlet>

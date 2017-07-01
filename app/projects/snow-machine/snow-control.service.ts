@@ -17,10 +17,10 @@ export class SnowControlService {
 
   // Creates flakes according to settings
   createFlakes(){
-		for(let id=0; id < this.settings.count; id++){
+    for(let id = 0; id < this.settings.count; id++){
       this.flakes.push(new SnowFlake(this.settings));
-		}
-	}
+    }
+  }
 
   // Deletes all current and old flakes
   deleteFlakes(){
@@ -35,15 +35,14 @@ export class SnowControlService {
   
   // Moves all flakes by one step/frame
   moveRain(){
-    if(this.flakes.length == 0){
+    if(this.flakes.length === 0){
       return;
     }
-		for(let id=0; id < this.flakes.length; id++){
-			this.flakes[id].move();
-		}
-		var self = this;
+    for(const flake of this.flakes){
+      flake.move();
+    }
     requestAnimationFrame(() => this.moveRain());
-	}
+  }
 
   // Resets snow/rain, activates new settings
   reset(new_setting: SnowSettings){

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../../shared/shared.module';
 
-import { ChessComponent }   from './chess.component';
+import { ChessComponent } from './chess.component';
 import { ChessGameComponent } from './chess-game/chess-game.component';
 import { ChessGameService } from './chess-game.service';
 
@@ -21,6 +21,6 @@ import { ChessWinnerDialogComponent } from './chess-game/chess-winner-dialog/che
   exports: [],
   declarations: [ChessComponent, ChessGameComponent, ChessBoardComponent, ChessInstructionsComponent, 
                 ChessSettingsComponent, ChessChooseModeComponent, ChessWinnerDialogComponent],
-  providers: [ChessGameService, ChessSettingsService],
+  providers: [ChessGameService, ChessSettingsService]
 })
 export class ChessModule { }

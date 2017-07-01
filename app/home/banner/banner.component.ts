@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Project, projectList} from '../../shared/data/projects'
+import { Project, projectList } from '../../shared/data/projects'
 
 // Banner component goes shows all project banners one at a time.
 // Banner changes project automatically every 5 seconds.
@@ -30,7 +30,7 @@ export class BannerComponent implements OnInit {
   // Changes banner automatically, if it hasn't been changed manually since last auto change
   autoChange(time: number){
     if(this.auto){
-      this.change(this.id+1);
+      this.change(this.id + 1);
     }else{
       this.auto = true;
     }
@@ -43,7 +43,7 @@ export class BannerComponent implements OnInit {
   // Negative id values are changed to last element.
   // Modulo is used when id value is too high.
   // Manual changes prevent 1 automatic change.
-  change(id: number, manual = false){
+  change(id: number, manual: boolean = false){
     if(manual){
       this.auto = false;
     }

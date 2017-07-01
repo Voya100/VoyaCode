@@ -1,8 +1,6 @@
 // This class contains all settings for snow/rain and their minimum and maximum values.
 // All settings are initialised to their default values.
 
-
-
 // Settings:
 // Symbol:  Text representation of the flake/rain drop. Can be multiple characters.
 // Color:   Color name, hex value or some other color format supported by CSS.
@@ -16,9 +14,9 @@
 //          If false, old ones are kept on the screen, but they won't move
 
 export class SnowSettings{
-  symbol: string = "*";
-  color: string = "white";
-  img: string = "";
+  symbol: string = '*';
+  color: string = 'white';
+  img: string = '';
   count: number = 30;
   min_speed: number = 2;
   max_speed: number = 10;
@@ -31,7 +29,7 @@ export class SnowSettings{
 
   // Edges of the screen
   readonly xMax: number = document.documentElement.clientWidth-50;
-	readonly yMax: number = Math.max( document.body.scrollHeight, 
+  readonly yMax: number = Math.max( document.body.scrollHeight, 
                                     document.body.offsetHeight, 
                                     document.documentElement.clientHeight, 
                                     document.documentElement.scrollHeight, 
@@ -39,7 +37,7 @@ export class SnowSettings{
 
   // Max/min values can depend on current settings.
   // Min value can't be higher than current max setting value and max value can't be smaller than min value.
-  readonly max_values = {
+  readonly max_values: any = {
     count: () => 1000,
     min_speed: () => this.max_speed,
     max_speed: () => 1000,
@@ -48,7 +46,7 @@ export class SnowSettings{
     min_size: () => this.max_size,
     max_size: () => 1000
   }
-  readonly min_values = {
+  readonly min_values: any = {
     count: () => 1,
     min_speed: () => 0,
     max_speed: () => this.min_speed,

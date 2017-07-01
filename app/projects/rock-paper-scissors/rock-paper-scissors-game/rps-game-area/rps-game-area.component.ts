@@ -1,6 +1,6 @@
 import { RpsGameLogicService } from '../../rps-game-logic.service';
 import { Component, OnDestroy } from '@angular/core';
-import { trigger, state, style, animate, transition} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'rps-game-area',
@@ -27,7 +27,7 @@ export class RpsGameAreaComponent implements OnDestroy {
     gameResult: string;
 
     constructor(private gameData: RpsGameLogicService){
-        this.imagePath = "images/rock-paper-scissors/";
+        this.imagePath = 'images/rock-paper-scissors/';
         this.preloadImages();
     }
 
@@ -36,20 +36,20 @@ export class RpsGameAreaComponent implements OnDestroy {
     }
     
     preloadImages(){
-        let optionNames = ['rock', 'paper', 'scissors'];
+        const optionNames = ['rock', 'paper', 'scissors'];
 
-        for (let i = 0; i < optionNames.length; i++) {
-            this.preloadImage(this.image(optionNames[i] + "1.png"));
-            this.preloadImage(this.image(optionNames[i] + "2.png"));
+        for (const optionName1 of optionNames) {
+            this.preloadImage(this.image(optionName1 + '1.png'));
+            this.preloadImage(this.image(optionName1 + '2.png'));
             
-            for(let j = 0; j < optionNames.length; j++){
-                this.preloadImage(this.image(optionNames[i] + "-" + optionNames[j] + ".png"));
+            for(const optionName2 of optionNames){
+                this.preloadImage(this.image(optionName1 + '-' + optionName2 + '.png'));
             }
         }
     }
 
     preloadImage(imagePath: string){
-        let image = new Image();
+        const image = new Image();
         image.src = imagePath;
     }
 
@@ -71,39 +71,39 @@ export class RpsGameAreaComponent implements OnDestroy {
     }
 
     showChoiceImages(){
-        this.image1 = this.image(this.gameData.player1.choice + "1.png");
-        this.image2 = this.image(this.gameData.player2.choice + "2.png");
+        this.image1 = this.image(this.gameData.player1.choice + '1.png');
+        this.image2 = this.image(this.gameData.player2.choice + '2.png');
         this.choiceImagesVisible = true;
     }
 
     choiceImagesCallback(){
         if(this.choiceImagesVisible){
-            setTimeout(() => {this.choiceImagesVisible = false;}, 1000);            
+            setTimeout(() => {this.choiceImagesVisible = false; }, 1000);            
         }else{
             this.showRoundResult();
         }
     }
 
     showRoundResult(){
-        let choice1 = this.gameData.player1.choice;
-        let choice2 = this.gameData.player2.choice;
-        this.image3 = this.image(choice1 + "-" + choice2 + ".png");
+        const choice1 = this.gameData.player1.choice;
+        const choice2 = this.gameData.player2.choice;
+        this.image3 = this.image(choice1 + '-' + choice2 + '.png');
         this.gameData.playRound();
         
         if(this.gameData.isTie()){
-            this.roundResult = "It's a tie, both players get 0.5 points."
+            this.roundResult = 'It\'s a tie, both players get 0.5 points.'
         }else{
-            let winner = this.gameData.roundWinner;
-            let loser = this.gameData.getOpponent(winner);
-            let winnerChoiceCapitalized = winner.choice[0].toUpperCase() + winner.choice.slice(1); 
-            this.roundResult = winnerChoiceCapitalized + " beats " + loser.choice + ", " + winner.name + " gets 1 point.";
+            const winner = this.gameData.roundWinner;
+            const loser = this.gameData.getOpponent(winner);
+            const winnerChoiceCapitalized = winner.choice[0].toUpperCase() + winner.choice.slice(1); 
+            this.roundResult = winnerChoiceCapitalized + ' beats ' + loser.choice + ', ' + winner.name + ' gets 1 point.';
         }
         this.roundResultVisible = true;
     }
 
     roundResultCallback(){
         if(this.roundResultVisible){
-            setTimeout(() => {this.roundResultVisible = false;}, 1500);    
+            setTimeout(() => {this.roundResultVisible = false; }, 1500);    
         }else{
             this.showChoiceOptions();
         }
@@ -118,11 +118,11 @@ export class RpsGameAreaComponent implements OnDestroy {
     }
 
     showGameResult(){
-        let winner = this.gameData.getGameWinner();
+        const winner = this.gameData.getGameWinner();
         if(winner == null){
-            this.gameResult = "It's a tie!"
+            this.gameResult = 'It\'s a tie!'
         }else{
-            this.gameResult = winner.name + " wins!";
+            this.gameResult = winner.name + ' wins!';
         }
         this.gameData.addGameResultToStatistics();
         this.gameResultVisible = true;

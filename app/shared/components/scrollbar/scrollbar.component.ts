@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'scrollbar',
@@ -13,19 +13,19 @@ export class ScrollbarComponent implements AfterViewInit {
   @ViewChild('handle') handle: ElementRef;
 
   hide: boolean = false;
-  dragging = false;
-  scrollStart = 0;
-  dragStart = 0;
-  outerHeight = 0;
-  outerWidth = 0;
-  innerHeight = 0;
-  trackHeight = 0;
-  handleHeight = 0;
+  dragging: boolean = false;
+  scrollStart: number = 0;
+  dragStart: number = 0;
+  outerHeight: number = 0;
+  outerWidth: number = 0;
+  innerHeight: number = 0;
+  trackHeight: number = 0;
+  handleHeight: number = 0;
 
-  handleTop = 0;
+  handleTop: number = 0;
 
-  innerWidth = 0;
-  middleScroll = 0;
+  innerWidth: number = 0;
+  middleScroll: number = 0;
 
   ngAfterViewInit(){
     setTimeout(() => this.setDimensions());
@@ -37,7 +37,7 @@ export class ScrollbarComponent implements AfterViewInit {
   }
 
   updateHandle(){
-    if(this.innerHeight != this.middle.nativeElement.scrollHeight){
+    if(this.innerHeight !== this.middle.nativeElement.scrollHeight){
       this.setDimensions();
     }
     this.handleTop = this.trackHeight*(this.middle.nativeElement.scrollTop/this.innerHeight);
@@ -52,9 +52,9 @@ export class ScrollbarComponent implements AfterViewInit {
     this.innerHeight = this.middle.nativeElement.scrollHeight;
     this.trackHeight = this.track.nativeElement.offsetHeight;
 
-    let percentageVisible = this.outerHeight / this.innerHeight;
+    const percentageVisible = this.outerHeight / this.innerHeight;
     this.handleHeight = percentageVisible > 1 ? this.trackHeight : this.trackHeight*percentageVisible;
-    this.hide = this.handleHeight == this.trackHeight;
+    this.hide = this.handleHeight === this.trackHeight;
   }
 
   scrollHandler(){
@@ -64,10 +64,10 @@ export class ScrollbarComponent implements AfterViewInit {
   }
 
   trackClickHandler(e: MouseEvent){
-    let target = <HTMLElement> e.target;
-    if(target == this.track.nativeElement){
-      let offsetY = e.pageY - target.getBoundingClientRect().top;
-      let percentage = offsetY / this.track.nativeElement.offsetHeight;
+    const target = <HTMLElement> e.target;
+    if(target === this.track.nativeElement){
+      const offsetY = e.pageY - target.getBoundingClientRect().top;
+      const percentage = offsetY / this.track.nativeElement.offsetHeight;
       this.middleScroll = percentage * this.innerHeight - (this.trackHeight/2);
       this.updateHandle();
     }

@@ -27,18 +27,18 @@ export class RpsGameLogicService {
   statistics: RpsStatistics;
   settings: RpsSettings;
 
-  private readonly options: string[] = ["rock", "paper", "scissors"];
+  private readonly options: string[] = ['rock', 'paper', 'scissors'];
 
   // choicePairs[winningChoice] == losingChoice
-  private readonly choicePairs = {
-    rock: "scissors",
-    paper: "rock",
-    scissors: "paper"
+  private readonly choicePairs: any = {
+    rock: 'scissors',
+    paper: 'rock',
+    scissors: 'paper'
   }
   
   constructor(private storage: LocalStorageService) { 
-    this.player1 = {name: "Player", choice: "", score: 0};
-    this.player2 = {name: "Computer", choice: "", score: 0};
+    this.player1 = {name: 'Player', choice: '', score: 0};
+    this.player2 = {name: 'Computer', choice: '', score: 0};
 
     if(storage.get('statistics') == null){
       this.statistics = {playTimes: 0, victories: 0, ties: 0, losses: 0}
@@ -54,7 +54,7 @@ export class RpsGameLogicService {
   }
 
   computerChoice(){
-    let random = Math.ceil(3*Math.random());
+    const random = Math.ceil(3*Math.random());
     return this.options[random-1];
   }
 
@@ -71,11 +71,11 @@ export class RpsGameLogicService {
 
   // Returns winner of the round or null if it's a tie
   getRoundWinner(){
-    let choice1 = this.player1.choice;
-    let choice2 = this.player2.choice;
-    if(choice1 == choice2){
+    const choice1 = this.player1.choice;
+    const choice2 = this.player2.choice;
+    if(choice1 === choice2){
       return null;
-    }else if(this.choicePairs[choice1] == choice2){
+    }else if(this.choicePairs[choice1] === choice2){
       return this.player1;
     }else{
       return this.player2;
@@ -83,11 +83,11 @@ export class RpsGameLogicService {
   }
 
   getOpponent(player: RpsPlayerData){
-    return player == this.player1 ? this.player2 : this.player1;
+    return player === this.player1 ? this.player2 : this.player1;
   }
 
   isTie(){
-    return this.player1.choice == this.player2.choice;
+    return this.player1.choice === this.player2.choice;
   }
 
   gameHasEnded(){
@@ -95,7 +95,7 @@ export class RpsGameLogicService {
   }
 
   getGameWinner(){
-    if(this.player1.score == this.player2.score){
+    if(this.player1.score === this.player2.score){
       return null;
     }else if(this.player1.score > this.player2.score){
       return this.player1;
@@ -105,10 +105,10 @@ export class RpsGameLogicService {
   }
 
   addGameResultToStatistics(){
-    let winner = this.getGameWinner();
+    const winner = this.getGameWinner();
     if(winner == null){
       this.statistics.ties++;
-    }else if(winner == this.player1){
+    }else if(winner === this.player1){
       this.statistics.victories++;
     }else{
       this.statistics.losses++;

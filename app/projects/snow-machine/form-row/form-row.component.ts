@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SnowSettings } from '../snow-settings/snow-settings'
 
 @Component({
@@ -13,8 +13,8 @@ export class FormRowComponent{
   @Input() description: string;
   @Input() step: number;
   
-  min: any = () => this.settings.min_values[this.id]();
-  max: any = () => this.settings.max_values[this.id]();
+  public min: any = () => this.settings.min_values[this.id]();
+  public max: any = () => this.settings.max_values[this.id]();
 
   valid(): boolean{
       return this.min() <= this.settings[this.id] && 

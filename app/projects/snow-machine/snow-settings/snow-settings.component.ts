@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, OnDestroy, ViewChildren, QueryList } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 
 import { FormRowComponent } from '../form-row/form-row.component'
 import { SnowControlService } from '../snow-control.service'
@@ -15,7 +15,7 @@ import { SnowSettings } from './snow-settings';
   styleUrls: ['./snow-settings.component.css', '../form-row/form-row.component.css'],
   providers: [SnowControlService, SnowSettings]
 })
-export class SnowSettingsComponent {
+export class SnowSettingsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChildren(FormRowComponent) formRowsQuery: QueryList<FormRowComponent>;
 
