@@ -1,7 +1,7 @@
 export class CommentData{
   username: string;
-  content: string;
-  publishTime: string;
-  editTime: string;
+  message: string;
+  post_time: string;
+  update_time: string;
   private: boolean;
 }

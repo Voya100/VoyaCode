@@ -35,10 +35,10 @@ export class CommentsComponent implements OnInit {
       error => {
         this.comments.push({
           username: 'Error',
-          content: "Connection to server failed and comments couldn't be fetched. Check your internet connection and try again. If problem persists, contact the admin.",
+          message: "Connection to server failed and comments couldn't be fetched. Check your internet connection and try again. If problem persists, contact the admin.",
           private: false,
-          publishTime: '',
-          editTime: ''
+          post_time: '',
+          update_time: ''
         })
       }
     );
@@ -111,5 +111,5 @@ export class CommentsComponent implements OnInit {
       );
     }
   }
-
+ 
 }

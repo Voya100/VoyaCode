@@ -6,9 +6,9 @@
   </div>
   <div class='comment-content'>
     <span class='post-date'>
-      {{data.publishTime}}<span *ngIf="data.publishTime != data.editTime">, edited at {{data.editTime}}</span>
+      {{data.post_time}}<span *ngIf="data.post_time != data.update_time">, edited at {{data.update_time}}</span>
     </span>
     <hr>
-    <div [innerHtml]="data.content"></div>
+    <div [innerHtml]="data.message"></div>
   </div>
 </article>

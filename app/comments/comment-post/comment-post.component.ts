@@ -7,12 +7,9 @@ import { CommentData } from '../comment-data';
   templateUrl: 'comment-post.component.html',
   styleUrls: ['./comment-post.component.css']
 })
-export class CommentPostComponent implements OnInit {
+export class CommentPostComponent {
 
   @Input() data: CommentData;
   @Input() isNew: boolean = false;
 
-  constructor() { }
-
-  ngOnInit() { }
 }

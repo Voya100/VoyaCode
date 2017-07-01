@@ -10,7 +10,6 @@ import { CommentData } from './comment-data'
 export class CommentsService {
 
   private url = "/api/comments";
-  private postUrl = "http://voyacode.com/php/postComment.php";
 
   constructor(private http: Http) { }
 
@@ -35,8 +34,10 @@ export class CommentsService {
       data.append('preview', '1');
     }
 
-    return this.http.post(this.postUrl, data).map((res: Response) => {
-      return res.json();
+    return this.http.post(this.url, data).map((res: Response) => {
+      let result = res.json();
+      result.error = res.status === 200 ? '' : result.message;
+      return result;
     });
   }
 }
