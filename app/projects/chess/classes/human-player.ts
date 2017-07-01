@@ -1,7 +1,6 @@
 import { Player } from './player';
 import { ChessGameService } from '../chess-game.service';
 
-
 export class HumanPlayer extends Player{
 
   constructor(color: string, game: ChessGameService){

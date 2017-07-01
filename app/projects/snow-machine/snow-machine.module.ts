@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms'
 import { SharedModule } from '../../shared/shared.module'
 
 import { FormRowComponent } from './form-row/form-row.component'
-import { SnowMachineComponent }   from './snow-machine.component';
+import { SnowMachineComponent } from './snow-machine.component';
 import { SnowSettingsComponent } from './snow-settings/snow-settings.component'
 import { routing } from './snow-machine.routing';
 
@@ -14,6 +14,6 @@ import { SnowControlService } from './snow-control.service'
   imports: [CommonModule, FormsModule, routing, SharedModule],
   exports: [],
   declarations: [SnowMachineComponent, SnowSettingsComponent, FormRowComponent],
-  providers: [SnowControlService],
+  providers: [SnowControlService]
 })
 export class SnowMachineModule { }

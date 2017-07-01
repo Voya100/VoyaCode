@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { CommentData } from './comment-data';
 
-import { CommentsService } from './comments.service'
+import { CommentsService } from './comments.service';
 
 @Component({
   templateUrl: 'comments.component.html',
@@ -14,11 +14,11 @@ export class CommentsComponent implements OnInit {
 
   comments: CommentData[] = [];
 
-  username: string = "";
-  message: string = "";
+  username: string = '';
+  message: string = '';
   private: boolean = false;
 
-  postError: string = "";
+  postError: string = '';
 
   previewPost: CommentData = null;
 
@@ -30,15 +30,16 @@ export class CommentsComponent implements OnInit {
   ngOnInit() {
     this.commentService.getComments().subscribe(
       data => {
-        this.comments = data
+        this.comments = data;
       },
       error => {
         this.comments.push({
           username: 'Error',
-          content: "Connection to server failed and comments couldn't be fetched. Check your internet connection and try again. If problem persists, contact the admin.",
+          // tslint:disable-next-line:max-line-length
+          message: 'Connection to server failed and comments couldn\'t be fetched. Check your internet connection and try again. If problem persists, contact the admin.',
           private: false,
-          publishTime: '',
-          editTime: ''
+          post_time: '',
+          update_time: ''
         })
       }
     );
@@ -46,12 +47,12 @@ export class CommentsComponent implements OnInit {
 
   // Adds tags around the current selection. Selection is moved between the tags.
   addTag(startTag: string, endTag: string, textarea: HTMLTextAreaElement){
-    let beginning = textarea.selectionStart;
-    let ending = textarea.selectionEnd;
+    const beginning = textarea.selectionStart;
+    const ending = textarea.selectionEnd;
     if(beginning !== null){
-      let start = this.message.substring(0, beginning);
-      let middle = beginning == ending ? '' : this.message.substring(beginning, ending);
-      let end = this.message.substring(ending);
+      const start = this.message.substring(0, beginning);
+      const middle = beginning === ending ? '' : this.message.substring(beginning, ending);
+      const end = this.message.substring(ending);
       this.message = start + startTag + middle + endTag + end;
       // Small delay so that position is set after view has updated
       // Caret position is set between the tags
@@ -64,14 +65,14 @@ export class CommentsComponent implements OnInit {
   // Adds the tag to textarea
   tag(tag: string, textarea: HTMLTextAreaElement){
     switch(tag){
-    case "b":
-    case "i":
-    case "u":
-      this.addTag("[" + tag + "]","[/" + tag + "]", textarea)
-      break;
-    case "url":
-      this.addTag("[" + tag + "=]","[/" + tag + "]", textarea);
-    }
+      case 'b':
+      case 'i':
+      case 'u':
+        this.addTag('[' + tag + ']', '[/' + tag + ']', textarea)
+        break;
+      case 'url':
+        this.addTag('[' + tag + '=]', '[/' + tag + ']', textarea);
+      }
   }
 
   // Sets selection in textarea
@@ -92,18 +93,18 @@ export class CommentsComponent implements OnInit {
       this.commentService.postComment(this.username, this.message, this.private, preview).subscribe(
         (data) => {
           this.postError = data.error;
-          if(data.error === ""){
+          if(data.error === ''){
             if(preview){
               this.previewPost = data.data;
             }else{
               this.comments.push(data.data);
               this.previewPost = null;
-              this.message = "";
+              this.message = '';
             }
           }
         },
         (error) => {
-          this.postError = "Connection failed. Check your internet connection and try again.";
+          this.postError = 'Connection failed. Check your internet connection and try again.';
         },
         () => {
           this.posting = false;
@@ -111,5 +112,5 @@ export class CommentsComponent implements OnInit {
       );
     }
   }
-
+ 
 }

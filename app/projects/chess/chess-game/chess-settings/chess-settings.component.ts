@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ChessSettingsService } from '../../chess-settings.service';
 import { ChessGameService } from '../../chess-game.service';
 
@@ -10,7 +10,7 @@ import { ChessGameService } from '../../chess-game.service';
 export class ChessSettingsComponent {
 
     // Tells the owner to close the component
-    @Output() close = new EventEmitter();
+    @Output() close: EventEmitter<any> = new EventEmitter();
 
     upperRow: string;
     lowerRow: string;
@@ -24,7 +24,7 @@ export class ChessSettingsComponent {
 
     saveSettings(){
         this.settings.setPositions(this.upperRow, this.lowerRow);
-        if(this.boardReversed != this.settings.boardReversed){
+        if(this.boardReversed !== this.settings.boardReversed){
             this.settings.changeReversed(this.boardReversed);
         }
         this.close.emit();
@@ -33,7 +33,7 @@ export class ChessSettingsComponent {
 
     resetLayout(){
         this.settings.resetPositions();
-        if(this.boardReversed != this.settings.boardReversed){
+        if(this.boardReversed !== this.settings.boardReversed){
             this.settings.changeReversed(this.boardReversed);
         }
         this.close.emit();

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ChessSettingsService } from '../../chess-settings.service';
 import { ChessGameService } from '../../chess-game.service';
 
@@ -10,7 +10,7 @@ import { ChessGameService } from '../../chess-game.service';
 export class ChessChooseModeComponent {
 
     // Tells the owner to close the component
-    @Output() close = new EventEmitter();
+    @Output() close: EventEmitter<any> = new EventEmitter();
     
     constructor(private settings: ChessSettingsService, private game: ChessGameService){
 

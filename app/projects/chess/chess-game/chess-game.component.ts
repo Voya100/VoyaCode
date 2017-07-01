@@ -1,4 +1,4 @@
-import { Component, OnInit, trigger, state, transition, animate, style } from '@angular/core';
+import { animate, Component, OnInit, state, style, transition, trigger } from '@angular/core';
 import { ChessGameService } from '../chess-game.service';
 import { ChessSettingsService } from '../chess-settings.service';
 
@@ -16,7 +16,7 @@ import { ChessSettingsService } from '../chess-settings.service';
 })
 export class ChessGameComponent {
 
-    visibleDialog: string = "";
+    visibleDialog: string = '';
     
     constructor(public game: ChessGameService, private settings: ChessSettingsService) {
         this.game.reset();
@@ -28,9 +28,9 @@ export class ChessGameComponent {
     }
 
     activePlayerColor(){
-        let player = this.game.activePlayer;
+        const player = this.game.activePlayer;
         if(player == null){
-            return "White";
+            return 'White';
         }else{
             return this.capitalize(player.color);
         }
@@ -43,8 +43,8 @@ export class ChessGameComponent {
     // Opens dialog, if not already open. Otherwise closes it.
     // Also ensures that game is paused while dialog is open, and continued once closed
     switchDialog(dialogName: string){
-        this.visibleDialog = this.visibleDialog == dialogName ? "" : dialogName;
-        if(this.visibleDialog == ''){
+        this.visibleDialog = this.visibleDialog === dialogName ? '' : dialogName;
+        if(this.visibleDialog === ''){
             this.game.gamePaused = false;
             this.game.run();
         }else{

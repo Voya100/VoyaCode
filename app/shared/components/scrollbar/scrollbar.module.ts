@@ -7,10 +7,10 @@ import { ScrollbarComponent } from './scrollbar.component';
 
     ],
     declarations: [
-        ScrollbarComponent,
+        ScrollbarComponent
     ],
     exports: [
-        ScrollbarComponent,
+        ScrollbarComponent
     ]
 })
 export class ScrollbarModule {

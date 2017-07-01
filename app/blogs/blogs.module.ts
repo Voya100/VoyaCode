@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from '../shared/shared.module'
+import { SharedModule } from '../shared/shared.module';
 
-import { BlogsComponent } from './blogs.component'
-import { BlogFilterPipe } from './blog-filter.pipe'
+import { BlogsComponent } from './blogs.component';
+import { BlogFilterPipe } from './blog-filter.pipe';
 
 import { routing } from './blogs.routing';
 
@@ -12,6 +12,6 @@ import { routing } from './blogs.routing';
   imports: [CommonModule, SharedModule, routing],
   exports: [],
   declarations: [BlogsComponent, BlogFilterPipe],
-  providers: [],
+  providers: []
 })
 export class BlogsModule { }

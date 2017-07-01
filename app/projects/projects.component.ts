@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Project, projectList} from '../shared/data/projects'
+import { Project, projectList } from '../shared/data/projects'
 
 @Component({
   templateUrl: './projects.component.html',

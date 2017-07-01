@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RpsGameLogicService, RpsPlayerData } from '../rps-game-logic.service';
 
-
 @Component({
   selector: 'rock-paper-scissors-game',
   templateUrl: 'rock-paper-scissors-game.component.html',

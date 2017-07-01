@@ -1,6 +1,5 @@
-import { Component, ViewChildren, OnInit, QueryList, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { BlogsService } from '../shared/services/blogs.service';
-import { BlogFilterPipe } from './blog-filter.pipe';
 
 import { BlogPostComponent } from '../shared/components/blog-post/blog-post.component';
 
@@ -43,8 +42,8 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
   blogInit(blogs: Blog[]){
     if(blogs.length > 0){
       this.blogs = blogs;
-      let yearMin = 2016;
-      let yearMax = blogs[0].year;
+      const yearMin = 2016;
+      const yearMax = blogs[0].year;
       for(let y = yearMax; y >= yearMin; y--){
         this.years.push(y);
         this.yearCheck[y] = true;

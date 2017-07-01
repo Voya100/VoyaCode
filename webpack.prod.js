@@ -1,6 +1,7 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+let CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var CompressionPlugin = require("compression-webpack-plugin");
 
@@ -10,7 +11,7 @@ module.exports = {
   },
 
   output: {
-    path: __dirname + '/',
+    path: __dirname + '/public/',
     filename: 'js-aot/[name]-[hash:8].bundle.js',
     chunkFilename: 'js-aot/[id].-[hash:8].chunk.js',
   },
@@ -47,7 +48,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(
         [
-            './js-aot/'
+          './public/js-aot/'
         ]
     ),
     new webpack.LoaderOptionsPlugin({
@@ -56,25 +57,25 @@ module.exports = {
     }),
     new webpack.optimize.UglifyJsPlugin({
         compress: {
-            warnings: false
+          warnings: false
         },
         output: {
-            comments: false
+          comments: false
         },
         sourceMap: false
-    }),/*
+    }),
     new CompressionPlugin({
-        asset: "[path].gz[query]",
-        algorithm: "gzip",
-        test: /\.js$|\.html$/,
-        threshold: 10240,
-        minRatio: 0.8
-    }),*/
-    new ExtractTextPlugin("styles.css"),
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    }),
     new HtmlWebpackPlugin({
-        filename: 'index.html',
-        inject: 'body',
-        template: 'index-template.html'
-    })
+      filename: 'index.html',
+      inject: 'body',
+      template: 'index-template.html'
+    }),
+    new CopyWebpackPlugin([{from: './app/styles.css'}]),
   ]
 };

@@ -1,13 +1,13 @@
 <h1>Comments</h1>
 
-<section class='comment-container'>
-  <div class='header'>
-    <div class='username-header'>Username</div>
-    <div class='comments-header'>Comments</div>
+<section class="comment-container">
+  <div class="header">
+    <div class="username-header">Username</div>
+    <div class="comments-header">Comments</div>
   </div>
   <comment-post *ngFor="let post of comments" [data]="post"></comment-post>
 </section>
-<section class='preview-container' *ngIf="previewPost !== null">
+<section class="preview-container" *ngIf="previewPost !== null">
   <h2>Preview</h2>
   <comment-post [data]="previewPost"></comment-post>
 </section>
@@ -16,9 +16,9 @@
     <td colspan="2">Leave a comment:</td>
   </tr>
   <tr class="row">
-    <td class='first-cell'>Username:</td>
+    <td class="first-cell">Username:</td>
     <td>
-      <input class='username' maxlength="15" size="75" name="username" tabindex="1" type="text" [(ngModel)]="username" [disabled]="posting">
+      <input class="username" maxlength="15" size="75" name="username" tabindex="1" type="text" [(ngModel)]="username" [disabled]="posting">
     </td>
   </tr>
   <tr class="row">
@@ -35,8 +35,8 @@
     </td>
   </tr>
   <tr class="row">
-    <td colspan="2" style='text-align:center;'>
-      <div class='error' *ngIf="postError">{{postError}}</div>
+    <td colspan="2" style="text-align:center;">
+      <div class="error" *ngIf="postError">{{postError}}</div>
       <button (click)="postComment(true)" [class.disabled]="posting" title="Shows what the comment would look like if posted.">Preview</button>
       <button (click)="postComment()" [class.disabled]="posting">Submit</button>
     </td>

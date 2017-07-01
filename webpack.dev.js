@@ -1,6 +1,7 @@
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+let CopyWebpackPlugin = require('copy-webpack-plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
 let path = require('path');
 
@@ -15,7 +16,7 @@ module.exports = {
     },
 
     output: {
-        path: __dirname + '/',
+        path: __dirname + '/public/',
         filename: 'js-jit/[name].bundle.js'
     },
 
@@ -55,7 +56,7 @@ module.exports = {
 
     devServer: {
         historyApiFallback: true,
-        contentBase: path.join(__dirname, '/')
+        contentBase: path.join(__dirname, '/public')
     },
 
     plugins: [
@@ -63,6 +64,7 @@ module.exports = {
             filename: 'index.html',
             inject: 'body',
             template: 'index-template.html'
-        })
+        }),
+        new CopyWebpackPlugin([{from: './app/styles.css'}]),
     ]
 };

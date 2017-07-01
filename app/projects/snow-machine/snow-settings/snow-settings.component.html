@@ -26,7 +26,7 @@
     <form-row [settings]="settings" name="Max wind" id="max_wind" description="Maximum wind speed (px/frame)" step="1"></form-row>
     <form-row [settings]="settings" name="Count" id="count" description="How many flakes/drops there are at screen at once." step="1"></form-row>
     <div>
-      <label title="If set, will keep the current flakes even after reset."><input type='checkbox' name="reset" [checked]="!settings.reset" (change)="settings.reset = !settings.reset"> Keep old flakes</label>
+      <label title="If set, will keep the current flakes even after reset."><input type="checkbox" name="reset" [checked]="!settings.reset" (change)="settings.reset = !settings.reset"> Keep old flakes</label>
     </div>
     <br><button (click)="reset()">Reset snow/rain</button>
   </form>

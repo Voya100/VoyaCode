@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../../shared/shared.module';
 
-import { SlayTheDragonComponent }   from './slay-the-dragon.component';
+import { SlayTheDragonComponent } from './slay-the-dragon.component';
 import { routing } from './slay-the-dragon.routing';
 
 // NOTE: This is a very old project of mine (second one I ever made), so the code is very badly outdated.
@@ -13,6 +13,6 @@ import { routing } from './slay-the-dragon.routing';
   imports: [routing, SharedModule],
   exports: [],
   declarations: [SlayTheDragonComponent],
-  providers: [],
+  providers: []
 })
 export class SlayTheDragonModule { }

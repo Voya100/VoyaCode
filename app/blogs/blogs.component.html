@@ -1,16 +1,16 @@
 <h1>Blogs</h1>
-<div class='container'>
+<div class="container">
   <section>
     <blog-post *ngFor="let blog of blogs | blogFilter: yearCheck" [blogData]="blog" [minimizable]="true" [visible]="false"></blog-post>
     <span *ngIf="noBlogs()">No results.</span>
   </section>
   <aside>
-    <div class='filters'>
+    <div class="filters">
       <b>Filters</b>
       <br>
-      <div class='checkbox-container' *ngFor="let year of years">
+      <div class="checkbox-container" *ngFor="let year of years">
         <label>
-          <input type='checkbox' name='year' value="{{year}}" [checked]="yearCheck[year]" (change)="yearCheck[year]=$event.target.checked"> {{year}}
+          <input type="checkbox" name="year" value="{{year}}" [checked]="yearCheck[year]" (change)="yearCheck[year]=$event.target.checked"> {{year}}
         </label>
       </div>
       <div>
