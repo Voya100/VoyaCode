@@ -23,6 +23,8 @@
     "app/comments/comments.module.ts",
     "app/not-found/not-found.module.ts",
 
+    "app/login/login.module.ts",
+    
     "app/projects/rock-paper-scissors/rock-paper-scissors.module.ts",
     "app/projects/slay-the-dragon/slay-the-dragon.module.ts",
     "app/projects/chess/chess.module.ts",
