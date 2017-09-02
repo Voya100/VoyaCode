@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, URLSearchParams } from '@angular/http';
+import { Headers, Http, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { CommentData } from './comment-data'
+import { CommentData } from './comment-data';
+import { AuthService } from '../authentication/auth.service';
 
 @Injectable()
 export class CommentsService {
 
   private url: string = '/api/comments';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private auth: AuthService) { }
 
   // Gets comments from the server
   getComments(): Observable<CommentData[]>{
-    return this.http.get(this.url).map((res: Response) => {
+    const token = this.auth.token;
+    const headers = new Headers(token ? {Authorization: 'Bearer ' + token} : {});
+    const options = new RequestOptions({headers});
+
+    return this.http.get(this.url, options).map((res: Response) => {
       return res.json().data;
     }).catch(err => {
       return null;

@@ -38,7 +38,11 @@ export class AuthService {
     }
     const headers = new Headers({Authorization: 'Bearer ' + token});
     const options = new RequestOptions({headers});
-    return this.http.get('/api/check-login').map((res: Response) => true);
+    return this.http.get('/api/check-login', options).map((res: Response) => {
+      return true
+    }).catch((e) => {
+      return Observable.of(false);
+    });
   }
 
   logout(): void {
