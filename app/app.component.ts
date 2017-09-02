@@ -6,6 +6,7 @@ import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@ang
 import { ActivatedRoute, Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ScrollbarComponent } from './shared/components/scrollbar/scrollbar.component';
+import { AnalyticsService } from './shared/services/analytics.service';
 
 @Component({
   selector: 'voya-app',
@@ -26,7 +27,8 @@ export class AppComponent  implements OnInit, AfterViewChecked {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private analytics: AnalyticsService
   ) {}
 
   ngOnInit() {
@@ -65,7 +67,8 @@ export class AppComponent  implements OnInit, AfterViewChecked {
     }
     if (event instanceof NavigationEnd) {
       this.loading = false;
-      this.loadingOpen = false;
+      this.loadingOpen = false;        
+      this.analytics.pageView(event.urlAfterRedirects);
     }
 
     // Set loading state to false in both of the below events to hide the spinner in case a request fails
