@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "server": "cd server && npm start",
-    "start": "set NODE_ENV=development && concurrently \"webpack --watch\" \"lite-server -c lite-config.json\"",
-    "start-old": "tsc && concurrently \"tsc -w\" \"lite-server -c lite-config.json\" ",
+    "start": "concurrently \"npm run webpack-dev\" \"npm run server\" ",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server -c lite-config.json",
@@ -14,7 +13,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "ngc": "ngc -p tsconfig-aot.json --locale=en-US",
-    "webpack-dev": "set NODE_ENV=development && webpack",
+    "webpack-dev": "set NODE_ENV=development && concurrently \"webpack --watch\" \"sass --watch app:app\" ",
     "prod": "npm run ngc && set NODE_ENV=production && webpack --progress"
   },
   "license": "MIT",
@@ -80,6 +79,7 @@
     "source-map-loader": "^0.2.1",
     "to-string-loader": "^1.1.5",
     "tslint": "^5.4.3",
+    "tslint-eslint-rules": "^4.1.1",
     "typescript": "^2.2.1",
     "url-loader": "^0.5.7",
     "webdriver-manager": "10.2.5",
