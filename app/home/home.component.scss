@@ -26,6 +26,14 @@ aside{
   padding: 10px;
 }
 
+.framework-table{
+  width: 100%;
+  td{
+    vertical-align: top;
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 600px){
   .main-content, aside{
     width:100%;
