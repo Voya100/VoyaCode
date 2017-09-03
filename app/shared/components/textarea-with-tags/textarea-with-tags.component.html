@@ -1,0 +1,6 @@
+<button (click)="tag('b', messageBox)" title="Bold"><b>B</b></button>
+<button (click)="tag('i', messageBox)" title="Italic"><i>i</i></button>
+<button (click)="tag('u', messageBox)" title="Underline"><u>u</u></button>
+<button (click)="tag('url', messageBox)" title="[url=link]link text[/url]">URL</button><br>
+
+<textarea #messageBox rows="8" cols="75" name="message" tabindex="2"  [ngModel]="message" (ngModelChange)="updateMessage($event)" [disabled]="posting"></textarea>

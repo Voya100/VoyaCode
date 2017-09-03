@@ -45,42 +45,6 @@ export class CommentsComponent implements OnInit {
     );
   }
 
-  // Adds tags around the current selection. Selection is moved between the tags.
-  addTag(startTag: string, endTag: string, textarea: HTMLTextAreaElement){
-    const beginning = textarea.selectionStart;
-    const ending = textarea.selectionEnd;
-    if(beginning !== null){
-      const start = this.message.substring(0, beginning);
-      const middle = beginning === ending ? '' : this.message.substring(beginning, ending);
-      const end = this.message.substring(ending);
-      this.message = start + startTag + middle + endTag + end;
-      // Small delay so that position is set after view has updated
-      // Caret position is set between the tags
-      setTimeout(() => {
-        this.setCaretPosition(start.length + startTag.length, start.length + startTag.length + (ending - beginning), textarea);
-      }, 100)
-    }
-  }
-
-  // Adds the tag to textarea
-  tag(tag: string, textarea: HTMLTextAreaElement){
-    switch(tag){
-      case 'b':
-      case 'i':
-      case 'u':
-        this.addTag('[' + tag + ']', '[/' + tag + ']', textarea)
-        break;
-      case 'url':
-        this.addTag('[' + tag + '=]', '[/' + tag + ']', textarea);
-      }
-  }
-
-  // Sets selection in textarea
-  setCaretPosition(start: number, end: number, input: HTMLTextAreaElement) {
-    input.setSelectionRange(start, end);  
-    input.focus();
-  }
-
   // Posts comment if it meets the requirements determined in backend and there isn't another comment in processing.
   // If preview is true, comment won't be sent to server's comment database - instead comment is shown under "Preview" section.
   // Message field is cleared after comment is submitted.
