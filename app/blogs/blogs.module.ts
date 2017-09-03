@@ -7,11 +7,12 @@ import { BlogsComponent } from './blogs.component';
 import { BlogFilterPipe } from './blog-filter.pipe';
 
 import { routing } from './blogs.routing';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, routing],
   exports: [],
-  declarations: [BlogsComponent, BlogFilterPipe],
+  declarations: [BlogsComponent, BlogComponent, BlogFilterPipe],
   providers: []
 })
 export class BlogsModule { }

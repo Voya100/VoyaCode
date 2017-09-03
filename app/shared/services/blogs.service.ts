@@ -35,4 +35,10 @@ export class BlogsService {
       }]];
     });
   }
+
+  getBlog(id: string): Observable<Blog>{
+    return this.http.get(this.url + '/' + id).map((res: Response) => {
+      return res.json().data;
+    });
+  }
 }
