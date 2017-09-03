@@ -53,24 +53,21 @@ export class CommentsComponent implements OnInit {
     if(!this.posting){
       // Prevent posting while comment is being posted
       this.posting = true;
+      this.postError = '';
 
       this.commentService.postComment(this.username, this.message, this.private, preview).subscribe(
         (data) => {
-          this.postError = data.error;
-          if(data.error === ''){
-            if(preview){
-              this.previewPost = data.data;
-            }else{
-              this.comments.push(data.data);
-              this.previewPost = null;
-              this.message = '';
-            }
+          if(preview){
+            this.previewPost = data.data;
+          }else{
+            this.comments.push(data.data);
+            this.previewPost = null;
+            this.message = '';
+            this.posting = false;
           }
         },
         (error) => {
-          this.postError = 'Connection failed. Check your internet connection and try again.';
-        },
-        () => {
+          this.postError = error;
           this.posting = false;
         }
       );

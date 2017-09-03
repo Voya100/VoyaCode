@@ -41,9 +41,10 @@ export class CommentsService {
 
     return this.http.post(this.url, data).map((res: Response) => {
       const result = res.json();
-      result.error = res.status === 200 ? '' : result.message;
 
       return result;
-    });
+    }).catch((err: Response) => {
+      throw err.json().message;
+    })
   }
 }
