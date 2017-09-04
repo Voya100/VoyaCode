@@ -1,5 +1,7 @@
 <header>
   <div id="site_logo">
+    <a *ngIf="!auth.loggedIn && auth.hasUser" routerLink="login">Login</a>
+    <a *ngIf="auth.loggedIn" routerLink="admin">Admin</a>
     <img src="/images/logo_text.png" alt="Site logo">
   </div>
   <nav>

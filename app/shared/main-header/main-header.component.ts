@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../authentication/auth.service';
 
 // This is a header component which contains all main navigation and a logo.
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
-  constructor() { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit() { }
 }
