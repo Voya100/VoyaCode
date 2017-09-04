@@ -1,16 +1,17 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // This component creates a text area that has tag options
 
 @Component({
   selector: 'textarea-with-tags',
   templateUrl: './textarea-with-tags.component.html',
-  styleUrls: ['./textarea-with-tags.component.css']
+  styleUrls: ['./textarea-with-tags.component.scss']
 })
 export class TextAreaWithtagsComponent {
 
   @Input() message: string;
   @Input() disabled: boolean;
+  @Input() maxWidth: number = 450;
 
   @Output() messageChange: EventEmitter<string> = new EventEmitter();
 
@@ -25,6 +26,9 @@ export class TextAreaWithtagsComponent {
       const middle = beginning === ending ? '' : this.message.substring(beginning, ending);
       const end = this.message.substring(ending);
       this.message = start + startTag + middle + endTag + end;
+
+      this.updateMessage(this.message);
+
       // Small delay so that position is set after view has updated
       // Caret position is set between the tags
       setTimeout(() => {
