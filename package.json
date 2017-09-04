@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
-    "global-styles": "node-sass app/styles.scss app/styles.css", // Should figure out how to handle this with webpack
+    "global-styles": "node-sass app/styles.scss app/styles.css",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "ngc": "ngc -p tsconfig-aot.json --locale=en-US",
     "prod": "npm run ngc && set NODE_ENV=production && webpack --progress",
@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@angular/animations": "^4.1.2",
+    "@angular/cdk": "^2.0.0-beta.10",
     "@angular/cli": "^1.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
@@ -23,7 +24,7 @@
     "@angular/core": "^4.1.2",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.1.2",
-    "@angular/material": "^2.0.0-beta.5",
+    "@angular/material": "^2.0.0-beta.10",
     "@angular/platform-browser": "^4.1.2",
     "@angular/platform-browser-dynamic": "^4.1.2",
     "@angular/platform-server": "^4.1.2",
