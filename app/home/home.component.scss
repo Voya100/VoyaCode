@@ -24,6 +24,9 @@ aside{
   float: right;
   margin-right: 0px;
   padding: 10px;
+  li{
+    list-style-position: inside;
+  }
 }
 
 .framework-table{
