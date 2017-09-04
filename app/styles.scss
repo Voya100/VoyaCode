@@ -1,5 +1,11 @@
 @import "../sass/variables";
 
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber";
+
+.mat-progress-spinner path{
+  stroke: $color_dark1 !important;
+}
+
 html{
   height: 100%;
   overflow-y: hidden;

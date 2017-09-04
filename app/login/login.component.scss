@@ -1,0 +1,32 @@
+@import "../../sass/variables";
+
+:host{
+  @extend %bordered-box;
+  display: block;
+
+  max-width: 400px;
+  max-height: 400px;
+  height: 100%;
+  margin: auto;
+  margin-top: 40px;
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+
+  button{
+    @extend %button;
+    padding: 5px 5px;
+    margin: 10px 10px;
+    min-width: 24px;
+  }
+
+  label{
+    width: 120px;
+    display: inline-block;
+  }
+
+  input{
+    width: 170px;
+  }
+
+}

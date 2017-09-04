@@ -4,7 +4,7 @@ import { SnowSettings } from '../snow-settings/snow-settings'
 @Component({
   selector: 'form-row',
   templateUrl: 'form-row.component.html',
-  styleUrls: ['form-row.component.css']
+  styleUrls: ['form-row.component.scss']
 })
 export class FormRowComponent{
   @Input() settings: SnowSettings;
@@ -17,7 +17,7 @@ export class FormRowComponent{
   public max: any = () => this.settings.max_values[this.id]();
 
   valid(): boolean{
-      return this.min() <= this.settings[this.id] && 
-             this.settings[this.id] <= this.max();
+    return this.min() <= this.settings[this.id] && 
+            this.settings[this.id] <= this.max();
   }
 }

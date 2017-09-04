@@ -11,7 +11,7 @@ import { Blog } from './blog';
 
 @Component({
   templateUrl: 'blogs.component.html',
-  styleUrls: ['./blogs.component.css']
+  styleUrls: ['./blogs.component.scss']
 })
 export class BlogsComponent implements OnInit, AfterViewChecked {
 

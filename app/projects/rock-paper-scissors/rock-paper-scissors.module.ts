@@ -19,12 +19,12 @@ import { RpsStatisticsComponent } from './rock-paper-scissors-game/rps-menu/rps-
 
 @NgModule({
   imports: [routing, SharedModule, CommonModule, FormsModule, LocalStorageModule.withConfig({
-            prefix: 'voyacode-rock-paper-scissors',
-            storageType: 'localStorage'
-        })],
+    prefix: 'voyacode-rock-paper-scissors',
+    storageType: 'localStorage'
+  })],
   exports: [],
   declarations: [RockPaperScissorsComponent, RockPaperScissorsGameComponent, RpsGameAreaComponent, 
-                  RpsMenuComponent, RpsUsernameComponent, RpsWinningConditionsComponent, RpsRulesComponent, RpsStatisticsComponent],
+                 RpsMenuComponent, RpsUsernameComponent, RpsWinningConditionsComponent, RpsRulesComponent, RpsStatisticsComponent],
   providers: [RpsGameLogicService, LocalStorageService]
 })
 export class RockPaperScissorsModule { }

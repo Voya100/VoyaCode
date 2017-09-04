@@ -49,9 +49,20 @@ nav{
 
 
 #site_logo{
+  display: inline-block;
+  position: relative;
 	text-align:center;
-	min-width: $min_width;
-}
-#site_logo img{
-	max-width:100%;
+  min-width: $min_width;
+  max-width: $max_width;
+  width: 100%;
+
+  img{
+    max-width:100%;
+  }
+
+  a{
+    position: absolute;
+    top: 60px;
+    right: 20px;
+  }
 }

@@ -68,8 +68,8 @@ export abstract class Piece{
   // Marks all mobable tiles as highlighted
   highlightMovableTiles(){
     for(const moveTile of this.moveTiles){
-        moveTile.highlight(false);
-      }
+      moveTile.highlight(false);
+    }
   }
   
   // Checks all 4 directions

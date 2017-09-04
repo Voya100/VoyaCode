@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'description-box',
   templateUrl: './description-box.component.html',
-  styleUrls: ['./description-box.component.css']
+  styleUrls: ['./description-box.component.scss']
 })
 export class DescriptionBoxComponent {
 }

@@ -90,27 +90,27 @@ export class ChessGameService {
     const tile = this.board[y][x];
     player.pieceId++;
     switch(type){
-    case 'P':
-      piece = new Pawn(player, tile);
-      break;
-    case 'R':
-      piece = new Rook(player, tile);
-      break;
-    case 'B':
-      piece = new Bishop(player, tile);
-      break;
-    case 'K':
-      piece = new Knight(player, tile);
-      break;
-    case 'Q':
-      piece = new Queen(player, tile);
-      break;
-    case 'X':
-      piece = new King(player, tile);
-      break;		
-    default:
-      piece = null;
-      return;
+      case 'P':
+        piece = new Pawn(player, tile);
+        break;
+      case 'R':
+        piece = new Rook(player, tile);
+        break;
+      case 'B':
+        piece = new Bishop(player, tile);
+        break;
+      case 'K':
+        piece = new Knight(player, tile);
+        break;
+      case 'Q':
+        piece = new Queen(player, tile);
+        break;
+      case 'X':
+        piece = new King(player, tile);
+        break;		
+      default:
+        piece = null;
+        return;
     }
     player.addPiece(piece);
     this.board[y][x].piece = piece;

@@ -1,0 +1,32 @@
+@import "../../../../sass/variables";
+
+.blog-form{
+  width: 100%;
+  background: $color_main1;
+  border-collapse: collapse;
+  margin-top: 10px;
+
+  td{
+    border: 2px solid $color_dark2;
+    padding: 5px;
+  }
+
+  .first-cell{
+    width: 15%;
+  }
+
+  button{
+    @extend %button;
+    padding: 2px 5px;
+    margin: 5px 2px;
+    min-width: 24px;
+  }
+}
+
+.error{
+  color: #c10000;
+}
+
+.disabled{
+  opacity: 0.7;
+}

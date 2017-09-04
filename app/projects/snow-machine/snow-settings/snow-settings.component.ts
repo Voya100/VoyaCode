@@ -12,7 +12,7 @@ import { SnowSettings } from './snow-settings';
 @Component({
   selector: 'snow-settings',
   templateUrl: './snow-settings.component.html',
-  styleUrls: ['./snow-settings.component.css', '../form-row/form-row.component.css'],
+  styleUrls: ['./snow-settings.component.scss', '../form-row/form-row.component.scss'],
   providers: [SnowControlService, SnowSettings]
 })
 export class SnowSettingsComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -31,23 +31,23 @@ export class SnowSettingsComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.snow_controller.createFlakes();
     this.snow_controller.moveRain();
-   }
+  }
 
    // Destroy flakes after page is closed
-   ngOnDestroy(){
-     this.snow_controller.deleteFlakes();
-   }
+  ngOnDestroy(){
+    this.snow_controller.deleteFlakes();
+  }
 
    // Gets row components so that their valid() method can be checked
-   ngAfterViewInit(){
-     this.formRows = this.formRowsQuery.toArray();
-   }
+  ngAfterViewInit(){
+    this.formRows = this.formRowsQuery.toArray();
+  }
 
-   // Reset snow and apply new settings, if all new settings are valid.
-   reset(){
-     if(this.formRows.every((row) => row.valid())){
+  // Reset snow and apply new settings, if all new settings are valid.
+  reset(){
+    if(this.formRows.every((row) => row.valid())){
       this.snow_controller.reset(this.settings);
-     }
-   }
+    }
+  }
 
 }

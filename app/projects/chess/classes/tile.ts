@@ -104,8 +104,8 @@ export class Tile{
   }
 
   clearHighlights(){
-      Tile.highligtedTile = null;
-      Tile.highlightedMovableTiles = [];
+    Tile.highligtedTile = null;
+    Tile.highlightedMovableTiles = [];
   }
 
   highlighted(){
