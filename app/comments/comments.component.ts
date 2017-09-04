@@ -63,8 +63,8 @@ export class CommentsComponent implements OnInit {
             this.comments.push(data.data);
             this.previewPost = null;
             this.message = '';
-            this.posting = false;
           }
+          this.posting = false;
         },
         (error) => {
           this.postError = error;
