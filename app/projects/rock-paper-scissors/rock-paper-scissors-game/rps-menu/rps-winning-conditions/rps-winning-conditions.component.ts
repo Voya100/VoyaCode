@@ -4,7 +4,7 @@ import { RpsGameLogicService, RpsSettings } from '../../../rps-game-logic.servic
 @Component({
     selector: 'rps-winning-conditions',
     templateUrl: 'rps-winning-conditions.component.html',
-    styleUrls: ['rps-winning-conditions.component.css']
+    styleUrls: ['rps-winning-conditions.component.scss']
 })
 export class RpsWinningConditionsComponent {
 

@@ -16,7 +16,7 @@ const enemyTileColor = 'rgb(189, 104, 53)';
 @Component({
     selector: 'chess-board',
     templateUrl: 'chess-board.component.html',
-    styleUrls: ['chess-board.component.css'],
+    styleUrls: ['chess-board.component.scss'],
     animations: [
         trigger('fadeIn', [
             state('true', style({ opacity: 1 })),

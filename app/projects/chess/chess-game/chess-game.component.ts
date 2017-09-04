@@ -5,7 +5,7 @@ import { ChessSettingsService } from '../chess-settings.service';
 @Component({
     selector: 'chess-game',
     templateUrl: 'chess-game.component.html',
-    styleUrls: ['chess-game.component.css'],
+    styleUrls: ['chess-game.component.scss'],
     animations: [
         trigger('fadeIn', [
             state('true', style({ opacity: 1 })),

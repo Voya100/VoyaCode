@@ -6,7 +6,7 @@ import { CommentsService } from './comments.service';
 
 @Component({
   templateUrl: 'comments.component.html',
-  styleUrls: ['./comments.component.css']
+  styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
 

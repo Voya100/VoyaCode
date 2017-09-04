@@ -5,7 +5,7 @@ import { CommentData } from '../comment-data';
 @Component({
   selector: 'comment-post',
   templateUrl: 'comment-post.component.html',
-  styleUrls: ['./comment-post.component.css']
+  styleUrls: ['./comment-post.component.scss']
 })
 export class CommentPostComponent {
 

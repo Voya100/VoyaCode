@@ -5,7 +5,7 @@ import { ChessGameService } from '../../chess-game.service';
 @Component({
     selector: 'chess-settings',
     templateUrl: 'chess-settings.component.html',
-    styleUrls: ['chess-settings.component.css']
+    styleUrls: ['chess-settings.component.scss']
 })
 export class ChessSettingsComponent {
 

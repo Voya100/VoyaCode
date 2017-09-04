@@ -3,7 +3,7 @@ import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@
 @Component({
   selector: 'scrollbar',
   templateUrl: 'scrollbar.component.html',
-  styleUrls: ['scrollbar.component.css']
+  styleUrls: ['scrollbar.component.scss']
 })
 export class ScrollbarComponent implements AfterViewInit {
   @ViewChild('outer') outer: ElementRef;

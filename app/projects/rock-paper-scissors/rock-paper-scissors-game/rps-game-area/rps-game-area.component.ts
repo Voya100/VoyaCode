@@ -5,7 +5,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 @Component({
     selector: 'rps-game-area',
     templateUrl: 'rps-game-area.component.html',
-    styleUrls: ['rps-game-area.component.css'],
+    styleUrls: ['rps-game-area.component.scss'],
     animations: [
         trigger('fadeIn', [
             state('true', style({ opacity: 1 })),

@@ -4,7 +4,7 @@ import { ChessGameService } from '../../chess-game.service';
 @Component({
     selector: 'chess-winner-dialog',
     templateUrl: 'chess-winner-dialog.component.html',
-    styleUrls: ['chess-winner-dialog.component.css']
+    styleUrls: ['chess-winner-dialog.component.scss']
 })
 export class ChessWinnerDialogComponent implements OnDestroy{
     

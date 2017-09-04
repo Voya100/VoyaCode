@@ -4,7 +4,7 @@ import { SnowSettings } from '../snow-settings/snow-settings'
 @Component({
   selector: 'form-row',
   templateUrl: 'form-row.component.html',
-  styleUrls: ['form-row.component.css']
+  styleUrls: ['form-row.component.scss']
 })
 export class FormRowComponent{
   @Input() settings: SnowSettings;

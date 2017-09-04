@@ -5,7 +5,7 @@ import { ChessGameService } from '../../chess-game.service';
 @Component({
     selector: 'chess-choose-mode',
     templateUrl: 'chess-choose-mode.component.html',
-    styleUrls: ['chess-choose-mode.component.css']
+    styleUrls: ['chess-choose-mode.component.scss']
 })
 export class ChessChooseModeComponent {
 

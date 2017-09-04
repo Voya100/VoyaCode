@@ -4,7 +4,7 @@ import { RpsGameLogicService, RpsPlayerData } from '../../../rps-game-logic.serv
 @Component({
     selector: 'rps-username',
     templateUrl: 'rps-username.component.html',
-    styleUrls: ['rps-username.component.css']
+    styleUrls: ['rps-username.component.scss']
 })
 export class RpsUsernameComponent {
 

@@ -9,7 +9,7 @@ import { Project, projectList } from '../../shared/data/projects'
 @Component({
   selector: 'banner',
   templateUrl: 'banner.component.html',
-  styleUrls: ['./banner.component.css']
+  styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent implements OnInit {
 

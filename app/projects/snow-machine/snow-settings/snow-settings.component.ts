@@ -12,7 +12,7 @@ import { SnowSettings } from './snow-settings';
 @Component({
   selector: 'snow-settings',
   templateUrl: './snow-settings.component.html',
-  styleUrls: ['./snow-settings.component.css', '../form-row/form-row.component.css'],
+  styleUrls: ['./snow-settings.component.css', '../form-row/form-row.component.scss'],
   providers: [SnowControlService, SnowSettings]
 })
 export class SnowSettingsComponent implements OnInit, AfterViewInit, OnDestroy {

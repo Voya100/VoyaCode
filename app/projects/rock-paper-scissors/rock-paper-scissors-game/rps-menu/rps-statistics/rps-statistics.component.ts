@@ -4,7 +4,7 @@ import { RpsGameLogicService, RpsStatistics } from '../../../rps-game-logic.serv
 @Component({
     selector: 'rps-statistics',
     templateUrl: 'rps-statistics.component.html',
-    styleUrls: ['rps-statistics.component.css']
+    styleUrls: ['rps-statistics.component.scss']
 })
 export class RpsStatisticsComponent {
     statistics: RpsStatistics;
