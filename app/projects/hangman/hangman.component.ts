@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   templateUrl: 'hangman.component.html',
   styleUrls: ['./hangman.component.scss']
 })
-export class HangmanComponent implements OnInit {
+export class HangmanComponent {
   constructor() { }
 
-  ngOnInit() { }
 }

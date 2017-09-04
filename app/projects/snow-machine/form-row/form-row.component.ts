@@ -17,7 +17,7 @@ export class FormRowComponent{
   public max: any = () => this.settings.max_values[this.id]();
 
   valid(): boolean{
-      return this.min() <= this.settings[this.id] && 
-             this.settings[this.id] <= this.max();
+    return this.min() <= this.settings[this.id] && 
+            this.settings[this.id] <= this.max();
   }
 }

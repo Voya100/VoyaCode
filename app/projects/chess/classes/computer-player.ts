@@ -255,12 +255,12 @@ export class ComputerPlayer extends Player{
   // Tries to approach an enemy king thinking distance amount of turns ahead (max 2)
   tryToApproachEnemyKing(distance: number){
     for(const enemyKing of this.enemy.kings){
-        const piece_tile = this.approachTile(enemyKing.tile, this.moveTiles, 'all', true, distance);
-        if(piece_tile.length > 0){
-          this.setAction(this.findSmallestRisk(piece_tile, [], 1));
-          return;
-        }
+      const piece_tile = this.approachTile(enemyKing.tile, this.moveTiles, 'all', true, distance);
+      if(piece_tile.length > 0){
+        this.setAction(this.findSmallestRisk(piece_tile, [], 1));
+        return;
       }
+    }
   }
 
   // Finds least risky move that won't leave king vulnerable

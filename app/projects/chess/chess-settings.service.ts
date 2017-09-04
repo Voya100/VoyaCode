@@ -25,18 +25,18 @@ export class ChessSettingsService {
   // Changes game mode
   changeMode(mode: number){
     switch(mode){
-    case 0: // Player vs computer
-      this.whiteComputer = false;
-      this.blackComputer = true;
-      break;
-    case 1: // Local multiplayer
-      this.whiteComputer = false;
-      this.blackComputer = false;
-      break;
-    case 2: // Computer vs computer
-      this.whiteComputer = true;
-      this.blackComputer = true;
-      break;
+      case 0: // Player vs computer
+        this.whiteComputer = false;
+        this.blackComputer = true;
+        break;
+      case 1: // Local multiplayer
+        this.whiteComputer = false;
+        this.blackComputer = false;
+        break;
+      case 2: // Computer vs computer
+        this.whiteComputer = true;
+        this.blackComputer = true;
+        break;
     }
   }
 

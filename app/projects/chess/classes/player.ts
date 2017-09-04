@@ -43,9 +43,9 @@ export abstract class Player{
   kingCount(): number{return this.kings.length};
 
   constructor(color: string, game: ChessGameService){
-      this.color = color;
-      this.game = game;
-      this.pieceId = 0;
+    this.color = color;
+    this.game = game;
+    this.pieceId = 0;
   }
 
   // Logic which sets the piece and tile decisions (if player is computer)
