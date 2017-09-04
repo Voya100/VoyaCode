@@ -5,6 +5,8 @@ let CopyWebpackPlugin = require('copy-webpack-plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
 let path = require('path');
 
+const root = path.resolve(__dirname, '..');
+
 module.exports = {
     devtool: 'source-map',
     performance: {
@@ -12,11 +14,11 @@ module.exports = {
     },
 
     entry: {
-        'app': './app/main.ts' // JiT compilation
+        'app': root + '/app/main.ts' // JiT compilation
     },
 
     output: {
-        path: __dirname + '/public/',
+        path: root + '/public/',
         filename: 'js-jit/[name].bundle.js'
     },
 
@@ -52,7 +54,7 @@ module.exports = {
 
     devServer: {
         historyApiFallback: true,
-        contentBase: path.join(__dirname, '/public')
+        contentBase: path.join(root, '/public')
     },
 
     plugins: [
@@ -61,6 +63,6 @@ module.exports = {
             inject: 'body',
             template: 'index-template.html'
         }),
-        new CopyWebpackPlugin([{from: './app/styles.css'}]),
+        new CopyWebpackPlugin([{from: root + '/app/styles.css'}]),
     ]
 };
