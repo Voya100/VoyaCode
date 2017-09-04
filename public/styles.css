@@ -1388,6 +1388,9 @@ input.mat-input-element {
 .mat-simple-snackbar-action {
   color: #ffd740; }
 
+.mat-progress-spinner path {
+  stroke: #17537F !important; }
+
 html {
   height: 100%;
   overflow-y: hidden; }
