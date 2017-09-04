@@ -2,18 +2,16 @@
   "name": "voyacode-json-package",
   "version": "1.0.0",
   "scripts": {
-    "server": "cd server && npm start",
-    "start": "concurrently \"npm run webpack-dev\" \"npm run server\" ",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
+    "global-styles": "node-sass app/styles.scss app/styles.css", // Should figure out how to handle this with webpack
     "lint": "tslint ./app/**/*.ts -t verbose",
-    "pree2e": "webdriver-manager update",
+    "ngc": "ngc -p tsconfig-aot.json --locale=en-US",
+    "prod": "npm run ngc && set NODE_ENV=production && webpack --progress",
+    "start": "concurrently \"npm run webpack-dev\" \"npm run server\" ",
+    "server": "cd server && npm start",
     "test": "karma start",
     "test-once": "tsc && karma start karma.conf.js --single-run",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "ngc": "ngc -p tsconfig-aot.json --locale=en-US",
-    "webpack-dev": "set NODE_ENV=development && concurrently \"webpack --watch\" \"sass --watch app:app\" ",
-    "prod": "npm run ngc && set NODE_ENV=production && webpack --progress"
+    "webpack-dev": "set NODE_ENV=development && webpack --watch"
   },
   "license": "MIT",
   "dependencies": {
