@@ -6,12 +6,14 @@ declare let ga: Function;
 @Injectable()
 export class AnalyticsService {
 
-  public pageView(path: string){
+  pageView(path: string){
+    if(!ga){return; }
     ga('set', 'page', path);
     ga('send', 'pageview');
   }
 
-  public event(category: string, action: string, label: string = null, value: number = null) {
+  event(category: string, action: string, label: string = null, value: number = null) {
+    if(!ga){return; }
     ga('send', 'event', {
       Category: category,
       Label: label,
