@@ -15,7 +15,8 @@ export class AuthService {
   constructor(private http: Http) {
     // set token if saved in local storage
     this.token = this.getToken();
-    this.hasUser = JSON.parse(localStorage.getItem('hasUser'))
+    this.hasUser = JSON.parse(localStorage.getItem('hasUser'));
+    this.checkLogin();
   }
 
   getToken(){
@@ -41,7 +42,7 @@ export class AuthService {
       });
   }
 
-  isLoggedIn(): Observable<boolean>{
+  checkLogin(): Observable<boolean>{
     const token = this.getToken();
     if(!token){
       this.loggedIn = false;
