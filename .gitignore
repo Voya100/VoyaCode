@@ -1,0 +1,13 @@
+node_modules
+npm-debug.*
+*.js.map
+.editorconfig
+
+.vscode
+.sass-cache
+*.css.map
+
+js-jit/
+app/**/*.js
+app/**/*.css
+server/
