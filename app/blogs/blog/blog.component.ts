@@ -25,9 +25,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   // Get blog from BlogsService
   ngOnInit() { 
     this.routeParamSub = this.route.params.subscribe((params) => {
-      console.log('params', params)
       return this.blogsService.getBlog(params.id).subscribe((blog) => {
-        console.log('blog');
         this.blog = blog;
       },
       (e) => {
