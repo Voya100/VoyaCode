@@ -1,0 +1,13 @@
+@import "../../../sass/variables";
+
+:host{
+  @extend %main-content;
+}
+
+p{
+  @extend %bordered-box;
+}
+
+button{
+  @extend %button;
+}

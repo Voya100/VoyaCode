@@ -85,7 +85,25 @@ export class BlogsService {
 
     return this.http.delete(this.url + '/' + id, options).map((res: Response) => {
       return 'Blog deleted successfully.';
-    });
-    
+    });    
   }
+  
+  sendSubscribeConfirmation(email: string){
+    return this.http.post(this.url + '/subscribe', {email})
+      .map((res: Response) => res.json().message)
+      .catch((err: Response) => {throw new Error(err.json().message)});
+  }
+
+  subscribe(encodedEmail: string){
+    return this.http.post(this.url + '/subscribe/' + encodedEmail, {})
+      .map((res: Response) => res.json().message)
+      .catch((err: Response) => {throw new Error(err.json().message)});
+  }
+  
+  unsubscribe(encodedEmail: string){
+    return this.http.post(this.url + '/unsubscribe/' + encodedEmail, {})
+      .map((res: Response) => res.json().message)
+      .catch((err: Response) => {throw new Error(err.json().message)});
+  }
+
 }
