@@ -61,4 +61,13 @@ $header_font: "Times New Roman", serif, Times;
   &:hover{
     background: $color_light;
   }
+  &:disabled{
+    opacity: 0.6;
+  }
+}
+
+%a-button{
+  @extend %button;
+  text-decoration: none;
+  display: inline-block;
 }
