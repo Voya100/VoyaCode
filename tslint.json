@@ -19,6 +19,7 @@
       "check-space"
     ],
     "curly": true,
+    "directive-selector": "off",
     "directive-class-suffix": true,
     "eofline": true,
     "forin": true,

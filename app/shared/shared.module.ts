@@ -9,10 +9,12 @@ import { BlogsService } from './services/blogs.service';
 import { DescriptionBoxComponent } from './components/description-box/description-box.component'
 import { TextAreaWithtagsComponent } from './components/textarea-with-tags/textarea-with-tags.component';
 
+import { VCodeMouseDragDirective } from './directives/vcode-mouse-drag/vcode-mouse-drag.directive';
+
 @NgModule({
   imports: [CommonModule, FormsModule],
-  exports: [BlogPostComponent, DescriptionBoxComponent, TextAreaWithtagsComponent],
-  declarations: [BlogPostComponent, DescriptionBoxComponent, TextAreaWithtagsComponent],
+  exports: [BlogPostComponent, DescriptionBoxComponent, TextAreaWithtagsComponent, VCodeMouseDragDirective],
+  declarations: [BlogPostComponent, DescriptionBoxComponent, TextAreaWithtagsComponent, VCodeMouseDragDirective],
   providers: [AnalyticsService, BlogsService]
 })
 export class SharedModule { }
