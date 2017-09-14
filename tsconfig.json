@@ -36,6 +36,7 @@
     "app/projects/chess/chess.module.ts",
     "app/projects/snow-machine/snow-machine.module.ts",
     "app/projects/hangman/hangman.module.ts",
+    "app/projects/color-picker/color-picker.module.ts",
     "app/projects/other-projects/other-projects.module.ts",
     
     "app/main.ts"

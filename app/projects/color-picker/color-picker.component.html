@@ -1,4 +1,13 @@
-
+<color-canvas [red]="red" [green]="green" [blue]="blue" [zDimension]="redColor"></color-canvas>
+<br>
+<color-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllDimensions]="true" (valueChange)="changeRed($event)"></color-slider>
+<br>
+<color-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllDimensions]="true" (valueChange)="changeGreen($event)"></color-slider>
+<br>
+<color-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllDimensions]="true" (valueChange)="changeBlue($event)"></color-slider>
+<br>
+RGB: {{red}}, {{green}}, {{blue}}
+<div style="width: 100px; height: 100px;" [style.background]="'rgb(' + red + ', ' + green + ', ' + blue + ')'"></div>
 <description-box>
   TODO: Color picker description.
 </description-box>
