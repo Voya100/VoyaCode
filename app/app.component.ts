@@ -45,7 +45,7 @@ export class AppComponent  implements OnInit, AfterViewChecked {
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
       .subscribe((event) =>{
-        this.titleService.setTitle('Voya Code' + (event['title'] === '' ? '' : ' - ' + event['title']));
+        this.titleService.setTitle('Voya Code' + (event['title'] ? ' - ' + event['title'] : ''));
       });
 
     // There may be a way to combine these subscribes, but I'm not sure what's the best way to do it.

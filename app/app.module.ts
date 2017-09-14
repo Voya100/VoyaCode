@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { MainFooterComponent } from './shared/main-footer/main-footer.component';
 import { MainHeaderComponent } from './shared/main-header/main-header.component';
 import { ScrollbarModule } from './shared/components/scrollbar/scrollbar.module';
+import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './authentication/auth.module';
 
@@ -17,7 +18,7 @@ import { routing } from './app.routing';
 @NgModule({
   imports: [ 
     AuthModule, BrowserModule, BrowserAnimationsModule, HttpModule, MdProgressSpinnerModule, 
-    ScrollbarModule, SharedModule, routing 
+    ScrollbarModule, SharedModule, HomeModule, routing 
   ],
   declarations: [ AppComponent, MainHeaderComponent, MainFooterComponent ],
   bootstrap:    [ AppComponent ]

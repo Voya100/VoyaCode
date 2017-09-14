@@ -1,9 +1,10 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './authentication/auth.guard';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', loadChildren: './home/home.module#HomeModule', pathMatch: 'full', data: {title: ''} },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
 
   { path: 'login', loadChildren: './login/login.module#LoginModule', data: {title: 'Login'} },
   { path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivate: [AuthGuard], data: {title: 'Admin'} },
