@@ -29,4 +29,10 @@ export class ColorPickerComponent {
     this.blue = blueValue;
   }
 
+  selectColor(colorDimensions: {}){
+    this.red = colorDimensions[colorDimension.R];
+    this.green = colorDimensions[colorDimension.G];
+    this.blue = colorDimensions[colorDimension.B];
+  }
+
 }

@@ -1,4 +1,7 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
+import { 
+  AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, 
+  Output, SimpleChange, SimpleChanges, ViewChild 
+} from '@angular/core';
 import { colorDimension } from '../enums';
 
 // [x, y, z] color dimensions for zDimension key (options: RGB, BRG, GBR)
@@ -17,6 +20,8 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
   
   @ViewChild('colorCanvas') colorCanvas: ElementRef;
   context: CanvasRenderingContext2D;
+
+  @Output() selectColor: EventEmitter<{}> = new EventEmitter();
 
   @Input() zDimension: colorDimension = colorDimension.R;
   @Input() red: number;
@@ -43,6 +48,15 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
     }
 
     this.drawCanvas();
+  }
+
+  onDrag(x: number, y: number){
+    const colors = {};
+    const xyzColors = dimensions[this.zDimension];
+    colors[xyzColors[0]] = x;
+    colors[xyzColors[1]] = y;
+    colors[xyzColors[2]] = this[this.zDimension];
+    this.selectColor.emit(colors);
   }
 
   drawCanvas(){
@@ -82,7 +96,7 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
   // Draws circle to canvas where the selected colour is located
   drawCircle(){
     const cicrleRadius = 5;
-    
+
     // Helps to create optimal contrast with background
     const L = 0.2126 * this.red/255 + 0.7152 * this.green/255 + 0.0722 * this.blue/255;
     this.context.strokeStyle = L > 0.5 ? 'black' : 'white';
