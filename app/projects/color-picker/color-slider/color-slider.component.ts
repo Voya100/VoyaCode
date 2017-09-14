@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 
-import _ from 'lodash';
-
 import { colorDimension } from '../enums';
 
 @Component({
