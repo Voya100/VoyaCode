@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { colorDimension } from '../enums';
-import { ColorService } from '../color.service';
+import { colorDimension } from '../../enums';
+import { ColorService } from '../../color.service';
 
 /**
  * Slider component that displays red, green or blue color channel ranges, and an input box displaying current value
