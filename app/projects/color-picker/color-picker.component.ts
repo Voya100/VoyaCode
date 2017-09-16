@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { colorDimension, hslDimension } from './enums';
+import { ColorService } from './color.service';
 
 @Component({
   templateUrl: 'color-picker.component.html',
@@ -15,13 +16,17 @@ export class ColorPickerComponent {
 
   hueChannel: hslDimension = hslDimension.H;
   saturationChannel: hslDimension = hslDimension.S;
-  lightingChannel: hslDimension = hslDimension.L;
+  lightnessChannel: hslDimension = hslDimension.L;
 
   rgbSliderAllChannels: boolean = true;
-  
+
   _red: number = 37;
   _green: number = 134;
   _blue: number = 204;
+
+  hue: number;
+  saturation: number;
+  lightness: number;
 
   // [x, y, z] color dimensions for zDimension key (options: RGB, BRG, GBR)
   private dimensions: { [key: string]: colorDimension[] } = {
@@ -30,7 +35,17 @@ export class ColorPickerComponent {
     [colorDimension.B]: [colorDimension.R, colorDimension.G, colorDimension.B]
   }
 
-  constructor() { }
+  constructor(private colorService: ColorService) {
+    this.updateHsl();
+  }
+  
+  updateRgb(){
+    [this.red, this.green, this.blue] = this.colorService.hslToRgb([this.hue, this.saturation, this.lightness]);
+  }
+
+  updateHsl(){
+    [this.hue, this.saturation, this.lightness] = this.colorService.rgbToHsl([this.red, this.green, this.blue]);
+  }
 
   get red(){
     return this._red;
@@ -72,20 +87,42 @@ export class ColorPickerComponent {
 
   changeRed(redValue: number){
     this.red = redValue;
+    this.updateHsl();
   }
   
   changeGreen(greenValue: number){
     this.green = greenValue;
+    this.updateHsl();
   }
 
   changeBlue(blueValue: number){
     this.blue = blueValue;
+    this.updateHsl();
   }
 
   selectColor([red, green, blue]: number[]){
-    this.red = red;
-    this.green = green;
-    this.blue = blue;
+    [this.red, this.green, this.blue] = [red, green, blue];
+    this.updateHsl();
+  }
+
+  changeHue(value: number){
+    this.hue = value;
+    this.updateRgb();
+  }
+
+  changeSaturation(value: number){
+    this.saturation = value;
+    this.updateRgb();
+  }
+
+  changeLightness(value: number){
+    this.lightness = value;
+    this.updateRgb();
+  }
+
+  selectHslColor([hue, saturation, lightness]: number[]){
+    [this.hue, this.saturation, this.lightness] = [hue, saturation, lightness];
+    this.updateRgb();
   }
 
 }

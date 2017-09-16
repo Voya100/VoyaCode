@@ -20,14 +20,14 @@ export class HslSliderComponent implements OnChanges {
 
   context: CanvasRenderingContext2D;
   
-  @Input() red: number;
-  @Input() green: number;
-  @Input() blue: number;
+  @Input() hue: number;
+  @Input() saturation: number;
+  @Input() lightness: number;
 
   @Input() type: hslDimension;
   @Input() coordinate: string;
 
-  @Output() valueChange: EventEmitter<number[]> = new EventEmitter();
+  @Output() valueChange: EventEmitter<number> = new EventEmitter();
   
   width: number = 256;
   height: number = 30;
@@ -35,27 +35,10 @@ export class HslSliderComponent implements OnChanges {
   data: ImageData;
   selectorColor: string;
 
-  hue: number;
-  saturation: number;
-  lightness: number;
-
   constructor(private colorService: ColorService, private changeRef: ChangeDetectorRef){}
 
   // Updates background and/or color selector
   ngOnChanges(changes: SimpleChanges){
-    const [prevHue, prevSaturation] = [this.hue, this.saturation];
-
-    // Update hsl values to match new rgb values
-    [this.hue, this.saturation, this.lightness] = this.colorService.rgbToHsl([this.red, this.green, this.blue]);
-
-    // If lightness is 100 %, hue and saturation can't be determined from RGB value, which causes issues
-    // Because of this, the old values are kept in this case
-    // TODO: Implement a better solution
-    if(this.lightness === 1){
-      this.hue = prevHue || this.hue;
-      this.saturation = prevSaturation || this.saturation;
-    }
-
     if(!this.context){ return; }
     this.generateImageData();
     this.updateSelectorColor();
@@ -118,15 +101,22 @@ export class HslSliderComponent implements OnChanges {
   }
 
   updateSelectorColor(){
-    this.selectorColor = this.colorService.getContrastColor(this.red, this.green, this.blue);
+    const rgb = this.colorService.hslToRgb([this.hue, this.saturation, this.lightness]);
+    this.selectorColor = this.colorService.getContrastColor(rgb[0], rgb[1], rgb[2]);
   }
   
   emitValueChange(value: number, degrees: boolean = true){
     // If not in degrees, values are between [0,1]
-    const h = this.type === hslDimension.H ? value * (degrees ? 1 : 360) : this.hue; 
-    const s = this.type === hslDimension.S ? value * (degrees ? 1 : 100) : this.saturation; 
-    const l = this.type === hslDimension.L ? value * (degrees ? 1 : 100) : this.lightness; 
+    if(!degrees){
+      value *= this.type === hslDimension.H ? 360 : 100;
+    }
 
-    this.valueChange.emit(this.colorService.hslToRgb([h, s, l]));
+    if(this.type === hslDimension.H){
+      value = Math.max(0, Math.min(value, 360));
+    }else{
+      value = Math.max(0, Math.min(value, 100));
+    }
+
+    this.valueChange.emit(value);
   }
 }

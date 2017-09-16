@@ -12,9 +12,9 @@ import { ColorService } from '../../color.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HslInputComponent {
-  @Input() red: number;
-  @Input() green: number;
-  @Input() blue: number;
+  @Input() hue: number;
+  @Input() saturation: number;
+  @Input() lightness: number;
   
   @Output() selectColor: EventEmitter<number[]> = new EventEmitter();
 
@@ -25,17 +25,15 @@ export class HslInputComponent {
 
   get hslValue(){
     const prevValues = this.getValues(this.cache);
-    const [prevRed, prevGreen, prevBlue] = this.colorService.hslToRgb(prevValues);
+    const [prevHue, prevSaturation, prevLightness] = this.colorService.hslToRgb(prevValues);
     // Value is updated to proper syntax only if the change comes from outside source,
     // meaning that new value doesn't match current input.
     // Otherwise input field could have its value changed while the user is still typing
-    if(prevRed === this.red && prevGreen === this.green && prevBlue === this.blue){
+    if(prevHue === this.hue && prevSaturation === this.saturation && prevLightness === this.lightness){
       return this.cache;
     }
-    const hsl = this.colorService.rgbToHsl([this.red, this.green, this.blue]);
 
-    const [hue, saturation, lightness] = hsl.map(Math.round);
-    return `hsl(${hue}, ${saturation} %, ${lightness} %)`;
+    return `hsl(${Math.round(this.hue)}, ${Math.round(this.saturation*10)/10} %, ${Math.round(this.lightness*10)/10} %)`;
   }
   
   hslChanged(value: string){
@@ -46,7 +44,7 @@ export class HslInputComponent {
       || !(0 <= hslValues[2] && hslValues[2] <= 100)
     ){ return; }
     this.cache = value;
-    this.selectColor.emit(this.colorService.hslToRgb(hslValues));
+    this.selectColor.emit(hslValues);
   }
   
   private getValues(hslString: string){
