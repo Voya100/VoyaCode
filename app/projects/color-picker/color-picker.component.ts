@@ -7,6 +7,8 @@ import { colorDimension } from './enums';
 })
 export class ColorPickerComponent {
 
+  zDimension: colorDimension = colorDimension.B;
+
   redColor: colorDimension = colorDimension.R;
   greenColor: colorDimension = colorDimension.G;
   blueColor: colorDimension = colorDimension.B;
@@ -15,7 +17,27 @@ export class ColorPickerComponent {
   green: number = 0;
   blue: number = 0;
 
+  // [x, y, z] color dimensions for zDimension key (options: RGB, BRG, GBR)
+  private dimensions: { [key: string]: colorDimension[] } = {
+    [colorDimension.R]: [colorDimension.G, colorDimension.B, colorDimension.R],
+    [colorDimension.G]: [colorDimension.B, colorDimension.R, colorDimension.G],
+    [colorDimension.B]: [colorDimension.R, colorDimension.G, colorDimension.B]
+  }
+
   constructor() { }
+
+  get xDimension(){
+    return this.dimensions[this.zDimension][0];
+  }
+
+  get yDimension(){
+    return this.dimensions[this.zDimension][1];
+  }
+
+  getCoordinate(color: colorDimension){
+    const index = this.dimensions[this.zDimension].indexOf(color);
+    return ['x', 'y', 'z'][index];
+  }
 
   changeRed(redValue: number){
     this.red = redValue;

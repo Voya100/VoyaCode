@@ -4,13 +4,6 @@ import {
 } from '@angular/core';
 import { colorDimension } from '../enums';
 
-// [x, y, z] color dimensions for zDimension key (options: RGB, BRG, GBR)
-const dimensions = {
-  [colorDimension.R]: [colorDimension.G, colorDimension.B, colorDimension.R],
-  [colorDimension.G]: [colorDimension.B, colorDimension.R, colorDimension.G],
-  [colorDimension.B]: [colorDimension.R, colorDimension.G, colorDimension.B]
-}
-
 @Component({
   selector: 'color-canvas',
   templateUrl: 'color-canvas.component.html',
@@ -23,7 +16,9 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   @Output() selectColor: EventEmitter<{}> = new EventEmitter();
 
-  @Input() zDimension: colorDimension = colorDimension.R;
+  @Input() xDimension: colorDimension;
+  @Input() yDimension: colorDimension;
+  @Input() zDimension: colorDimension;
   @Input() red: number;
   @Input() green: number;
   @Input() blue: number;
@@ -52,13 +47,19 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   onDrag(x: number, y: number){
     const colors = {};
-    const xyzColors = dimensions[this.zDimension];
-    colors[xyzColors[0]] = x;
-    colors[xyzColors[1]] = y;
-    colors[xyzColors[2]] = this[this.zDimension];
+    colors[this.xDimension] = this.roundColor(x);
+    colors[this.yDimension] = this.roundColor(y);
+    colors[this.zDimension] = this.roundColor(this[this.zDimension]);
     this.selectColor.emit(colors);
   }
 
+  // Ensures that color value is between 0-255, because canvas events may sometimes return values outside
+  // of this range
+  roundColor(value: number){
+    return Math.max(0, Math.min(value, 255));
+  }
+
+  // Draws canvas background and circle indicator on the selected color
   drawCanvas(){
     this.context.putImageData(this.data, 0, 0);
     this.drawCircle();
@@ -84,9 +85,9 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   // Returns color value for color of specific dimension at location (x, y)
   getColor(dimension: colorDimension, x: number, y: number){
-    if(dimensions[this.zDimension][0] === dimension){
+    if(dimension === this.xDimension){
       return x;
-    }else if(dimensions[this.zDimension][1] === dimension){
+    }else if(dimension === this.yDimension){
       return y;
     }else{
       return this[dimension];
@@ -108,12 +109,12 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   // Returns x location of selected color
   getX(){
-    return this[dimensions[this.zDimension][0]];
+    return this[this.xDimension];
   }
 
   // Returns y location of selected color
   getY(){
-    return this[dimensions[this.zDimension][1]];
+    return this[this.yDimension];
   }
 
 }

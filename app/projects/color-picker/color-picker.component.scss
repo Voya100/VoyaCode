@@ -3,3 +3,17 @@
 :host{
   @extend %main-content;
 }
+
+color-canvas{
+  display: inline-block;
+}
+
+.color-details{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.sliders, .slider-settings{
+  display: inline-block;
+  vertical-align: middle;
+}
