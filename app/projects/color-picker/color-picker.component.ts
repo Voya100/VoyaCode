@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { colorDimension } from './enums';
+import { colorDimension, hslDimension } from './enums';
 
 @Component({
   templateUrl: 'color-picker.component.html',
@@ -13,12 +13,16 @@ export class ColorPickerComponent {
   greenColor: colorDimension = colorDimension.G;
   blueColor: colorDimension = colorDimension.B;
 
+  hueChannel: hslDimension = hslDimension.H;
+  saturationChannel: hslDimension = hslDimension.S;
+  lightingChannel: hslDimension = hslDimension.L;
+
   rgbSliderAllChannels: boolean = true;
   hslDegrees: boolean = true;
 
-  _red: number = 0;
-  _green: number = 0;
-  _blue: number = 0;
+  _red: number = 37;
+  _green: number = 134;
+  _blue: number = 204;
 
   // [x, y, z] color dimensions for zDimension key (options: RGB, BRG, GBR)
   private dimensions: { [key: string]: colorDimension[] } = {

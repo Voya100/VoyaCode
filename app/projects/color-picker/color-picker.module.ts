@@ -8,6 +8,7 @@ import { ColorCanvasComponent } from './color-canvas/color-canvas.component';
 
 import { ColorSliderComponent } from './sliders/color-slider/color-slider.component';
 import { RgbSliderComponent } from './sliders/rgb-slider/rgb-slider.component';
+import { HslSliderComponent } from './sliders/hsl-slider/hsl-slider.component';
 
 import { RgbInputComponent } from './inputs/rgb-input/rgb-input.component';
 import { HexInputComponent } from './inputs/hex-input/hex-input.component';
@@ -22,7 +23,7 @@ import { routing } from './color-picker.routing';
   exports: [],
   declarations: [
     ColorPickerComponent, ColorCanvasComponent, 
-    ColorSliderComponent, RgbSliderComponent,
+    ColorSliderComponent, RgbSliderComponent, HslSliderComponent,
     RgbInputComponent, HexInputComponent, HslInputComponent
   ],
   providers: [ColorService]

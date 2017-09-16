@@ -17,6 +17,12 @@
     <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllDimensions]="rgbSliderAllChannels" [coordinate]="getCoordinate(greenColor)" (valueChange)="changeGreen($event)"></rgb-slider>
     <br>
     <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllDimensions]="rgbSliderAllChannels" [coordinate]="getCoordinate(blueColor)" (valueChange)="changeBlue($event)"></rgb-slider>
+    <br>
+    <hsl-slider [red]="red" [green]="green" [blue]="blue" [type]="hueChannel" [degrees]="hslDegrees" (valueChange)="selectColor($event)"></hsl-slider>
+    <br>
+    <hsl-slider [red]="red" [green]="green" [blue]="blue" [type]="saturationChannel" [degrees]="hslDegrees" (valueChange)="selectColor($event)"></hsl-slider>
+    <br>
+    <hsl-slider [red]="red" [green]="green" [blue]="blue" [type]="lightingChannel" [degrees]="hslDegrees" (valueChange)="selectColor($event)"></hsl-slider>
   </div>
   <div class="slider-settings">
     Z dimension: 

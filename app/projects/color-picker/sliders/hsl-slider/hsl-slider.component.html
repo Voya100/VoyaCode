@@ -1,0 +1,12 @@
+<color-slider
+  [data]="data" 
+  [width]="width" 
+  [height]="height" 
+  [value]="value" 
+  [selectorColor]="selectorColor" 
+  (valueChange)="emitValueChange($event/255)"
+  (contextInit)="setContext($event)">
+</color-slider>
+
+<input type="number" [attr.step]="1" [attr.min]="0" [attr.max]="type === 'hue' ? 360 : 100" [ngModel]="formattedValue" (ngModelChange)="emitValueChange($event, degrees)">
+{{type | capitalize}} {{type === 'hue' ? '(°)' : '(%)'}}

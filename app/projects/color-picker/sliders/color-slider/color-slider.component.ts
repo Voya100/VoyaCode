@@ -56,7 +56,7 @@ export class ColorSliderComponent implements AfterViewInit, OnChanges {
   }
 
   emitValueChange(value: number){
-    this.valueChange.emit(value);
+    this.valueChange.emit(Math.max(0, Math.min(value, this.width-1)));
   }
 
 }
