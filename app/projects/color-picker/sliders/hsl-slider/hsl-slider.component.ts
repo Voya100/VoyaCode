@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { 
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, 
+  Input, OnChanges, Output, SimpleChanges 
+} from '@angular/core';
 
 import { colorDimension, hslDimension } from '../../enums';
 
@@ -24,8 +27,6 @@ export class HslSliderComponent implements OnChanges {
   @Input() type: hslDimension;
   @Input() coordinate: string;
 
-  @Input() degrees: string;
-  
   @Output() valueChange: EventEmitter<number[]> = new EventEmitter();
   
   width: number = 256;
@@ -61,19 +62,21 @@ export class HslSliderComponent implements OnChanges {
   }
   
   get value(){
-    return this[this.type] * 255;
+    const value = this[this.type];
+    switch(this.type){
+      case hslDimension.H: return value / 360 * 255;
+      case hslDimension.S: 
+      case hslDimension.L: return value * 2.55;
+    }
   }
 
   get formattedValue(){
     const value = this[this.type];
-    if(!this.degrees){
-      return value.toFixed(3);
-    }
 
     switch(this.type){
-      case hslDimension.H: return Math.round(value * 360);
+      case hslDimension.H: return Math.round(value);
       case hslDimension.L:
-      case hslDimension.S: return Math.round(value * 1000)/10;
+      case hslDimension.S: return Math.round(value * 10)/10;
     }
 
   }
@@ -100,9 +103,9 @@ export class HslSliderComponent implements OnChanges {
   }
 
   setColumn(imageData: ImageData, x: number, height: number){
-    const h = this.type === hslDimension.H ? x/255 : this.hue; 
-    const s = this.type === hslDimension.S ? x/255 : this.saturation; 
-    const l = this.type === hslDimension.L ? x/255 : this.lightness;
+    const h = this.type === hslDimension.H ? 360*x/255 : this.hue; 
+    const s = this.type === hslDimension.S ? x/2.55 : this.saturation; 
+    const l = this.type === hslDimension.L ? x/2.55 : this.lightness;
     const [red, green, blue] = this.colorService.hslToRgb([h, s, l]);
 
     for(let y = 0; y < height; y++){
@@ -118,18 +121,12 @@ export class HslSliderComponent implements OnChanges {
     this.selectorColor = this.colorService.getContrastColor(this.red, this.green, this.blue);
   }
   
-  emitValueChange(value: number, degrees: boolean = false){
-    if(degrees){
-      switch(this.type){
-        case hslDimension.H: value /= 360; break;
-        case hslDimension.L:
-        case hslDimension.S: value /= 100; break;
-      }
-    }
-    const h = this.type === hslDimension.H ? value : this.hue; 
-    const s = this.type === hslDimension.S ? value : this.saturation; 
-    const l = this.type === hslDimension.L ? value : this.lightness; 
-    
+  emitValueChange(value: number, degrees: boolean = true){
+    // If not in degrees, values are between [0,1]
+    const h = this.type === hslDimension.H ? value * (degrees ? 1 : 360) : this.hue; 
+    const s = this.type === hslDimension.S ? value * (degrees ? 1 : 100) : this.saturation; 
+    const l = this.type === hslDimension.L ? value * (degrees ? 1 : 100) : this.lightness; 
+
     this.valueChange.emit(this.colorService.hslToRgb([h, s, l]));
   }
 }

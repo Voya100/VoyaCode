@@ -10,6 +10,10 @@ export class ColorService {
       return [255, 255, 255];
     }
 
+    hue /= 360;
+    saturation /= 100;
+    lightness /= 100;
+
     const q = lightness < 0.5 ? lightness * (1 + saturation) : lightness + saturation - lightness * saturation;
     const p = 2 * lightness - q;
     const red = this.hueTransform(p, q, hue + 1/3);
@@ -40,17 +44,7 @@ export class ColorService {
       hue /= 6;
     }
 
-    return [hue, saturation, lightness];
-  }
-
-  // Converts hsl degrees and percentages into decimal values
-  convertToDegrees([hue, saturation, lightness]: number[]){
-    return [hue*360, saturation*100, lightness*100]
-  }
-
-  // Converts hsl decimal values to degrees and percentages
-  convertFromDegrees([hue, saturation, lightness]: number[]){
-    return [hue/360, saturation/100, lightness/100];
+    return [hue*360, saturation*100, lightness*100];
   }
 
   // Helps to create optimal contrast with background

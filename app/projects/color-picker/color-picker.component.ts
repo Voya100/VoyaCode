@@ -18,8 +18,7 @@ export class ColorPickerComponent {
   lightingChannel: hslDimension = hslDimension.L;
 
   rgbSliderAllChannels: boolean = true;
-  hslDegrees: boolean = true;
-
+  
   _red: number = 37;
   _green: number = 134;
   _blue: number = 204;
