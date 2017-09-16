@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { colorDimension } from '../../enums';
+import { colorChannel } from '../../enums';
 import { ColorService } from '../../color.service';
 
 /**
@@ -14,14 +14,14 @@ export class RgbSliderComponent implements OnChanges {
 
   context: CanvasRenderingContext2D;
   
-  @Input() color: colorDimension;
+  @Input() color: colorChannel;
   @Input() coordinate: string;
   
   @Input() red: number;
   @Input() green: number;
   @Input() blue: number;
 
-  @Input() showAllDimensions: boolean;
+  @Input() showAllChannels: boolean;
 
   @Output() valueChange: EventEmitter<number> = new EventEmitter();
   
@@ -38,7 +38,7 @@ export class RgbSliderComponent implements OnChanges {
     if(!this.context){ return; }
 
     // Generate pixels for background only if it has changed
-    if(changes[this.color] || changes.showAllDimensions || this.showAllDimensions){
+    if(changes[this.color] || changes.showAllChannels || this.showAllChannels){
       this.generateImageData();
     }
     this.updateSelectorColor();
@@ -69,9 +69,9 @@ export class RgbSliderComponent implements OnChanges {
   }
 
   setColumn(imageData: ImageData, x: number, height: number){
-    const red =  this.color === colorDimension.R ? x : (this.showAllDimensions ? this.red : 0);
-    const green =  this.color === colorDimension.G ? x : (this.showAllDimensions ? this.green : 0);
-    const blue =  this.color === colorDimension.B ? x : (this.showAllDimensions ? this.blue : 0);
+    const red =  this.color === colorChannel.R ? x : (this.showAllChannels ? this.red : 0);
+    const green =  this.color === colorChannel.G ? x : (this.showAllChannels ? this.green : 0);
+    const blue =  this.color === colorChannel.B ? x : (this.showAllChannels ? this.blue : 0);
 
     for(let y = 0; y < height; y++){
       const index = (x + y * imageData.width) * 4;
@@ -84,9 +84,9 @@ export class RgbSliderComponent implements OnChanges {
 
   updateSelectorColor(){
     const value = this[this.color];
-    const red =  this.color === colorDimension.R || this.showAllDimensions ? this.red : 0;
-    const green =  this.color === colorDimension.G || this.showAllDimensions ? this.green : 0;
-    const blue =  this.color === colorDimension.B || this.showAllDimensions ? this.blue : 0;
+    const red =  this.color === colorChannel.R || this.showAllChannels ? this.red : 0;
+    const green =  this.color === colorChannel.G || this.showAllChannels ? this.green : 0;
+    const blue =  this.color === colorChannel.B || this.showAllChannels ? this.blue : 0;
 
     this.selectorColor = this.colorService.getContrastColor(red, green, blue);
   }

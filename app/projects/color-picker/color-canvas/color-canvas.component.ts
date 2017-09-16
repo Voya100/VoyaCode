@@ -2,7 +2,7 @@ import {
   AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, 
   Output, SimpleChange, SimpleChanges, ViewChild 
 } from '@angular/core';
-import { colorDimension } from '../enums';
+import { colorChannel } from '../enums';
 
 @Component({
   selector: 'color-canvas',
@@ -16,9 +16,9 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   @Output() selectColor: EventEmitter<number[]> = new EventEmitter();
 
-  @Input() xDimension: colorDimension;
-  @Input() yDimension: colorDimension;
-  @Input() zDimension: colorDimension;
+  @Input() xAxis: colorChannel;
+  @Input() yAxis: colorChannel;
+  @Input() zAxis: colorChannel;
   @Input() red: number;
   @Input() green: number;
   @Input() blue: number;
@@ -38,7 +38,7 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
     if(!this.context){ return; }
 
     // Generate pixels for background only if it has changed
-    if(changes[this.zDimension] || changes['zDimension']){
+    if(changes[this.zAxis] || changes['zAxis']){
       this.generateImageData();
     }
 
@@ -47,10 +47,10 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   onDrag(x: number, y: number){
     const colors = {};
-    colors[this.xDimension] = x;
-    colors[this.yDimension] = 255 - y;
-    colors[this.zDimension] = this[this.zDimension];
-    this.selectColor.emit([colors[colorDimension.R], colors[colorDimension.G], colors[colorDimension.B]]);
+    colors[this.xAxis] = x;
+    colors[this.yAxis] = 255 - y;
+    colors[this.zAxis] = this[this.zAxis];
+    this.selectColor.emit([colors[colorChannel.R], colors[colorChannel.G], colors[colorChannel.B]]);
   }
 
   // Draws canvas background and circle indicator on the selected color
@@ -71,17 +71,17 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   setPixel(imageData: ImageData, x: number, y: number){
     const index = (x + y * imageData.width) * 4;
-    imageData.data[index] = this.getColor(colorDimension.R, x, y);
-    imageData.data[index+1] = this.getColor(colorDimension.G, x, y);
-    imageData.data[index+2] = this.getColor(colorDimension.B, x, y);
+    imageData.data[index] = this.getColor(colorChannel.R, x, y);
+    imageData.data[index+1] = this.getColor(colorChannel.G, x, y);
+    imageData.data[index+2] = this.getColor(colorChannel.B, x, y);
     imageData.data[index+3] = 255; // alpha
   }
 
   // Returns color value for color of specific dimension at location (x, y)
-  getColor(dimension: colorDimension, x: number, y: number){
-    if(dimension === this.xDimension){
+  getColor(dimension: colorChannel, x: number, y: number){
+    if(dimension === this.xAxis){
       return x;
-    }else if(dimension === this.yDimension){
+    }else if(dimension === this.yAxis){
       return 255 - y;
     }else{
       return this[dimension];
@@ -103,12 +103,12 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   // Returns x location of selected color
   getX(){
-    return this[this.xDimension];
+    return this[this.xAxis];
   }
 
   // Returns y location of selected color
   getY(){
-    return 255 - this[this.yDimension];
+    return 255 - this[this.yAxis];
   }
 
 }

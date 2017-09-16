@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 
 import * as _ from 'lodash';
 
-import { colorDimension } from '../../enums';
 import { ColorService } from '../../color.service';
 
 @Component({

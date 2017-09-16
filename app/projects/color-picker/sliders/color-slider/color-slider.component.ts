@@ -3,8 +3,6 @@ import {
   EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild 
 } from '@angular/core';
 
-import { colorDimension } from '../../enums';
-
 /**
  * Slider component that displays data input as a background and adds selector to x position that matches value input.
  */

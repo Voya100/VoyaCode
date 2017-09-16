@@ -3,7 +3,7 @@ import {
   Input, OnChanges, Output, SimpleChanges 
 } from '@angular/core';
 
-import { colorDimension, hslDimension } from '../../enums';
+import { colorChannel, hslChannel } from '../../enums';
 
 import { ColorService } from '../../color.service';
 
@@ -24,7 +24,7 @@ export class HslSliderComponent implements OnChanges {
   @Input() saturation: number;
   @Input() lightness: number;
 
-  @Input() type: hslDimension;
+  @Input() type: hslChannel;
   @Input() coordinate: string;
 
   @Output() valueChange: EventEmitter<number> = new EventEmitter();
@@ -47,9 +47,9 @@ export class HslSliderComponent implements OnChanges {
   get value(){
     const value = this[this.type];
     switch(this.type){
-      case hslDimension.H: return value / 360 * 255;
-      case hslDimension.S: 
-      case hslDimension.L: return value * 2.55;
+      case hslChannel.H: return value / 360 * 255;
+      case hslChannel.S: 
+      case hslChannel.L: return value * 2.55;
     }
   }
 
@@ -57,9 +57,9 @@ export class HslSliderComponent implements OnChanges {
     const value = this[this.type];
 
     switch(this.type){
-      case hslDimension.H: return Math.round(value);
-      case hslDimension.L:
-      case hslDimension.S: return Math.round(value * 10)/10;
+      case hslChannel.H: return Math.round(value);
+      case hslChannel.L:
+      case hslChannel.S: return Math.round(value * 10)/10;
     }
 
   }
@@ -86,9 +86,9 @@ export class HslSliderComponent implements OnChanges {
   }
 
   setColumn(imageData: ImageData, x: number, height: number){
-    const h = this.type === hslDimension.H ? 360*x/255 : this.hue; 
-    const s = this.type === hslDimension.S ? x/2.55 : this.saturation; 
-    const l = this.type === hslDimension.L ? x/2.55 : this.lightness;
+    const h = this.type === hslChannel.H ? 360*x/255 : this.hue; 
+    const s = this.type === hslChannel.S ? x/2.55 : this.saturation; 
+    const l = this.type === hslChannel.L ? x/2.55 : this.lightness;
     const [red, green, blue] = this.colorService.hslToRgb([h, s, l]);
 
     for(let y = 0; y < height; y++){
@@ -108,10 +108,10 @@ export class HslSliderComponent implements OnChanges {
   emitValueChange(value: number, degrees: boolean = true){
     // If not in degrees, values are between [0,1]
     if(!degrees){
-      value *= this.type === hslDimension.H ? 360 : 100;
+      value *= this.type === hslChannel.H ? 360 : 100;
     }
 
-    if(this.type === hslDimension.H){
+    if(this.type === hslChannel.H){
       value = Math.max(0, Math.min(value, 360));
     }else{
       value = Math.max(0, Math.min(value, 100));

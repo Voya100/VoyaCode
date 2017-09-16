@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { colorDimension, hslDimension } from './enums';
+import { colorChannel, hslChannel } from './enums';
 import { ColorService } from './color.service';
 
 @Component({
@@ -8,15 +8,15 @@ import { ColorService } from './color.service';
 })
 export class ColorPickerComponent {
 
-  zDimension: colorDimension = colorDimension.B;
+  zChannel: colorChannel = colorChannel.B;
 
-  redColor: colorDimension = colorDimension.R;
-  greenColor: colorDimension = colorDimension.G;
-  blueColor: colorDimension = colorDimension.B;
+  redColor: colorChannel = colorChannel.R;
+  greenColor: colorChannel = colorChannel.G;
+  blueColor: colorChannel = colorChannel.B;
 
-  hueChannel: hslDimension = hslDimension.H;
-  saturationChannel: hslDimension = hslDimension.S;
-  lightnessChannel: hslDimension = hslDimension.L;
+  hueChannel: hslChannel = hslChannel.H;
+  saturationChannel: hslChannel = hslChannel.S;
+  lightnessChannel: hslChannel = hslChannel.L;
 
   rgbSliderAllChannels: boolean = true;
 
@@ -28,11 +28,11 @@ export class ColorPickerComponent {
   saturation: number;
   lightness: number;
 
-  // [x, y, z] color dimensions for zDimension key (options: RGB, BRG, GBR)
-  private dimensions: { [key: string]: colorDimension[] } = {
-    [colorDimension.R]: [colorDimension.G, colorDimension.B, colorDimension.R],
-    [colorDimension.G]: [colorDimension.B, colorDimension.R, colorDimension.G],
-    [colorDimension.B]: [colorDimension.R, colorDimension.G, colorDimension.B]
+  // [x, y, z] color axes for zAxis's color channel key (options: RGB, BRG, GBR)
+  private axes: { [key: string]: colorChannel[] } = {
+    [colorChannel.R]: [colorChannel.G, colorChannel.B, colorChannel.R],
+    [colorChannel.G]: [colorChannel.B, colorChannel.R, colorChannel.G],
+    [colorChannel.B]: [colorChannel.R, colorChannel.G, colorChannel.B]
   }
 
   constructor(private colorService: ColorService) {
@@ -72,16 +72,16 @@ export class ColorPickerComponent {
     return Math.max(0, Math.min(value, 255));
   }
 
-  get xDimension(){
-    return this.dimensions[this.zDimension][0];
+  get xChannel(){
+    return this.axes[this.zChannel][0];
   }
 
-  get yDimension(){
-    return this.dimensions[this.zDimension][1];
+  get yChannel(){
+    return this.axes[this.zChannel][1];
   }
 
-  getCoordinate(color: colorDimension){
-    const index = this.dimensions[this.zDimension].indexOf(color);
+  getCoordinate(color: colorChannel){
+    const index = this.axes[this.zChannel].indexOf(color);
     return ['x', 'y', 'z'][index];
   }
 

@@ -1,5 +1,5 @@
 <section>
-  <color-canvas [red]="red" [green]="green" [blue]="blue" [xDimension]="xDimension" [yDimension]="yDimension"  [zDimension]="zDimension" (selectColor)="selectColor($event)"></color-canvas>
+  <color-canvas [red]="red" [green]="green" [blue]="blue" [xAxis]="xChannel" [yAxis]="yChannel"  [zAxis]="zChannel" (selectColor)="selectColor($event)"></color-canvas>
   <section class="color-details">
     <div style="width: 100px; height: 100px;" [style.background]="'rgb(' + red + ', ' + green + ', ' + blue + ')'"></div>
     <label>Hex: <hex-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></hex-input></label>
@@ -12,11 +12,11 @@
 
 <section class="settings">
   <div class="sliders">
-    <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllDimensions]="rgbSliderAllChannels" [coordinate]="getCoordinate(redColor)" (valueChange)="changeRed($event)"></rgb-slider>
+    <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(redColor)" (valueChange)="changeRed($event)"></rgb-slider>
     <br>
-    <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllDimensions]="rgbSliderAllChannels" [coordinate]="getCoordinate(greenColor)" (valueChange)="changeGreen($event)"></rgb-slider>
+    <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(greenColor)" (valueChange)="changeGreen($event)"></rgb-slider>
     <br>
-    <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllDimensions]="rgbSliderAllChannels" [coordinate]="getCoordinate(blueColor)" (valueChange)="changeBlue($event)"></rgb-slider>
+    <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(blueColor)" (valueChange)="changeBlue($event)"></rgb-slider>
     <br>
     <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="hueChannel" (valueChange)="changeHue($event)"></hsl-slider>
     <br>
@@ -25,10 +25,10 @@
     <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="lightnessChannel" (valueChange)="changeLightness($event)"></hsl-slider>
   </div>
   <div class="slider-settings">
-    Z dimension: 
-    <label><input type="radio" [(ngModel)]="zDimension" name="zDimension" value="red"> Red</label>
-    <label><input type="radio" [(ngModel)]="zDimension" name="zDimension" value="green"> Green</label>
-    <label><input type="radio" [(ngModel)]="zDimension" name="zDimension" value="blue"> Blue</label>
+    Z axis: 
+    <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="red"> Red</label>
+    <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="green"> Green</label>
+    <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="blue"> Blue</label>
     <br>
     Rgb sliders: 
     <label><input type="radio" [(ngModel)]="rgbSliderAllChannels" name="rgbSliderAllChannels" [value]="false"> Display 1 channel</label>

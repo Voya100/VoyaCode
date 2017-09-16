@@ -1,7 +1,7 @@
-export enum colorDimension{
+export enum colorChannel{
   R = 'red', G = 'green', B = 'blue'
 }
 
-export enum hslDimension{
+export enum hslChannel{
   H = 'hue', S = 'saturation', L = 'lightness'
 }

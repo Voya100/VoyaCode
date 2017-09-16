@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { colorDimension } from '../../enums';
 
 import * as _ from 'lodash';
 
