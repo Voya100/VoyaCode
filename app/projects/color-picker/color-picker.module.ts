@@ -10,6 +10,8 @@ import { RgbInputComponent } from './rgb-input/rgb-input.component';
 import { HexInputComponent } from './hex-input/hex-input.component';
 import { HslInputComponent } from './hsl-input/hsl-input.component';
 
+import { ColorService } from './color.service';
+
 import { routing } from './color-picker.routing';
 
 @NgModule({
@@ -19,6 +21,6 @@ import { routing } from './color-picker.routing';
     ColorPickerComponent, ColorCanvasComponent, ColorSliderComponent, 
     RgbInputComponent, HexInputComponent, HslInputComponent
   ],
-  providers: []
+  providers: [ColorService]
 })
 export class ColorPickerModule { }
