@@ -14,7 +14,7 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
   @ViewChild('colorCanvas') colorCanvas: ElementRef;
   context: CanvasRenderingContext2D;
 
-  @Output() selectColor: EventEmitter<{}> = new EventEmitter();
+  @Output() selectColor: EventEmitter<number[]> = new EventEmitter();
 
   @Input() xDimension: colorDimension;
   @Input() yDimension: colorDimension;
@@ -47,16 +47,10 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   onDrag(x: number, y: number){
     const colors = {};
-    colors[this.xDimension] = this.roundColor(x);
-    colors[this.yDimension] = this.roundColor(255 - y);
-    colors[this.zDimension] = this.roundColor(this[this.zDimension]);
-    this.selectColor.emit(colors);
-  }
-
-  // Ensures that color value is between 0-255, because canvas events may sometimes return values outside
-  // of this range
-  roundColor(value: number){
-    return Math.max(0, Math.min(value, 255));
+    colors[this.xDimension] = x;
+    colors[this.yDimension] = 255 - y;
+    colors[this.zDimension] = this[this.zDimension];
+    this.selectColor.emit([colors[colorDimension.R], colors[colorDimension.G], colors[colorDimension.B]]);
   }
 
   // Draws canvas background and circle indicator on the selected color

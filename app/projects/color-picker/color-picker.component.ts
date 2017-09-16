@@ -13,9 +13,9 @@ export class ColorPickerComponent {
   greenColor: colorDimension = colorDimension.G;
   blueColor: colorDimension = colorDimension.B;
 
-  red: number = 0;
-  green: number = 0;
-  blue: number = 0;
+  _red: number = 0;
+  _green: number = 0;
+  _blue: number = 0;
 
   // [x, y, z] color dimensions for zDimension key (options: RGB, BRG, GBR)
   private dimensions: { [key: string]: colorDimension[] } = {
@@ -26,6 +26,31 @@ export class ColorPickerComponent {
 
   constructor() { }
 
+  get red(){
+    return this._red;
+  }
+  set red(value: number){
+    this._red = this.roundColorValue(value);
+  }
+  
+  get green(){
+    return this._green;
+  }
+  set green(value: number){
+    this._green = this.roundColorValue(value);
+  }
+  
+  get blue(){
+    return this._blue;
+  }
+  set blue(value: number){
+    this._blue = this.roundColorValue(value);
+  }
+
+  roundColorValue(value: number){
+    return Math.max(0, Math.min(value, 255));
+  }
+
   get xDimension(){
     return this.dimensions[this.zDimension][0];
   }
@@ -33,7 +58,7 @@ export class ColorPickerComponent {
   get yDimension(){
     return this.dimensions[this.zDimension][1];
   }
-
+  
   getCoordinate(color: colorDimension){
     const index = this.dimensions[this.zDimension].indexOf(color);
     return ['x', 'y', 'z'][index];
@@ -51,10 +76,10 @@ export class ColorPickerComponent {
     this.blue = blueValue;
   }
 
-  selectColor(colorDimensions: {}){
-    this.red = colorDimensions[colorDimension.R];
-    this.green = colorDimensions[colorDimension.G];
-    this.blue = colorDimensions[colorDimension.B];
+  selectColor([red, green, blue]: number[]){
+    this.red = red;
+    this.green = green;
+    this.blue = blue;
   }
 
 }
