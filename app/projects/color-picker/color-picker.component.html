@@ -1,8 +1,10 @@
 <section>
   <color-canvas [red]="red" [green]="green" [blue]="blue" [xDimension]="xDimension" [yDimension]="yDimension"  [zDimension]="zDimension" (selectColor)="selectColor($event)"></color-canvas>
   <section class="color-details">
-    RGB: {{red}}, {{green}}, {{blue}}
     <div style="width: 100px; height: 100px;" [style.background]="'rgb(' + red + ', ' + green + ', ' + blue + ')'"></div>
+    <label>Rgb: <rgb-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></rgb-input></label>
+    <br>
+    <label>Hex: <hex-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></hex-input></label>
   </section>
 </section>
 
