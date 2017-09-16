@@ -21,9 +21,10 @@ export class VCodeMouseDragDirective {
     this.mouseDown = false;
   }
 
-  @HostListener('mousedown')
-  onMouseDown(){
+  @HostListener('mousedown', ['$event'])
+  onMouseDown(event: MouseEvent){
     this.mouseDown = true;
+    this.vCodeMouseDrag.emit(event);
   }
 
   @HostListener('mouseleave')
