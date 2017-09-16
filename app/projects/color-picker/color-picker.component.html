@@ -2,9 +2,11 @@
   <color-canvas [red]="red" [green]="green" [blue]="blue" [xDimension]="xDimension" [yDimension]="yDimension"  [zDimension]="zDimension" (selectColor)="selectColor($event)"></color-canvas>
   <section class="color-details">
     <div style="width: 100px; height: 100px;" [style.background]="'rgb(' + red + ', ' + green + ', ' + blue + ')'"></div>
+    <label>Hex: <hex-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></hex-input></label>
+    <br>
     <label>Rgb: <rgb-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></rgb-input></label>
     <br>
-    <label>Hex: <hex-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></hex-input></label>
+    <label>Hsl: <hsl-input [red]="red" [green]="green" [blue]="blue" [useDegrees]="hslDegrees" (selectColor)="selectColor($event)"></hsl-input></label>
   </section>
 </section>
 
@@ -21,6 +23,10 @@
     <label><input type="radio" [(ngModel)]="zDimension" name="zDimension" value="red"> Red</label>
     <label><input type="radio" [(ngModel)]="zDimension" name="zDimension" value="green"> Green</label>
     <label><input type="radio" [(ngModel)]="zDimension" name="zDimension" value="blue"> Blue</label>
+    <br>
+    Hsl mode: 
+    <label><input type="radio" [(ngModel)]="hslDegrees" name="hslDegrees" [value]="true"> Degrees</label>
+    <label><input type="radio" [(ngModel)]="hslDegrees" name="hslDegrees" [value]="false"> Decimals</label>
   </div>
 
 </section>

@@ -13,6 +13,8 @@ export class ColorPickerComponent {
   greenColor: colorDimension = colorDimension.G;
   blueColor: colorDimension = colorDimension.B;
 
+  hslDegrees: boolean = true;
+
   _red: number = 0;
   _green: number = 0;
   _blue: number = 0;
@@ -58,7 +60,7 @@ export class ColorPickerComponent {
   get yDimension(){
     return this.dimensions[this.zDimension][1];
   }
-  
+
   getCoordinate(color: colorDimension){
     const index = this.dimensions[this.zDimension].indexOf(color);
     return ['x', 'y', 'z'][index];
