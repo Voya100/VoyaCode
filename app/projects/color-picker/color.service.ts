@@ -52,6 +52,12 @@ export class ColorService {
   convertFromDegrees([hue, saturation, lightness]: number[]){
     return [hue/360, saturation/100, lightness/100];
   }
+
+  // Helps to create optimal contrast with background
+  getContrastColor(red: number, green: number, blue: number){
+    const L = 0.2126 * red/255 + 0.7152 * green/255 + 0.0722 * blue/255;
+    return L > 0.5 ? 'black' : 'white';
+  }
   
   // Helper function for hslToRgb
   private hueTransform(p: number, q: number, t: number){

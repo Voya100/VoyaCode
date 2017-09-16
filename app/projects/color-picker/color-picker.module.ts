@@ -5,7 +5,10 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { ColorPickerComponent } from './color-picker.component';
 import { ColorCanvasComponent } from './color-canvas/color-canvas.component';
+
 import { ColorSliderComponent } from './color-slider/color-slider.component';
+import { RgbSliderComponent } from './rgb-slider/rgb-slider.component';
+
 import { RgbInputComponent } from './rgb-input/rgb-input.component';
 import { HexInputComponent } from './hex-input/hex-input.component';
 import { HslInputComponent } from './hsl-input/hsl-input.component';
@@ -18,7 +21,8 @@ import { routing } from './color-picker.routing';
   imports: [routing, SharedModule, FormsModule],
   exports: [],
   declarations: [
-    ColorPickerComponent, ColorCanvasComponent, ColorSliderComponent, 
+    ColorPickerComponent, ColorCanvasComponent, 
+    ColorSliderComponent, RgbSliderComponent,
     RgbInputComponent, HexInputComponent, HslInputComponent
   ],
   providers: [ColorService]
