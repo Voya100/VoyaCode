@@ -13,6 +13,7 @@ export class ColorSliderComponent implements AfterViewInit, OnChanges {
   context: CanvasRenderingContext2D;
 
   @Input() color: colorDimension;
+  @Input() coordinate: string;
   
   @Input() red: number;
   @Input() green: number;

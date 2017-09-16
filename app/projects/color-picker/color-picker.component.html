@@ -1,10 +1,10 @@
 <color-canvas [red]="red" [green]="green" [blue]="blue" [zDimension]="redColor" (selectColor)="selectColor($event)"></color-canvas>
 <br>
-<color-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllDimensions]="true" (valueChange)="changeRed($event)"></color-slider>
+<color-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllDimensions]="true" [coordinate]="'z'" (valueChange)="changeRed($event)"></color-slider>
 <br>
-<color-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllDimensions]="true" (valueChange)="changeGreen($event)"></color-slider>
+<color-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllDimensions]="true" [coordinate]="'x'" (valueChange)="changeGreen($event)"></color-slider>
 <br>
-<color-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllDimensions]="true" (valueChange)="changeBlue($event)"></color-slider>
+<color-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllDimensions]="true" [coordinate]="'y'" (valueChange)="changeBlue($event)"></color-slider>
 <br>
 RGB: {{red}}, {{green}}, {{blue}}
 <div style="width: 100px; height: 100px;" [style.background]="'rgb(' + red + ', ' + green + ', ' + blue + ')'"></div>

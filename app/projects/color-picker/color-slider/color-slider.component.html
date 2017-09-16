@@ -6,3 +6,4 @@
 </canvas>
 
 <input type="number" min="0" max="255" maxlength="3" [ngModel]="getValue()" (ngModelChange)="emitValueChange($event)">
+{{color | capitalize}} ({{coordinate}})
