@@ -48,7 +48,7 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
   onDrag(x: number, y: number){
     const colors = {};
     colors[this.xDimension] = this.roundColor(x);
-    colors[this.yDimension] = this.roundColor(y);
+    colors[this.yDimension] = this.roundColor(255 - y);
     colors[this.zDimension] = this.roundColor(this[this.zDimension]);
     this.selectColor.emit(colors);
   }
@@ -88,7 +88,7 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
     if(dimension === this.xDimension){
       return x;
     }else if(dimension === this.yDimension){
-      return y;
+      return 255 - y;
     }else{
       return this[dimension];
     }
@@ -114,7 +114,7 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
 
   // Returns y location of selected color
   getY(){
-    return this[this.yDimension];
+    return 255 - this[this.yDimension];
   }
 
 }
