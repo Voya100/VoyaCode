@@ -13,6 +13,7 @@ export class ColorPickerComponent {
   greenColor: colorDimension = colorDimension.G;
   blueColor: colorDimension = colorDimension.B;
 
+  rgbSliderAllChannels: boolean = true;
   hslDegrees: boolean = true;
 
   _red: number = 0;

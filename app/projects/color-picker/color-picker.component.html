@@ -12,17 +12,21 @@
 
 <section class="settings">
   <div class="sliders">
-    <color-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllDimensions]="true" [coordinate]="getCoordinate(redColor)" (valueChange)="changeRed($event)"></color-slider>
+    <color-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllDimensions]="rgbSliderAllChannels" [coordinate]="getCoordinate(redColor)" (valueChange)="changeRed($event)"></color-slider>
     <br>
-    <color-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllDimensions]="true" [coordinate]="getCoordinate(greenColor)" (valueChange)="changeGreen($event)"></color-slider>
+    <color-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllDimensions]="rgbSliderAllChannels" [coordinate]="getCoordinate(greenColor)" (valueChange)="changeGreen($event)"></color-slider>
     <br>
-    <color-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllDimensions]="true" [coordinate]="getCoordinate(blueColor)" (valueChange)="changeBlue($event)"></color-slider>
+    <color-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllDimensions]="rgbSliderAllChannels" [coordinate]="getCoordinate(blueColor)" (valueChange)="changeBlue($event)"></color-slider>
   </div>
   <div class="slider-settings">
     Z dimension: 
     <label><input type="radio" [(ngModel)]="zDimension" name="zDimension" value="red"> Red</label>
     <label><input type="radio" [(ngModel)]="zDimension" name="zDimension" value="green"> Green</label>
     <label><input type="radio" [(ngModel)]="zDimension" name="zDimension" value="blue"> Blue</label>
+    <br>
+    Rgb sliders: 
+    <label><input type="radio" [(ngModel)]="rgbSliderAllChannels" name="rgbSliderAllChannels" [value]="false"> Display 1 channel</label>
+    <label><input type="radio" [(ngModel)]="rgbSliderAllChannels" name="rgbSliderAllChannels" [value]="true"> Display all channels</label>
     <br>
     Hsl mode: 
     <label><input type="radio" [(ngModel)]="hslDegrees" name="hslDegrees" [value]="true"> Degrees</label>
