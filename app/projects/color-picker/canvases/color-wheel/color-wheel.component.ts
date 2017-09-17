@@ -66,12 +66,10 @@ export class ColorWheelComponent implements AfterViewInit, OnChanges {
   onDrag(x: number, y: number){
     const colors = {};
     const hue = this.getAngle(x, y);
-    const saturation = this.getR(x, y) / this.radius * 100;
+    let saturation = this.getR(x, y) / this.radius * 100;
 
-    // If saturation is over maximum, user clicked outside of the circle
-    if(saturation > 100){
-      return;
-    }
+    // If user clicked outside the circle, round down to 100 %
+    saturation = Math.min(saturation, 100);
 
     this.selectColor.emit([hue, saturation, this.lightness]);
   }
