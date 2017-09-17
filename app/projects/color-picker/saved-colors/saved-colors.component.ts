@@ -13,10 +13,9 @@ export class SavedColorsComponent {
   
   @Output() setColor: EventEmitter<number[]> = new EventEmitter();
 
-  selectedIndex: number;
+  selectedIndex: number = -1;
 
   constructor(public colorService: ColorService) {
-    this.selectedIndex = this.colors.length ? this.colors.length - 1 : 0;
   }
 
   get colors(){
