@@ -35,13 +35,13 @@ export class RgbSliderComponent implements OnChanges {
 
   // Updates background and/or color selector
   ngOnChanges(changes: SimpleChanges){
+    this.updateSelectorColor();
     if(!this.context){ return; }
 
     // Generate pixels for background only if it has changed
     if(changes[this.color] || changes.showAllChannels || this.showAllChannels){
       this.generateImageData();
     }
-    this.updateSelectorColor();
   }
   
   get value(){
