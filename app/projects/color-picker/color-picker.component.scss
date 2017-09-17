@@ -2,6 +2,7 @@
 
 :host{
   @extend %main-content;
+  @extend %nodrag;
 }
 
 h2{
