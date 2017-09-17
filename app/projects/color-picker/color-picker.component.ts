@@ -18,7 +18,7 @@ export class ColorPickerComponent {
   saturationChannel: hslChannel = hslChannel.S;
   lightnessChannel: hslChannel = hslChannel.L;
 
-  rgbSliderAllChannels: boolean = true;
+  rgbSliderAllChannels: boolean = false;
 
   showColorWheel: boolean = false;
 
