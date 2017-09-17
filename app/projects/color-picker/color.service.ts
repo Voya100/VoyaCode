@@ -9,17 +9,14 @@ export class ColorService {
 
   constructor(private storage: LocalStorageService){
     this.savedColors = storage.get('colors') || [];
-    console.log('saved colors', this.savedColors, storage.get('colors'));
   }
 
   addColor(hue: number, saturation: number, lightness: number){
     this.savedColors.push([hue, saturation, lightness]);
     this.storage.set('colors', this.savedColors);
-    console.log('add color', hue, saturation, lightness, this.savedColors);
   }
 
   editColor(index: number, hue: number, saturation: number, lightness: number){
-    console.log('edit', index, hue, saturation, lightness)
     this.savedColors[index] = [hue, saturation, lightness];
     this.storage.set('colors', this.savedColors);
   }
