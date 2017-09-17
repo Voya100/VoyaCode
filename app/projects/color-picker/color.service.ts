@@ -1,7 +1,38 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Injectable()
 export class ColorService {
+
+  // Collection of colors in hsl format [hue, saturation, lightness]
+  savedColors: number[][] = [];
+
+  constructor(private storage: LocalStorageService){
+    this.savedColors = storage.get('colors') || [];
+    console.log('saved colors', this.savedColors, storage.get('colors'));
+  }
+
+  addColor(hue: number, saturation: number, lightness: number){
+    this.savedColors.push([hue, saturation, lightness]);
+    this.storage.set('colors', this.savedColors);
+    console.log('add color', hue, saturation, lightness, this.savedColors);
+  }
+
+  editColor(index: number, hue: number, saturation: number, lightness: number){
+    console.log('edit', index, hue, saturation, lightness)
+    this.savedColors[index] = [hue, saturation, lightness];
+    this.storage.set('colors', this.savedColors);
+  }
+
+  removeColor(index: number){
+    this.savedColors.splice(index, 1);
+    this.storage.set('colors', this.savedColors);
+  }
+
+  removeAllColors(){
+    this.savedColors = [];
+    this.storage.remove('colors');
+  }
 
   // Converts hsl to rgb with the power of math
   hslToRgb([hue, saturation, lightness]: number[]){

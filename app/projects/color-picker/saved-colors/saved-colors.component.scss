@@ -1,0 +1,33 @@
+@import "../../../../sass/variables";
+
+button{
+  @extend %button;
+  font-size: 90%;
+}
+
+.color-container{
+  margin-top: 5px;
+  max-width: 320px;
+}
+
+.saved-color{
+  cursor: pointer;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid $color_dark2; 
+  margin: 2px;
+  &.selected{
+    border: 1px solid white;
+  }
+}
+
+
+@media screen and (max-width: 420px){
+  .color-container{
+    max-width: 310px;
+  }
+  .saved-color{
+    margin-right: 1px;
+  }
+}
