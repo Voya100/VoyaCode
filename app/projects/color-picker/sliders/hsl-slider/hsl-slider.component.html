@@ -9,6 +9,6 @@
 </color-slider>
 
 <label>
-  <input type="number" [attr.step]="1" [attr.min]="0" [attr.max]="type === 'hue' ? 360 : 100" [ngModel]="formattedValue" (ngModelChange)="emitValueChange($event)">
+  <input type="number" [attr.step]="0.1" [attr.min]="0" [attr.max]="type === 'hue' ? 360 : 100" [ngModel]="formattedValue" (ngModelChange)="emitValueChange($event)">
   {{type | capitalize}} {{type === 'hue' ? '(°)' : '(%)'}}
 </label>
