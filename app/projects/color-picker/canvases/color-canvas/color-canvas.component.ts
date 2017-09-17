@@ -2,7 +2,8 @@ import {
   AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, 
   Output, SimpleChange, SimpleChanges, ViewChild 
 } from '@angular/core';
-import { colorChannel } from '../enums';
+import { colorChannel } from '../../enums';
+import { ColorService } from '../../color.service';
 
 @Component({
   selector: 'color-canvas',
@@ -24,8 +25,10 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
   @Input() blue: number;
 
   data: ImageData;
+
+  circleLineWidth: number = 2;
   
-  constructor() { }
+  constructor(private colorService: ColorService) { }
   
   // Fill the canvas after it has been initialized
   ngAfterViewInit(){
@@ -91,10 +94,8 @@ export class ColorCanvasComponent implements AfterViewInit, OnChanges {
   // Draws circle to canvas where the selected colour is located
   drawCircle(){
     const cicrleRadius = 5;
-
-    // Helps to create optimal contrast with background
-    const L = 0.2126 * this.red/255 + 0.7152 * this.green/255 + 0.0722 * this.blue/255;
-    this.context.strokeStyle = L > 0.5 ? 'black' : 'white';
+    this.context.strokeStyle = this.colorService.getContrastColor(this.red, this.green, this.blue);
+    this.context.lineWidth = this.circleLineWidth;
 
     this.context.beginPath();
     this.context.arc(this.getX(), this.getY(), cicrleRadius, 0, 2*Math.PI);

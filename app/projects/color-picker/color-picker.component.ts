@@ -20,6 +20,8 @@ export class ColorPickerComponent {
 
   rgbSliderAllChannels: boolean = true;
 
+  showColorWheel: boolean = false;
+
   _red: number = 37;
   _green: number = 134;
   _blue: number = 204;
@@ -69,7 +71,7 @@ export class ColorPickerComponent {
   }
 
   roundColorValue(value: number){
-    return Math.max(0, Math.min(value, 255));
+    return Math.round(Math.max(0, Math.min(value, 255)));
   }
 
   get xChannel(){
