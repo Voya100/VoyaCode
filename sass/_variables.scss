@@ -50,6 +50,7 @@ $header_font: "Times New Roman", serif, Times;
 }
 
 %button{
+  font-size: 100%;
   background: $color_main2;
   color: $color_dark2;
   text-align: center;
@@ -68,6 +69,7 @@ $header_font: "Times New Roman", serif, Times;
 
 %a-button{
   @extend %button;
+  font-size: 100%;
   text-decoration: none;
   display: inline-block;
 }

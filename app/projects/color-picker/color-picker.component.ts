@@ -83,6 +83,7 @@ export class ColorPickerComponent {
   }
 
   getCoordinate(color: colorChannel){
+    if(this.showColorWheel){ return undefined; }
     const index = this.axes[this.zChannel].indexOf(color);
     return ['x', 'y', 'z'][index];
   }

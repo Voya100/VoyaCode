@@ -17,10 +17,19 @@ h2{
   @media screen and (max-width: 660px){
     max-width: 470px;
   }
+  @media screen and (max-width: 600px){
+    max-width: 420px;
+  }
+  @media screen and (max-width: 450px){
+    width: 330px;
+  }
 }
 
 .upper-container{
   vertical-align: middle;
+  @media screen and (max-width: 660px){
+    text-align: center;
+  }
 }
 
 .canvas-container{
@@ -61,6 +70,14 @@ color-canvas{
   border: 1px solid $color_dark2;
 }
 
+.canvas-radio-buttons{
+  text-align: left;
+  span{
+    display: inline-block;
+    width: 48px;
+  }
+}
+
 .sliders, .slider-settings{
   display: inline-block;
   vertical-align: middle;
@@ -79,4 +96,9 @@ color-canvas{
   @media screen and (max-width: 450px){
     width: 60px;
   }
+}
+
+input[type="radio"] {
+  margin-top: -1px;
+  vertical-align: middle;
 }

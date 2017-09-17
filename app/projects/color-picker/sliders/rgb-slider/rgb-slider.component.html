@@ -10,5 +10,5 @@
 
 <label>
   <input type="number" min="0" max="255" maxlength="3" [ngModel]="value" (ngModelChange)="emitValueChange($event)">
-  {{color | capitalize}} ({{coordinate}})
+  {{color | capitalize}} {{coordinate ? '(' + coordinate + ')' : ''}}
 </label>
