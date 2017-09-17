@@ -27,6 +27,13 @@ export class HexInputComponent {
     }
     return '#' + this.toHex(this.red) + this.toHex(this.green) + this.toHex(this.blue);
   }
+  
+  hexChanged(hex: string){
+    const colors = this.hexToColors(hex);
+    if(colors.length !== 3){ return; }
+    this.cache = hex;
+    this.selectColor.emit(colors);
+  }
 
   private toHex(value: number){
     let hex = value.toString(16);
@@ -47,13 +54,6 @@ export class HexInputComponent {
 
   private fromHex(value: string){
     return parseInt(value, 16);
-  }
-
-  private hexChanged(hex: string){
-    const colors = this.hexToColors(hex);
-    if(colors.length !== 3){ return; }
-    this.cache = hex;
-    this.selectColor.emit(colors);
   }
   
 }
