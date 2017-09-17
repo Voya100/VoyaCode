@@ -1,50 +1,53 @@
-<section>
+<h2>Color picker</h2>
+<section class="container">
+  <section class="upper-container">
 
-  <div class="canvas-container">
-    <color-canvas *ngIf="!showColorWheel" [red]="red" [green]="green" [blue]="blue" [xAxis]="xChannel" [yAxis]="yChannel"  [zAxis]="zChannel" (selectColor)="selectColor($event)"></color-canvas>
-    <color-wheel *ngIf="showColorWheel" [hue]="hue" [saturation]="saturation" [lightness]="lightness" (selectColor)="selectHslColor($event)"></color-wheel>
-  </div>
+    <div class="canvas-container">
+      <color-canvas *ngIf="!showColorWheel" [red]="red" [green]="green" [blue]="blue" [xAxis]="xChannel" [yAxis]="yChannel"  [zAxis]="zChannel" (selectColor)="selectColor($event)"></color-canvas>
+      <color-wheel *ngIf="showColorWheel" [hue]="hue" [saturation]="saturation" [lightness]="lightness" (selectColor)="selectHslColor($event)"></color-wheel>
+    </div>
 
-  <section class="color-details">
-    <div style="width: 100px; height: 100px;" [style.background]="'rgb(' + red + ', ' + green + ', ' + blue + ')'"></div>
-    <label>Hex: <hex-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></hex-input></label>
-    <br>
-    <label>Rgb: <rgb-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></rgb-input></label>
-    <br>
-    <label>Hsl: <hsl-input [hue]="hue" [saturation]="saturation" [lightness]="lightness" (selectColor)="selectHslColor($event)"></hsl-input></label>
-    <br>
-    Show: 
-    <label><input type="radio" [(ngModel)]="showColorWheel" name="showColorWheel" [value]="false"> Rgb canvas</label>
-    <label><input type="radio" [(ngModel)]="showColorWheel" name="showColorWheel" [value]="true"> Hsl color wheel</label>
+    <section class="color-details">
+      <div class="selected-color" [style.background]="'rgb(' + red + ', ' + green + ', ' + blue + ')'"></div>
+      <label class="input-label">Hex: <hex-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></hex-input></label>
+      <label class="input-label">Rgb: <rgb-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></rgb-input></label>
+      <label class="input-label">Hsl: <hsl-input [hue]="hue" [saturation]="saturation" [lightness]="lightness" (selectColor)="selectHslColor($event)"></hsl-input></label>
+      Show: 
+      <label><input type="radio" [(ngModel)]="showColorWheel" name="showColorWheel" [value]="false"> Rgb canvas</label>
+      <label><input type="radio" [(ngModel)]="showColorWheel" name="showColorWheel" [value]="true"> Hsl color wheel</label>
+    </section>
+
   </section>
 
-</section>
+  <section class="settings">
+    <div class="sliders">
+      <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(redColor)" (valueChange)="changeRed($event)"></rgb-slider>
+      <br>
+      <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(greenColor)" (valueChange)="changeGreen($event)"></rgb-slider>
+      <br>
+      <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(blueColor)" (valueChange)="changeBlue($event)"></rgb-slider>
+      <br>
+      <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="hueChannel" (valueChange)="changeHue($event)"></hsl-slider>
+      <br>
+      <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="saturationChannel" (valueChange)="changeSaturation($event)"></hsl-slider>
+      <br>
+      <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="lightnessChannel" (valueChange)="changeLightness($event)"></hsl-slider>
+    </div>
+    <div class="slider-settings">
+      <div>
+        <span class="slider-radio-header">Z axis:</span> 
+        <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="red"> Red</label>
+        <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="green"> Green</label>
+        <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="blue"> Blue</label>
+      </div>
+      <div>
+        <span class="slider-radio-header">Rgb Sliders:</span> 
+        <label><input type="radio" [(ngModel)]="rgbSliderAllChannels" name="rgbSliderAllChannels" [value]="false"> Display 1 channel</label>
+        <label><input type="radio" [(ngModel)]="rgbSliderAllChannels" name="rgbSliderAllChannels" [value]="true"> Display all channels</label>
+      </div>
+    </div>
 
-<section class="settings">
-  <div class="sliders">
-    <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(redColor)" (valueChange)="changeRed($event)"></rgb-slider>
-    <br>
-    <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(greenColor)" (valueChange)="changeGreen($event)"></rgb-slider>
-    <br>
-    <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(blueColor)" (valueChange)="changeBlue($event)"></rgb-slider>
-    <br>
-    <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="hueChannel" (valueChange)="changeHue($event)"></hsl-slider>
-    <br>
-    <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="saturationChannel" (valueChange)="changeSaturation($event)"></hsl-slider>
-    <br>
-    <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="lightnessChannel" (valueChange)="changeLightness($event)"></hsl-slider>
-  </div>
-  <div class="slider-settings">
-    Z axis: 
-    <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="red"> Red</label>
-    <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="green"> Green</label>
-    <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="blue"> Blue</label>
-    <br>
-    Rgb sliders: 
-    <label><input type="radio" [(ngModel)]="rgbSliderAllChannels" name="rgbSliderAllChannels" [value]="false"> Display 1 channel</label>
-    <label><input type="radio" [(ngModel)]="rgbSliderAllChannels" name="rgbSliderAllChannels" [value]="true"> Display all channels</label>
-  </div>
-
+  </section>
 </section>
 <description-box>
   TODO: Color picker description.

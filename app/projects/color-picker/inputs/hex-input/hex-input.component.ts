@@ -5,7 +5,6 @@ import * as _ from 'lodash';
 @Component({
   selector: 'hex-input',
   templateUrl: 'hex-input.component.html',
-  styleUrls: ['./hex-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HexInputComponent {

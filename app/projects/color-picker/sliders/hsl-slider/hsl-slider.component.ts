@@ -13,7 +13,7 @@ import { ColorService } from '../../color.service';
 @Component({
   selector: 'hsl-slider',
   templateUrl: 'hsl-slider.component.html',
-  styleUrls: ['./hsl-slider.component.scss'],
+  styleUrls: ['../slider.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HslSliderComponent implements OnChanges {

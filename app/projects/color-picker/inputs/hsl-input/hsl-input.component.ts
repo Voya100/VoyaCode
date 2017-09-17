@@ -7,7 +7,6 @@ import { ColorService } from '../../color.service';
 @Component({
   selector: 'hsl-input',
   templateUrl: 'hsl-input.component.html',
-  styleUrls: ['./hsl-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HslInputComponent {

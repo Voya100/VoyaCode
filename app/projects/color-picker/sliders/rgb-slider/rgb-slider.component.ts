@@ -8,7 +8,7 @@ import { ColorService } from '../../color.service';
 @Component({
   selector: 'rgb-slider',
   templateUrl: 'rgb-slider.component.html',
-  styleUrls: ['./rgb-slider.component.scss']
+  styleUrls: ['../slider.scss']
 })
 export class RgbSliderComponent implements OnChanges {
 

@@ -5,7 +5,6 @@ import * as _ from 'lodash';
 @Component({
   selector: 'rgb-input',
   templateUrl: 'rgb-input.component.html',
-  styleUrls: ['./rgb-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RgbInputComponent {
