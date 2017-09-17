@@ -18,7 +18,10 @@ const routes: Routes = [
   
   { path: 'snow-machine', loadChildren: './snow-machine/snow-machine.module#SnowMachineModule', data: {title: 'Snow Machine'}},
   
-  { path: 'hangman', loadChildren: './hangman/hangman.module#HangmanModule', data: {title: 'Hangman'}}
+  { path: 'hangman', loadChildren: './hangman/hangman.module#HangmanModule', data: {title: 'Hangman'}},
+
+  { path: 'color-picker', loadChildren: './color-picker/color-picker.module#ColorPickerModule', data: {title: 'Color picker'}}
+
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

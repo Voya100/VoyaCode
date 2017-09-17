@@ -1,0 +1,12 @@
+@import "../../../../../sass/variables";
+
+:host{
+  @extend %nodrag;
+  display: inline-block;
+}
+
+canvas{
+  cursor: col-resize;
+  border: 1px solid $color_dark2;
+  vertical-align: middle;
+}

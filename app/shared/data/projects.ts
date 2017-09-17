@@ -9,6 +9,14 @@ export class Project{
 
 export const projectList: Project[] = [
   {
+    name: 'Color picker',
+    description: 'Try out different colors with this color picker!',
+    path: 'projects/color-picker',
+    bannerUrl: '/images/banners/color-picker-banner.jpg',
+    iconUrl: '/images/icons/color-picker-icon.jpg',
+    onBanner: true
+  },
+  {
     name: 'Hangman',
     description: 'Hangman mobile app for Android.',
     path: 'projects/hangman',

@@ -19,6 +19,7 @@
       "check-space"
     ],
     "curly": true,
+    "directive-selector": "off",
     "directive-class-suffix": true,
     "eofline": true,
     "forin": true,
@@ -83,6 +84,7 @@
     ],
     "pipe-naming": [true, "camelCase"],
     "prefer-conditional-expression": false,
+    "prefer-function-over-method": false,
     "prefer-template": [false],
     "quotemark": [
       true,

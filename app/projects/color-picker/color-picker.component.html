@@ -1,0 +1,83 @@
+<h2>Color picker</h2>
+<section class="container">
+  <section class="upper-container">
+
+    <div class="canvas-container">
+      <color-canvas *ngIf="!showColorWheel" [red]="red" [green]="green" [blue]="blue" [xAxis]="xChannel" [yAxis]="yChannel"  [zAxis]="zChannel" (selectColor)="selectColor($event)"></color-canvas>
+      <color-wheel *ngIf="showColorWheel" [hue]="hue" [saturation]="saturation" [lightness]="lightness" (selectColor)="selectHslColor($event)"></color-wheel>
+    </div>
+
+    <section class="color-details">
+      <div class="selected-color" [style.background]="'rgb(' + red + ', ' + green + ', ' + blue + ')'"></div>
+      <label class="input-label" title="RGB value in Hex format - a value between #000000 and #FFFFFF. Invalid values will be ignored.">
+        Hex: <hex-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></hex-input>
+      </label>
+      <label class="input-label" title="RGB value in rgb(red, green, blue) format, where red/green/blue are values between 0 - 255.">
+        Rgb: <rgb-input [red]="red" [green]="green" [blue]="blue" (selectColor)="selectColor($event)"></rgb-input>
+      </label>
+      <label class="input-label" title="HSL value in hsl(hue, saturation, lightness) format, where hue is between 0 - 360, and saturation and lightness are between 1 -100.">
+        Hsl: <hsl-input [hue]="hue" [saturation]="saturation" [lightness]="lightness" (selectColor)="selectHslColor($event)"></hsl-input>
+      </label>
+      
+      <div class="canvas-radio-buttons">
+        <span>Show:</span>
+        <label title="In this mode colors are shown on canvas where RGB values are mapped to (x,y,z) coordinates.">
+          <input type="radio" [(ngModel)]="showColorWheel" name="showColorWheel" [value]="false"> Rgb canvas
+        </label>
+        <label title="In this mode colors are shown on a color wheel where HSL values are mapped to (angle, radius, z) coordinates.">
+          <input type="radio" [(ngModel)]="showColorWheel" name="showColorWheel" [value]="true"> Hsl color wheel
+        </label>
+      </div>
+      
+      <div class="canvas-radio-buttons" *ngIf="!showColorWheel" title="This option determines which color channel is used as Z-axis on RGB canvas.">
+        <span>Z-axis:</span> 
+        <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="red"> Red</label>
+        <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="green"> Green</label>
+        <label><input type="radio" [(ngModel)]="zChannel" name="zChannel" value="blue"> Blue</label>
+      </div>
+    </section>
+
+  </section>
+
+  <saved-colors [hue]="hue" [saturation]="saturation" [lightness]="lightness" (setColor)="selectHslColor($event)"></saved-colors>
+
+  <section class="settings">
+    <div class="sliders">
+      <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="redColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(redColor)" (valueChange)="changeRed($event)"></rgb-slider>
+      <br>
+      <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="greenColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(greenColor)" (valueChange)="changeGreen($event)"></rgb-slider>
+      <br>
+      <rgb-slider [red]="red" [green]="green" [blue]="blue" [color]="blueColor" [showAllChannels]="rgbSliderAllChannels" [coordinate]="getCoordinate(blueColor)" (valueChange)="changeBlue($event)"></rgb-slider>
+      <br>
+      <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="hueChannel" (valueChange)="changeHue($event)"></hsl-slider>
+      <br>
+      <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="saturationChannel" (valueChange)="changeSaturation($event)"></hsl-slider>
+      <br>
+      <hsl-slider [hue]="hue" [saturation]="saturation" [lightness]="lightness" [type]="lightnessChannel" (valueChange)="changeLightness($event)"></hsl-slider>
+    </div>
+    <div class="slider-settings">
+      <div>
+        <span class="slider-radio-header">Rgb Sliders:</span> 
+        <label title="In this mode red, green and blue sliders will only display their own channel, ignoring other color channels completely.">
+          <input type="radio" [(ngModel)]="rgbSliderAllChannels" name="rgbSliderAllChannels" [value]="false"> Display 1 channel
+        </label>
+        <label title="In this mode red, green and blue sliders display all color channels, meaning that they show all possible values you can get by moving that slider (assuming other channels stay the same).">
+          <input type="radio" [(ngModel)]="rgbSliderAllChannels" name="rgbSliderAllChannels" [value]="true"> Display all channels
+        </label>
+      </div>
+    </div>
+
+  </section>
+</section>
+<description-box>
+  <b>Color picker</b>
+  <br><br>With this color picker you can select colours by using RGB and/or HSL system. You can either choose value by selecting directly from the canvas (rgb canvas or color wheel), adjusting the sliders (red, green, blue, hue, saturation and lightness) or by setting color value manually in hex, rgb or hsl format.
+  <br><br>On RGB canvas each axis is directly related to one of the three color channels (red, green, blue). Because there are three channels, Z-axis is also used. You can use sliders to change Z-axis value, or use settings to change which channel is used as Z-axis. Similarily on HSL based color spinner, angle is used to determine hue, saturation is distance from center and lightness is Z-axis.
+  <br><br>Note that changing RGB values will also change HSL values, and other way around. All colors displayed are rounded to RGB format.
+  <br><br>You can also save colors to your local device. They will then be saved to your browser's local storage, so you can access them again when you later revisit the website.
+  <br><br>
+  <b>RGB and HSL (color theory)</b>
+  <br><br>In browsers (and computers in general) colors are traditionally represented with RGB system, where each color is constructed as a combination of red, green and blue. Each of the colors can have an integer value between 0 and 255, meaning that there are 16,777,216 possible color combinations that the browser can display. Rgb values are often represented either in denary format ('rgb(255,255,255)') or hex format ('#ffffff').
+  <br><br>HSL is an alternative color representation system where colors are described with hue, saturation and lightness. Hue gets values between 0 and 360 degrees (like in a color wheel), and saturation and lightness have percentage values (0 - 100 %). Because hue mostly determines what 'color' a color is, HSL is often better suited to finding different shades of a colour than RGB.
+  <br><br>Feel free to use color picker to see how these different color systems interact. :)
+</description-box>
