@@ -74,7 +74,6 @@ value: 100
 });
 
 $([$('li'),$('#timeMachine'),$('#enoughSlaying'),$('#memoryRefresher')]).each(function(){
-	console.log("Test: hover");
     this.hover(
     function(){
     $(this).addClass('active');
@@ -992,8 +991,7 @@ var restart = function(){
                 });
 };
 
-$('#enoughSlaying').click(function(){    
-	console.log("enough slaying test");
+$('#enoughSlaying').click(function(){
     $('#victoryscreen').html('<h1>Thank you for playing!</h1>');
     $('#victoryscreen > h1').css('margin-top','150px');
     $('#victoryscreen > h1').css('font-size','40px');
