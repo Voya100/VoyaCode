@@ -188,6 +188,7 @@ $('#shield').hover(function(){
     $('#itemInfo').fadeOut(0);});
 
 $(document).keydown(function(key){
+    key.preventDefault();
     if(inProgress===false){
         inProgress=true;
     switch(parseInt(key.which,10)){
