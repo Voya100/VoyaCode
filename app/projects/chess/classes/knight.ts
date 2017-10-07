@@ -1,14 +1,16 @@
 import { Piece } from './piece';
 import { Player } from './player';
 import { Tile } from './tile';
+import { PieceState } from '../chess-interfaces';
+import { ChessGameService } from '../chess-game.service';
 
 export class Knight extends Piece{
 
   type: string = 'knight';
   value: number = 4;
 
-  constructor(player: Player, tile: Tile){
-    super(player, tile);
+  constructor(state: PieceState, game: ChessGameService){
+    super(state, game);
   }
   
   tileCheck(){

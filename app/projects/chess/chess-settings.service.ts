@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PlayerTypes } from './chess-enums';
 
 @Injectable()
 export class ChessSettingsService {
@@ -6,16 +7,16 @@ export class ChessSettingsService {
   readonly boardSize: number = 8;
 
   positions: string[];
-  whiteComputer: boolean = false;
-  blackComputer: boolean = true;
+  whitePlayer: PlayerTypes = PlayerTypes.human;
+  blackPlayer: PlayerTypes = PlayerTypes.computer;
   boardReversed: boolean = false;
+  roundLimit: number = 100;
 
   // Contains tile positions on the board interface
   // boardTilePositions[y][x][tile.x, tile.y]
   boardTilePositions: number[][][];
 
-  private readonly defaultPositions: string[] = ['RKBQXBKR',
-                                                'PPPPPPPP'];
+  private readonly defaultPositions: string[] = ['PPPPPPPP', 'RKBQXBKR'];
 
   constructor() { 
     this.changeReversed(false);
@@ -26,16 +27,20 @@ export class ChessSettingsService {
   changeMode(mode: number){
     switch(mode){
       case 0: // Player vs computer
-        this.whiteComputer = false;
-        this.blackComputer = true;
+        this.whitePlayer = PlayerTypes.human;
+        this.blackPlayer = PlayerTypes.computer;
         break;
       case 1: // Local multiplayer
-        this.whiteComputer = false;
-        this.blackComputer = false;
+        this.whitePlayer = PlayerTypes.human;
+        this.blackPlayer = PlayerTypes.human;
         break;
       case 2: // Computer vs computer
-        this.whiteComputer = true;
-        this.blackComputer = true;
+        this.whitePlayer = PlayerTypes.computer;
+        this.blackPlayer = PlayerTypes.computer;
+        break;
+      case 3: // Online multiplayer
+        this.whitePlayer = PlayerTypes.human;
+        this.blackPlayer = PlayerTypes.websocket;
         break;
     }
   }

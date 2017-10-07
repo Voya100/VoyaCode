@@ -11,19 +11,31 @@ export class ChessWinnerDialogComponent implements OnDestroy{
   // Tells owner to open another dialog
   @Output() switchDialogEvent: EventEmitter<string> = new EventEmitter<string>();
 
-  winnerColor: string;
+  winner: string;
   
   constructor(public game: ChessGameService){
-    const color = game.winner.color;
-    this.winnerColor = color[0].toUpperCase() + color.slice(1);
+    this.winner = game.winner;
+    console.log(this.winner)
+  }
+  
+  ngOnDestroy(){
+    this.game.gameActive = true;
   }
 
   switchDialog(dialogName: string){
     this.switchDialogEvent.emit(dialogName);
-    this.game.winner = null;
+    this.game.state.winner = null;
   }
 
-  ngOnDestroy(){
-    this.game.winner = null;
+  winnerText(){
+    if(this.winner === 'Tie'){
+      return 'Round limit reached,\nit\'s a tie!';
+    }else if(this.game.victoryReason === 'no-moves'){
+      return this.game.activePlayer.color + ' has no moves left,\n' + this.winner + ' wins!';
+    }else if(this.game.victoryReason === 'check-mate'){
+      return 'King has been check mated,\n' + this.winner + ' wins!';
+    }else{
+      return this.winner + ' wins!';
+    }
   }
 }

@@ -1,7 +1,12 @@
 import { Player } from './player';
 import { ChessGameService } from '../chess-game.service';
+import { MoveAction } from '../chess-interfaces';
+import { Piece } from './piece';
+import { Tile } from './tile';
 
 export class HumanPlayer extends Player{
+
+  actionResolve: (action: MoveAction) => void
 
   constructor(color: string, game: ChessGameService){
     super(color, game);
@@ -9,6 +14,12 @@ export class HumanPlayer extends Player{
 
   // Sets players decision to null (human players choose actions with ui)
   chooseAction(){
-    this.setAction([null, null])
+    return new Promise<MoveAction>((resolve) => {
+      this.actionResolve = <(action: MoveAction) => void> resolve;
+    })
+  }
+
+  makeAction(piece: Piece, tile: Tile){
+    this.actionResolve({piece, tile});
   }
 }

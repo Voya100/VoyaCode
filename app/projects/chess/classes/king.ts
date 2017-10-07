@@ -2,19 +2,24 @@ import { Piece } from './piece';
 import { Player } from './player';
 import { Tile } from './tile';
 import { Rook } from './rook';
+import { PieceState } from '../chess-interfaces';
+import { ChessGameService } from '../chess-game.service';
 
 export class King extends Piece{
 
   type: string = 'king';
   value: number = 10;
-  hasMoved: boolean = false;
 
-  constructor(player: Player, tile: Tile){
-    super(player, tile);
+  constructor(state: PieceState, game: ChessGameService){
+    super(state, game);
+    state.hasMoved = false;
   }
+  
+  get hasMoved(){ return this.state.hasMoved }
+  set hasMoved(hasMoved: boolean){ this.state.hasMoved = hasMoved }
 
   move(x: number, y: number){
-    if(Math.abs(this.x() - x) === 2){
+    if(Math.abs(this.x - x) === 2){
       this.castling(x, y);
     }
     super.move(x, y);
@@ -25,13 +30,13 @@ export class King extends Piece{
   // x and y: coordinates the king tries tries to move to
   castling(x: number, y: number){
     const targetTile = this.tiles[y][x];
-    const kingDir = x < this.x() ? -1 : 1;
+    const kingDir = x < this.x ? -1 : 1;
     const tilesInRooksDirection = targetTile.checkDirection(kingDir, 0, 8);
     const rookTile = tilesInRooksDirection[tilesInRooksDirection.length - 1];
-    if(rookTile.empty() || rookTile.piece.type !== 'rook'){
-      console.log('Error: Invalid castling call');
+    if(rookTile.isEmpty() || rookTile.piece.type !== 'rook'){
+      throw new Error('Error: Invalid castling call');
     }else{
-      rookTile.piece.move(x - kingDir, y, false);
+      rookTile.piece.move(x - kingDir, y);
     }
 
   }
@@ -45,29 +50,28 @@ export class King extends Piece{
   }
 
   // Adds tiles related to castling. Must be done after all other tileChecks have been done
-  castlingCheck(){
+  castlingCheck(rooks: Rook[]){
     // King must not have moved and must not be in check
-    if(this.hasMoved || this.threats().length !== 0){
+    if(this.hasMoved || this.threats.length !== 0){
       return;
     }
-    for(const rook of this.player.rooks){
+    for(const rook of rooks){
       const target = this.castlingTargetTile(rook);
       if(this.canDoCastlingWithRook(rook, target)){
         this.moveTiles.push(target);
-        this.player.moveTiles.push(target);
         target.addMover(this);
       }
     }
   }
 
   canDoCastlingWithRook(rook: Rook, target: Tile){
-    if(rook.hasMoved || rook.y() !== this.y() || target == null){
+    if(rook.hasMoved || rook.y !== this.y || target == null){
       return false;
     }
     const tilesBetween = target.tilesBetween(this.tile);
     tilesBetween.push(target);
-    const tilesWithPieces = tilesBetween.filter((tile: Tile) => !tile.empty());
-    const dangerTiles = tilesBetween.filter((tile: Tile) => tile[this.player.enemy.color + 'Hits'].length !== 0);
+    const tilesWithPieces = tilesBetween.filter((tile: Tile) => !tile.isEmpty());
+    const dangerTiles = tilesBetween.filter((tile: Tile) => tile.getThreats(this.color).length !== 0);
     if(tilesWithPieces.length !== 0 || dangerTiles.length !== 0){
       return false;
     }
@@ -76,11 +80,11 @@ export class King extends Piece{
 
   // Tile to which king will move in castling
   castlingTargetTile(rook: Rook){
-    const x = this.x() + (rook.x() < this.x() ? -1 : 1) * 2;
-    if(!Tile.tileExists(x, this.y())){
+    const x = this.x + 2*(rook.x < this.x ? -1 : 1);
+    if(!Tile.tileExists(x, this.y)){
       return null;
     }else{
-      return this.tiles[this.y()][x]
+      return this.board[this.y][x]
     }
   }
 

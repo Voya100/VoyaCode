@@ -1,19 +1,24 @@
 import { Piece } from './piece';
 import { Player } from './player';
 import { Tile } from './tile';
+import { PieceState } from '../chess-interfaces';
+import { ChessGameService } from '../chess-game.service';
 
 export class Rook extends Piece{
 
   type: string = 'rook';
   value: number = 5;
-  hasMoved: boolean = false;
 
-  constructor(player: Player, tile: Tile){
-    super(player, tile);
+  constructor(state: PieceState, game: ChessGameService){
+    super(state, game);
+    state.hasMoved = false;
   }
+  
+  get hasMoved(){ return this.state.hasMoved }
+  set hasMoved(hasMoved: boolean){ this.state.hasMoved = hasMoved }
 
-  move(x: number, y: number, changeTurn: boolean = true){
-    super.move(x, y, changeTurn);
+  move(x: number, y: number){
+    super.move(x, y);
     this.hasMoved = true;
   }
 

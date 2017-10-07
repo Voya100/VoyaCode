@@ -1,197 +1,221 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import * as _ from 'lodash';
 
-import { Player } from './classes/player';
 import { Tile } from './classes/tile';
+import { Queen } from './classes/queen';
 import { Piece } from './classes/piece';
 import { Bishop } from './classes/bishop';
 import { King } from './classes/king';
 import { Knight } from './classes/knight';
 import { Pawn } from './classes/pawn';
-import { Queen } from './classes/queen';
+import { Player } from './classes/player';
 import { Rook } from './classes/rook';
 import { ChessSettingsService } from './chess-settings.service';
 import { HumanPlayer } from './classes/human-player';
 import { ComputerPlayer } from './classes/computer-player';
+import { ChessState, MoveAction, PieceState } from './chess-interfaces';
+import { createPiece, createPlayer } from './chess-factories';
 
 @Injectable()
 export class ChessGameService {
   
   // Properties, are set in reset
   board: Tile[][] = [];
-  white: Player;
-  black: Player;
+  pieces: {[key: string]: Piece}
+  whitePlayer: Player;
+  blackPlayer: Player;
   gameActive: boolean = false;
   gamePaused: boolean = false;
-  turn: boolean;
-  round: number;
+  turnInProgress: boolean;
   gameId: number = 0;
-  activePlayer: Player;
-  winner: Player;
+  idCounter: number = 0;
+  state: ChessState;
+  latestMove: MoveAction;
+  victoryReason: string = '';
+
+  latestMoveChanged: EventEmitter<MoveAction> = new EventEmitter();
 
   constructor(private settings: ChessSettingsService) { }
-  
-  reset(){
-    this.gameActive = false;
-    
-    this.gameId++;
-    
-    this.board = [];
-    
-    this.white = this.settings.whiteComputer ? new ComputerPlayer('white', this) : new HumanPlayer('white', this);
-    this.black = this.settings.blackComputer ? new ComputerPlayer('black', this) : new HumanPlayer('black', this);
-    
-    this.white.enemy = this.black;
-    this.black.enemy = this.white;
-    
-    this.activePlayer = this.white;
-    this.winner = null;
 
-    this.round = 1;
-    this.setUp();
-    this.gameActive = true;
-    this.turn = true;
-    // Small delay so that ui has time to add pieces before computer starts its moves
-    setTimeout(() => this.run(), 500);
+  get round(){ return this.state.round; }
+  get activePlayer(){ return this.state.activePlayer === 'white' ? this.whitePlayer : this.blackPlayer }
+  get kingCount(){ return this.state.kingCount }
+  get winner(){ return this.state.winner }
+
+  get isInteractive(){ return !this.state.winner && this.gameActive && !this.gamePaused && !this.turnInProgress }
+
+  oppositeColor(color: string){
+    return color === 'white' ? 'black' : 'white';
   }
   
-  // Sets the board and adds all the pieces
-  setUp(){
+  reset(
+    row6: string = this.settings.positions[0], 
+    row7: string = this.settings.positions[1], 
+    roundLimit: number = this.settings.roundLimit
+  ){
+    this.gameActive = false;
+    this.gameId++;
+
+    this.idCounter = 0;
+
+    const state = {
+      pieces: {},
+      round: 1,
+      activePlayer: 'white',
+      kingCount: 0,
+      roundLimit
+    }
+
+    const row6Pieces = row6.split('');
+    const row7Pieces = row7.split('');
+
+    state.kingCount = row6Pieces.reduce((prev, type) => type === 'X' ? prev+1 : prev, 0);
+    state.kingCount += row7Pieces.reduce((prev, type) => type === 'X' ? prev+1 : prev, 0);
+
+    for(let i = 0; i < 8; i++){
+      const row6Type = row6Pieces[i];
+      const row7Type = row7Pieces[i];
+      if(row7Type && row7Type !== ' '){
+        state.pieces[this.idCounter++] = {id: this.idCounter, type: row7Type, x: i, y: 7, owner: 'white'}
+        state.pieces[this.idCounter++] = {id: this.idCounter, type: row7Type, x: i, y: 0, owner: 'black'}
+      }
+      if(row6Type && row6Type !== ' '){
+        state.pieces[this.idCounter++] = {id: this.idCounter, type: row6Type, x: i, y: 6, owner: 'white'}
+        state.pieces[this.idCounter++] = {id: this.idCounter, type: row6Type, x: i, y: 1, owner: 'black'}
+      }
+    }
+    this.setState(state);
+  }
+  
+  // Builds the game from given state
+  setState(state: ChessState){
+    this.state = state;
+    this.pieces = {};
+    this.whitePlayer = createPlayer(this.settings.whitePlayer, 'white', this);
+    this.blackPlayer = createPlayer(this.settings.blackPlayer, 'black', this);
+    this.whitePlayer.enemy = this.blackPlayer;
+    this.blackPlayer.enemy = this.whitePlayer;
     this.fillBoard();
-    this.addPieces();
+    this.addPieces()
     this.doTileChecks();
-    this.turn = true;
+    this.gameActive = true;
+    this.turnInProgress = false;
+    this.victoryReason = '';
+    // Small delay so that ui has time to add pieces before computer starts its moves
+    setTimeout(() => this.run(), 400);
   }
 
   // Makes empty tiles for the board
   fillBoard(){
-    this.board = [];
-    for(let j = 0; j < 8; j++){
-      this.board[j] = [];
-      for(let i = 0; i < 8; i++){
-        this.board[j][i] = new Tile(i, j, this);
+    this.board = _.times(8, (j) => _.times(8, (i) => new Tile(i, j, this)));
+  }
+  
+  addPieces(){
+    const state = this.state;
+    for(const id in state.pieces){
+      if (state.pieces.hasOwnProperty(id)) {
+        this.addPiece(state.pieces[id]);
       }
     }
   }
   
-  addPieces(){
-    const row1 = this.settings.positions[0] + '_'.repeat(8-this.settings.positions[0].length);
-    const row2 = this.settings.positions[1] + '_'.repeat(8-this.settings.positions[1].length);
-    for(let i = 0; i < 8; i++){
-      this.addPiece(i, 7, this.white, row1[i]);
-      this.addPiece(i, 0, this.black, row1[i]);
-      this.addPiece(i, 6, this.white, row2[i]);
-      this.addPiece(i, 1, this.black, row2[i]);
+  // Adds piece to the board
+  addPiece(pieceState: PieceState){
+    if(pieceState.id === undefined){
+      pieceState.id = this.idCounter++;
     }
+    const piece = createPiece(pieceState.type, pieceState, this);
+    if(piece === undefined){
+      throw new Error('Invalid piece type: ' + pieceState.type);
+    }
+    this.pieces[pieceState.id] = piece;
+    this.board[pieceState.y][pieceState.x].piece = piece;
+    this[piece.color + 'Player'].addPiece(piece);
   }
   
-  // Adds piece to the board
-  addPiece(x: number, y: number, player: Player, type: string){
-    let piece: Piece;
-    const tile = this.board[y][x];
-    player.pieceId++;
-    switch(type){
-      case 'P':
-        piece = new Pawn(player, tile);
-        break;
-      case 'R':
-        piece = new Rook(player, tile);
-        break;
-      case 'B':
-        piece = new Bishop(player, tile);
-        break;
-      case 'K':
-        piece = new Knight(player, tile);
-        break;
-      case 'Q':
-        piece = new Queen(player, tile);
-        break;
-      case 'X':
-        piece = new King(player, tile);
-        break;		
-      default:
-        piece = null;
-        return;
-    }
-    player.addPiece(piece);
-    this.board[y][x].piece = piece;
-    const id = player.color + player.pieceId;
+  removePiece(id: number){
+    const piece = this.pieces[id];
+    this.state.pieces[id] = undefined;
+    const player = piece.isWhite() ? this.whitePlayer : this.blackPlayer;
+    console.log('remove piece', id, piece);
+    player.removePiece(piece);
+    console.log(player.pieces)
   }
 
   doTileChecks(){
     this.clearTiles();
     // Looks all possible moves
-    this.white.checkAllTiles();
-    this.black.checkAllTiles();
+    this.whitePlayer.checkAllTiles();
+    this.blackPlayer.checkAllTiles();
     // Looks all possible castling moves
-    this.white.checkCastlingMoves();
-    this.black.checkCastlingMoves();
-    // Checks which pieces are protecting their kings (used by AI)
-    this.white.findKingProtectors();
-    this.black.findKingProtectors();
+    this.whitePlayer.checkCastlingMoves();
+    this.blackPlayer.checkCastlingMoves();
   }
   
   // Removes move information from all tiles (done before adding new move information)
   clearTiles(){
-    for(let i = 0; i < 8; i++){
-      for(let j = 0; j < 8; j++){
-        this.board[i][j].clear();
-      }
-    }
+    this.board.forEach((row) => row.forEach((tile) => tile.clear()));
   }
   
   // Plays a round, if possible (player must be computer)
   run(){
-    if(this.gameActive && this.turn && !this.gamePaused){
-      this.activePlayer.chooseAction();
-      const choice = this.activePlayer.getAction();
-      this.makeTurn(choice[0], choice[1]);
+    if(this.gameActive && !this.turnInProgress && !this.gamePaused && !this.winner){
+      this.activePlayer.chooseAction().then(({piece, tile}) => {
+        this.movePiece(piece, tile);
+        this.latestMove = {piece, tile};
+        this.latestMoveChanged.emit(this.latestMove);
+        const gameId = this.gameId;
+        this.turnInProgress = true;
+        // Timeout to give some time for animations
+        setTimeout(() => gameId === this.gameId ? this.changeTurn() : 0, 650);
+      });
     }
   }
 
-  // Makes a turn, if action has been decided 
-  // (is used only by computer to simulate player's clicks)
-  makeTurn(piece: any, tile: any){
-    if(piece == null || tile == null){
-      return;
+  movePiece(piece: Piece, target: Tile){
+    if(!piece.canMove(target)){
+      throw new Error('invalid-move');
     }
-    piece.tile.select(this.activePlayer);
-    tile.select(this.activePlayer);
+    piece.move(target.x, target.y);
   }
   
-  gameOver(loser: Player){
-    this.winner = loser.enemy;
-    this.gameActive = false;
+  checkIfGameHasEnded(){
+    if(this.state.round > this.state.roundLimit){
+      this.state.winner = 'tie';
+    }else if(this.activePlayer.possibleMoves.length === 0){
+      this.state.winner = this.oppositeColor(this.activePlayer.color);
+      this.victoryReason = this.activePlayer.isInCheckMate() ? 'check-mate' : 'no-moves';
+    }else if(this.kingCount && this.activePlayer.kingCount === 0){
+      this.state.winner = this.oppositeColor(this.activePlayer.color);
+    }
+    if(this.state.winner){
+      this.gameActive = false;
+    }
   }
   
-  // Changes turn and does situation checks once a turn has ended
-  changeTurn(gameId: number){
-    if(gameId === this.gameId){ // Make sure the game hasn't been reset
-      this.doTileChecks();
-      this.activePlayer = this.activePlayer.enemy;
-      if(this.activePlayer.color === 'white'){
-        this.round += 1;
-      }
-      if(this.activePlayer.moveTiles.length === 0){
-        this.gameOver(this.activePlayer);
-        return;
-      }
-      this.turn = true;
-      this.run();
+  changeTurn(){
+    this.state.activePlayer = this.state.activePlayer === 'white' ? 'black' : 'white';
+    if(this.state.activePlayer === 'white'){
+      this.state.round++;
     }
+    this.doTileChecks();
+    this.checkIfGameHasEnded();
+    this.turnInProgress = false;
+    this.run();
   }
   
   // Returns the tile that has a piece with lowest value
   lowestTile(tilesOrPieces: any[], isTile: boolean){
     let lowest = 100;
-    let tile = tilesOrPieces[0];
+    let lowestTile = tilesOrPieces[0];
     const tiles = isTile ? tilesOrPieces : tilesOrPieces.map((piece: Piece) => piece.tile);
-    for(let i = 0; i < tiles.length; i++){
-      if(!tiles[i].empty() && tiles[i].piece.value < lowest){
-        lowest = tiles[i].piece.value;
-        tile = tiles[i];
+    for(const tile of tiles){
+      if(!tile.isEmpty() && tile.piece.value < lowest){
+        lowest = tile.piece.value;
+        lowestTile = tile;
       }
     }
-    return tile;
+    return lowestTile;
   }
   
 }

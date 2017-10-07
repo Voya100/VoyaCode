@@ -2,18 +2,18 @@ import * as _ from 'underscore';
 
 import { Tile } from './tile';
 import { Player } from './player';
+import { PieceState } from '../chess-interfaces';
+import { ChessGameService } from '../chess-game.service';
 
 export abstract class Piece{
-  color: string;
-  white: boolean;
-  tile: Tile;
-  player: Player;
+  id: number;
+  state: PieceState;
+  game: ChessGameService;
   
   // Tiles piece can move to on the next turn
   moveTiles: Tile[] = [];
   // Tiles piece could go to, if enemy is there
   hitTiles: Tile[] = [];
-  protectsKing: boolean;
 
   dead: boolean = false;
   
@@ -22,55 +22,42 @@ export abstract class Piece{
 
   tiles: Tile[][];
 
-  constructor(player: Player, tile: Tile){
-    this.color = player.color;
-    this.white = this.color === 'white';
-    this.tile = tile;
-    this.player = player;
-    this.tiles = player.game.board;
-    this.moveTiles = []; 
-    this.hitTiles = []; 
-    this.protectsKing = false;
+  constructor(state: PieceState, game: ChessGameService){
+    this.id = state.id;
+    this.state = state;
+    this.game = game;
   }
+  
+  get color(){ return this.state.owner }
+  get x(){ return this.state.x }
+  get y(){ return this.state.y }
+  get board(){ return this.game.board }
+  get tile(){ return this.board[this.y][this.x] }
+  set tile(tile: Tile){ this.state.x = tile.x; this.state.y = tile.y; }
+  get player(){ return this.game[this.color + 'Player']; }
 
+  // Returns friendlies which can move to the tile after death	
+  get friends(){ return this.tile.getFriendHits(this.color) }
+  // Returns enemies that can hit the next turn
+  get threats(){ return this.tile.getThreatHits(this.color) }
+  
   // Adds move and hit tiles (determines which tiles the piece can move to)
   abstract tileCheck(): void;
 
-  // Returns friendlies which can move to the tile after death	
-  friends(){return this.tile[this.color + 'Hits']}; 	
-  // Returns enemies that can hit the next turn
-  threats(){return this.tile[this.player.enemy.color + 'Hits']};
+  protectsPiece(piece: Piece){ return this.tile.protectsTile(piece.tile, this) }
 
-  x(): number{return this.tile.x};
-  y(): number{return this.tile.y};
-    
-  move(x: number, y: number, changeTurn: boolean = true){
+  isWhite(){ return this.color === 'white' }
+
+  move(x: number, y: number){
     this.tile.piece = null;
-    this.player.prevTile = this.tile;
-    if(this.player.prevPiece !== this){
-      this.player.moveCount = 0;
-    }
-    this.player.prevPiece = this;
-    this.player.moveCount++;
-    this.tile = this.player.game.board[y][x];
-    if(!this.tile.empty()){
+    this.tile = this.game.board[y][x];
+    if(!this.tile.isEmpty()){
       this.tile.piece.die();
     }
     this.tile.piece = this;
-    const gameId = this.player.game.gameId;
-    if(changeTurn){
-      setTimeout(() => this.player.game.changeTurn(gameId), 650);
-    }
   }
 
   canMove(tile: Tile){return this.moveTiles.indexOf(tile) !== -1; }
-
-  // Marks all mobable tiles as highlighted
-  highlightMovableTiles(){
-    for(const moveTile of this.moveTiles){
-      moveTile.highlight(false);
-    }
-  }
   
   // Checks all 4 directions
   checkDirections(x_add: number, y_add: number, count: number, roundStart: boolean){
@@ -104,31 +91,19 @@ export abstract class Piece{
 
   // Removes information of piece's current possible move locations from player/tiles. Done before checking them again.
   clearTiles(){
-    this.player.moveTiles = _.without(this.player.moveTiles, this.tile);
     this.moveTiles = [];
     this.hitTiles = [];
   }
 
   // Adds piece's possible move locations to player and tiles
   addTiles(){
-    const tiles = this.moveTiles;
-    for(const tile of tiles){
-      this.player.moveTiles.push(tile);
+    for(const tile of this.moveTiles){
       tile.addMover(this);
     }
-    this.player.hitTiles = this.player.hitTiles.concat(this.hitTiles);
   }
 
   die(){
-    this.clearTiles();
-    this.player.pieces = _.without(this.player.pieces, this);
-    this.player[this.type + 's'] = _.without(this.player[this.type + 's'], this);
-    this.dead = true;
-    // Check if the game has ended
-    if(this.type === 'king' && this.player.kingCount() === 0){
-      this.player.game.gameOver(this.player);
-    }else if(this.player.pieceCount() === 0){
-      this.player.game.gameOver(this.player);
-    }
+    this.tile.removePiece();
+    this.game.removePiece(this.id);
   }
 }

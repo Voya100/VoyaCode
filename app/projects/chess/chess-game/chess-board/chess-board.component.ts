@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 import { ChessGameService } from '../../chess-game.service';
@@ -6,6 +6,8 @@ import { Piece } from '../../classes/piece';
 import { ChessSettingsService } from '../../chess-settings.service';
 import { HumanPlayer } from '../../classes/human-player';
 import { Tile } from '../../classes/tile';
+import { MoveAction } from '../../chess-interfaces';
+import { Subscription } from 'rxjs/Subscription';
 
 const whiteTileColor = '#e6cfaf';
 const blackTileColor = '#9b7b40';
@@ -25,24 +27,43 @@ const enemyTileColor = 'rgb(189, 104, 53)';
     ])
   ]
 })
-export class ChessBoardComponent {
+export class ChessBoardComponent implements OnDestroy {
+
+  selectedPiece: Piece;
+  latestMove: MoveAction = {piece: null, tile: null};
+  subscription: Subscription;
 
   constructor(public game: ChessGameService, public settings: ChessSettingsService){
+    this.subscription = game.latestMoveChanged.subscribe((latestMove: MoveAction) => {
+      this.latestMove = latestMove;
+      this.selectedPiece = null;
+    });
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
   // Returns color of the tile in tilePosition
   tileColor(tilePosition: number[]){
     const tile: Tile = this.game.board[tilePosition[1]][tilePosition[0]];
     
-    if(tile.highlighted()){
+    if(tile.piece !== null && tile.piece === this.selectedPiece){
+      // Selected piece
       return highlightTileColor;
-    }else if(tile.markedMovable()){
-      if(tile.empty()){
+    }else if(tile.piece !== null && tile.piece === this.latestMove.piece && this.selectedPiece === null){
+      // Piece that moved on previous turn (if a piece isn't selected)
+      return highlightTileColor;
+    }else if(this.selectedPiece && this.selectedPiece.canMove(tile)){
+      if(tile.isEmpty()){
+        // Move tiles of selected piece
         return movableTileColor;
       }else{
+        // Move tile of selected oiece that has enemy on it
         return enemyTileColor;
       }
     }else{
+      // Default color
       return (tile.x + tile.y) % 2 === 0 ? whiteTileColor : blackTileColor;
     }
   }
@@ -73,9 +94,17 @@ export class ChessBoardComponent {
   }
 
   selectTile(tilePosition: number[]){
-    if(!this.game.gamePaused && this.game.activePlayer instanceof HumanPlayer){
+    const activePlayer = this.game.activePlayer;
+    if(this.game.isInteractive && activePlayer instanceof HumanPlayer){
       const tile = this.game.board[tilePosition[1]][tilePosition[0]];
-      tile.select(this.game.activePlayer);
+      const piece = tile.piece;
+      if(piece && piece.color === activePlayer.color){
+        this.selectedPiece = piece;
+      }else if(this.selectedPiece && this.selectedPiece.canMove(tile)){
+        activePlayer.makeAction(this.selectedPiece, tile);
+      }else{
+        this.selectedPiece = null;
+      }
     }
   }
 

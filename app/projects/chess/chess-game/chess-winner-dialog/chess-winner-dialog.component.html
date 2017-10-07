@@ -1,5 +1,5 @@
 <div class="interface">
-    <h1 id="win-message">{{winnerColor}} wins!</h1>
+    <h2 id="win-message">{{winnerText() | capitalize}}</h2>
     <li (click)="game.reset()">Play again</li>
     <li title="Choose game mode." (click)="switchDialog('chooseMode')">Switch game mode</li>
     <li title="Change piece layout." (click)="switchDialog('settings')">Change settings</li>
