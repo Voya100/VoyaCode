@@ -1,13 +1,16 @@
-import { King } from './king';
-import { ChessGameService } from '../chess-game.service';
-import { Piece } from './piece';
-import { Tile } from './tile';
 import * as _ from 'underscore';
-import { Pawn } from './pawn';
-import { Knight } from './knight';
-import { Bishop } from './bishop';
-import { Rook } from './rook';
-import { Queen } from './queen';
+
+import { ChessGameService } from '../chess-game.service';
+import { Tile } from '../tile';
+
+import { Piece } from '../pieces/piece';
+import { King } from '../pieces/king';
+import { Pawn } from '../pieces/pawn';
+import { Knight } from '../pieces/knight';
+import { Bishop } from '../pieces/bishop';
+import { Rook } from '../pieces/rook';
+import { Queen } from '../pieces/queen';
+
 import { MoveAction } from '../chess-interfaces';
 
 export abstract class Player{

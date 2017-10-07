@@ -1,5 +1,6 @@
-import { Piece } from './classes/piece';
-import { Tile } from './classes/tile';
+import { Piece } from './pieces/piece';
+import { Tile } from './tile';
+
 export interface PieceState{
   id?: number,
   type: string,

@@ -1,14 +1,16 @@
 import { PieceState } from './chess-interfaces';
 import { ChessGameService } from './chess-game.service';
-import { Bishop } from './classes/bishop';
-import { King } from './classes/king';
-import { Knight } from './classes/knight';
-import { Pawn } from './classes/pawn';
-import { Queen } from './classes/queen';
-import { Rook } from './classes/rook';
+
+import { Bishop } from './pieces/bishop';
+import { King } from './pieces/king';
+import { Knight } from './pieces/knight';
+import { Pawn } from './pieces/pawn';
+import { Queen } from './pieces/queen';
+import { Rook } from './pieces/rook';
+
 import { PlayerTypes } from './chess-enums';
-import { ComputerPlayer } from './classes/computer-player';
-import { HumanPlayer } from './classes/human-player';
+import { ComputerPlayer } from './players/computer-player';
+import { HumanPlayer } from './players/human-player';
 
 const pieceTypes = {
   bishop: Bishop,

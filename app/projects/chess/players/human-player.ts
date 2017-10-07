@@ -1,8 +1,8 @@
 import { Player } from './player';
 import { ChessGameService } from '../chess-game.service';
 import { MoveAction } from '../chess-interfaces';
-import { Piece } from './piece';
-import { Tile } from './tile';
+import { Piece } from '../pieces/piece';
+import { Tile } from '../tile';
 
 export class HumanPlayer extends Player{
 

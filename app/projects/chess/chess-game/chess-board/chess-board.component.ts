@@ -1,13 +1,14 @@
 import { Component, OnDestroy } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Subscription } from 'rxjs/Subscription';
 
 import { ChessGameService } from '../../chess-game.service';
-import { Piece } from '../../classes/piece';
 import { ChessSettingsService } from '../../chess-settings.service';
-import { HumanPlayer } from '../../classes/human-player';
-import { Tile } from '../../classes/tile';
+
+import { Piece } from '../../pieces/piece';
+import { Tile } from '../../tile';
+import { HumanPlayer } from '../../players/human-player';
 import { MoveAction } from '../../chess-interfaces';
-import { Subscription } from 'rxjs/Subscription';
 
 const whiteTileColor = '#e6cfaf';
 const blackTileColor = '#9b7b40';

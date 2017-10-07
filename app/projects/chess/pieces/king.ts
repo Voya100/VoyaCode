@@ -1,6 +1,6 @@
 import { Piece } from './piece';
-import { Player } from './player';
-import { Tile } from './tile';
+import { Player } from '../players/player';
+import { Tile } from '../tile';
 import { Rook } from './rook';
 import { PieceState } from '../chess-interfaces';
 import { ChessGameService } from '../chess-game.service';

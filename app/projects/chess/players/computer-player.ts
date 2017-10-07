@@ -1,8 +1,8 @@
 import { ChessGameService } from '../chess-game.service';
-import { King } from './king';
-import { Piece } from './piece';
+import { King } from '../pieces/king';
+import { Piece } from '../pieces/piece';
 import { Player } from './player';
-import { Tile } from './tile';
+import { Tile } from '../tile';
 import * as _ from 'underscore';
 import { MoveAction } from '../chess-interfaces';
 
