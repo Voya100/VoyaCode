@@ -1,5 +1,5 @@
 import { ChessGameService } from './services/chess-game.service';
-import { ChessSettingsService } from './chess-settings.service';
+import { ChessSettingsService } from './services/chess-settings.service';
 
 export const chessGame = new ChessGameService(new ChessSettingsService());
 

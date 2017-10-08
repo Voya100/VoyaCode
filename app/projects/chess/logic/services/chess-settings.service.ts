@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PlayerTypes } from './chess-enums';
+import { PlayerTypes } from '../chess-enums';
 
 @Injectable()
 export class ChessSettingsService {

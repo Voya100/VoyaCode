@@ -7,8 +7,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { ChessComponent } from './chess.component';
 import { ChessGameComponent } from './chess-game/chess-game.component';
 
-import { ChessGameService } from './services/chess-game.service';
-import { ChessSettingsService } from './services/chess-settings.service';
+import { ChessGameService } from './logic/services/chess-game.service';
+import { ChessSettingsService } from './logic/services/chess-settings.service';
 
 import { ChessBoardComponent } from './chess-game/chess-board/chess-board.component';
 import { ChessInstructionsComponent } from './chess-game/chess-instructions/chess-instructions.component';

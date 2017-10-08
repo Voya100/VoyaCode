@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { ChessGameService } from '../../services/chess-game.service';
+import { ChessGameService } from '../../logic/services/chess-game.service';
 
 @Component({
   selector: 'chess-winner-dialog',

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ChessSettingsService } from '../../services/chess-settings.service';
-import { ChessGameService } from '../../services/chess-game.service';
+import { ChessSettingsService } from '../../logic/services/chess-settings.service';
+import { ChessGameService } from '../../logic/services/chess-game.service';
 
 @Component({
   selector: 'chess-choose-mode',
