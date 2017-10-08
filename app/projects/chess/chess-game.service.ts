@@ -138,9 +138,11 @@ export class ChessGameService {
     const piece = this.pieces[id];
     this.state.pieces[id] = undefined;
     const player = piece.isWhite() ? this.whitePlayer : this.blackPlayer;
-    console.log('remove piece', id, piece);
     player.removePiece(piece);
-    console.log(player.pieces)
+  }
+
+  getPiece(x: number, y: number){
+    return this.board[y][x].piece;
   }
 
   doTileChecks(){

@@ -82,6 +82,7 @@
       "check-catch",
       "check-else"
     ],
+    "only-arrow-functions": false,
     "pipe-naming": [true, "camelCase"],
     "prefer-conditional-expression": false,
     "prefer-function-over-method": false,

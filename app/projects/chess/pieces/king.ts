@@ -29,7 +29,7 @@ export class King extends Piece{
   // Moves rook to the correct tile as in castling special move
   // x and y: coordinates the king tries tries to move to
   castling(x: number, y: number){
-    const targetTile = this.tiles[y][x];
+    const targetTile = this.board[y][x];
     const kingDir = x < this.x ? -1 : 1;
     const tilesInRooksDirection = targetTile.checkDirection(kingDir, 0, 8);
     const rookTile = tilesInRooksDirection[tilesInRooksDirection.length - 1];
