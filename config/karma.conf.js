@@ -25,6 +25,22 @@ module.exports = function (config) {
     },
 
     reporters: ['mocha', 'kjhtml'],
+
+    // Clearer stack traces that don't include things related to libraries and framework the tests are run on
+    formatError(msg) {
+      // filter out empty lines and node_modules
+      if (!msg.trim() || /~/.test(msg) || /node_modules/.test(msg)) return '';
+      // indent the error beneath the it() message
+      let newLine = `  ${msg}`;
+      if (newLine.includes('webpack:///')) {
+        newLine = newLine.replace('webpack:///', '');
+        // remove bundle location, showing only the source location
+        newLine = newLine.slice(0, newLine.indexOf(' <- '));
+      }
+
+      return `${newLine}\n`
+    },
+
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
