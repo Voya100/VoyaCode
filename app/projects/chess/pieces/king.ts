@@ -3,7 +3,7 @@ import { Player } from '../players/player';
 import { Tile } from '../tile';
 import { Rook } from './rook';
 import { PieceState } from '../chess-interfaces';
-import { ChessGameService } from '../chess-game.service';
+import { ChessGameService } from '../services/chess-game.service';
 
 export class King extends Piece{
 

@@ -1,6 +1,6 @@
 import { animate, Component, OnInit, state, style, transition, trigger } from '@angular/core';
-import { ChessGameService } from '../chess-game.service';
-import { ChessSettingsService } from '../chess-settings.service';
+import { ChessGameService } from '../services/chess-game.service';
+import { ChessSettingsService } from '../services/chess-settings.service';
 
 @Component({
   selector: 'chess-game',

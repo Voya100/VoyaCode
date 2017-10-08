@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import { ChessGameService } from './chess-game.service';
+import { ChessGameService } from './services/chess-game.service';
 import { Pawn } from './pieces/pawn';
 import { Piece } from './pieces/piece';
 import { Player } from './players/player';

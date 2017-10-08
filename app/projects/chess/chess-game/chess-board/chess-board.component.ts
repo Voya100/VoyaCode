@@ -2,8 +2,8 @@ import { Component, OnDestroy } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ChessGameService } from '../../chess-game.service';
-import { ChessSettingsService } from '../../chess-settings.service';
+import { ChessGameService } from '../../services/chess-game.service';
+import { ChessSettingsService } from '../../services/chess-settings.service';
 
 import { Piece } from '../../pieces/piece';
 import { Tile } from '../../tile';

@@ -1,5 +1,5 @@
 import { Player } from './player';
-import { ChessGameService } from '../chess-game.service';
+import { ChessGameService } from '../services/chess-game.service';
 import { MoveAction } from '../chess-interfaces';
 import { Piece } from '../pieces/piece';
 import { Tile } from '../tile';

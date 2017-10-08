@@ -1,20 +1,20 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import * as _ from 'lodash';
 
-import { Tile } from './tile';
-import { Queen } from './pieces/queen';
-import { Piece } from './pieces/piece';
-import { Bishop } from './pieces/bishop';
-import { King } from './pieces/king';
-import { Knight } from './pieces/knight';
-import { Pawn } from './pieces/pawn';
-import { Rook } from './pieces/rook';
+import { Tile } from '../tile';
+import { Queen } from '../pieces/queen';
+import { Piece } from '../pieces/piece';
+import { Bishop } from '../pieces/bishop';
+import { King } from '../pieces/king';
+import { Knight } from '../pieces/knight';
+import { Pawn } from '../pieces/pawn';
+import { Rook } from '../pieces/rook';
 
 import { ChessSettingsService } from './chess-settings.service';
 
-import { Player } from './players/player';
+import { Player } from '../players/player';
 
-import { ChessState, MoveAction, PieceState } from './chess-interfaces';
+import { ChessState, MoveAction, PieceState } from '../chess-interfaces';
 import { createPiece, createPlayer } from './chess-factories';
 
 @Injectable()

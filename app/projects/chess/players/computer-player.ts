@@ -1,4 +1,4 @@
-import { ChessGameService } from '../chess-game.service';
+import { ChessGameService } from '../services/chess-game.service';
 import { King } from '../pieces/king';
 import { Piece } from '../pieces/piece';
 import { Player } from './player';

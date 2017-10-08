@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 import { Player } from '../players/player';
 import { Tile } from '../tile';
 import { PieceState } from '../chess-interfaces';
-import { ChessGameService } from '../chess-game.service';
+import { ChessGameService } from '../services/chess-game.service';
 
 export abstract class Piece{
   id: number;
