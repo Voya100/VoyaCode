@@ -41,9 +41,19 @@ module.exports = function (config) {
       return `${newLine}\n`
     },
 
+    client: {
+      captureConsole: true
+    },
+    
+    browserConsoleLogOptions: {
+      level: 'log',
+      format: '%b %T: %m',
+      terminal: true
+    },
+
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_LOG,
     autoWatch: true,
     browsers: ['PhantomJS'], // ['Chrome'],
     singleRun: false
