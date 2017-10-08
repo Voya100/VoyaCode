@@ -1,4 +1,4 @@
-import * as _ from 'underscore';
+import * as _ from 'lodash';
 
 import { ChessGameService } from './services/chess-game.service';
 import { Pawn } from './pieces/pawn';

@@ -1,9 +1,10 @@
+import * as _ from 'lodash';
+
 import { ChessGameService } from '../services/chess-game.service';
 import { King } from '../pieces/king';
 import { Piece } from '../pieces/piece';
 import { Player } from './player';
 import { Tile } from '../tile';
-import * as _ from 'underscore';
 import { MoveAction } from '../chess-interfaces';
 
 // Returns random value from array
@@ -302,7 +303,7 @@ export class ComputerPlayer extends Player{
           if(piece === this.prevPiece && this.moveCount > 3){ // To reduce endless loops
             continue;
           }
-          if(!piece.protectsKing  && _.contains(types, piece.type)){
+          if(!piece.protectsKing  && _.includes(types, piece.type)){
             piece_tile.push([piece, tile]);
           }
         }
