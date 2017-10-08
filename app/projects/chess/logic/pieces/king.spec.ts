@@ -137,7 +137,6 @@ describe('#King', function(){
 
     it('should move king and rook correctly (left black)', function(){
       game.changeTurn();
-      console.log('test', blackKing, game.board[0][2])
       game.movePiece(blackKing, game.board[0][2]);
       expect(blackKing.x).toBe(2);
       expect(blackKing.y).toBe(0);

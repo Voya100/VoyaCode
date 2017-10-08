@@ -19,6 +19,6 @@ export class ChessChooseModeComponent {
   switchGameMode(modeId: number){
     this.settings.changeMode(modeId);
     this.close.emit();
-    this.game.reset();
+    this.game.newGame();
   }
 }

@@ -39,7 +39,7 @@ export function setBoard(game: ChessGameService, board: string[][]){
 export function getBoardLayout(game: ChessGameService){
   return game.board.map((row) => 
     row.map((tile) => {
-      if(tile.isEmpty){ return '  '; }
+      if(tile.isEmpty()){ return '  '; }
       const type = tile.piece.type === 'king' ? 'X' : tile.piece.type[0];
       return (tile.piece.color[0] + type).toUpperCase();
     })

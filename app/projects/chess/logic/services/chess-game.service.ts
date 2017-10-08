@@ -20,7 +20,6 @@ import { createPiece, createPlayer } from './chess-factories';
 @Injectable()
 export class ChessGameService {
   
-  // Properties, are set in reset
   board: Tile[][] = [];
   pieces: {[key: string]: Piece}
   whitePlayer: Player;
@@ -49,7 +48,7 @@ export class ChessGameService {
     return color === 'white' ? 'black' : 'white';
   }
   
-  reset(
+  newGame(
     row6: string = this.settings.positions[0], 
     row7: string = this.settings.positions[1], 
     roundLimit: number = this.settings.roundLimit

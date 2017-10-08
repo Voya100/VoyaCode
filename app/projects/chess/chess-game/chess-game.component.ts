@@ -19,12 +19,12 @@ export class ChessGameComponent {
   visibleDialog: string = '';
   
   constructor(public game: ChessGameService, private settings: ChessSettingsService) {
-    this.game.reset();
+    this.game.newGame();
   }
 
   reset(){
     this.visibleDialog = '';
-    this.game.reset();
+    this.game.newGame();
   }
 
   activePlayerColor(){

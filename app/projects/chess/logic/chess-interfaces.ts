@@ -17,7 +17,8 @@ export interface ChessState{
   activePlayer: string,
   kingCount: number,
   roundLimit: number,
-  winner?: string
+  winner?: string,
+  latestMove?: any
 }
 
 export interface MoveAction{
