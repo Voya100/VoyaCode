@@ -1,38 +1,52 @@
+var webpack = require('webpack');
+var helpers = require('./helpers');
+
 module.exports = {
+  devtool: 'inline-source-map',
 
-    performance: {
-        hints: false
-    },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
 
-    resolve: {
-        extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
-    },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loaders: [
+          {
+            loader: 'awesome-typescript-loader',
+            options: { configFileName: helpers.root('./config/tsconfig-test.json') }
+          } , 'angular2-template-loader'
+        ]
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader'
 
-    module: {
-        rules: [
-            {
-                test: /\.ts$/,
-                loaders: [
-                    'awesome-typescript-loader',
-                    'angular2-template-loader',
-                    'source-map-loader'
-                ]
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
-            },
-            {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
-            },
-            {
-                test: /\.html$/,
-                loader: 'raw-loader'
-            }
-        ],
-        exprContextCritical: false
-    }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: 'null-loader'
+      },
+      {
+        test: /\.(css|scss)$/,
+        exclude: helpers.root('app'),
+        loader: 'null-loader'
+      },
+      {
+        test: /\.(css|scss)$/,
+        include: helpers.root('app'),
+        loader: 'raw-loader'
+      }
+    ]
+  },
 
-};
+  plugins: [
+    new webpack.ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)@angular/,
+      helpers.root('./app'), // location of your src
+      {} // a map of your routes
+    )
+  ]
+}
