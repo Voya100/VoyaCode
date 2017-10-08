@@ -73,6 +73,7 @@ export class ComputerPlayer extends Player{
     if(this.isInCheck()){
       const safeMoves = this.safeKingMoves(this.kings[0]).map((move) => ([move.piece, move.tile]));
       if(safeMoves.length){
+        console.log('1. Protect the king')
         this.setAction(this.findSmallestRisk(<[Piece, Tile][]> safeMoves, [], 1));
         return;
       }
@@ -81,26 +82,26 @@ export class ComputerPlayer extends Player{
     // 2. Kill enemy or move to safety, if risk is negative. 
     this.tryToMakeARisklessMove();
     if(this.actionDecided()){
-      console.log('4. Kill enemy or move to safety');
+      console.log('2. Kill enemy or move to safety');
       return;
     }
     
     // 3. Approach king from further (go to tiles from which king could be approached in priority 3., if safe)
     this.tryToApproachEnemyKing(2);
     if(this.actionDecided()){
-      console.log('5. Approach king');
+      console.log('3. Approach king');
       return;
     }
     
     // 4. Move somewhere with a piece that isn't guarding the king (best option from priority 4)
     if(this.movePiece != null){
-      console.log('6. Safe random');
+      console.log('4. Safe random');
       this.setMoveToDecision();
       return;
     }
     
     // 5. Move to random location with random piece. This will likely make the king vulnerable.
-    console.log('7. Random');
+    console.log('5. Random');
     this.moveToRandom();
   }
 
@@ -116,11 +117,11 @@ export class ComputerPlayer extends Player{
     this.tileDecision = null;
     
     // Find current friendly/enemy positions
-    for(let i = 0; i < this.pieceCount; i++){
-      this.pieceLocations.push(this.pieces[i].tile);
+    for(const piece of this.pieces){
+      this.pieceLocations.push(piece.tile);
     }
-    for(let i = 0; i < this.enemy.pieceCount; i++){
-      this.enemyLocations.push(this.enemy.pieces[i].tile);
+    for(const piece of this.enemy.pieces){
+      this.enemyLocations.push(piece.tile);
     }
     
     this.safeTiles = _.difference(this.moveTiles, this.enemy.hitTiles);
@@ -140,33 +141,6 @@ export class ComputerPlayer extends Player{
         console.log('Can kill the king');
         this.setAction([randVal(enemyKing.threats), enemyKing.tile]);
         return;
-      }
-    }
-  }
-
-  // Tries to move a given piece to a safe location
-  tryToMovePieceToSafety(piece: Piece, threat: Piece = null){
-    let safeMoves = _.intersection(piece.moveTiles, this.safeTiles); // Tiles piece can go to safely
-    // Make sure that the piece doesn't go along the enemy's gaze
-    if(threat.type !== 'pawn' && threat.type !== 'knight'){
-      safeMoves = safeMoves.filter((tile) => !piece.tile.isBetween(tile, threat.tile));
-    }
-    if(safeMoves.length > 0){ 
-      this.setMove(this.findSmallestRisk([piece], safeMoves)); // Find the best tile to go to (one with an enemy, perhaps)
-    }
-  }
-
-  // Tries to protect the piece my moving another piece between it and the threat
-  tryToBlockEnemy(pieceToProtect: Piece, threat: Piece){
-    if(threat.type !== 'knight'){ // Knights can't be blocked
-      const tilesBetween = pieceToProtect.tile.tilesBetween(threat.tile);
-      for(const tile of tilesBetween){
-        const pieces = tile.getFriends(this.color).filter(
-          (piece: Piece) => (!piece.protectsPiece(pieceToProtect) && piece !== pieceToProtect)
-        );
-        if(pieces.length > 0){
-          this.setMove(this.findSmallestRisk(pieces, [tile]));
-        }
       }
     }
   }
