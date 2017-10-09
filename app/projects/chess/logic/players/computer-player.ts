@@ -16,12 +16,6 @@ function randVal(array: any[]){
 
 export class ComputerPlayer extends Player{
 
-  safeTiles: Tile[] = []; // Tiles where enemy can't reach, but the player can, and movable pieces don't protect the king
-  hitTiles: Tile[] = []; // Enemy tiles player can hit
-  dangerTiles: Tile[] = []; // Player tiles enemy can hit
-  pieceLocations: Tile[] = []; // Tiles where player's pieces are 
-  enemyLocations: Tile[] = []; // Tiles where enemy's pieces are
-
   // Move action that is being considered at the moment - can be turned into piece/tile decision
   moveTile: Tile;
   movePiece: Piece;
@@ -55,6 +49,7 @@ export class ComputerPlayer extends Player{
   }
   
   setAction([piece, tile]: [Piece, Tile]){
+    console.log('action', piece.type, ('(' + piece.tile.x + ',' + piece.tile.y + ') => (' + tile.x + ',' + tile.y + ')'))
     this.pieceDecision = piece;
     this.tileDecision = tile;
   }
@@ -69,64 +64,70 @@ export class ComputerPlayer extends Player{
 
     this.chooseActionInit();
     
-    // 1. King is in danger, do best possible move
+    // 1. Kill the enemy king, if possible
+    this.tryToKillTheKing();
+    if(this.actionDecided()){
+      console.log('1. Kill the king');
+      return;
+    }
+
+    // 2. King is in danger, do best possible move
     if(this.isInCheck()){
       const safeMoves = this.safeKingMoves(this.kings[0]).map((move) => ([move.piece, move.tile]));
       if(safeMoves.length){
-        console.log('1. Protect the king')
+        console.log('2. Protect the king')
         this.setAction(this.findSmallestRisk(<[Piece, Tile][]> safeMoves, [], 1));
         return;
       }
+    }    
+
+    // 2. Approach the enemy king (hitting distance, if safe)
+    this.tryToGetCloseToEnemyKing();
+    if(this.actionDecided()){
+      console.log('2. Approach enemy king');
+      this.kingChaseCount++;
+      return;
+    }else{
+      this.kingChaseCount = 0;
     }
     
-    // 2. Kill enemy or move to safety, if risk is negative. 
+    // 3. Kill enemy or move to safety, if risk is negative. 
     this.tryToMakeARisklessMove();
     if(this.actionDecided()){
-      console.log('2. Kill enemy or move to safety');
+      console.log('3. Kill enemy or move to safety');
       return;
     }
     
-    // 3. Approach king from further (go to tiles from which king could be approached in priority 3., if safe)
+    // 4. Approach king from further (go to tiles from which king could be approached in priority 3., if safe)
     this.tryToApproachEnemyKing(2);
     if(this.actionDecided()){
-      console.log('3. Approach king');
+      console.log('4. Approach king');
       return;
     }
     
-    // 4. Move somewhere with a piece that isn't guarding the king (best option from priority 4)
+    // 5. Move somewhere with a piece that isn't guarding the king (best option from priority 3)
     if(this.movePiece != null){
-      console.log('4. Safe random');
+      console.log('5. Safe random');
       this.setMoveToDecision();
       return;
     }
     
-    // 5. Move to random location with random piece. This will likely make the king vulnerable.
-    console.log('5. Random');
+    // 6. Move to random location with random piece. This will likely make the king vulnerable.
+    console.log('6. Random');
     this.moveToRandom();
   }
 
   // Resets variables used by chooseAction
   chooseActionInit(){
-    this.safeTiles = []; // Tiles where enemy can't reach, but the player can, and movable pieces don't protect the king
-    this.hitTiles = []; // Enemy tiles player can hit
-    this.dangerTiles = []; // Player tiles enemy can hit
-    this.pieceLocations = []; // Tiles where player's pieces are 
-    this.enemyLocations = []; // Tiles where enemy's pieces are
+    this.moveTiles = _.uniq(
+      _.flatten(this.pieces.map((piece) => piece.moveTiles))
+    );
+    this.enemy.moveTiles = _.uniq(
+      _.flatten(this.enemy.pieces.map((piece) => piece.moveTiles))
+    );
 
     this.pieceDecision = null;
     this.tileDecision = null;
-    
-    // Find current friendly/enemy positions
-    for(const piece of this.pieces){
-      this.pieceLocations.push(piece.tile);
-    }
-    for(const piece of this.enemy.pieces){
-      this.enemyLocations.push(piece.tile);
-    }
-    
-    this.safeTiles = _.difference(this.moveTiles, this.enemy.hitTiles);
-    this.hitTiles = _.intersection(this.hitTiles, this.enemyLocations);
-    this.dangerTiles = _.intersection(this.enemy.moveTiles, this.pieceLocations);
     
     this.moveTile = null;
     this.movePiece = null;
