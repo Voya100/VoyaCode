@@ -18,7 +18,7 @@ export class ChessWinnerDialogComponent implements OnDestroy{
   }
   
   ngOnDestroy(){
-    this.game.gameActive = true;
+    this.game.gamePaused = false;
   }
 
   switchDialog(dialogName: string){
