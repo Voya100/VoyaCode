@@ -146,6 +146,67 @@ describe('#Player', function(){
       const player = game.blackPlayer;
       expect(player.isInCheckMate()).toBe(true);
     });
+  });
 
+  describe('legal moves', function(){
+    it('should not have legal moves in stalemate where king needs to move', function(){
+      setBoard(game, [
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ',' ' ,'WX' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,'BX','BQ',' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,'  ',' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ]
+      ])
+      const player = game.whitePlayer;
+      expect(player.legalMoves.length).toBe(0);
+    });
+  
+    it('should not have legal moves in stalemate where piece protecting the king needs to move', function(){
+      setBoard(game, [
+        [' ' ,' ' ,' ' ,' ' ,'BQ',' ' ,'WP','WX'],
+        [' ' ,' ' ,' ' ,' ' ,'BQ',' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,'  ',' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ]
+      ])
+      const player = game.whitePlayer;
+      expect(player.legalMoves.length).toBe(0);
+    });
+    
+    it('should have legal moves when piece can move towards potential threat', function(){
+      setBoard(game, [
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,'BX',' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,'BP',' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,'WR','WR','WR'],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,'  ',' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ]
+      ])
+      const player = game.blackPlayer;
+      expect(player.legalMoves.length).toBe(2);
+    });
+    
+    it('should have legal moves when piece can move away from potential threat', function(){
+      setBoard(game, [
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,'BX' ,' '],
+        [' ' ,' ' ,' ' ,' ' ,'WR' ,' ' ,' ',' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,'BR',' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,'WR','WR','WR'],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,'  ',' ' ],
+        [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ]
+      ])
+      const player = game.blackPlayer;
+      expect(player.legalMoves.length).toBe(3);
+    });
   });
 });

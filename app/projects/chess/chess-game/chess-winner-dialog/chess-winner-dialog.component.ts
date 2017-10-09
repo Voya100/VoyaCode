@@ -27,10 +27,10 @@ export class ChessWinnerDialogComponent implements OnDestroy{
   }
 
   winnerText(){
-    if(this.winner === 'Tie'){
+    if(this.game.victoryReason === 'max-rounds'){
       return 'Round limit reached,\nit\'s a tie!';
-    }else if(this.game.victoryReason === 'no-moves'){
-      return this.game.activePlayer.color + ' has no moves left,\n' + this.winner + ' wins!';
+    }else if(this.game.victoryReason === 'stalemate'){
+      return this.game.activePlayer.color + ' has no moves left,\nit\'s a stalemate.';
     }else if(this.game.victoryReason === 'check-mate'){
       return 'King has been check mated,\n' + this.winner + ' wins!';
     }else{
