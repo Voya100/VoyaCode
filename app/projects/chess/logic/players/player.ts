@@ -143,7 +143,7 @@ export abstract class Player{
     const threats = piece.threats;
     const safeTiles = piece.moveTiles.filter((tile) => {
       return tile.getThreatHits(this.color).length === 0 && _.every(threats, (threat) => {
-        return !piece.tile.isBetween(tile, threat.tile);
+        return !piece.tile.isBetween(tile, threat.tile) || tile === threat.tile;
       });
     });
     return safeTiles.map((tile) => ({piece, tile}));
@@ -152,7 +152,7 @@ export abstract class Player{
   // Moves that can be used to kill threat, without leaving the king vulnerable
   threatKillMoves(threat: Piece, king: King){
     const movePieces = threat.threats.filter((piece) => {
-      const leavesKingVulnerable = !piece.protectsPiece(king) || piece.tile.isBetween(king.tile, threat.tile);
+      const leavesKingVulnerable = piece.protectsPiece(king) && !piece.tile.isBetween(king.tile, threat.tile);
       const risksKing = piece === king && threat.friends.length > 0;
       return !leavesKingVulnerable && !risksKing;
     });

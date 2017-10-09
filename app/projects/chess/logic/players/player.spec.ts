@@ -102,6 +102,21 @@ describe('#Player', function(){
       expect(player.isInCheckMate()).toBe(false);
     });
     
+    it('should not be in check mate when threat can be eliminated by pieces next to the threat', function(){
+      setBoard(game, [
+        ['BR',' ' ,'BB','BQ','BX','BB','BK','BR'],
+        [' ' ,'BP','BP','WQ','BP','BP','BP','BP'],
+        ['BP','  ','  ','BP','  ','  ','  ','  '],
+        ['  ','  ','WP','  ','  ','  ','  ','  '],
+        ['  ','  ','  ','  ','  ','  ','  ','  '],
+        ['  ','  ','  ','  ','  ','  ','  ','  '],
+        ['WP',' ' ,'WP','WP','WP','WP','WP','WP'],
+        ['WR','WK',' ' ,'WQ','WX','WB','WK','WR']
+      ])
+      const player = game.blackPlayer;
+      expect(player.isInCheckMate()).toBe(false);
+    });
+    
     it('should be in check mate when threat can be blocked, but elimination would leave king vulnerable', function(){
       setBoard(game, [
         [' ' ,' ' ,' ' ,'BR','BR','BR',' ' ,' ' ],
