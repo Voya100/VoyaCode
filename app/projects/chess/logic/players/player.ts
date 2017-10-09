@@ -115,7 +115,7 @@ export abstract class Player{
     const threats = king.threats;
 
     const dodgeMoves = this.dodgeMoves(king);
-    if(threats.length > 1 || threats.length === 0){return dodgeMoves; }
+    if(threats.length !== 1){return dodgeMoves; }
 
     const threat = king.threats[0];
     const threatKillMoves = this.threatKillMoves(threat, king);
@@ -126,7 +126,7 @@ export abstract class Player{
   dodgeMoves(piece: Piece){
     const threats = piece.threats;
     const safeTiles = piece.moveTiles.filter((tile) => {
-      return tile.getThreats(this.color).length === 0 && _.every(threats, (threat) => {
+      return tile.getThreatHits(this.color).length === 0 && _.every(threats, (threat) => {
         return !piece.tile.isBetween(tile, threat.tile);
       });
     });
@@ -135,7 +135,11 @@ export abstract class Player{
 
   // Moves that can be used to kill threat, without leaving the king vulnerable
   threatKillMoves(threat: Piece, king: King){
-    const movePieces = threat.threats.filter((piece) => !piece.protectsPiece(king) || piece.tile.isBetween(king.tile, threat.tile));
+    const movePieces = threat.threats.filter((piece) => {
+      const leavesKingVulnerable = !piece.protectsPiece(king) || piece.tile.isBetween(king.tile, threat.tile);
+      const risksKing = piece === king && threat.friends.length > 0;
+      return !leavesKingVulnerable && !risksKing;
+    });
     return movePieces.map((piece) => ({piece, tile: threat.tile}));
   }
 
@@ -173,5 +177,5 @@ export abstract class Player{
       this.kings[i].castlingCheck(this.rooks);
     }
   }
-  
+
 }
