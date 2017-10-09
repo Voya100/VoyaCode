@@ -15,7 +15,6 @@ export class ChessWinnerDialogComponent implements OnDestroy{
   
   constructor(public game: ChessGameService){
     this.winner = game.winner;
-    console.log(this.winner)
   }
   
   ngOnDestroy(){
