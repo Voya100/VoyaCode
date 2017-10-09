@@ -60,23 +60,23 @@ export abstract class Piece{
   canMove(tile: Tile){return this.moveTiles.indexOf(tile) !== -1; }
   
   // Checks all 4 directions
-  checkDirections(x_add: number, y_add: number, count: number, roundStart: boolean){
+  checkDirections(x_add: number, y_add: number, count: number){
     let moveTiles: Tile[] = [];
-    moveTiles = moveTiles.concat(this.checkDirection(x_add, y_add, count, roundStart));
+    moveTiles = moveTiles.concat(this.checkDirection(x_add, y_add, count));
     if(x_add !== 0){
-      moveTiles = moveTiles.concat(this.checkDirection(-x_add, y_add, count, roundStart));
+      moveTiles = moveTiles.concat(this.checkDirection(-x_add, y_add, count));
     }
     if(y_add !== 0){
-      moveTiles = moveTiles.concat(this.checkDirection(x_add, -y_add, count, roundStart));
+      moveTiles = moveTiles.concat(this.checkDirection(x_add, -y_add, count));
     }
     if(x_add !== 0 && y_add !== 0){
-      moveTiles = moveTiles.concat(this.checkDirection(-x_add, -y_add, count, roundStart));
+      moveTiles = moveTiles.concat(this.checkDirection(-x_add, -y_add, count));
     }
     return moveTiles;
   }
 
   // Adds tiles in 1 direction to hit/move tiles until an obstacle comes along
-  checkDirection(x_add: number, y_add: number, count: number, roundStart: boolean): Tile[]{
+  checkDirection(x_add: number, y_add: number, count: number): Tile[]{
     let moveTiles = this.tile.checkDirection(x_add, y_add, count);
 
     for(const target of moveTiles){

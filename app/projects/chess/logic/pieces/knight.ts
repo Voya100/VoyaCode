@@ -15,8 +15,8 @@ export class Knight extends Piece{
   
   tileCheck(){
     this.clearTiles();
-    this.moveTiles = this.moveTiles.concat(this.checkDirections(2, 1, 1, true));
-    this.moveTiles = this.moveTiles.concat(this.checkDirections(1, 2, 1, true));
+    this.moveTiles = this.moveTiles.concat(this.checkDirections(2, 1, 1));
+    this.moveTiles = this.moveTiles.concat(this.checkDirections(1, 2, 1));
     this.addTiles();
   }
 }
