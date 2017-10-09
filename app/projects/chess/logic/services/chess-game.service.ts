@@ -34,6 +34,7 @@ export class ChessGameService {
   victoryReason: string = '';
 
   latestMoveChanged: EventEmitter<MoveAction> = new EventEmitter();
+  isChecked: EventEmitter<string> = new EventEmitter();
 
   constructor(private settings: ChessSettingsService) { }
 
@@ -169,7 +170,8 @@ export class ChessGameService {
         const gameId = this.gameId;
         this.turnInProgress = true;
         // Timeout to give some time for animations
-        setTimeout(() => gameId === this.gameId ? this.changeTurn() : 0, 650);
+        this.changeTurn();
+        setTimeout(() => gameId === this.gameId ? this.run() : 0, 650);
       });
     }
   }
@@ -187,7 +189,7 @@ export class ChessGameService {
       this.victoryReason = 'max-rounds';
     }else if(this.activePlayer.legalMoves.length === 0){
       if(this.activePlayer.isInCheckMate()){
-      this.state.winner = this.oppositeColor(this.activePlayer.color);
+        this.state.winner = this.oppositeColor(this.activePlayer.color);
         this.victoryReason = 'check-mate';
       }else{
         this.state.winner = 'tie';
@@ -198,6 +200,9 @@ export class ChessGameService {
     }
     if(this.state.winner){
       this.gameActive = false;
+    }else if(this.activePlayer.isInCheck()){
+      // Small delay for check message
+      this.isChecked.emit(this.oppositeColor(this.activePlayer.color));      
     }
   }
   
@@ -209,7 +214,6 @@ export class ChessGameService {
     this.doTileChecks();
     this.checkIfGameHasEnded();
     this.turnInProgress = false;
-    this.run();
   }
   
   // Returns the tile that has a piece with lowest value

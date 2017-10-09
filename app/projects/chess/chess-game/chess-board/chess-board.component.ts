@@ -25,6 +25,11 @@ const enemyTileColor = 'rgb(189, 104, 53)';
       state('true', style({ opacity: 1 })),
       state('void', style({ opacity: 0 })),
       transition('* => *', animate('300ms'))
+    ]),
+    trigger('fadeInFast', [
+      state('true', style({ opacity: 1 })),
+      state('void', style({ opacity: 0 })),
+      transition('* => *', animate('150ms'))
     ])
   ]
 })
@@ -32,17 +37,33 @@ export class ChessBoardComponent implements OnDestroy {
 
   selectedPiece: Piece;
   latestMove: MoveAction = {piece: null, tile: null};
-  subscription: Subscription;
+  checkColor: string = 'black';
+  isChecked: boolean = false;
+
+  checkSubscription: Subscription;
+  moveSubscription: Subscription;
 
   constructor(public game: ChessGameService, public settings: ChessSettingsService){
-    this.subscription = game.latestMoveChanged.subscribe((latestMove: MoveAction) => {
+
+    // Shows check text on screen briefly on turn change, if in check
+    this.checkSubscription = game.isChecked.subscribe((color: string) => {
+      // Small delay before animation start
+      setTimeout(() => {
+        this.checkColor = color;
+        this.isChecked = true;
+        // Hide after small delay
+        setTimeout(() => this.isChecked = false, 750);
+      }, 300);
+    })
+
+    this.moveSubscription = game.latestMoveChanged.subscribe((latestMove: MoveAction) => {
       this.latestMove = latestMove;
       this.selectedPiece = null;
     });
   }
 
   ngOnDestroy(){
-    this.subscription.unsubscribe();
+    this.moveSubscription.unsubscribe();
   }
 
   // Returns color of the tile in tilePosition

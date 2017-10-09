@@ -12,3 +12,5 @@
     <img [src]="pieceImageUrl(piece)">
   </div>
 </section>
+
+<h2 *ngIf="isChecked" [class]="'check-text ' + checkColor + '-check'" [@fadeInFast]>Check!</h2>
