@@ -187,7 +187,7 @@ export class ChessGameService {
     if(this.state.round > this.state.roundLimit){
       this.state.winner = 'tie';
       this.victoryReason = 'max-rounds';
-    }else if(this.activePlayer.legalMoves.length === 0){
+    }else if(this.activePlayer.getLegalMoves().length === 0){
       if(this.activePlayer.isInCheckMate()){
         this.state.winner = this.oppositeColor(this.activePlayer.color);
         this.victoryReason = 'check-mate';

@@ -176,7 +176,7 @@ describe('#Player', function(){
         [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ]
       ])
       const player = game.whitePlayer;
-      expect(player.legalMoves.length).toBe(0);
+      expect(player.getLegalMoves().length).toBe(0);
     });
   
     it('should not have legal moves in stalemate where piece protecting the king needs to move', function(){
@@ -191,7 +191,7 @@ describe('#Player', function(){
         [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ]
       ])
       const player = game.whitePlayer;
-      expect(player.legalMoves.length).toBe(0);
+      expect(player.getLegalMoves().length).toBe(0);
     });
     
     it('should have legal moves when piece can move towards potential threat', function(){
@@ -206,7 +206,7 @@ describe('#Player', function(){
         [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ]
       ])
       const player = game.blackPlayer;
-      expect(player.legalMoves.length).toBe(2);
+      expect(player.getLegalMoves().length).toBe(2);
     });
     
     it('should have legal moves when piece can move away from potential threat', function(){
@@ -221,7 +221,7 @@ describe('#Player', function(){
         [' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ,' ' ]
       ])
       const player = game.blackPlayer;
-      expect(player.legalMoves.length).toBe(3);
+      expect(player.getLegalMoves().length).toBe(3);
     });
   });
 });

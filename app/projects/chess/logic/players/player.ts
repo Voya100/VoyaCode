@@ -48,7 +48,7 @@ export abstract class Player{
   get kingCount(){ return this.kings.length; }
   get pieceCount(){ return this.pieces.length; }
 
-  get legalMoves(){
+  getLegalMoves(){
     if(!this.isInCheck()){
       if(this.kingCount !== 1){
         return this.allMoves;

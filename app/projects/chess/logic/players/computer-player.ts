@@ -20,6 +20,7 @@ export class ComputerPlayer extends Player{
   moveTile: Tile;
   movePiece: Piece;
   riskValue: number;
+  legalMoves: MoveAction[];
 
   constructor(color: string, game: ChessGameService){
     super(color, game);
@@ -63,6 +64,8 @@ export class ComputerPlayer extends Player{
   chooseTarget(){
 
     this.chooseActionInit();
+
+    const legalMoves = this.legalMoves;
     
     // 1. Kill the enemy king, if possible
     this.tryToKillTheKing();
@@ -119,8 +122,10 @@ export class ComputerPlayer extends Player{
 
   // Resets variables used by chooseAction
   chooseActionInit(){
+    // TODO: Change logic structure to use primarily only 'legal moves'
+    this.legalMoves = this.getLegalMoves();
     this.moveTiles = _.uniq(
-      _.flatten(this.pieces.map((piece) => piece.moveTiles))
+      _.flatten(this.legalMoves.map((move) => move.tile))
     );
     this.enemy.moveTiles = _.uniq(
       _.flatten(this.enemy.pieces.map((piece) => piece.moveTiles))
@@ -209,7 +214,13 @@ export class ComputerPlayer extends Player{
         piece = piece[0];
       }
       for(const tile of tiles){
-        const risk = tile.riskValue(<Piece> piece);
+        let risk;
+        if(_.findIndex(this.legalMoves, (move) => move.tile === tile && move.piece === piece) === -1){
+          // If move isn't legal, it shouldn't be done (TODO: filter these earlier)
+          risk = 9999;
+        }else{
+          risk = tile.riskValue(<Piece> piece);
+        }
         if(risk <= riskValue){
           if(risk < riskValue){
             safest = [];
@@ -268,17 +279,17 @@ export class ComputerPlayer extends Player{
   // Helper function for approachTile. Adds appropriate piece/tile combinations to piece_tile array and returns it back
   approachTileLoop(tiles: Tile[], piece_tile: any, types: string[], moveTiles: Tile[], type: string, safe: boolean, depth: number){
     for(const tile of tiles){
-      if((safe && tile[this.enemy.color + 'Hits'].length > 0)){
+      if((safe && tile.getThreatHits(this.color).length > 0)){
         continue;
       }
       if(depth === 2){ // Approach tiles from which could be approached further
         piece_tile = piece_tile.concat(this.approachTile(tile, moveTiles, type, safe, 1));
       }else{
-        for(const piece of tile[this.color + 's']){
+        for(const piece of tile.getFriends(this.color)){
           if(piece === this.prevPiece && this.moveCount > 3){ // To reduce endless loops
             continue;
           }
-          if(!piece.protectsKing  && _.includes(types, piece.type)){
+          if(_.includes(types, piece.type)){
             piece_tile.push([piece, tile]);
           }
         }
