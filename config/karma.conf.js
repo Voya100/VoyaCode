@@ -24,7 +24,7 @@ module.exports = function (config) {
       noInfo: true
     },
 
-    reporters: ['mocha', 'kjhtml'],
+    reporters: ['mocha'],
 
     // Clearer stack traces that don't include things related to libraries and framework the tests are run on
     formatError(msg) {
@@ -40,7 +40,7 @@ module.exports = function (config) {
 
       return `${newLine}\n`
     },
-
+    
     client: {
       captureConsole: true
     },
