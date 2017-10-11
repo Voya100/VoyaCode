@@ -127,7 +127,7 @@ export abstract class Player{
     return this.isInCheck() && this.safeKingMoves(this.kings[0]).length === 0;
   }
 
-  safeKingMoves(king: King){
+  safeKingMoves(king: King): {piece: Piece, tile: Tile}[]{
     const threats = king.threats;
 
     const dodgeMoves = this.dodgeMoves(king);
