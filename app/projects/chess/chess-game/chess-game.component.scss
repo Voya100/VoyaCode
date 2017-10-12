@@ -37,7 +37,7 @@
   }
 }
 
-chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog{
+chess-settings, chess-choose-mode, chess-instructions, chess-winner-dialog, chess-lobby{
   @extend %absolute-center;
   position: absolute;
   max-width: 90%;

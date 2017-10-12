@@ -1,0 +1,12 @@
+<div class="interface">
+  <h1>Multiplayer lobby</h1>
+  <div *ngIf="!isLoggedIn()">
+    Username:
+    <input type="text" [(ngModel)]="username">
+    <button title="Login" (click)="login()">Login</button>
+  </div>
+  <div *ngIf="isLoggedIn()">
+    Users:
+    <div *ngFor="let user of getUsers()">{{user}}</div>
+  </div>
+</div>

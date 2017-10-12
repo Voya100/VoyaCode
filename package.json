@@ -28,10 +28,12 @@
     "@angular/platform-browser-dynamic": "^4.3.6",
     "@angular/platform-server": "^4.3.6",
     "@angular/router": "^4.3.6",
+    "@types/socket.io-client": "^1.4.31",
     "angular-2-local-storage": "^1.0.1",
     "angular-in-memory-web-api": "~0.2.4",
     "core-js": "^2.5.1",
     "rxjs": "^5.4.3",
+    "socket.io-client": "^2.0.3",
     "systemjs": "0.19.40",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.17"

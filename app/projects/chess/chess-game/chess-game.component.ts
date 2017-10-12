@@ -1,6 +1,7 @@
 import { animate, Component, OnInit, state, style, transition, trigger } from '@angular/core';
 import { ChessGameService } from '../logic/services/chess-game.service';
 import { ChessSettingsService } from '../logic/services/chess-settings.service';
+import { ChessWebsocketService } from '../logic/services/chess-websocket.service';
 
 @Component({
   selector: 'chess-game',
@@ -18,7 +19,7 @@ export class ChessGameComponent {
 
   visibleDialog: string = '';
   
-  constructor(public game: ChessGameService, private settings: ChessSettingsService) {
+  constructor(public game: ChessGameService, private settings: ChessSettingsService, private websocket: ChessWebsocketService) {
     this.game.newGame();
   }
 
