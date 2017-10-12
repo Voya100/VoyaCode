@@ -206,7 +206,7 @@ export class ComputerPlayer extends Player{
   // Is used by computer logic
   // Setting 1: pieces is 2-dimensional array: [[piece1,tile1],[piece2,tile2],[piece3,tile3],...], tiles is ignored
   findSmallestRisk(pieces: Piece[]|[Piece, Tile][], tiles: Tile[], setting: number = 0){
-    let riskValue = 1000;
+    let riskValue = 10000;
     let safest: any = [];
     for(let piece of pieces){
       if(setting === 1){
