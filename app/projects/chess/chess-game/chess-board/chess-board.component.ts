@@ -117,7 +117,7 @@ export class ChessBoardComponent implements OnDestroy {
 
   selectTile(tilePosition: number[]){
     const activePlayer = this.game.activePlayer;
-    if(this.game.isInteractive && activePlayer instanceof HumanPlayer){
+    if(this.game.isInteractive && activePlayer.isPlayable){
       const tile = this.game.board[tilePosition[1]][tilePosition[0]];
       const piece = tile.piece;
       if(piece && piece.color === activePlayer.color){

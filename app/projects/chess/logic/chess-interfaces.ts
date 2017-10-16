@@ -25,3 +25,11 @@ export interface MoveAction{
   piece: Piece,
   tile: Tile
 }
+
+export interface Challenge {
+  username: string, 
+  timelimit: number, 
+  maxRounds: number, 
+  row1: string, 
+  row2: string
+};

@@ -11,6 +11,7 @@ import { Rook } from '../pieces/rook';
 import { PlayerTypes } from '../chess-enums';
 import { ComputerPlayer } from '../players/computer-player';
 import { HumanPlayer } from '../players/human-player';
+import { WebsocketPlayer } from '../players/websocket-player';
 
 const pieceTypes = {
   bishop: Bishop,
@@ -45,6 +46,6 @@ export function createPlayer(type: PlayerTypes, color: string, game: ChessGameSe
       return new HumanPlayer(color, game);
     case PlayerTypes.websocket:
       // TODO: make websocket player
-      return new HumanPlayer(color, game);
+      return new WebsocketPlayer(color, game);
   }
 }

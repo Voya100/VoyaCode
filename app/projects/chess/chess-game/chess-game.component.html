@@ -1,7 +1,7 @@
 <section class="side-menu interface">
   <table>
     <tr><td colspan="2"><b>Game stats</b></td></tr>
-      <tr><td colspan="2" id="turn">{{activePlayerColor()}}'s turn</td></tr>
+      <tr><td colspan="2" id="turn">{{activePlayerName()}}'s turn</td></tr>
       <tr><td>Round:</td><td>{{game.round}}</td></tr>
       <tr><td>White:</td><td>{{game.whitePlayer?.pieces.length}} pieces</td></tr>
       <tr><td>Black:</td><td>{{game.blackPlayer?.pieces.length}} pieces</td></tr>
@@ -11,6 +11,7 @@
   <li class="game-mode-button" title="Choose game mode." (click)="switchDialog('chooseMode')">Game mode</li>
   <li class="settings-button" title="Change piece layout." (click)="switchDialog('settings')">Settings</li>
   <li class="instructions-button" title="Read the instructions." (click)="switchDialog('instructions')">Instructions</li>
+  Timer: {{timer}}
 </section>
 
 <section class="container">

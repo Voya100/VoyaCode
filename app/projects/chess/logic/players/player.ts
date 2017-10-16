@@ -14,6 +14,11 @@ import { Queen } from '../pieces/queen';
 import { MoveAction } from '../chess-interfaces';
 
 export abstract class Player{
+
+  abstract isPlayable: boolean;
+  
+  name: string;
+
   color: string;
   game: ChessGameService;
   pieceId: number = 0;
@@ -44,6 +49,8 @@ export abstract class Player{
 
   pieceDecision: Piece = null;
   tileDecision: Tile = null;
+  
+  abstract makeAction(piece: Piece, tile: Tile): void;
 
   get kingCount(){ return this.kings.length; }
   get pieceCount(){ return this.pieces.length; }
@@ -87,6 +94,7 @@ export abstract class Player{
     this.color = color;
     this.game = game;
     this.pieceId = 0;
+    this.name = color;
   }
 
   // Logic which sets the piece and tile decisions (if player is computer)

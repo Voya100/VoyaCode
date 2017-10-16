@@ -1,14 +1,21 @@
+import { EventEmitter, Output } from '@angular/core';
+
 import { Player } from './player';
 import { ChessGameService } from '../services/chess-game.service';
 import { MoveAction } from '../chess-interfaces';
 import { Piece } from '../pieces/piece';
 import { Tile } from '../tile';
 
-export class HumanPlayer extends Player{
+// WebsocketPlayer's actions are managed by ChessWebsocketService
+// Once player tries to make action, service catches player's action event and sends it to server
+// Once server responds, websocket will finish the move with resolveAction()
 
-  isPlayable: boolean = true;
+export class WebsocketPlayer extends Player{
 
-  resolveAction: (action: MoveAction) => void;
+  @Output() actionDecision: EventEmitter<MoveAction> = new EventEmitter<MoveAction>();
+
+  resolveAction: (action: MoveAction) => void
+  isPlayable: boolean;
 
   constructor(color: string, game: ChessGameService){
     super(color, game);
@@ -22,6 +29,6 @@ export class HumanPlayer extends Player{
   }
 
   makeAction(piece: Piece, tile: Tile){
-    this.resolveAction({piece, tile});
+    this.actionDecision.emit({piece, tile});
   }
 }

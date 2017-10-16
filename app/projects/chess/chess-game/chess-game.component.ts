@@ -23,18 +23,18 @@ export class ChessGameComponent {
     this.game.newGame();
   }
 
+  get timer(){
+    return this.websocket.getTimer();
+  }
+
   reset(){
     this.visibleDialog = '';
     this.game.newGame();
   }
 
-  activePlayerColor(){
+  activePlayerName(){
     const player = this.game.activePlayer;
-    if(player == null){
-      return 'White';
-    }else{
-      return this.capitalize(player.color);
-    }
+    return this.capitalize(player.name);
   }
 
   capitalize(text: string){

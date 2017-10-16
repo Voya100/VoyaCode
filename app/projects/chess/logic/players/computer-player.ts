@@ -16,6 +16,8 @@ function randVal(array: any[]){
 
 export class ComputerPlayer extends Player{
 
+  isPlayable: boolean = false;
+
   // Move action that is being considered at the moment - can be turned into piece/tile decision
   moveTile: Tile;
   movePiece: Piece;
@@ -25,6 +27,9 @@ export class ComputerPlayer extends Player{
   constructor(color: string, game: ChessGameService){
     super(color, game);
   }
+
+  // Empty implementation, ComputerPlayer decides always its own moves
+  makeAction(){}
 
   // Sets next action for the player
   chooseAction(): Promise<MoveAction>{

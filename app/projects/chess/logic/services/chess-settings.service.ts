@@ -7,8 +7,8 @@ export class ChessSettingsService {
   readonly boardSize: number = 8;
 
   positions: string[];
-  whitePlayer: PlayerTypes = PlayerTypes.human;
-  blackPlayer: PlayerTypes = PlayerTypes.computer;
+  whitePlayer: PlayerTypes = PlayerTypes.websocket; // Temporary defaults for easier testing
+  blackPlayer: PlayerTypes = PlayerTypes.websocket;
   boardReversed: boolean = false;
   roundLimit: number = 100;
 
@@ -39,7 +39,7 @@ export class ChessSettingsService {
         this.blackPlayer = PlayerTypes.computer;
         break;
       case 3: // Online multiplayer
-        this.whitePlayer = PlayerTypes.human;
+        this.whitePlayer = PlayerTypes.websocket;
         this.blackPlayer = PlayerTypes.websocket;
         break;
     }
