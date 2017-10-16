@@ -16,6 +16,8 @@ import { Player } from '../players/player';
 
 import { ChessState, MoveAction, PieceState } from '../chess-interfaces';
 import { createPiece, createPlayer } from './chess-factories';
+import { WebsocketPlayer } from '../players/websocket-player';
+import { PlayerTypes } from '../chess-enums';
 
 @Injectable()
 export class ChessGameService {
@@ -103,8 +105,14 @@ export class ChessGameService {
     this.turnInProgress = false;
     this.victoryReason = '';
     // Small delay so that ui has time to add pieces before computer starts its moves
-    setTimeout(() => this.run(), 400);
-  }
+    
+    if(this.settings.whitePlayer === PlayerTypes.websocket){
+      this.run();
+    }else{
+      // If game mode is not online multiplayer, timeout to give some time for pieces to appear
+      setTimeout(() => this.run(), 400);
+    }
+  }  
 
   // Makes empty tiles for the board
   fillBoard(){
@@ -169,9 +177,13 @@ export class ChessGameService {
         this.latestMoveChanged.emit(this.latestMove);
         const gameId = this.gameId;
         this.turnInProgress = true;
-        // Timeout to give some time for animations
         this.changeTurn();
-        setTimeout(() => gameId === this.gameId ? this.run() : 0, 650);
+        if(this.settings.whitePlayer === PlayerTypes.websocket){
+          this.run();
+        }else{
+          // If game mode is not online multiplayer, timeout to give some time for animations
+          setTimeout(() => gameId === this.gameId ? this.run() : 0, 650);
+        }
       });
     }
   }

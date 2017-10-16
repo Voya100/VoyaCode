@@ -150,9 +150,9 @@ export class ChessWebsocketService {
 
   private setState({state, blackPlayer, whitePlayer}: {state: ChessState, blackPlayer: string, whitePlayer: string}){
     this.challenge = undefined;
+    this.game.gamePaused = false;
     this.game.setState(state);
     
-    console.log('is playable' , 'playerName', this.playerName, 'white', whitePlayer, 'black', blackPlayer)
     this.game.whitePlayer.isPlayable = this.playerName === whitePlayer;
     this.game.blackPlayer.isPlayable = this.playerName === blackPlayer;
     this.game.whitePlayer.name = whitePlayer;
