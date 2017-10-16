@@ -40,6 +40,9 @@ export class ChessBoardComponent implements OnDestroy {
   checkColor: string = 'black';
   isChecked: boolean = false;
 
+  // Coordinates for each tile
+  tiles: number[][][] = Array(8).fill(1).map((x, j) => Array(8).fill(1).map((_, i) => [i, j]));
+
   checkSubscription: Subscription;
   moveSubscription: Subscription;
 
@@ -67,8 +70,12 @@ export class ChessBoardComponent implements OnDestroy {
   }
 
   // Returns color of the tile in tilePosition
-  tileColor(tilePosition: number[]){
-    const tile: Tile = this.game.board[tilePosition[1]][tilePosition[0]];
+  tileColor([x, y]: number[]){
+    if(this.isReversed()){
+      y = 7 - y;
+    }
+    // console.log('board', this.game.board);
+    const tile: Tile = this.game.board[y][x];
     
     if(tile.piece !== null && tile.piece === this.selectedPiece){
       // Selected piece
@@ -90,21 +97,21 @@ export class ChessBoardComponent implements OnDestroy {
     }
   }
 
+  isReversed(){
+    return !this.game.whitePlayer.isPlayable && this.game.blackPlayer.isPlayable;
+  }
+
   // Distance from top side of the board (in percentages)
   pieceTopLocation(piece: Piece){
-    if(!this.settings.boardReversed){
-      return this.coordinateToPercentage(piece.tile.y);
+    if(this.isReversed()){
+      return this.coordinateToPercentage(7 - piece.y);
     }else{
-      return this.coordinateToPercentage(piece.tile.x);
+      return this.coordinateToPercentage(piece.y);
     }
   }
   // Distance from left side of the board (in percentages)
   pieceLeftLocation(piece: Piece){
-    if(!this.settings.boardReversed){
-      return this.coordinateToPercentage(piece.tile.x);
-    }else{
-      return this.coordinateToPercentage(this.settings.boardSize - 1 - piece.tile.y);
-    }
+    return this.coordinateToPercentage(piece.x);
   }
 
   pieceImageUrl(piece: Piece){
@@ -115,10 +122,13 @@ export class ChessBoardComponent implements OnDestroy {
     return (coordinate * 12.5) + '%';
   }
 
-  selectTile(tilePosition: number[]){
+  selectTile([x, y]: number[]){
+    if(this.isReversed()){
+      y = 7 - y;
+    }
     const activePlayer = this.game.activePlayer;
     if(this.game.isInteractive && activePlayer.isPlayable){
-      const tile = this.game.board[tilePosition[1]][tilePosition[0]];
+      const tile = this.game.board[y][x];
       const piece = tile.piece;
       if(piece && piece.color === activePlayer.color){
         this.selectedPiece = piece;

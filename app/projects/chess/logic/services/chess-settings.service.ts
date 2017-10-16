@@ -9,17 +9,11 @@ export class ChessSettingsService {
   positions: string[];
   whitePlayer: PlayerTypes = PlayerTypes.websocket; // Temporary defaults for easier testing
   blackPlayer: PlayerTypes = PlayerTypes.websocket;
-  boardReversed: boolean = false;
   roundLimit: number = 100;
-
-  // Contains tile positions on the board interface
-  // boardTilePositions[y][x][tile.x, tile.y]
-  boardTilePositions: number[][][];
 
   private readonly defaultPositions: string[] = ['PPPPPPPP', 'RKBQXBKR'];
 
   constructor() { 
-    this.changeReversed(false);
     this.positions = this.defaultPositions;
   }
 
@@ -52,16 +46,5 @@ export class ChessSettingsService {
   // Changes piece layout back to default
   resetPositions(){
     this.positions = this.defaultPositions;
-  }
-
-  // Sets template for tile positions used by ChessBoardComponent
-  changeReversed(reversed: boolean){
-    this.boardReversed = reversed;
-
-    if(reversed){
-      this.boardTilePositions = Array(this.boardSize).fill(1).map((x, j) => Array(this.boardSize).fill(1).map((_, i) => [j, 7-i]));
-    }else{
-      this.boardTilePositions = Array(this.boardSize).fill(1).map((x, j) => Array(this.boardSize).fill(1).map((_, i) => [i, j]));
-    }
   }
 }

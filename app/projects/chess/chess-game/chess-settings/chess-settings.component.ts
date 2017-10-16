@@ -14,28 +14,20 @@ export class ChessSettingsComponent {
 
   upperRow: string;
   lowerRow: string;
-  boardReversed: boolean;
 
   constructor(private settings: ChessSettingsService, private game: ChessGameService){
     this.upperRow = settings.positions[1];
     this.lowerRow = settings.positions[0];
-    this.boardReversed = settings.boardReversed;
   }
 
   saveSettings(){
     this.settings.setPositions(this.upperRow, this.lowerRow);
-    if(this.boardReversed !== this.settings.boardReversed){
-      this.settings.changeReversed(this.boardReversed);
-    }
     this.close.emit();
     this.game.newGame();
   }
 
   resetLayout(){
     this.settings.resetPositions();
-    if(this.boardReversed !== this.settings.boardReversed){
-      this.settings.changeReversed(this.boardReversed);
-    }
     this.close.emit();
     this.game.newGame();
   }

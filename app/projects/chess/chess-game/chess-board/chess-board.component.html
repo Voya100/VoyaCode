@@ -1,5 +1,5 @@
 <section id="board">
-  <div *ngFor="let row of settings.boardTilePositions" class="board-row">
+  <div *ngFor="let row of tiles" class="board-row">
     <div *ngFor="let tilePosition of row;" [style.background]="tileColor(tilePosition)" (click)="selectTile(tilePosition)" class="board-tile"></div>
   </div>
 </section>
