@@ -9,7 +9,12 @@
   </div>
   <div *ngIf="isLoggedIn()">
     Users:
-    <div *ngFor="let user of getUsers()">{{user}} <button *ngIf="user !== username" (click)="challengePlayer(user)">Challenge</button></div>
+    <div *ngFor="let user of getUsers()">
+      <div *ngIf="user !== username">
+        {{user}} 
+        <button (click)="challengePlayer(user)">Challenge</button>
+      </div>
+    </div>
   </div>
 </div>
 <div class="interface" *ngIf="challengeSent">
