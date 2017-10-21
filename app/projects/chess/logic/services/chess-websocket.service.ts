@@ -115,12 +115,12 @@ export class ChessWebsocketService {
     this.socket.emit('cancel-challenge');
   }
 
-  acceptChallenge(){
-    this.socket.emit('accept-challenge');
+  acceptChallenge(challenger: string){
+    this.socket.emit('accept-challenge', challenger);
   }
 
-  denyChallenge(){
-    this.socket.emit('deny-challenge');
+  denyChallenge(challenger: string){
+    this.socket.emit('deny-challenge', challenger);
   }
   
   getUsers(){

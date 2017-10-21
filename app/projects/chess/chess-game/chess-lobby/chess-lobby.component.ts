@@ -37,11 +37,11 @@ export class ChessLobbyComponent {
   }
 
   acceptChallenge(){
-    this.websocket.acceptChallenge();
+    this.websocket.acceptChallenge(this.challenge.username);
   }
 
   denyChallenge(){
-    this.websocket.denyChallenge();
+    this.websocket.denyChallenge(this.challenge.username);
   }
 
   getUsers(){
