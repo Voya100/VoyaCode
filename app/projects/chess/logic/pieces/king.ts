@@ -68,10 +68,13 @@ export class King extends Piece{
     if(rook.hasMoved || rook.y !== this.y || target == null){
       return false;
     }
-    const tilesBetween = target.tilesBetween(this.tile);
-    tilesBetween.push(target);
-    const tilesWithPieces = tilesBetween.filter((tile: Tile) => !tile.isEmpty());
-    const dangerTiles = tilesBetween.filter((tile: Tile) => tile.getThreats(this.color).length !== 0);
+    const tilesBetween = this.tile.tilesBetween(rook.tile);
+    const tilesWithPieces = tilesBetween.filter((tile) => !tile.isEmpty());
+
+    const tilesInKingPath = target.tilesBetween(this.tile);
+    tilesInKingPath.push(target);
+    const dangerTiles = tilesInKingPath.filter((tile) => tile.getThreats(this.color).length !== 0);
+    
     if(tilesWithPieces.length !== 0 || dangerTiles.length !== 0){
       return false;
     }
