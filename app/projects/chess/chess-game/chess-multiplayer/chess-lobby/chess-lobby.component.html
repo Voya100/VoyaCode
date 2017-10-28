@@ -43,6 +43,7 @@
         <br>
         <label><input type="radio" [(ngModel)]="boardType" value="standard"> Standard</label>
         <label><input type="radio" [(ngModel)]="boardType" value="custom"> Custom</label>
+        <chess-board-layout [row1]="boardRows[1]" [row2]="boardRows[0]"></chess-board-layout>
       </li>
     </ul>
   </section>

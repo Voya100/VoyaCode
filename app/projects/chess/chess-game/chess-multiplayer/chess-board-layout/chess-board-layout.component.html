@@ -1,0 +1,12 @@
+<section>
+  <div>
+    <div *ngFor="let id of repeater" class="tile" [style.background]="id % 2 ? black : white">
+      <img *ngIf="pieceImagePath(row2[id])" [src]="pieceImagePath(row2[id])">
+    </div>
+  </div>
+  <div>
+    <div *ngFor="let id of repeater" class="tile" [style.background]="(id+1) % 2 ? black : white">
+      <img *ngIf="pieceImagePath(row1[id])" [src]="pieceImagePath(row1[id])">
+    </div>
+  </div>
+</section>

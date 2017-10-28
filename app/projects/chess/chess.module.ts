@@ -22,6 +22,7 @@ import { ChessLobbyComponent } from './chess-game/chess-multiplayer/chess-lobby/
 // tslint:disable-next-line:max-line-length
 import { ChessChallengeReceivedComponent } from './chess-game/chess-multiplayer/chess-challenge-received/chess-challenge-received.component';
 import { ChessChallengeSentComponent } from './chess-game/chess-multiplayer/chess-challenge-sent/chess-challenge-sent.component';
+import { ChessBoardLayoutComponent } from './chess-game/chess-multiplayer/chess-board-layout/chess-board-layout.component';
 
 import { routing } from './chess.routing';
 
@@ -31,7 +32,7 @@ import { routing } from './chess.routing';
   declarations: [
     ChessComponent, ChessGameComponent, ChessBoardComponent, ChessInstructionsComponent, 
     ChessSettingsComponent, ChessChooseModeComponent, ChessWinnerDialogComponent, 
-    ChessMultiplayerComponent, ChessLobbyComponent, ChessChallengeReceivedComponent, ChessChallengeSentComponent
+    ChessMultiplayerComponent, ChessLobbyComponent, ChessChallengeReceivedComponent, ChessChallengeSentComponent, ChessBoardLayoutComponent
   ],
   providers: [ChessGameService, ChessSettingsService, ChessWebsocketService]
 })

@@ -6,7 +6,8 @@
     <br>Player: {{challenge.username}}
     <br>Round limit: {{challenge.roundLimit}}
     <br>Time limit: {{challenge.timeLimit}}
-    <br>Game board: ...
+    <br>Game board:
+    <chess-board-layout [row1]="challenge.row1" [row2]="challenge.row2"></chess-board-layout>
   </p>
 
   <section *ngIf="challenge.isDeclined">
