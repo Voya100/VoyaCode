@@ -1,0 +1,49 @@
+<h1>Multiplayer lobby</h1>
+
+<div *ngIf="!isLoggedIn()">
+  <form (submit)="login()">
+    Username:
+    <input type="text" name="username" [(ngModel)]="username">
+    <button title="Login" type="submit">Login</button>
+  </form>
+</div>
+
+<div class="lobby-container" *ngIf="isLoggedIn()">
+  <section class="player-list">
+    <h2>Users</h2>
+      <span *ngIf="getUsers().length <= 1">
+        No other players online.
+        <br>Why not invite a friend to play with you?
+      </span>
+      <div *ngFor="let user of getUsers()">
+        <div *ngIf="user !== username">
+          {{user}} 
+          <button (click)="challengePlayer(user)">Challenge</button>
+        </div>
+      </div>
+  </section>
+
+  <section class="settings">
+    <h2>Settings</h2>
+    <ul>
+      <li>
+        <label for="timeLimit">
+          Time limit (s):
+        </label> 
+        <input min="5" max="300" type="number" name="timeLimit" [(ngModel)]="timeLimit" />
+      </li>
+      <li>
+        <label for="roundLimit">
+          Round limit:
+        </label>
+        <input name="roundLimit" min="0" max="1000" type="number" [(ngModel)]="roundLimit"/>
+      </li>
+      <li>
+        Board type:
+        <br>
+        <label><input type="radio" [(ngModel)]="boardType" value="standard"> Standard</label>
+        <label><input type="radio" [(ngModel)]="boardType" value="custom"> Custom</label>
+      </li>
+    </ul>
+  </section>
+</div>

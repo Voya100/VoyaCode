@@ -1,0 +1,20 @@
+<div *ngIf="challenge">
+  <h2>Challenge sent</h2>
+  <p>
+    Challenge has been sent, waiting response...
+    <br>Details:
+    <br>Player: {{challenge.username}}
+    <br>Round limit: {{challenge.roundLimit}}
+    <br>Time limit: {{challenge.timeLimit}}
+    <br>Game board: ...
+  </p>
+
+  <section *ngIf="challenge.isDeclined">
+    User {{challengedPlayer}} declined the challenge.
+    <br><button (click)="return()">Return</button>
+  </section>
+
+  <section *ngIf="!challenge.isDeclined">
+    <button (click)="cancelChallenge()">Cancel</button>
+  </section>
+</div>

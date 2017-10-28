@@ -28,8 +28,9 @@ export interface MoveAction{
 
 export interface Challenge {
   username: string, 
-  timelimit: number, 
-  maxRounds: number, 
+  timeLimit: number, 
+  roundLimit: number, 
   row1: string, 
   row2: string
+  isDeclined?: boolean;
 };

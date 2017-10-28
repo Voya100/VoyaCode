@@ -1,0 +1,62 @@
+@import "../../../chess-variables";
+
+:host{
+  @extend .dialog;
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  height: 340px;
+  max-width: 100%;
+  max-height: 100%;
+  text-align: center;
+}
+
+h1{
+  margin: 7px 0;
+}
+
+h2{
+  margin: 0;
+}
+
+.lobby-container{
+  display: flex;
+  text-align: left;
+  height: auto;
+}
+
+.settings, .player-list{
+  background-color: whitesmoke;
+  overflow-y: auto;
+  margin: 5px;
+  width: 50%;
+  border-radius: 3px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.player-list{
+  button{
+    float: right;
+  }
+}
+
+.settings{
+  //justify-content: flex-start;
+  ul{
+    display: block;
+    list-style-type: none;
+    padding: 0;
+    max-width: 200px;
+  }
+  label{
+    display: inline-block;
+    width: 60%;
+  }
+  input{
+    display: inline-block;
+    &[type=number]{
+      width: 35%;
+    }
+  }
+}

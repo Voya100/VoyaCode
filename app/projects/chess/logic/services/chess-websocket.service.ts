@@ -14,6 +14,7 @@ export class ChessWebsocketService {
   public isLoggedIn: boolean = false;
   public isInGame: boolean;
   public challenge: Challenge;
+  public challengeSent: Challenge;
   private playerName: string;
   private timer: number;
   private challengerIsThisPlayer: boolean = false;
@@ -44,10 +45,16 @@ export class ChessWebsocketService {
       this.challenge = challenge;
     });
 
+    this.socket.on('challenge-declined', () => {
+      if(this.challengeSent){
+        this.challengeSent.isDeclined = true;
+      }
+    });
+
     this.socket.on('challenge-cancelled', () => {
       // TODO: show message to user
       this.challenge = undefined;
-    })
+    });
 
     this.socket.on('game-action', (action: {xStart: number, xEnd: number, yStart: number, yEnd: number}) => {
       console.log('game-action', action)
@@ -56,21 +63,21 @@ export class ChessWebsocketService {
       const activePlayer = <WebsocketPlayer> this.game.activePlayer;
       activePlayer.resolveAction({piece, tile});
       console.log('game-action');
-    })
+    });
 
     this.socket.on('timer', (time: number) => {
       this.timer = time;
-    })
+    });
 
     this.socket.on('reconnect', () => {
       console.log('reconnected');
       this.socket.emit('rejoin', {socketId: this.socketId});
-    })
+    });
 
     this.socket.on('disconnect', () => {
       this.isLoggedIn = false;
       console.log('disconnected');
-    })
+    });
   }
 
   joinLobby(username: string){
@@ -96,31 +103,38 @@ export class ChessWebsocketService {
     return this.playablePlayer.color;
   }
 
-  challengePlayer(username: string, timeLimit: number, maxRounds: number, row1: string, row2: string){
-    return new Promise((resolve, reject) => {
-      // Todo: remove test value
-      this.socket.emit('challenge-player', {username, timeLimit: 10, maxRounds, row1, row2}, (error: string) => {
-        if(error){
-          // TODO: error handling
-          console.log('Error: invalid action', error);
-          reject(error);
-        }else{
-          resolve();
-        }
-      });
+  getPlayerName(){
+    return this.playerName;
+  }
+
+  challengePlayer(username: string, timeLimit: number, roundLimit: number, row1: string, row2: string){
+    this.challengeSent = {username, timeLimit, roundLimit, row1, row2};
+    this.socket.emit('challenge-player', {username, timeLimit, roundLimit, row1, row2}, (error: string) => {
+      if(error){
+        // TODO: error handling
+        console.log('Error: invalid action', error);
+      }
     });
   }
 
   cancelChallenge(){
-    this.socket.emit('cancel-challenge');
+    this.socket.emit('cancel-challenge', (err: string) => {
+      if(!err){
+        this.challengeSent = undefined;
+      }
+    });
   }
 
   acceptChallenge(challenger: string){
     this.socket.emit('accept-challenge', challenger);
   }
 
-  denyChallenge(challenger: string){
-    this.socket.emit('deny-challenge', challenger);
+  declineChallenge(challenger: string){
+    this.socket.emit('decline-challenge', challenger, (err: string) => {
+      if(!err){
+        this.challenge = undefined;
+      }
+    });
   }
   
   getUsers(){
@@ -150,6 +164,7 @@ export class ChessWebsocketService {
 
   private setState({state, blackPlayer, whitePlayer}: {state: ChessState, blackPlayer: string, whitePlayer: string}){
     this.challenge = undefined;
+    this.challengeSent = undefined;
     this.game.gamePaused = false;
     this.game.setState(state);
     

@@ -1,0 +1,14 @@
+<div *ngIf="challenge">
+  <h2>Challenge received</h2>
+  <p>
+    Player: {{challenge.username}}
+    <br>Round limit: {{challenge.roundLimit}}
+    <br>Time limit: {{challenge.timeLimit}}
+    <br>Game board: ...
+  </p>
+
+  <section>
+    <button (click)="acceptChallenge()">Accept</button>
+    <button (click)="declineChallenge()">Decline</button>
+  </section>
+</div>

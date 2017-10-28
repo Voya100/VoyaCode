@@ -11,7 +11,7 @@ export class ChessSettingsService {
   blackPlayer: PlayerTypes = PlayerTypes.websocket;
   roundLimit: number = 100;
 
-  private readonly defaultPositions: string[] = ['PPPPPPPP', 'RKBQXBKR'];
+  readonly defaultPositions: string[] = ['PPPPPPPP', 'RKBQXBKR'];
 
   constructor() { 
     this.positions = this.defaultPositions;
