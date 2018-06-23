@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import { LocalStorageService } from 'angular-2-local-storage';
 import 'rxjs/add/observable/of';
- 
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class AuthService {
   public token: string;
@@ -11,16 +12,16 @@ export class AuthService {
   public loggedIn: boolean;
   // If user has logged in earlier, login link should be shown
   public hasUser: boolean = false;
- 
-  constructor(private http: Http) {
+
+  constructor(private http: Http, private storage: LocalStorageService) {
     // set token if saved in local storage
     this.token = this.getToken();
-    this.hasUser = JSON.parse(localStorage.getItem('hasUser'));
+    this.hasUser = JSON.parse(storage.get('hasUser'));
     this.checkLogin();
   }
 
   getToken(){
-    const currentUser = JSON.parse(localStorage.getItem('user'));
+    const currentUser = JSON.parse(this.storage.get('user'));
     return currentUser && currentUser.token;
   }
 
