@@ -31,7 +31,7 @@ export class BlogFormComponent {
   getPreview(){
     this.previewLoading = true;
     this.previewError = '';
-    console.log('this.blog', this.blog)
+    console.log('this.blog', this.blog);
     this.blogsService.getBlogPreview(this.blog.name, this.blog.text).subscribe(
       (res: Response) => { 
         this.previewBlog = res.json().data;

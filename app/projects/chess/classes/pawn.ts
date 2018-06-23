@@ -79,7 +79,7 @@ export class Pawn extends Piece{
       setTimeout(() => {
         this.die();
         this.player.game.addPiece(this.x(), this.y(), this.player, 'Q');
-      }, 500)
+      }, 500);
     }
   }
 

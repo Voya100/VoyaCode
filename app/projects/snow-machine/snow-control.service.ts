@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { SnowFlake } from './snow-flake'
-import { SnowSettings } from './snow-settings/snow-settings'
+import { SnowFlake } from './snow-flake';
+import { SnowSettings } from './snow-settings/snow-settings';
 
 // SnowControlService controls snow/rain effect.
 // It creates, deletes and moves flakes.

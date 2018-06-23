@@ -49,7 +49,7 @@ export class AdminBlogsComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {data: {
       title: 'Delete', 
       message: 'Are you sure you want to delete "' + name + '"?'
-    }})
+    }});
     return dialogRef.afterClosed();
   }
 

@@ -9,7 +9,7 @@ import { RpsWinningConditionsComponent } from './rock-paper-scissors-game/rps-me
 import { RpsRulesComponent } from './rock-paper-scissors-game/rps-menu/rps-rules/rps-rules.component';
 import { RpsStatisticsComponent } from './rock-paper-scissors-game/rps-menu/rps-statistics/rps-statistics.component';
 
-const title = 'Rock, Paper, Scissors'
+const title = 'Rock, Paper, Scissors';
 
 const routes: Routes = [
   { path: '', component: RockPaperScissorsComponent, children: [

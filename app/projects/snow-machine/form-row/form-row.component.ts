@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SnowSettings } from '../snow-settings/snow-settings'
+import { SnowSettings } from '../snow-settings/snow-settings';
 
 @Component({
   selector: 'form-row',

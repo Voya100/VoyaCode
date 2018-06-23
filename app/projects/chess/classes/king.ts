@@ -80,7 +80,7 @@ export class King extends Piece{
     if(!Tile.tileExists(x, this.y())){
       return null;
     }else{
-      return this.tiles[this.y()][x]
+      return this.tiles[this.y()][x];
     }
   }
 

@@ -55,9 +55,9 @@ export class SavedColorsComponent {
 
   getHsl(hsl: number[], rounded: boolean = false){
     if(rounded){ 
-      hsl = hsl.map(Math.round)
+      hsl = hsl.map(Math.round);
     }
-    return 'hsl(' + hsl[0] + ', ' + hsl[1] + '%, ' + hsl[2] + '%)'
+    return 'hsl(' + hsl[0] + ', ' + hsl[1] + '%, ' + hsl[2] + '%)';
   }
 
 }

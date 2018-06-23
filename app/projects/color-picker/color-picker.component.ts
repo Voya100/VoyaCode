@@ -35,7 +35,7 @@ export class ColorPickerComponent {
     [colorChannel.R]: [colorChannel.G, colorChannel.B, colorChannel.R],
     [colorChannel.G]: [colorChannel.B, colorChannel.R, colorChannel.G],
     [colorChannel.B]: [colorChannel.R, colorChannel.G, colorChannel.B]
-  }
+  };
 
   constructor(private colorService: ColorService) {
     this.updateHsl();

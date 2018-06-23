@@ -16,7 +16,7 @@ export class TextAreaWithtagsComponent {
   @Output() messageChange: EventEmitter<string> = new EventEmitter();
 
   constructor(){}
-  
+
   // Adds tags around the current selection. Selection is moved between the tags.
   addTag(startTag: string, endTag: string, textarea: HTMLTextAreaElement){
     const beginning = textarea.selectionStart;
@@ -33,7 +33,7 @@ export class TextAreaWithtagsComponent {
       // Caret position is set between the tags
       setTimeout(() => {
         this.setCaretPosition(start.length + startTag.length, start.length + startTag.length + (ending - beginning), textarea);
-      }, 100)
+      }, 100);
     }
   }
 
@@ -43,7 +43,7 @@ export class TextAreaWithtagsComponent {
       case 'b':
       case 'i':
       case 'u':
-        this.addTag('[' + tag + ']', '[/' + tag + ']', textarea)
+        this.addTag('[' + tag + ']', '[/' + tag + ']', textarea);
         break;
       case 'url':
         this.addTag('[' + tag + '=]', '[/' + tag + ']', textarea);
@@ -52,7 +52,7 @@ export class TextAreaWithtagsComponent {
 
   // Sets selection in textarea
   setCaretPosition(start: number, end: number, input: HTMLTextAreaElement) {
-    input.setSelectionRange(start, end);  
+    input.setSelectionRange(start, end);
     input.focus();
   }
 

@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 
 // Returns random value from array
 function randVal(array: any[]){
-  if(array.length === 0){return array}
+  if(array.length === 0){return array; }
 
   return array[Math.floor(Math.random() * array.length)];
 }
@@ -313,7 +313,7 @@ export class ComputerPlayer extends Player{
           if(risk < riskValue){
             safest = [];
           }
-          safest.push([piece, tile, risk])
+          safest.push([piece, tile, risk]);
           riskValue = risk;
         }
       }
@@ -347,7 +347,7 @@ export class ComputerPlayer extends Player{
         tiles = _.intersection(tiles, this.moveTiles);
       }
       // tslint:disable-next-line:no-shadowed-variable
-      tiles = tiles.filter((tile) => !tile.isFriendOf(player))
+      tiles = tiles.filter((tile) => !tile.isFriendOf(player));
       piece_tile = this.approachTileLoop(tiles, piece_tile, ['bishop', 'queen'], moveTiles, 'bishop', safe, depth);
     }
     if(type === 'all' || type === 'knight'){
@@ -358,7 +358,7 @@ export class ComputerPlayer extends Player{
         tiles = _.intersection(tiles, this.moveTiles);
       }
       // tslint:disable-next-line:no-shadowed-variable
-      tiles = tiles.filter((tile) => !tile.isFriendOf(player))
+      tiles = tiles.filter((tile) => !tile.isFriendOf(player));
       piece_tile = this.approachTileLoop(tiles, piece_tile, ['knight'], moveTiles, 'knight', safe, depth);
     }
     return piece_tile;

@@ -45,6 +45,6 @@ export class CommentsService {
       return result;
     }).catch((err: Response) => {
       throw err.json().message;
-    })
+    });
   }
 }

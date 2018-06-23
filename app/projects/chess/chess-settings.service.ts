@@ -15,7 +15,7 @@ export class ChessSettingsService {
   boardTilePositions: number[][][];
 
   private readonly defaultPositions: string[] = ['RKBQXBKR',
-                                                'PPPPPPPP'];
+    'PPPPPPPP'];
 
   constructor() { 
     this.changeReversed(false);

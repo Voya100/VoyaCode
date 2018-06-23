@@ -131,7 +131,7 @@ export class ColorWheelComponent implements AfterViewInit, OnChanges {
   drawCircle(){
     const cicrleRadius = 5;
 
-    const [red, green, blue] = this.colorService.hslToRgb([this.hue, this.saturation, this.lightness])
+    const [red, green, blue] = this.colorService.hslToRgb([this.hue, this.saturation, this.lightness]);
     this.context.strokeStyle = this.colorService.getContrastColor(red, green, blue);
     this.context.lineWidth = this.circleLineWidth;
 

@@ -40,7 +40,7 @@ export class CommentsComponent implements OnInit {
           private: false,
           post_time: '',
           update_time: ''
-        })
+        });
       }
     );
   }

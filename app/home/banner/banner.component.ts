@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Project, projectList } from '../../shared/data/projects'
+import { Project, projectList } from '../../shared/data/projects';
 
 // Banner component goes shows all project banners one at a time.
 // Banner changes project automatically every 5 seconds.

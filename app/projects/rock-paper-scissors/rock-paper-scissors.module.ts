@@ -24,7 +24,7 @@ import { RpsStatisticsComponent } from './rock-paper-scissors-game/rps-menu/rps-
   })],
   exports: [],
   declarations: [RockPaperScissorsComponent, RockPaperScissorsGameComponent, RpsGameAreaComponent, 
-                 RpsMenuComponent, RpsUsernameComponent, RpsWinningConditionsComponent, RpsRulesComponent, RpsStatisticsComponent],
+    RpsMenuComponent, RpsUsernameComponent, RpsWinningConditionsComponent, RpsRulesComponent, RpsStatisticsComponent],
   providers: [RpsGameLogicService, LocalStorageService]
 })
 export class RockPaperScissorsModule { }

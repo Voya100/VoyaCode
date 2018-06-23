@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() { 
     this.blogs.getBlogs(1).subscribe(
       blog => {
-        this.blog = blog[0]
+        this.blog = blog[0];
       }
     );
   }

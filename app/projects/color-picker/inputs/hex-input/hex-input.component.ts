@@ -44,7 +44,7 @@ export class HexInputComponent {
   }
 
   private hexToColors(hex: string){
-    if(hex[0] === '#'){ hex = hex.slice(1) }
+    if(hex[0] === '#'){ hex = hex.slice(1); }
     if(hex.length !== 6){ return []; }
     const red = this.fromHex(hex.slice(0, 2));
     const green = this.fromHex(hex.slice(2, 4));

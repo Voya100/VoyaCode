@@ -86,7 +86,7 @@ export class Tile{
 
   // True if this tile has a piece with different color as piece/player given by parameter
   isEnemyOf(pieceOrPlayer: Piece | Player){
-    return !this.empty() && this.piece.color !== pieceOrPlayer.color
+    return !this.empty() && this.piece.color !== pieceOrPlayer.color;
   }
 
   // True if there is a piece on the tile, false otherwise
@@ -280,9 +280,9 @@ export class Tile{
   
   // Checks if tile is between 2 tiles
   isBetween(targetTile: Tile, enemyTile: Tile){
-    const x_min = Math.min(targetTile.x, enemyTile.x)
+    const x_min = Math.min(targetTile.x, enemyTile.x);
     const x_max = Math.max(targetTile.x, enemyTile.x);
-    const y_min = Math.min(targetTile.y, enemyTile.y)
+    const y_min = Math.min(targetTile.y, enemyTile.y);
     const y_max = Math.max(targetTile.y, enemyTile.y);
     
     // Same row/column

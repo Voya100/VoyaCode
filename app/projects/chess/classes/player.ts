@@ -39,8 +39,8 @@ export abstract class Player{
   pieceDecision: Piece = null;
   tileDecision: Tile = null;
 
-  pieceCount(): number{return this.pieces.length};
-  kingCount(): number{return this.kings.length};
+  pieceCount(): number{return this.pieces.length; }
+  kingCount(): number{return this.kings.length; }
 
   constructor(color: string, game: ChessGameService){
     this.color = color;

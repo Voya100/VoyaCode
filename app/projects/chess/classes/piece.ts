@@ -37,12 +37,12 @@ export abstract class Piece{
   abstract tileCheck(): void;
 
   // Returns friendlies which can move to the tile after death	
-  friends(){return this.tile[this.color + 'Hits']}; 	
+  friends(){return this.tile[this.color + 'Hits']; } 	
   // Returns enemies that can hit the next turn
-  threats(){return this.tile[this.player.enemy.color + 'Hits']};
+  threats(){return this.tile[this.player.enemy.color + 'Hits']; }
 
-  x(): number{return this.tile.x};
-  y(): number{return this.tile.y};
+  x(): number{return this.tile.x; }
+  y(): number{return this.tile.y; }
     
   move(x: number, y: number, changeTurn: boolean = true){
     this.tile.piece = null;

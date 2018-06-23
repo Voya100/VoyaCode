@@ -29,11 +29,11 @@ export class SnowSettings{
 
   // Edges of the screen
   readonly xMax: number = document.documentElement.clientWidth-50;
-  readonly yMax: number = Math.max( document.body.scrollHeight, 
+  readonly yMax: number = Math.max(document.body.scrollHeight, 
                                     document.body.offsetHeight, 
                                     document.documentElement.clientHeight, 
                                     document.documentElement.scrollHeight, 
-                                    document.documentElement.offsetHeight );
+                                    document.documentElement.offsetHeight);
 
   // Max/min values can depend on current settings.
   // Min value can't be higher than current max setting value and max value can't be smaller than min value.
@@ -45,7 +45,7 @@ export class SnowSettings{
     max_wind: () => 1000,
     min_size: () => this.max_size,
     max_size: () => 1000
-  }
+  };
   readonly min_values: any = {
     count: () => 1,
     min_speed: () => 0,
@@ -54,5 +54,5 @@ export class SnowSettings{
     max_wind: () => this.min_wind,
     min_size: () => 0,
     max_size: () => this.min_size
-  }
+  };
 }

@@ -24,7 +24,7 @@ export class BlogSubscribeConfirmComponent {
         this.requestMessage = err;
         this.loading = false;
       }
-    )
+    );
   }
 
 }

@@ -53,7 +53,7 @@ export class ColorService {
 
   rgbToHsl([red, green, blue]: number[]){
     red /= 255, green /= 255, blue /= 255;
-    const max = Math.max(red, green, blue)
+    const max = Math.max(red, green, blue);
     const min = Math.min(red, green, blue);
     const lightness = (max + min) / 2;
     let saturation = lightness;

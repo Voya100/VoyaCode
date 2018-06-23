@@ -20,7 +20,7 @@ import { ChessWinnerDialogComponent } from './chess-game/chess-winner-dialog/che
   imports: [routing, SharedModule, CommonModule, FormsModule],
   exports: [],
   declarations: [ChessComponent, ChessGameComponent, ChessBoardComponent, ChessInstructionsComponent, 
-                ChessSettingsComponent, ChessChooseModeComponent, ChessWinnerDialogComponent],
+    ChessSettingsComponent, ChessChooseModeComponent, ChessWinnerDialogComponent],
   providers: [ChessGameService, ChessSettingsService]
 })
 export class ChessModule { }

@@ -29,7 +29,7 @@ export class BlogComponent implements OnInit, OnDestroy {
         this.blog = blog;
       },
       (e) => {
-        this.error = 'Blog with given id does not exist. The blog may have been removed.'
+        this.error = 'Blog with given id does not exist. The blog may have been removed.';
       });
     });
   }

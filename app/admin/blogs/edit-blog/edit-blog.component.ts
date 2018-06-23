@@ -29,7 +29,7 @@ export class EditBlogComponent implements OnInit, OnDestroy {
         this.blog = blog;
         this.loading = false;
       }));
-    })
+    });
   }
 
   ngOnDestroy(){

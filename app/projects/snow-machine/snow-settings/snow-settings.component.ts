@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 
-import { FormRowComponent } from '../form-row/form-row.component'
-import { SnowControlService } from '../snow-control.service'
+import { FormRowComponent } from '../form-row/form-row.component';
+import { SnowControlService } from '../snow-control.service';
 import { SnowSettings } from './snow-settings';
 
 // This component contains all input fields which will alter settings of SnowControlService.

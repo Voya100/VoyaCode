@@ -91,7 +91,7 @@ export class RpsGameAreaComponent implements OnDestroy {
     this.gameData.playRound();
       
     if(this.gameData.isTie()){
-      this.roundResult = 'It\'s a tie, both players get 0.5 points.'
+      this.roundResult = 'It\'s a tie, both players get 0.5 points.';
     }else{
       const winner = this.gameData.roundWinner;
       const loser = this.gameData.getOpponent(winner);
@@ -120,7 +120,7 @@ export class RpsGameAreaComponent implements OnDestroy {
   showGameResult(){
     const winner = this.gameData.getGameWinner();
     if(winner == null){
-      this.gameResult = 'It\'s a tie!'
+      this.gameResult = 'It\'s a tie!';
     }else{
       this.gameResult = winner.name + ' wins!';
     }

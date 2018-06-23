@@ -34,15 +34,15 @@ export class RpsGameLogicService {
     rock: 'scissors',
     paper: 'rock',
     scissors: 'paper'
-  }
+  };
   
   constructor(private storage: LocalStorageService) { 
     this.player1 = {name: 'Player', choice: '', score: 0};
     this.player2 = {name: 'Computer', choice: '', score: 0};
 
     if(storage.get('statistics') == null){
-      this.statistics = {playTimes: 0, victories: 0, ties: 0, losses: 0}
-      this.settings = {pointsToWin: 3}
+      this.statistics = {playTimes: 0, victories: 0, ties: 0, losses: 0};
+      this.settings = {pointsToWin: 3};
       storage.set('statistics', this.statistics);
       storage.set('settings', this.settings);
       storage.set('playerName', this.player1.name);
