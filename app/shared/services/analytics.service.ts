@@ -7,18 +7,20 @@ declare let ga: Function;
 @Injectable()
 export class AnalyticsService {
 
-  acceptsCookies: boolean;
+  acceptsCookies: boolean = false;
 
   get analyticsActive(): boolean{
     return this.acceptsCookies && !!ga;
   }
 
   constructor(private storage: LocalStorageService){
-    const acception = storage.get('acceptsCookies');
+    let acception = storage.get('acceptsCookies');
     if(acception === null){
+      // Accepted by default
       this.acceptCookies();
+    }else{
+      this.acceptsCookies = acception === 'true';
     }
-    this.acceptsCookies = acception === 'true';
     this.initialiseAnalytics();
   }
 
