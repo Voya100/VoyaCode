@@ -1,0 +1,15 @@
+@import "../../sass/variables";
+
+:host{
+  @extend %main-content;
+}
+
+section{
+  @extend %bordered-box;
+}
+
+.button{
+  @extend %button;
+  display: block;
+  margin-top: 8px;
+}

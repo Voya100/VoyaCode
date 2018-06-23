@@ -25,6 +25,7 @@
     "app/blogs/blogs.module.ts",
     "app/projects/projects.module.ts",
     "app/comments/comments.module.ts",
+    "app/cookie-policy/cookie-policy.module.ts",
     "app/not-found/not-found.module.ts",
 
     "app/login/login.module.ts",
@@ -38,7 +39,7 @@
     "app/projects/hangman/hangman.module.ts",
     "app/projects/color-picker/color-picker.module.ts",
     "app/projects/other-projects/other-projects.module.ts",
-    
+
     "app/main.ts"
   ],
   "exclude": [

@@ -23,7 +23,7 @@ export class AppComponent  implements OnInit, AfterViewChecked {
   height: number = 0;
 
   private loading: boolean = true;
-  
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -38,7 +38,7 @@ export class AppComponent  implements OnInit, AfterViewChecked {
       .map(() => this.activatedRoute)
       .map(route => {
         while (route.firstChild){
-          route = route.firstChild
+          route = route.firstChild;
         }
         return route;
       })
@@ -50,6 +50,8 @@ export class AppComponent  implements OnInit, AfterViewChecked {
 
     // There may be a way to combine these subscribes, but I'm not sure what's the best way to do it.
     this.router.events.subscribe((event: Event) => this.loadHandler(event));
+
+    this.analytics.initialiseAnalytics();
   }
 
   ngAfterViewChecked() {
@@ -67,7 +69,7 @@ export class AppComponent  implements OnInit, AfterViewChecked {
     }
     if (event instanceof NavigationEnd) {
       this.loading = false;
-      this.loadingOpen = false;        
+      this.loadingOpen = false;
       this.analytics.pageView(event.urlAfterRedirects);
     }
 

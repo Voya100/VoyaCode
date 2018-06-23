@@ -1,0 +1,18 @@
+<h1>Cookie policy</h1>
+<section>
+  <p>
+    This website uses cookies to track how the website is used.
+    The tracked information includes the visited pages, client details and some interaction events. No personal information is stored.
+  </p>
+  <p>
+    The tracking is done with Google Analytics, and the information is not sent to any other 3rd parties nor is it used for marketing or advertisement purposes. You can opt out from tracking at any time.
+  </p>
+  <div *ngIf="acceptsCookies">
+    You are currently accepting the use of cookies.
+    <button (click)="removeCookies()" class="button">Remove cookies</button>
+  </div>
+  <div *ngIf="!acceptsCookies">
+    Tracking cookies are currently disabled. Would you like to accept cookies?
+    <button (click)="acceptCookies()" class="button">Accept cookies</button>
+  </div>
+</section>
