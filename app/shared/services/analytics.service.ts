@@ -14,7 +14,7 @@ export class AnalyticsService {
   }
 
   constructor(private storage: LocalStorageService){
-    let acception = storage.get('acceptsCookies');
+    const acception = storage.get('acceptsCookies');
     if(acception === null){
       // Accepted by default
       this.acceptCookies();
