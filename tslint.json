@@ -33,7 +33,6 @@
     "interface-name": [
       false
     ],
-    "invoke-injectable": true,
     "label-position": true,
     "linebreak-style": [true, "LF"],
     "max-line-length": [
@@ -43,7 +42,6 @@
     "member-access": false,
     "newline-before-return": false,
     "no-arg": true,
-    "no-access-missing-member": true,
     "no-angle-bracket-type-assertion": false,
     "no-attribute-parameter-decorator": true,
     "no-bitwise": true,
@@ -96,7 +94,6 @@
       true, "always", "ignore-bound-class-methods"
     ],
     "switch-default": false,
-    "templates-use-public": true,
     "triple-equals": [
       true,
       "allow-null-check"
