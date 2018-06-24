@@ -34,8 +34,8 @@ export class AuthService {
         const token = response && response.token;
         if (token) {
           this.token = token;
-          localStorage.setItem('user', JSON.stringify({ username, token, admin: response.admin }));
-          localStorage.setItem('hasUser', 'true');
+          this.storage.set('user', JSON.stringify({ username, token, admin: response.admin }));
+          this.storage.set('hasUser', 'true');
           return true;
         } else {
           return false;
@@ -54,7 +54,8 @@ export class AuthService {
     return this.http.get('/api/check-login', options).map((res: Response) => {
       this.loggedIn = true;
       return true;
-    }).catch((e) => {
+    })
+    .catch((e) => {
       this.loggedIn = false;
       return Observable.of(false);
     });

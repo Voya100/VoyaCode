@@ -41,6 +41,7 @@
     ],
     "member-access": false,
     "newline-before-return": false,
+    "newline-per-chained-call": false,
     "no-arg": true,
     "no-angle-bracket-type-assertion": false,
     "no-attribute-parameter-decorator": true,
