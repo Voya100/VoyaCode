@@ -12,32 +12,21 @@
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
-    "comment-format": [
-      true,
-      "check-space"
-    ],
+    "comment-format": false,
     "curly": true,
     "deprecation": {
       "severity": "warn"
     },
     "eofline": true,
     "forin": true,
+    "i18n": false,
     "import-blacklist": [
       true,
       "rxjs/Rx"
     ],
-    "import-spacing": true,
-    "indent": [
-      true,
-      "spaces"
-    ],
     "interface-name": false,
     "interface-over-type-literal": true,
     "label-position": true,
-    "max-line-length": [
-      true,
-      140
-    ],
     "member-access": false,
     "member-ordering": [
       true,
@@ -50,6 +39,8 @@
         ]
       }
     ],
+    "newline-before-return": false,
+    "newline-per-chained-call": false,
     "no-arg": true,
     "no-bitwise": true,
     "no-console": [
@@ -77,48 +68,32 @@
     "no-string-literal": false,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
-    "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
     "no-unused-expression": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
-    "one-line": [
+    "ordered-imports": [
       true,
-      "check-open-brace",
-      "check-catch",
-      "check-else"
+      {
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "case-insensitive",
+        "grouped-imports": true
+      }
     ],
     "prefer-const": true,
     "prefer-template": false,
-    "quotemark": [
-      true,
-      "single"
-    ],
+    "quotemark": false,
     "radix": true,
-    "semicolon": [
-      true,
-      "always"
-    ],
     "triple-equals": [
       true,
       "allow-null-check"
     ],
-    "typedef-whitespace": [
-      true,
-      {
-        "call-signature": "nospace",
-        "index-signature": "nospace",
-        "parameter": "nospace",
-        "property-declaration": "nospace",
-        "variable-declaration": "nospace"
-      }
-    ],
+    "typedef": [true],
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [
       true,
-      "check-branch",
       "check-decl",
       "check-operator",
       "check-separator",
