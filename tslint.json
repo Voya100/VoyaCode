@@ -1,6 +1,6 @@
 {
   "extends": ["tslint:recommended", "angular-tslint-rules", "tslint-eslint-rules"],
-  "rulesDirectory": ["node_modules/codelyzer"],
+  "rulesDirectory": ["node_modules/codelyzer", "node_modules/rxjs-tslint"],
   "rules": {
     "array-type": false,
     "arrow-return-shorthand": true,
@@ -62,6 +62,10 @@
     "prefer-template": false,
     "quotemark": false,
     "radix": true,
+    "rxjs-collapse-imports": true,
+    "rxjs-pipeable-operators-only": true,
+    "rxjs-no-static-observable-methods": true,
+    "rxjs-proper-imports": true,
     "triple-equals": [true, "allow-null-check"],
     "typedef": [true],
     "unified-signatures": true,

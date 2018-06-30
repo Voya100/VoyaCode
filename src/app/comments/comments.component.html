@@ -7,7 +7,7 @@
   </div>
   <comment-post *ngFor="let post of comments" [data]="post"></comment-post>
 </section>
-<section class="preview-container" *ngIf="previewPost !== null">
+<section class="preview-container" *ngIf="previewPost">
   <h2>Preview</h2>
   <comment-post [data]="previewPost"></comment-post>
 </section>

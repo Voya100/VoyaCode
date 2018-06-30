@@ -1,9 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
+import { Observable, throwError as observableThrowError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { AuthService } from '../../authentication/auth.service';
 import { Blog } from '../../blogs/blog';
@@ -21,9 +19,8 @@ export class BlogsService {
   // Gets blogs from server in the order of newest -> oldest.
   // Limit can be used to limit how many are fetched. Limit 0 gets all blogs.
   getBlogs(limit: number = 0): Observable<Blog[]> {
-    return this.http
-      .get(this.url + (limit ? '?limit=' + limit : ''))
-      .map((response: { data: Blog[] }) => {
+    return this.http.get(this.url + (limit ? '?limit=' + limit : '')).pipe(
+      map((response: { data: Blog[] }) => {
         return (
           response.data || [
             {
@@ -35,8 +32,8 @@ export class BlogsService {
             }
           ]
         );
-      })
-      .catch(() => {
+      }),
+      catchError(() => {
         return [
           [
             {
@@ -50,27 +47,32 @@ export class BlogsService {
             }
           ]
         ];
-      });
+      })
+    );
   }
 
   getBlog(id: string): Observable<Blog> {
-    return this.http.get(this.url + '/' + id).map((res: { data: Blog }) => {
-      return res.data;
-    });
+    return this.http.get(this.url + '/' + id).pipe(
+      map((res: { data: Blog }) => {
+        return res.data;
+      })
+    );
   }
 
   // Returns blog without html conversion
   getRawBlog(id: string): Observable<Blog> {
-    return this.http.get(this.url + '/raw/' + id).map((res: { data: Blog }) => {
-      return res.data;
-    });
+    return this.http.get(this.url + '/raw/' + id).pipe(
+      map((res: { data: Blog }) => {
+        return res.data;
+      })
+    );
   }
 
   getBlogPreview(name: string, text: string): Observable<Blog> {
     const token = this.auth.token;
     const headers = new HttpHeaders(token ? { Authorization: 'Bearer ' + token } : {});
     const options = { headers };
-    return this.http.post(this.url + '/preview', { name, text }, options).map((res: { data: Blog }) => res.data);
+    return this.http.post(this.url + '/preview', { name, text }, options).pipe(map((res: { data: Blog }) => res.data));
   }
 
   addBlog(name: string, text: string) {
@@ -78,9 +80,11 @@ export class BlogsService {
     const headers = new HttpHeaders(token ? { Authorization: 'Bearer ' + token } : {});
     const options = { headers };
 
-    return this.http.post(this.url, { name, text }, options).map(() => {
-      return 'Blog added successfully.';
-    });
+    return this.http.post(this.url, { name, text }, options).pipe(
+      map(() => {
+        return 'Blog added successfully.';
+      })
+    );
   }
 
   editBlog(id: number, name: string, text: string) {
@@ -88,38 +92,42 @@ export class BlogsService {
     const headers = new HttpHeaders(token ? { Authorization: 'Bearer ' + token } : {});
     const options = { headers };
 
-    return this.http.put(this.url + '/' + id, { name, text }, options).map(() => {
-      return 'Blog edited successfully.';
-    });
+    return this.http.put(this.url + '/' + id, { name, text }, options).pipe(
+      map(() => {
+        return 'Blog edited successfully.';
+      })
+    );
   }
 
   deleteBlog(id: number) {
     const token = this.auth.token;
     const headers = new HttpHeaders(token ? { Authorization: 'Bearer ' + token } : {});
     const options = { headers };
-    return this.http.delete(this.url + '/' + id, options).map(() => {
-      return 'Blog deleted successfully.';
-    });
+    return this.http.delete(this.url + '/' + id, options).pipe(
+      map(() => {
+        return 'Blog deleted successfully.';
+      })
+    );
   }
 
   sendSubscribeConfirmation(email: string): Observable<string> {
-    return this.http
-      .post<BasicResponse>(this.url + '/subscribe', { email })
-      .map(res => res.message)
-      .catch((err: BasicResponse) => Observable.throw(err.message));
+    return this.http.post<BasicResponse>(this.url + '/subscribe', { email }).pipe(
+      map(res => res.message),
+      catchError((err: BasicResponse) => observableThrowError(err.message))
+    );
   }
 
   subscribe(encodedEmail: string) {
-    return this.http
-      .post<BasicResponse>(this.url + '/subscribe/' + encodedEmail, {})
-      .map(res => res.message)
-      .catch(err => Observable.throw(err.error.message));
+    return this.http.post<BasicResponse>(this.url + '/subscribe/' + encodedEmail, {}).pipe(
+      map(res => res.message),
+      catchError(err => observableThrowError(err.error.message))
+    );
   }
 
   unsubscribe(encodedEmail: string) {
-    return this.http
-      .post<BasicResponse>(this.url + '/unsubscribe/' + encodedEmail, {})
-      .map(res => res.message)
-      .catch(err => Observable.throw(err.error.message));
+    return this.http.post<BasicResponse>(this.url + '/unsubscribe/' + encodedEmail, {}).pipe(
+      map(res => res.message),
+      catchError(err => observableThrowError(err.error.message))
+    );
   }
 }

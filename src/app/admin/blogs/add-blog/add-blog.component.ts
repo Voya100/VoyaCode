@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Response } from '@angular/http';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { Blog } from '../../../blogs/blog';
 import { BlogsService } from '../../../shared/services/blogs.service';

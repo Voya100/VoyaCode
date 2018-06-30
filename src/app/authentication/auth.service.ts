@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of as observableOf } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 interface LoginResponse {
   token?: string;
@@ -33,37 +32,39 @@ export class AuthService {
   login(username: string, password: string): Observable<boolean> {
     const body = { username, password };
 
-    return this.http.post<LoginResponse>('/api/login', body).map(response => {
-      const token = response && response.token;
-      if (token) {
-        this.token = token;
-        this.storage.set('user', JSON.stringify({ username, token, admin: response.admin }));
-        this.storage.set('hasUser', 'true');
-        return true;
-      } else {
-        return false;
-      }
-    });
+    return this.http.post<LoginResponse>('/api/login', body).pipe(
+      map(response => {
+        const token = response && response.token;
+        if (token) {
+          this.token = token;
+          this.storage.set('user', JSON.stringify({ username, token, admin: response.admin }));
+          this.storage.set('hasUser', 'true');
+          return true;
+        } else {
+          return false;
+        }
+      })
+    );
   }
 
   checkLogin(): Observable<boolean> {
     const token = this.getToken();
     if (!token) {
       this.loggedIn = false;
-      return Observable.of(false);
+      return observableOf(false);
     }
     const headers = new HttpHeaders({ Authorization: 'Bearer ' + token });
     const options = { headers };
-    return this.http
-      .get('/api/check-login', options)
-      .map((res: Response) => {
+    return this.http.get('/api/check-login', options).pipe(
+      map((res: Response) => {
         this.loggedIn = true;
         return true;
-      })
-      .catch(e => {
+      }),
+      catchError(e => {
         this.loggedIn = false;
-        return Observable.of(false);
-      });
+        return observableOf(false);
+      })
+    );
   }
 
   logout(): void {

@@ -1,8 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of as observableOf, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { AuthService } from '../authentication/auth.service';
 
@@ -20,10 +19,7 @@ export class CommentsService {
     const headers = new HttpHeaders(token ? { Authorization: 'Bearer ' + token } : {});
     const options = { headers };
 
-    return this.http
-      .get<{ data: CommentData[] }>(this.url, options)
-      .map(response => response.data)
-      .catch(err => Observable.of(undefined));
+    return this.http.get<{ data: CommentData[] }>(this.url, options).pipe(map(response => response.data));
   }
 
   // Posts a comment to server - comment validation is handled by server, and it can be rejected.
@@ -36,9 +32,6 @@ export class CommentsService {
       private: privateM ? '1' : '0',
       preview: preview ? '1' : '0'
     };
-
-    return this.http.post(this.url, data).catch(err => {
-      throw err.error.message;
-    });
+    return this.http.post(this.url, data).pipe(catchError(err => throwError(err.error.message || err.message)));
   }
 }

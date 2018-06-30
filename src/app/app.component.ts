@@ -9,9 +9,7 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+import { filter, map, mergeMap } from 'rxjs/operators';
 
 import { ScrollbarComponent } from './shared/components/scrollbar/scrollbar.component';
 import { AnalyticsService } from './shared/services/analytics.service';
@@ -41,16 +39,18 @@ export class AppComponent implements OnInit, AfterViewChecked {
   ngOnInit() {
     // Change title when navigating to new page
     this.router.events
-      .filter(event => event instanceof NavigationEnd)
-      .map(() => this.activatedRoute)
-      .map(route => {
-        while (route.firstChild) {
-          route = route.firstChild;
-        }
-        return route;
-      })
-      .filter(route => route.outlet === 'primary')
-      .mergeMap(route => route.data)
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map(route => {
+          while (route.firstChild) {
+            route = route.firstChild;
+          }
+          return route;
+        }),
+        filter(route => route.outlet === 'primary'),
+        mergeMap(route => route.data)
+      )
       .subscribe(event => {
         this.titleService.setTitle('Voya Code' + (event['title'] ? ' - ' + event['title'] : ''));
       });
