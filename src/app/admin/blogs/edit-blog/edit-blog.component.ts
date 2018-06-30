@@ -19,7 +19,7 @@ export class EditBlogComponent implements OnInit, OnDestroy {
   public error: string;
   public success: string;
 
-  constructor(private route: ActivatedRoute, private blogsService: BlogsService) { }
+  constructor(private route: ActivatedRoute, private blogsService: BlogsService) {}
 
   ngOnInit() {
     this.loading = true;

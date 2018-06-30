@@ -7,7 +7,9 @@
 
 <table class="blog-table">
   <tr *ngFor="let blog of blogs">
-    <td><a routerLink="/blogs/{{blog.id}}">{{blog.date}}: {{blog.name}}</a></td>
+    <td>
+      <a routerLink="/blogs/{{blog.id}}">{{blog.date}}: {{blog.name}}</a>
+    </td>
     <td class="button-cell">
       <a routerLink="edit/{{blog.id}}" class="button">Edit</a>
     </td>

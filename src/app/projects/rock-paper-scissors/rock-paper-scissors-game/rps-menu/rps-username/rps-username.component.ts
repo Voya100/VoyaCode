@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { RpsGameLogicService, RpsPlayerData } from '../../../rps-game-logic.service';
 
 @Component({
@@ -7,16 +8,15 @@ import { RpsGameLogicService, RpsPlayerData } from '../../../rps-game-logic.serv
   styleUrls: ['rps-username.component.scss']
 })
 export class RpsUsernameComponent {
-
   player: RpsPlayerData;
   name: string;
 
-  constructor(private gameData: RpsGameLogicService){
+  constructor(private gameData: RpsGameLogicService) {
     this.player = gameData.player1;
     this.name = this.player.name;
   }
 
-  savePlayerName(){
+  savePlayerName() {
     this.gameData.setPlayerName(this.name);
   }
 }

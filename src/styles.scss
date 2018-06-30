@@ -1,49 +1,50 @@
-@import "./sass/variables";
+@import './sass/variables';
 
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber";
+@import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber';
 
-.mat-progress-spinner path{
+.mat-progress-spinner path {
   stroke: $color_dark1 !important;
 }
 
-html{
+html {
   height: 100%;
   overflow-y: hidden;
 }
-body{
+body {
   height: 100%;
 }
 
-html, body{
-  font-size:16px;
-  line-height:1.4;
+html,
+body {
+  font-size: 16px;
+  line-height: 1.4;
   font-family: $main_font;
   color: $color_dark2;
   background: $color_light;
-  margin:0;
+  margin: 0;
 }
 
-voya-app{
+voya-app {
   height: 100%;
 }
 
-scrollbar{
+scrollbar {
   height: 100%;
 }
 
 .scrollbar-track:hover .scrollbar-handle {
-    background-color: $color_main2;
+  background-color: $color_main2;
 }
 
-.scrollbar-track .scrollbar-handle{
+.scrollbar-track .scrollbar-handle {
   background-color: $color_dark1;
 }
 
-.scrollbar-track{
+.scrollbar-track {
   opacity: 0.6;
 }
 
-main{
+main {
   box-sizing: border-box;
   padding: 8px;
   width: 100%;
@@ -52,35 +53,39 @@ main{
   flex-shrink: 0;
 }
 
-h1, h2, h3{
+h1,
+h2,
+h3 {
   font-family: $header_font;
   margin: 12px 0;
 }
 
-h1{
+h1 {
   font-size: 200%;
 }
 
-h2{
+h2 {
   font-size: 150%;
 }
 
-h3{
+h3 {
   font-size: 120%;
 }
 
-a{
+a {
   color: $color_dark1;
 }
 
-@media screen and (max-width: 600px){
-  html, body{
+@media screen and (max-width: 600px) {
+  html,
+  body {
     font-size: 12px;
   }
 }
 
-@media screen and (max-width: 450px){
-  html, body{
+@media screen and (max-width: 450px) {
+  html,
+  body {
     font-size: 10px;
   }
 }

@@ -1,9 +1,9 @@
-@import "../../../sass/variables";
+@import '../../../sass/variables';
 
-:host{
+:host {
   @extend %main-content;
 }
 
-p{
+p {
   @extend %bordered-box;
 }

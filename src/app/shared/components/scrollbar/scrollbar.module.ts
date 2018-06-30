@@ -4,9 +4,7 @@ import { ScrollbarComponent } from './scrollbar.component';
 
 @NgModule({
   imports: [],
-  declarations: [ ScrollbarComponent ],
-  exports: [ ScrollbarComponent ]
+  declarations: [ScrollbarComponent],
+  exports: [ScrollbarComponent]
 })
-export class ScrollbarModule {
-
-}
+export class ScrollbarModule {}

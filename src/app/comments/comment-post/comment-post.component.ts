@@ -8,8 +8,6 @@ import { CommentData } from '../comment-data';
   styleUrls: ['./comment-post.component.scss']
 })
 export class CommentPostComponent {
-
   @Input() data: CommentData;
   @Input() isNew: boolean = false;
-
 }

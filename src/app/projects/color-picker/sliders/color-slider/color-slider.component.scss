@@ -1,11 +1,11 @@
-@import "../../../../../sass/variables";
+@import '../../../../../sass/variables';
 
-:host{
+:host {
   @extend %nodrag;
   display: inline-block;
 }
 
-canvas{
+canvas {
   cursor: col-resize;
   border: 1px solid $color_dark2;
   vertical-align: middle;

@@ -1,17 +1,17 @@
-@import "../../../../sass/variables";
+@import '../../../../sass/variables';
 
-blog-post{
+blog-post {
   display: block;
 
-  table{
+  table {
     @extend %bordered-box;
     padding: 10px;
-    width:100%;
-    max-width:100%;
+    width: 100%;
+    max-width: 100%;
     margin: 0;
   }
 
-  .blog-header button{
+  .blog-header button {
     @extend %button;
     float: right;
     width: 24px;
@@ -22,17 +22,16 @@ blog-post{
     line-height: 1;
   }
 
-  .blog-date{
+  .blog-date {
     font-size: 75%;
     font-weight: normal;
   }
 
-  .blog-text{
+  .blog-text {
     border-top: 1px solid $color_dark2;
     padding-top: 5px;
-    
   }
-  img{
-      max-width: 100%;
+  img {
+    max-width: 100%;
   }
 }

@@ -1,17 +1,17 @@
-$color_main1: #5ac0f3;// #5bbaff; // Main color
-$color_main2: #2586CC; // Darker main color
+$color_main1: #5ac0f3; // #5bbaff; // Main color
+$color_main2: #2586cc; // Darker main color
 $color_light: #99d4ff; // #7AC7FF; // Light color
-$color_dark1: #17537F; // Dark
-$color_dark2: #1C2E3B; // Very dark
+$color_dark1: #17537f; // Dark
+$color_dark2: #1c2e3b; // Very dark
 
 $max_width: 1000px;
 $min_width: 320px;
 
 $main_font: Helvetica, Verdana, sans-serif;
-$header_font: "Times New Roman", serif, Times;
+$header_font: 'Times New Roman', serif, Times;
 
-%nodrag{
-	-webkit-touch-callout: none;
+%nodrag {
+  -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -19,22 +19,22 @@ $header_font: "Times New Roman", serif, Times;
   user-select: none;
 }
 
-%clearfix{
-  &:after{
+%clearfix {
+  &:after {
     content: '';
     display: table;
     clear: both;
   }
 }
 
-%absolute-center{
+%absolute-center {
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
 }
 
-%main-content{
+%main-content {
   min-width: $min_width - 16px;
   max-width: $max_width;
   margin: auto;
@@ -42,32 +42,32 @@ $header_font: "Times New Roman", serif, Times;
   display: block;
 }
 
-%bordered-box{
-	background: $color_main1;
+%bordered-box {
+  background: $color_main1;
   border: 2px solid $color_dark2;
   padding: 5px;
   box-sizing: border-box;
 }
 
-%button{
+%button {
   font-size: 100%;
   background: $color_main2;
   color: $color_dark2;
   text-align: center;
   border: 1px solid $color_dark2;
   cursor: pointer;
-  &:focus{
+  &:focus {
     outline: none;
   }
-  &:hover{
+  &:hover {
     background: $color_light;
   }
-  &:disabled{
+  &:disabled {
     opacity: 0.6;
   }
 }
 
-%a-button{
+%a-button {
   @extend %button;
   font-size: 100%;
   text-decoration: none;

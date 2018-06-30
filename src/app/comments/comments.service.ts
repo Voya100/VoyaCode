@@ -12,7 +12,7 @@ import { CommentData } from './comment-data';
 export class CommentsService {
   private url: string = '/api/comments';
 
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService) {}
 
   // Gets comments from the server
   getComments(): Observable<CommentData[]> {

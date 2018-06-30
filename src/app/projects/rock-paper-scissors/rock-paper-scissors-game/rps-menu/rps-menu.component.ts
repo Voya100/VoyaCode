@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: 'rps-menu.component.html',
   styleUrls: ['rps-menu.component.scss']
 })
-export class RpsMenuComponent {
-
-}
+export class RpsMenuComponent {}

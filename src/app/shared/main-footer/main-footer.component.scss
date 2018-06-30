@@ -1,43 +1,43 @@
-@import "../../../sass/variables";
+@import '../../../sass/variables';
 
-:host{
+:host {
   background: $color_main2;
   flex-grow: 1;
   display: block;
   min-width: $min_width;
 }
 
-footer{
-  width:100%;
+footer {
+  width: 100%;
   min-height: 100px;
   height: 100%;
   border-top: 3px solid $color_dark2;
   box-sizing: border-box;
 }
 
-.content{
+.content {
   max-width: $max_width;
   min-width: $min_width - 20px;
   text-align: center;
   padding: 10px;
-  margin:auto;
+  margin: auto;
   position: relative;
   box-sizing: border-box;
 }
 
-.links{
+.links {
   position: absolute;
   right: 20px;
-  img{
+  img {
     margin: 5px;
-    &:hover{
+    &:hover {
       opacity: 0.6;
     }
   }
-  #github{
+  #github {
     height: 32px;
   }
-  @media screen and (max-width: 360px){
+  @media screen and (max-width: 360px) {
     position: static;
     right: auto;
     margin: auto;

@@ -1,14 +1,8 @@
-<color-slider
-  [data]="data" 
-  [width]="width" 
-  [height]="height" 
-  [value]="value" 
-  [selectorColor]="selectorColor" 
-  (valueChange)="emitValueChange($event/255, false)"
+<color-slider [data]="data" [width]="width" [height]="height" [value]="value" [selectorColor]="selectorColor" (valueChange)="emitValueChange($event/255, false)"
   (contextInit)="setContext($event)">
 </color-slider>
 
 <label>
-  <input type="number" [attr.step]="0.1" [attr.min]="0" [attr.max]="type === 'hue' ? 360 : 100" [ngModel]="formattedValue" (ngModelChange)="emitValueChange($event)">
-  {{type | capitalize}} {{type === 'hue' ? '(°)' : '(%)'}}
+  <input type="number" [attr.step]="0.1" [attr.min]="0" [attr.max]="type === 'hue' ? 360 : 100" [ngModel]="formattedValue"
+    (ngModelChange)="emitValueChange($event)"> {{type | capitalize}} {{type === 'hue' ? '(°)' : '(%)'}}
 </label>

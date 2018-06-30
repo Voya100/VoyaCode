@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { RpsGameLogicService, RpsStatistics } from '../../../rps-game-logic.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { RpsGameLogicService, RpsStatistics } from '../../../rps-game-logic.serv
 })
 export class RpsStatisticsComponent {
   statistics: RpsStatistics;
-  constructor(gameData: RpsGameLogicService){
+  constructor(gameData: RpsGameLogicService) {
     this.statistics = gameData.statistics;
   }
 }

@@ -1,21 +1,21 @@
-@import "../../../../sass/variables";
+@import '../../../../sass/variables';
 
-:host{
+:host {
   @extend %nodrag;
   display: inline-block;
   margin: 5px;
 }
 
-label{
+label {
   display: inline-block;
   vertical-align: middle;
   margin: 5px 0 5px 0;
   min-width: 120px;
-  input{
+  input {
     width: 50px;
   }
 }
 
-color-slider{
+color-slider {
   margin-right: 5px;
 }

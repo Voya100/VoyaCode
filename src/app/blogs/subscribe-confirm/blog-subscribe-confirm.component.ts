@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { BlogsService } from '../../shared/services/blogs.service';
 
 @Component({
@@ -6,25 +7,23 @@ import { BlogsService } from '../../shared/services/blogs.service';
   styleUrls: ['./blog-subscribe-confirm.component.scss']
 })
 export class BlogSubscribeConfirmComponent {
-
   email: string;
   requestMessage: string;
   loading: boolean;
 
-  constructor(private blogService: BlogsService) { }
+  constructor(private blogService: BlogsService) {}
 
-  sendConfirmation(){
+  sendConfirmation() {
     this.loading = true;
     this.blogService.sendSubscribeConfirmation(this.email).subscribe(
-      (message) => {
+      message => {
         this.requestMessage = message;
         this.loading = false;
       },
-      (err) => {
+      err => {
         this.requestMessage = err;
         this.loading = false;
       }
     );
   }
-
 }

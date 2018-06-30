@@ -22,7 +22,7 @@ export class BlogFormComponent {
 
   @Output() submit: EventEmitter<Blog> = new EventEmitter();
 
-  constructor(private blogsService: BlogsService) { }
+  constructor(private blogsService: BlogsService) {}
 
   submitPress() {
     this.submit.emit(this.blog);

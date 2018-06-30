@@ -9,4 +9,4 @@ import { routing } from './other-projects.routing';
   declarations: [OtherProjectsComponent],
   providers: []
 })
-export class OtherProjectsModule { }
+export class OtherProjectsModule {}

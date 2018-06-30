@@ -1,6 +1,6 @@
-@import "../../sass/variables";
+@import '../../sass/variables';
 
-:host{
+:host {
   @extend %bordered-box;
   display: block;
 
@@ -13,20 +13,19 @@
   padding: 16px;
   text-align: center;
 
-  button{
+  button {
     @extend %button;
     padding: 5px 5px;
     margin: 10px 10px;
     min-width: 24px;
   }
 
-  label{
+  label {
     width: 120px;
     display: inline-block;
   }
 
-  input{
+  input {
     width: 170px;
   }
-
 }

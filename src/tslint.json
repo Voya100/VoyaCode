@@ -2,16 +2,8 @@
   "extends": "../tslint.json",
   "rules": {
     "angular-whitespace": false,
-    "directive-selector": [
-      true,
-      "attribute",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      "kebab-case"
-    ],
+    "directive-selector": [true, "attribute", "camelCase"],
+    "component-selector": [true, "element", "kebab-case"],
     "trackBy-function": false,
     "no-output-named-after-standard-event": false,
     "no-unused-css": false

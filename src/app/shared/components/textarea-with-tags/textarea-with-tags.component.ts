@@ -8,20 +8,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./textarea-with-tags.component.scss']
 })
 export class TextAreaWithtagsComponent {
-
   @Input() message: string;
   @Input() disabled: boolean;
   @Input() maxWidth: number = 450;
 
   @Output() messageChange: EventEmitter<string> = new EventEmitter();
 
-  constructor(){}
+  constructor() {}
 
   // Adds tags around the current selection. Selection is moved between the tags.
-  addTag(startTag: string, endTag: string, textarea: HTMLTextAreaElement){
+  addTag(startTag: string, endTag: string, textarea: HTMLTextAreaElement) {
     const beginning = textarea.selectionStart;
     const ending = textarea.selectionEnd;
-    if(beginning !== null){
+    if (beginning !== null) {
       const start = this.message.substring(0, beginning);
       const middle = beginning === ending ? '' : this.message.substring(beginning, ending);
       const end = this.message.substring(ending);
@@ -32,14 +31,18 @@ export class TextAreaWithtagsComponent {
       // Small delay so that position is set after view has updated
       // Caret position is set between the tags
       setTimeout(() => {
-        this.setCaretPosition(start.length + startTag.length, start.length + startTag.length + (ending - beginning), textarea);
+        this.setCaretPosition(
+          start.length + startTag.length,
+          start.length + startTag.length + (ending - beginning),
+          textarea
+        );
       }, 100);
     }
   }
 
   // Adds the tag to textarea
-  tag(tag: string, textarea: HTMLTextAreaElement){
-    switch(tag){
+  tag(tag: string, textarea: HTMLTextAreaElement) {
+    switch (tag) {
       case 'b':
       case 'i':
       case 'u':
@@ -56,7 +59,7 @@ export class TextAreaWithtagsComponent {
     input.focus();
   }
 
-  updateMessage(event: string){
+  updateMessage(event: string) {
     this.message = event;
     this.messageChange.emit(event);
   }

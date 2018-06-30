@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'rps-rules',
   templateUrl: 'rps-rules.component.html'
 })
-export class RpsRulesComponent {
-
-}
+export class RpsRulesComponent {}

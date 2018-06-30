@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { colorChannel, hslChannel } from './enums';
+
 import { ColorService } from './color.service';
+import { colorChannel, hslChannel } from './enums';
 
 @Component({
   templateUrl: 'color-picker.component.html',
   styleUrls: ['./color-picker.component.scss']
 })
 export class ColorPickerComponent {
-
   zChannel: colorChannel = colorChannel.B;
 
   redColor: colorChannel = colorChannel.R;
@@ -40,92 +40,93 @@ export class ColorPickerComponent {
   constructor(private colorService: ColorService) {
     this.updateHsl();
   }
-  
-  updateRgb(){
+
+  updateRgb() {
     [this.red, this.green, this.blue] = this.colorService.hslToRgb([this.hue, this.saturation, this.lightness]);
   }
 
-  updateHsl(){
+  updateHsl() {
     [this.hue, this.saturation, this.lightness] = this.colorService.rgbToHsl([this.red, this.green, this.blue]);
   }
 
-  get red(){
+  get red() {
     return this._red;
   }
-  set red(value: number){
+  set red(value: number) {
     this._red = this.roundColorValue(value);
   }
-  
-  get green(){
+
+  get green() {
     return this._green;
   }
-  set green(value: number){
+  set green(value: number) {
     this._green = this.roundColorValue(value);
   }
-  
-  get blue(){
+
+  get blue() {
     return this._blue;
   }
-  set blue(value: number){
+  set blue(value: number) {
     this._blue = this.roundColorValue(value);
   }
 
-  roundColorValue(value: number){
+  roundColorValue(value: number) {
     return Math.round(Math.max(0, Math.min(value, 255)));
   }
 
-  get xChannel(){
+  get xChannel() {
     return this.axes[this.zChannel][0];
   }
 
-  get yChannel(){
+  get yChannel() {
     return this.axes[this.zChannel][1];
   }
 
-  getCoordinate(color: colorChannel){
-    if(this.showColorWheel){ return undefined; }
+  getCoordinate(color: colorChannel) {
+    if (this.showColorWheel) {
+      return undefined;
+    }
     const index = this.axes[this.zChannel].indexOf(color);
     return ['x', 'y', 'z'][index];
   }
 
-  changeRed(redValue: number){
+  changeRed(redValue: number) {
     this.red = redValue;
     this.updateHsl();
   }
-  
-  changeGreen(greenValue: number){
+
+  changeGreen(greenValue: number) {
     this.green = greenValue;
     this.updateHsl();
   }
 
-  changeBlue(blueValue: number){
+  changeBlue(blueValue: number) {
     this.blue = blueValue;
     this.updateHsl();
   }
 
-  selectColor([red, green, blue]: number[]){
+  selectColor([red, green, blue]: number[]) {
     [this.red, this.green, this.blue] = [red, green, blue];
     this.updateHsl();
   }
 
-  changeHue(value: number){
+  changeHue(value: number) {
     this.hue = value;
     this.updateRgb();
   }
 
-  changeSaturation(value: number){
+  changeSaturation(value: number) {
     this.saturation = value;
     this.updateRgb();
   }
 
-  changeLightness(value: number){
+  changeLightness(value: number) {
     this.lightness = value;
     this.updateRgb();
   }
 
-  selectHslColor([hue, saturation, lightness]: number[]){
+  selectHslColor([hue, saturation, lightness]: number[]) {
     [this.hue, this.saturation, this.lightness] = [hue, saturation, lightness];
     this.updateRgb();
   }
-
 }

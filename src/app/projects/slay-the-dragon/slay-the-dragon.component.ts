@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./slay-the-dragon.component.scss']
 })
 export class SlayTheDragonComponent implements OnInit {
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

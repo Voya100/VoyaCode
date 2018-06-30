@@ -1,12 +1,13 @@
-@import "../sass/variables";
+@import '../sass/variables';
 
-md-progress-spinner{
+md-progress-spinner {
   width: 60px;
   height: 60px;
   margin: 30px auto 10px auto;
 }
 
-.loading, .loading-error{
+.loading,
+.loading-error {
   @extend %nodrag;
   width: 250px;
   height: 150px;
@@ -23,12 +24,12 @@ md-progress-spinner{
   padding: 10px;
 }
 
-.loading-error{
+.loading-error {
   font-size: 100%;
   width: 300px;
   height: 100px;
-  
-  button{
+
+  button {
     @extend %button;
     display: block;
     margin: 8px auto;

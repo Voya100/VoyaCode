@@ -1,14 +1,14 @@
-@import "../../sass/variables";
+@import '../../sass/variables';
 
-:host{
+:host {
   @extend %main-content;
 }
 
-section{
+section {
   @extend %bordered-box;
 }
 
-.button{
+.button {
   @extend %button;
   display: block;
   margin-top: 8px;

@@ -1,63 +1,64 @@
-@import "../../sass/variables";
+@import '../../sass/variables';
 
-:host{
+:host {
   @extend %main-content;
 }
-.container{
+.container {
   display: flex;
   justify-content: space-between;
 }
 
-blog-post{
+blog-post {
   margin-bottom: 10px;
 }
 
-section{
+section {
   width: 75%;
 }
 
-aside{
+aside {
   width: 24%;
   text-align: center;
 }
 
-.filters{
+.filters {
   @extend %bordered-box;
   width: 100%;
   text-align: center;
-  button{
+  button {
     @extend %button;
-    padding:7px;
+    padding: 7px;
     margin-top: 5px;
     line-height: 1;
   }
-  label{
+  label {
     @extend %nodrag;
   }
 }
 
-@media screen and (max-width: 600px){
-  .container{
+@media screen and (max-width: 600px) {
+  .container {
     flex-direction: column-reverse;
-    section, aside{
-      width:100%;
+    section,
+    aside {
+      width: 100%;
     }
-    aside{
+    aside {
       margin-bottom: 8px;
     }
-    .filters .checkbox-container{
+    .filters .checkbox-container {
       display: inline-block;
     }
   }
 }
 
-a.button{
+a.button {
   @extend %a-button;
-  padding:7px;
+  padding: 7px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-a.icon:hover{
+a.icon:hover {
   opacity: 0.6;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { SnowControlService } from './snow-control.service';
 
 @Component({
@@ -6,7 +7,7 @@ import { SnowControlService } from './snow-control.service';
   styleUrls: ['./snow-machine.component.scss']
 })
 export class SnowMachineComponent implements OnInit {
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

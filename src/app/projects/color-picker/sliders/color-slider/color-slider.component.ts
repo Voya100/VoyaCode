@@ -1,6 +1,14 @@
-import { 
-  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, 
-  EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild 
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild
 } from '@angular/core';
 
 /**
@@ -13,7 +21,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColorSliderComponent implements AfterViewInit, OnChanges {
-
   @ViewChild('sliderCanvas') sliderCanvas: ElementRef;
   context: CanvasRenderingContext2D;
 
@@ -27,25 +34,27 @@ export class ColorSliderComponent implements AfterViewInit, OnChanges {
   @Output() valueChange: EventEmitter<number> = new EventEmitter();
   @Output() contextInit: EventEmitter<CanvasRenderingContext2D> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.context = this.sliderCanvas.nativeElement.getContext('2d');
     this.contextInit.emit(this.context);
   }
 
   // Updates background and/or color selector
-  ngOnChanges(changes: SimpleChanges){
-    if(!this.context){ return; }
+  ngOnChanges(changes: SimpleChanges) {
+    if (!this.context) {
+      return;
+    }
     this.drawSlider();
   }
 
-  drawSlider(){
+  drawSlider() {
     this.context.putImageData(this.data, 0, 0);
     this.drawSelectedValueIndicator();
   }
 
-  drawSelectedValueIndicator(){
+  drawSelectedValueIndicator() {
     this.context.strokeStyle = this.selectorColor;
     this.context.beginPath();
     this.context.moveTo(this.value, 0);
@@ -53,8 +62,7 @@ export class ColorSliderComponent implements AfterViewInit, OnChanges {
     this.context.stroke();
   }
 
-  emitValueChange(value: number){
-    this.valueChange.emit(Math.max(0, Math.min(value, this.width-1)));
+  emitValueChange(value: number) {
+    this.valueChange.emit(Math.max(0, Math.min(value, this.width - 1)));
   }
-
 }

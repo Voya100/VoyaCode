@@ -5,6 +5,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./hangman.component.scss']
 })
 export class HangmanComponent {
-  constructor() { }
-
+  constructor() {}
 }

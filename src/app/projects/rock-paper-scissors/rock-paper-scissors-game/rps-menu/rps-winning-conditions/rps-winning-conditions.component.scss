@@ -1,11 +1,11 @@
 @import '../../../rps-variables';
 
-:host{
+:host {
   text-align: center;
   display: block;
 }
 
-button{
+button {
   background-color: $borderColor;
   border: 1px solid black;
   border-radius: 7px;
@@ -15,12 +15,12 @@ button{
   text-align: center;
   width: 50px;
   margin: 10px;
-  &:hover{
+  &:hover {
     background: $hoverColor;
   }
 }
 
-.pointsToWin{
+.pointsToWin {
   background-color: $borderColor;
   border: 1px solid black;
   color: black;

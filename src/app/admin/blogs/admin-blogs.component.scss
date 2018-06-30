@@ -1,33 +1,33 @@
-@import "../../../sass/variables";
+@import '../../../sass/variables';
 
-.button{
+.button {
   @extend %button;
   padding: 5px 5px;
   margin: 0px;
-  display: block; 
+  display: block;
   height: 28px;
   box-sizing: border-box;
   font-size: 14px;
 }
 
-.add-blog{
+.add-blog {
   float: right;
   margin-top: 15px;
   margin-right: 5px;
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     margin-top: 0px;
   }
 }
 
-a{
-  text-decoration: none;  
+a {
+  text-decoration: none;
 }
 
-.blog-table{
+.blog-table {
   @extend %bordered-box;
   padding: 10px;
-  width:100%;
-  max-width:100%;
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   border-collapse: collapse;
 
@@ -42,14 +42,14 @@ a{
   }
 }
 
-.button-cell{
+.button-cell {
   width: 80px;
-  
-  @media screen and (max-width: 600px){
+
+  @media screen and (max-width: 600px) {
     width: 60px;
   }
 
-  .button{
+  .button {
     width: 100%;
   }
 }

@@ -8,53 +8,51 @@ import { SnowSettings } from './snow-settings/snow-settings';
 
 @Injectable()
 export class SnowControlService {
-
   flakes: SnowFlake[] = [];
   // Stores flakes that are kept on the screen (don't move anymore) so that they can be easily deleted later
   oldFlakes: SnowFlake[] = [];
 
-  constructor(public settings: SnowSettings) { }
+  constructor(public settings: SnowSettings) {}
 
   // Creates flakes according to settings
-  createFlakes(){
-    for(let id = 0; id < this.settings.count; id++){
+  createFlakes() {
+    for (let id = 0; id < this.settings.count; id++) {
       this.flakes.push(new SnowFlake(this.settings));
     }
   }
 
   // Deletes all current and old flakes
-  deleteFlakes(){
+  deleteFlakes() {
     let flake: SnowFlake;
-    while(flake = this.flakes.pop()){
+    while ((flake = this.flakes.pop())) {
       flake.destroy();
     }
-    while(flake = this.oldFlakes.pop()){
+    while ((flake = this.oldFlakes.pop())) {
       flake.destroy();
     }
   }
-  
+
   // Moves all flakes by one step/frame
-  moveRain(){
-    if(this.flakes.length === 0){
+  moveRain() {
+    if (this.flakes.length === 0) {
       return;
     }
-    for(const flake of this.flakes){
+    for (const flake of this.flakes) {
       flake.move();
     }
     requestAnimationFrame(() => this.moveRain());
   }
 
   // Resets snow/rain, activates new settings
-  reset(new_setting: SnowSettings){
+  reset(new_setting: SnowSettings) {
     this.settings = new_setting ? new_setting : this.settings;
 
-    if(this.settings.reset){
+    if (this.settings.reset) {
       this.deleteFlakes();
-    }else{
+    } else {
       this.oldFlakes = this.oldFlakes.concat(this.flakes);
       this.flakes = [];
     }
     this.createFlakes();
   }
-
 }

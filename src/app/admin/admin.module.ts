@@ -9,4 +9,4 @@ import { routing } from './admin.routing';
   declarations: [AdminComponent],
   providers: []
 })
-export class AdminModule { }
+export class AdminModule {}

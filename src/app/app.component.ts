@@ -1,20 +1,27 @@
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import {
+  ActivatedRoute,
+  Event,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router
+} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 import { ScrollbarComponent } from './shared/components/scrollbar/scrollbar.component';
 import { AnalyticsService } from './shared/services/analytics.service';
 
 @Component({
   selector: 'voya-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss' ]
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent  implements OnInit, AfterViewChecked {
-
+export class AppComponent implements OnInit, AfterViewChecked {
   @ViewChild(ScrollbarComponent) scrollbar: ScrollbarComponent;
   @ViewChild('main') main: ElementRef;
 
@@ -37,14 +44,14 @@ export class AppComponent  implements OnInit, AfterViewChecked {
       .filter(event => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
       .map(route => {
-        while (route.firstChild){
+        while (route.firstChild) {
           route = route.firstChild;
         }
         return route;
       })
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
-      .subscribe((event) =>{
+      .subscribe(event => {
         this.titleService.setTitle('Voya Code' + (event['title'] ? ' - ' + event['title'] : ''));
       });
 
@@ -55,7 +62,7 @@ export class AppComponent  implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    if(this.main.nativeElement.clientHeight !== this.height){
+    if (this.main.nativeElement.clientHeight !== this.height) {
       this.height = this.main.nativeElement.clientHeight;
       setTimeout(() => this.scrollbar.update());
     }
@@ -84,9 +91,9 @@ export class AppComponent  implements OnInit, AfterViewChecked {
   }
 
   // Show loading screen after small delay, if page hasn't loaded yet
-  showLoading(){
+  showLoading() {
     setTimeout(() => {
-      if(this.loading){
+      if (this.loading) {
         this.loadingOpen = true;
       }
     }, 100);

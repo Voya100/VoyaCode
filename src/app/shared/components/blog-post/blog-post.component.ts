@@ -8,19 +8,15 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class BlogPostComponent implements OnInit {
-
   @Input() blogData: any;
   @Input() minimizable: boolean = false;
   @Input() visible: boolean = false;
 
-  constructor() { 
-  }
+  constructor() {}
 
-  ngOnInit() { 
-  }
+  ngOnInit() {}
 
-  toggle(open: boolean = !this.visible){
+  toggle(open: boolean = !this.visible) {
     this.visible = open;
   }
-
 }

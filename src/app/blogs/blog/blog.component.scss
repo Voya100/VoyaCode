@@ -1,19 +1,19 @@
-@import "../../../sass/variables";
+@import '../../../sass/variables';
 
-:host{
+:host {
   @extend %main-content;
 }
 
-blog-post{
+blog-post {
   max-width: 600px;
   margin: auto;
 }
 
-h2{
+h2 {
   text-align: center;
 }
 
-.error{
+.error {
   text-align: center;
   margin: 20px;
 }

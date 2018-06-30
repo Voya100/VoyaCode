@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -11,7 +10,6 @@ import { BlogsService } from '../../../shared/services/blogs.service';
   templateUrl: 'add-blog.component.html'
 })
 export class AddBlogComponent {
-
   public routeParamSub: Subscription;
 
   public previewBlog: Blog;
@@ -19,19 +17,19 @@ export class AddBlogComponent {
   public error: string;
   public success: string;
 
-  constructor(private blogsService: BlogsService) { }
+  constructor(private blogsService: BlogsService) {}
 
-  addBlog(blog: Blog){
+  addBlog(blog: Blog) {
     this.loading = true;
     this.error = '';
     this.success = '';
     this.blogsService.addBlog(blog.name, blog.text).subscribe(
-      (res: string) => { 
+      (res: string) => {
         console.log('res', res);
         this.success = res;
         this.loading = false;
       },
-      (err: Response) => { 
+      (err: Response) => {
         this.error = err.json().message;
         this.loading = false;
       }

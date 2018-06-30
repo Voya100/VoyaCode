@@ -27,24 +27,24 @@ export class ScrollbarComponent implements AfterViewInit {
   innerWidth: number = 0;
   middleScroll: number = 0;
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     setTimeout(() => this.setDimensions());
   }
 
   // Updates scrollbar (used by other classes)
-  update(){
+  update() {
     this.updateHandle();
   }
 
-  updateHandle(){
-    if(this.innerHeight !== this.middle.nativeElement.scrollHeight){
+  updateHandle() {
+    if (this.innerHeight !== this.middle.nativeElement.scrollHeight) {
       this.setDimensions();
     }
-    this.handleTop = this.trackHeight*(this.middle.nativeElement.scrollTop/this.innerHeight);
+    this.handleTop = this.trackHeight * (this.middle.nativeElement.scrollTop / this.innerHeight);
   }
 
   @HostListener('window:resize', ['$event'])
-  setDimensions(){
+  setDimensions() {
     this.outerHeight = this.outer.nativeElement.offsetHeight;
     this.outerWidth = this.outer.nativeElement.offsetWidth;
     this.innerWidth = this.outerWidth;
@@ -53,27 +53,27 @@ export class ScrollbarComponent implements AfterViewInit {
     this.trackHeight = this.track.nativeElement.offsetHeight;
 
     const percentageVisible = this.outerHeight / this.innerHeight;
-    this.handleHeight = percentageVisible > 1 ? this.trackHeight : this.trackHeight*percentageVisible;
+    this.handleHeight = percentageVisible > 1 ? this.trackHeight : this.trackHeight * percentageVisible;
     this.hide = this.handleHeight === this.trackHeight;
   }
 
-  scrollHandler(){
-    if(!this.dragging){
+  scrollHandler() {
+    if (!this.dragging) {
       this.updateHandle();
     }
   }
 
-  trackClickHandler(e: MouseEvent){
-    const target = <HTMLElement> e.target;
-    if(target === this.track.nativeElement){
+  trackClickHandler(e: MouseEvent) {
+    const target = e.target as HTMLElement;
+    if (target === this.track.nativeElement) {
       const offsetY = e.pageY - target.getBoundingClientRect().top;
       const percentage = offsetY / this.track.nativeElement.offsetHeight;
-      this.middleScroll = percentage * this.innerHeight - (this.trackHeight/2);
+      this.middleScroll = percentage * this.innerHeight - this.trackHeight / 2;
       this.updateHandle();
     }
   }
 
-  handleMouseDownHandler(e: MouseEvent){
+  handleMouseDownHandler(e: MouseEvent) {
     e.preventDefault();
     this.dragging = true;
     this.scrollStart = this.middle.nativeElement.scrollTop;
@@ -81,17 +81,16 @@ export class ScrollbarComponent implements AfterViewInit {
   }
 
   @HostListener('window:mouseup', ['$event'])
-  windowMouseUpHandler(e: MouseEvent){
+  windowMouseUpHandler(e: MouseEvent) {
     this.dragging = false;
   }
 
   @HostListener('window:mousemove', ['$event'])
-  windowMouseMoveHandler(e: MouseEvent){
-    if(this.dragging){
+  windowMouseMoveHandler(e: MouseEvent) {
+    if (this.dragging) {
       e.preventDefault();
-      this.middleScroll = this.scrollStart - (this.dragStart-e.pageY)*(this.innerHeight/this.trackHeight);
+      this.middleScroll = this.scrollStart - (this.dragStart - e.pageY) * (this.innerHeight / this.trackHeight);
       this.updateHandle();
     }
   }
-  
 }

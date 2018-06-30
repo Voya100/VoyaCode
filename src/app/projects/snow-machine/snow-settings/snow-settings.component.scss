@@ -1,15 +1,15 @@
-@import "../../../../sass/variables";
+@import '../../../../sass/variables';
 
-:host{
+:host {
   @extend %bordered-box;
-  display:block;
-  width:450px;
+  display: block;
+  width: 450px;
   max-width: 100%;
-  margin:auto;
-  padding:10px;
+  margin: auto;
+  padding: 10px;
 }
 
-button{
+button {
   @extend %button;
   padding: 10px;
 }

@@ -1,9 +1,9 @@
-@import "../../../sass/variables";
+@import '../../../sass/variables';
 
-:host{
+:host {
   @extend %main-content;
 }
 
-h1{
+h1 {
   text-align: center;
 }

@@ -6,50 +6,56 @@ declare let ga: Function;
 
 @Injectable()
 export class AnalyticsService {
-
   acceptsCookies: boolean = false;
 
-  get analyticsActive(): boolean{
+  get analyticsActive(): boolean {
     return this.acceptsCookies && !!ga;
   }
 
-  constructor(private storage: LocalStorageService){
+  constructor(private storage: LocalStorageService) {
     const acception = storage.get('acceptsCookies');
-    if(acception === null){
+    if (acception === null) {
       // Accepted by default
       this.acceptCookies();
-    }else{
+    } else {
       this.acceptsCookies = acception === 'true';
     }
     this.initialiseAnalytics();
   }
 
-  acceptCookies(){
+  acceptCookies() {
     this.storage.set('acceptsCookies', 'true');
     this.acceptsCookies = true;
   }
 
-  removeCookies(){
+  removeCookies() {
     this.storage.set('acceptsCookies', 'false');
     this.acceptsCookies = false;
     this.removeCookie('_ga');
     this.removeCookie('_gid');
   }
 
-  initialiseAnalytics(){
-    if(!this.analyticsActive){return; }
+  initialiseAnalytics() {
+    if (!this.analyticsActive) {
+      return;
+    }
     ga('set', 'anonymizeIp', true);
     ga('create', 'UA-105686700-1', 'auto');
   }
 
-  pageView(path: string){
-    if(!this.analyticsActive){return; }
+  pageView(path: string) {
+    if (!this.analyticsActive) {
+      return;
+    }
     ga('set', 'page', path);
     ga('send', 'pageview');
   }
 
+  // tslint:disable-next-line:no-null-keyword
   event(category: string, action: string, label: string = null, value: number = null) {
-    if(!this.analyticsActive){return; }
+    if (!this.analyticsActive) {
+      return;
+    }
     ga('send', 'event', {
       Category: category,
       Label: label,
@@ -58,7 +64,7 @@ export class AnalyticsService {
     });
   }
 
-  private removeCookie(name: string){
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  private removeCookie(name: string) {
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 }

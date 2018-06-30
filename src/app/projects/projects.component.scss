@@ -1,35 +1,39 @@
-@import "../../sass/variables";
+@import '../../sass/variables';
 
-:host{
+:host {
   @extend %main-content;
   text-align: center;
 }
 
-.project{
+.project {
   display: inline-block;
   height: 150px;
   padding: 5px 0 0;
   text-align: center;
-  width: 230px;    
+  width: 230px;
   background: $color_main2;
   border: medium solid #0d3049;
   margin: 5px;
 
-  a, a:hover, a:visited, a:link, a:active{
+  a,
+  a:hover,
+  a:visited,
+  a:link,
+  a:active {
     text-decoration: none;
     color: inherit;
   }
 
-  &:hover{
+  &:hover {
     background: $color_main1;
   }
 
-  .project-header{
+  .project-header {
     height: 25px;
     font-size: 16px;
   }
 
-  img{
+  img {
     width: 100%;
     height: 125px;
     border-top: 1px solid $color_dark2;

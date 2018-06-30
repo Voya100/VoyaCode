@@ -1,24 +1,24 @@
-@import "../../../sass/variables";
+@import '../../../sass/variables';
 
-:host{
+:host {
   @extend %main-content;
 }
 
-.project{
+.project {
   width: calc(50% - 4px);
 }
 
-.project, .block{
+.project,
+.block {
   @extend %bordered-box;
   margin: 5px 2px;
   text-align: center;
   float: left;
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     width: 100%;
   }
 }
 
-
-hr{
+hr {
   border-color: $color_main2;
 }

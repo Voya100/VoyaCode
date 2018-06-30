@@ -1,7 +1,7 @@
-@import "../../../../../sass/variables";
+@import '../../../../../sass/variables';
 @import '../../rps-variables';
 
-:host{
+:host {
   @extend %clearfix;
   display: block;
   padding: 10px;
@@ -9,7 +9,8 @@
   box-sizing: border-box;
 }
 
-section, aside{
+section,
+aside {
   width: 49%;
   @extend %rps-box;
   height: 100%;
@@ -17,27 +18,27 @@ section, aside{
   box-sizing: border-box;
   padding: 10px;
 }
-section{
+section {
   float: left;
 }
 
-aside{
+aside {
   float: right;
   vertical-align: middle;
 }
 
-a{
+a {
   display: block;
   background: white;
   text-align: center;
-  padding:3px;
+  padding: 3px;
   margin: 6px;
   border: 1px solid black;
   border-radius: 5px;
   text-decoration: none;
   cursor: pointer;
-  &:hover{
+  &:hover {
     background: $hoverColor;
-    color:white;
+    color: white;
   }
 }

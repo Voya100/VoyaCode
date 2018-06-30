@@ -1,16 +1,16 @@
-@import "../../../sass/variables";
+@import '../../../sass/variables';
 
-:host{
+:host {
   @extend %main-content;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 
-.game_images img{
+.game_images img {
   width: 24%;
 }
-.google_badge img{
+.google_badge img {
   width: 240px;
 }

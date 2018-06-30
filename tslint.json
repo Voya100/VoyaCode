@@ -1,15 +1,10 @@
 {
-  "extends": [
-    "tslint:recommended",
-    "angular-tslint-rules",
-    "tslint-eslint-rules"
-  ],
-  "rulesDirectory": [
-    "node_modules/codelyzer"
-  ],
+  "extends": ["tslint:recommended", "angular-tslint-rules", "tslint-eslint-rules"],
+  "rulesDirectory": ["node_modules/codelyzer"],
   "rules": {
     "array-type": false,
     "arrow-return-shorthand": true,
+    "binary-expression-operand-order": false,
     "callable-types": true,
     "class-name": true,
     "comment-format": false,
@@ -20,10 +15,7 @@
     "eofline": true,
     "forin": true,
     "i18n": false,
-    "import-blacklist": [
-      true,
-      "rxjs/Rx"
-    ],
+    "import-blacklist": [true, "rxjs/Rx"],
     "interface-name": false,
     "interface-over-type-literal": true,
     "label-position": true,
@@ -31,37 +23,22 @@
     "member-ordering": [
       true,
       {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
       }
     ],
     "newline-before-return": false,
     "newline-per-chained-call": false,
     "no-arg": true,
     "no-bitwise": true,
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-conditional-assignment": false,
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-super": true,
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
-    "no-inferrable-types": [
-      true,
-      "ignore-params",
-      "ignore-properties"
-    ],
+    "no-inferrable-types": [true, "ignore-params", "ignore-properties"],
     "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-shadowed-variable": true,
@@ -85,20 +62,11 @@
     "prefer-template": false,
     "quotemark": false,
     "radix": true,
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
+    "triple-equals": [true, "allow-null-check"],
     "typedef": [true],
     "unified-signatures": true,
     "variable-name": false,
-    "whitespace": [
-      true,
-      "check-decl",
-      "check-operator",
-      "check-separator",
-      "check-type"
-    ],
+    "whitespace": [true, "check-decl", "check-operator", "check-separator", "check-type"],
     "no-output-on-prefix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,

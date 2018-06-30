@@ -15,4 +15,4 @@ import { routing } from './slay-the-dragon.routing';
   declarations: [SlayTheDragonComponent],
   providers: []
 })
-export class SlayTheDragonModule { }
+export class SlayTheDragonModule {}

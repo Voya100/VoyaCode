@@ -4,31 +4,30 @@ import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Directive({ selector: '[vCodeMouseDrag]' })
 export class VCodeMouseDragDirective {
-
   mouseDown: boolean = false;
 
   @Output() vCodeMouseDrag: EventEmitter<MouseEvent> = new EventEmitter();
 
   @HostListener('mousemove', ['$event'])
-  onMouseMove(event: MouseEvent){
-    if(this.mouseDown){
+  onMouseMove(event: MouseEvent) {
+    if (this.mouseDown) {
       this.vCodeMouseDrag.emit(event);
     }
   }
 
   @HostListener('mouseup')
-  onMouseUp(){
+  onMouseUp() {
     this.mouseDown = false;
   }
 
   @HostListener('mousedown', ['$event'])
-  onMouseDown(event: MouseEvent){
+  onMouseDown(event: MouseEvent) {
     this.mouseDown = true;
     this.vCodeMouseDrag.emit(event);
   }
 
   @HostListener('mouseleave')
-  onMouseLeave(){
+  onMouseLeave() {
     this.mouseDown = false;
   }
 }

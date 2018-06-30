@@ -16,7 +16,7 @@ interface BasicResponse {
 export class BlogsService {
   private url: string = '/api/blogs';
 
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService) {}
 
   // Gets blogs from server in the order of newest -> oldest.
   // Limit can be used to limit how many are fetched. Limit 0 gets all blogs.

@@ -11,4 +11,4 @@ import { routing } from './hangman.routing';
   declarations: [HangmanComponent],
   providers: []
 })
-export class HangmanModule { }
+export class HangmanModule {}

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit, QueryList, ViewChildren } 
 
 import { FormRowComponent } from '../form-row/form-row.component';
 import { SnowControlService } from '../snow-control.service';
+
 import { SnowSettings } from './snow-settings';
 
 // This component contains all input fields which will alter settings of SnowControlService.
@@ -16,14 +17,13 @@ import { SnowSettings } from './snow-settings';
   providers: [SnowControlService, SnowSettings]
 })
 export class SnowSettingsComponent implements OnInit, AfterViewInit, OnDestroy {
-
   @ViewChildren(FormRowComponent) formRowsQuery: QueryList<FormRowComponent>;
 
   settings: SnowSettings;
-  
+
   private formRows: FormRowComponent[];
-  
-  constructor(private snow_controller: SnowControlService){
+
+  constructor(private snow_controller: SnowControlService) {
     this.settings = this.snow_controller.settings;
   }
 
@@ -33,21 +33,20 @@ export class SnowSettingsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.snow_controller.moveRain();
   }
 
-   // Destroy flakes after page is closed
-  ngOnDestroy(){
+  // Destroy flakes after page is closed
+  ngOnDestroy() {
     this.snow_controller.deleteFlakes();
   }
 
-   // Gets row components so that their valid() method can be checked
-  ngAfterViewInit(){
+  // Gets row components so that their valid() method can be checked
+  ngAfterViewInit() {
     this.formRows = this.formRowsQuery.toArray();
   }
 
   // Reset snow and apply new settings, if all new settings are valid.
-  reset(){
-    if(this.formRows.every((row) => row.valid())){
+  reset() {
+    if (this.formRows.every(row => row.valid())) {
       this.snow_controller.reset(this.settings);
     }
   }
-
 }

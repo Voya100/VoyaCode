@@ -10,10 +10,10 @@
 // Wind:    Speed to -x direction (px / frame).
 // Size:    Either font-size or image width in pixels. If img != "" and size == 0, image's default size will be used.
 // FPS:     Maximum theoretical Frames per second. Reaal FPS is slightly lower. Can be changed without reset.
-// Reset:   If true, all old flakes/rain drops are removed when new settings are applied. 
+// Reset:   If true, all old flakes/rain drops are removed when new settings are applied.
 //          If false, old ones are kept on the screen, but they won't move
 
-export class SnowSettings{
+export class SnowSettings {
   symbol: string = '*';
   color: string = 'white';
   img: string = '';
@@ -28,12 +28,14 @@ export class SnowSettings{
   reset: boolean = true;
 
   // Edges of the screen
-  readonly xMax: number = document.documentElement.clientWidth-50;
-  readonly yMax: number = Math.max(document.body.scrollHeight, 
-                                    document.body.offsetHeight, 
-                                    document.documentElement.clientHeight, 
-                                    document.documentElement.scrollHeight, 
-                                    document.documentElement.offsetHeight);
+  readonly xMax: number = document.documentElement.clientWidth - 50;
+  readonly yMax: number = Math.max(
+    document.body.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.clientHeight,
+    document.documentElement.scrollHeight,
+    document.documentElement.offsetHeight
+  );
 
   // Max/min values can depend on current settings.
   // Min value can't be higher than current max setting value and max value can't be smaller than min value.

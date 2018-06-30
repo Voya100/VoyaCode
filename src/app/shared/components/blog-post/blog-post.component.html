@@ -3,7 +3,8 @@
     <th class="blog-header">
       {{blogData?.name}}
       <button *ngIf="minimizable" class="minimize-button" [title]="visible ? 'Close' : 'Open'" (click)="toggle()">{{visible ? '‒' : '+'}}</button>
-      <br><span class="blog-date">{{blogData?.date}}</span>      
+      <br>
+      <span class="blog-date">{{blogData?.date}}</span>
     </th>
   </tr>
   <tr *ngIf="visible">

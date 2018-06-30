@@ -8,16 +8,12 @@ import { BlogsService } from '../shared/services/blogs.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  blog: Blog = null;
-  constructor(private blogs: BlogsService) { 
+  blog: Blog = undefined;
+  constructor(private blogs: BlogsService) {}
 
-  }
-
-  ngOnInit() { 
-    this.blogs.getBlogs(1).subscribe(
-      blog => {
-        this.blog = blog[0];
-      }
-    );
+  ngOnInit() {
+    this.blogs.getBlogs(1).subscribe(blog => {
+      this.blog = blog[0];
+    });
   }
 }

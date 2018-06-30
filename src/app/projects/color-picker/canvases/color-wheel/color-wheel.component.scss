@@ -1,10 +1,10 @@
-@import "../../../../../sass/variables";
+@import '../../../../../sass/variables';
 
-:host{
+:host {
   display: inline-block;
 }
 
-canvas{
+canvas {
   @extend %nodrag;
   cursor: crosshair;
 }

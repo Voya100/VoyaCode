@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AnalyticsService } from '../shared/services/analytics.service';
 
 @Component({
@@ -6,18 +7,18 @@ import { AnalyticsService } from '../shared/services/analytics.service';
   styleUrls: ['./cookie-policy.component.scss']
 })
 export class CookiePolicyComponent {
-  constructor(private analytics: AnalyticsService) { }
+  constructor(private analytics: AnalyticsService) {}
 
-  get acceptsCookies(){
+  get acceptsCookies() {
     return this.analytics.acceptsCookies;
   }
 
-  acceptCookies(){
+  acceptCookies() {
     this.analytics.acceptCookies();
     this.analytics.initialiseAnalytics();
   }
 
-  removeCookies(){
+  removeCookies() {
     this.analytics.removeCookies();
   }
 }

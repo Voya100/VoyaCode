@@ -18,7 +18,7 @@ export class AdminBlogsComponent implements OnInit {
   public error: string;
   public success: string;
 
-  constructor(private blogsService: BlogsService, private dialog: MatDialog) { }
+  constructor(private blogsService: BlogsService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.getBlogs();

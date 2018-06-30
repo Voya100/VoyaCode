@@ -1,8 +1,8 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BlogsComponent } from './blogs.component';
 import { BlogComponent } from './blog/blog.component';
+import { BlogsComponent } from './blogs.component';
 import { BlogSubscribeConfirmComponent } from './subscribe-confirm/blog-subscribe-confirm.component';
 import { BlogSubscribeComponent } from './subscribe/blog-subscribe.component';
 import { BlogUnsubscribeComponent } from './unsubscribe/blog-unsubscribe.component';

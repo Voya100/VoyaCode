@@ -1,49 +1,50 @@
-@import "../../sass/variables";
+@import '../../sass/variables';
 
-:host{
+:host {
   @extend %main-content;
 }
 
-section{
+section {
   @extend %clearfix;
   width: 100%;
   box-sizing: border-box;
-  margin:auto; 
+  margin: auto;
 }
 
-.main-content{
+.main-content {
   box-sizing: border-box;
   width: 65%;
   float: left;
 }
 
-aside{
+aside {
   @extend %bordered-box;
   box-sizing: border-box;
   width: 33%;
   float: right;
   margin-right: 0px;
   padding: 10px;
-  li{
+  li {
     list-style-position: inside;
   }
 }
 
-.framework-table{
+.framework-table {
   width: 100%;
-  td{
+  td {
     vertical-align: top;
     width: 50%;
   }
 }
 
-@media screen and (max-width: 600px){
-  .main-content, aside{
-    width:100%;
+@media screen and (max-width: 600px) {
+  .main-content,
+  aside {
+    width: 100%;
     float: none;
     margin-left: 0px;
   }
-  aside{
+  aside {
     margin-top: 8px;
   }
 }

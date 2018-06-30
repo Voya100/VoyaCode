@@ -1,4 +1,4 @@
-export class CommentData{
+export class CommentData {
   username: string;
   message: string;
   post_time: string;

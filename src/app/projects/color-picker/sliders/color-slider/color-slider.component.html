@@ -1,6 +1,2 @@
-<canvas #sliderCanvas 
-  [width]="width" 
-  [height]="height" 
-  vCodeMouseDrag
-  (vCodeMouseDrag)="emitValueChange($event.offsetX)">
+<canvas #sliderCanvas [width]="width" [height]="height" vCodeMouseDrag (vCodeMouseDrag)="emitValueChange($event.offsetX)">
 </canvas>

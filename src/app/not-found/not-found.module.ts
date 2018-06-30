@@ -9,4 +9,4 @@ import { routing } from './not-found.routing';
   declarations: [NotFoundComponent],
   providers: []
 })
-export class NotFoundModule { }
+export class NotFoundModule {}

@@ -7,12 +7,11 @@ import { Project, projectList } from '../shared/data/projects';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-
   projects: Project[];
 
   constructor() {
     this.projects = projectList;
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

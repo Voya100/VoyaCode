@@ -8,4 +8,4 @@ import { AuthService } from './auth.service';
   declarations: [],
   providers: [AuthService, AuthGuard]
 })
-export class AuthModule { }
+export class AuthModule {}
