@@ -1,10 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { MatDialog } from '@angular/material';
 
-import { BlogsService } from '../../shared/services/blogs.service';
 import { Blog } from '../../blogs/blog';
 import { ConfirmationDialogComponent } from '../../shared/material/confirmation-dialog/confirmation-dialog.component';
+import { BlogsService } from '../../shared/services/blogs.service';
 
 @Component({
   selector: 'admin-blogs',
@@ -12,7 +13,6 @@ import { ConfirmationDialogComponent } from '../../shared/material/confirmation-
   styleUrls: ['./admin-blogs.component.scss']
 })
 export class AdminBlogsComponent implements OnInit {
-
   public blogs: Blog[] = [];
   public loading: boolean = false;
   public error: string;
@@ -24,48 +24,50 @@ export class AdminBlogsComponent implements OnInit {
     this.getBlogs();
   }
 
-  deleteBlog(id: number, name: string){
-    this.checkDialog(name).subscribe((result) => {
-      if(result !== true){return; }
+  deleteBlog(id: number, name: string) {
+    this.checkDialog(name).subscribe(result => {
+      if (result !== true) {
+        return;
+      }
 
       this.loading = true;
       this.error = '';
       this.success = '';
 
       this.blogsService.deleteBlog(id).subscribe(
-        (res) => {
+        res => {
           this.success = 'Blog "' + name + '" successfully deleted.';
           this.getBlogs();
         },
-        (err) => {
-          this.error = err;
+        (err: HttpErrorResponse) => {
+          this.error = err.error.message;
           this.loading = false;
         }
       );
     });
   }
 
-  private checkDialog(name: string){
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {data: {
-      title: 'Delete',
-      message: 'Are you sure you want to delete "' + name + '"?'
-    }});
+  private checkDialog(name: string) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        title: 'Delete',
+        message: 'Are you sure you want to delete "' + name + '"?'
+      }
+    });
     return dialogRef.afterClosed();
   }
 
-  private getBlogs(){
+  private getBlogs() {
     this.loading = true;
     this.blogsService.getBlogs().subscribe(
       blogs => {
         this.blogs = blogs;
         this.loading = false;
       },
-      (err) => {
+      err => {
         this.error = err;
         this.loading = false;
       }
     );
-
   }
-
 }

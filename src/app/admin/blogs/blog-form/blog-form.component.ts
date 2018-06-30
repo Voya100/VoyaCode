@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Response } from '@angular/http';
 
@@ -10,7 +11,6 @@ import { BlogsService } from '../../../shared/services/blogs.service';
   styleUrls: ['./blog-form.component.scss']
 })
 export class BlogFormComponent {
-
   @Input() blog: Blog = new Blog();
   @Input() loading: boolean;
   @Input() error: string;
@@ -24,24 +24,22 @@ export class BlogFormComponent {
 
   constructor(private blogsService: BlogsService) { }
 
-  submitPress(){
+  submitPress() {
     this.submit.emit(this.blog);
   }
-  
-  getPreview(){
+
+  getPreview() {
     this.previewLoading = true;
     this.previewError = '';
-    console.log('this.blog', this.blog);
     this.blogsService.getBlogPreview(this.blog.name, this.blog.text).subscribe(
-      (res: Response) => { 
-        this.previewBlog = res.json().data;
+      data => {
+        this.previewBlog = data;
         this.previewLoading = false;
       },
-      (err: Response) => { 
-        this.previewError = err.json().message;
+      (err: HttpErrorResponse) => {
+        this.previewError = err.error.message;
         this.previewLoading = false;
       }
     );
   }
-
 }

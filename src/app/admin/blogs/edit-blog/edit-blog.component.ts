@@ -1,17 +1,16 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { BlogsService } from '../../../shared/services/blogs.service';
+
 import { Blog } from '../../../blogs/blog';
-import { Response } from '@angular/http';
+import { BlogsService } from '../../../shared/services/blogs.service';
 
 @Component({
   selector: 'edit-blog',
   templateUrl: 'edit-blog.component.html'
 })
 export class EditBlogComponent implements OnInit, OnDestroy {
-
   public routeParamSub: Subscription;
 
   public blog: Blog;
@@ -22,34 +21,33 @@ export class EditBlogComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private blogsService: BlogsService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.loading = true;
-    this.routeParamSub = this.route.params.subscribe((params) => {
-      this.blogsService.getRawBlog(params.id).subscribe((blog => {
+    this.routeParamSub = this.route.params.subscribe(params => {
+      this.blogsService.getRawBlog(params.id).subscribe(blog => {
         this.blog = blog;
         this.loading = false;
-      }));
+      });
     });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.routeParamSub.unsubscribe();
   }
 
-  editBlog(){
+  editBlog() {
     this.loading = true;
     this.error = '';
     this.success = '';
     this.blogsService.editBlog(this.blog.id, this.blog.name, this.blog.text).subscribe(
-      (res: string) => { 
+      (res: string) => {
         this.success = res;
         this.loading = false;
       },
-      (err: Response) => { 
-        this.error = err.json().message;
+      (err: HttpErrorResponse) => {
+        this.error = err.error.message;
         this.loading = false;
       }
     );
   }
-
 }
