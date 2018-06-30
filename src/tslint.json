@@ -5,7 +5,6 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
       "camelCase"
     ],
     "component-selector": [
@@ -14,6 +13,7 @@
       "kebab-case"
     ],
     "trackBy-function": false,
-    "no-output-named-after-standard-event": false
+    "no-output-named-after-standard-event": false,
+    "no-unused-css": false
   }
 }
