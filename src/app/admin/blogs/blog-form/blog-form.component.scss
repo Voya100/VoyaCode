@@ -1,21 +1,21 @@
 @import "../../../../sass/variables";
-
-.blog-form{
+.blog-form {
   width: 100%;
   background: $color_main1;
   border-collapse: collapse;
   margin-top: 10px;
-
-  td{
+  td {
     border: 2px solid $color_dark2;
     padding: 5px;
+    input[type="text"] {
+      width: 90%;
+      max-width: 600px;
+    }
   }
-
-  .first-cell{
+  .first-cell {
     width: 15%;
   }
-
-  button{
+  button {
     @extend %button;
     padding: 2px 5px;
     margin: 5px 2px;
@@ -23,10 +23,10 @@
   }
 }
 
-.error{
+.error {
   color: #c10000;
 }
 
-.disabled{
+.disabled {
   opacity: 0.7;
 }
