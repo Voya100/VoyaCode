@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { AuthService } from '../../authentication/auth.service';
-import { Blog } from '../../blogs/blog';
+import { AuthService } from '@voyacode/authentication/auth.service';
+import { Blog } from '@voyacode/blogs/blog';
 
 interface BasicResponse {
   message: string;
@@ -113,21 +113,21 @@ export class BlogsService {
   sendSubscribeConfirmation(email: string): Observable<string> {
     return this.http.post<BasicResponse>(this.url + '/subscribe', { email }).pipe(
       map(res => res.message),
-      catchError((err: BasicResponse) => observableThrowError(err.message))
+      catchError(err => observableThrowError(err.error.message || err.message))
     );
   }
 
   subscribe(encodedEmail: string) {
     return this.http.post<BasicResponse>(this.url + '/subscribe/' + encodedEmail, {}).pipe(
       map(res => res.message),
-      catchError(err => observableThrowError(err.error.message))
+      catchError(err => observableThrowError(err.error.message || err.message))
     );
   }
 
   unsubscribe(encodedEmail: string) {
     return this.http.post<BasicResponse>(this.url + '/unsubscribe/' + encodedEmail, {}).pipe(
       map(res => res.message),
-      catchError(err => observableThrowError(err.error.message))
+      catchError(err => observableThrowError(err.error.message || err.message))
     );
   }
 }
