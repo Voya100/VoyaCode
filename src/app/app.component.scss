@@ -1,9 +1,7 @@
 @import '../sass/variables';
 
-md-progress-spinner {
-  width: 60px;
-  height: 60px;
-  margin: 30px auto 10px auto;
+mat-progress-spinner {
+  margin: 10px auto 10px auto;
 }
 
 .loading,
@@ -17,7 +15,7 @@ md-progress-spinner {
   margin: 50px auto;
   background: $color_main1;
   border: 2px solid $color_dark2;
-  z-index: 10;
+  z-index: 50;
   text-align: center;
   color: $color_dark1;
   font-size: 180%;

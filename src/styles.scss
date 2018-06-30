@@ -2,7 +2,7 @@
 
 @import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber';
 
-.mat-progress-spinner path {
+.mat-progress-spinner circle {
   stroke: $color_dark1 !important;
 }
 
