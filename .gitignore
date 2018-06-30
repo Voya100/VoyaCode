@@ -39,11 +39,3 @@ testem.log
 Thumbs.db
 
 server/
-
-
-src/**/*.js
-src/**/*.css
-
-*.js.map
-
-*.css.map
