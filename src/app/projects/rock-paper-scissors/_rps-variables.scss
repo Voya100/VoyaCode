@@ -1,0 +1,12 @@
+// Variables for Rock, Paper, Scissors
+$boxColor: darkcyan;
+$borderColor: lightseagreen;
+$backgroundColor: cadetblue;
+$textColor: powderblue;
+$hoverColor: lightskyblue;
+
+%rps-box{
+  background-color: $boxColor;
+  border: 4px solid $borderColor;
+  border-radius: 10px;
+}

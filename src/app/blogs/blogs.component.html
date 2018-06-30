@@ -1,0 +1,26 @@
+<h1>Blogs</h1>
+<div class="container">
+  <section>
+    <blog-post *ngFor="let blog of blogs | blogFilter: yearCheck" [blogData]="blog" [minimizable]="true" [visible]="false"></blog-post>
+    <span *ngIf="noBlogs()">No results.</span>
+  </section>
+  <aside>
+    <div class="filters">
+      <b>Filters</b>
+      <br>
+      <div class="checkbox-container" *ngFor="let year of years">
+        <label>
+          <input type="checkbox" name="year" value="{{year}}" [checked]="yearCheck[year]" (change)="yearCheck[year]=$event.target.checked"> {{year}}
+        </label>
+      </div>
+      <div>
+        <button (click)="openAll()">Open all</button>
+        <button (click)="closeAll()">Close all</button>
+      </div>
+    </div>
+
+    <a routerLink="subscribe" title="Subscribe to blog newsletter to stay up to date with latest blog releases." class="button">Subscribe to newsletter</a>
+    <br>
+    <a href="/blogs/rss" class="icon"><img id="rss" alt="RSS" title="Blog RSS feed" src="images/rss.png"></a>
+  </aside>
+</div>

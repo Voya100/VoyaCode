@@ -1,0 +1,40 @@
+<h1>Comments</h1>
+
+<section class="comment-container">
+  <div class="header">
+    <div class="username-header">Username</div>
+    <div class="comments-header">Comments</div>
+  </div>
+  <comment-post *ngFor="let post of comments" [data]="post"></comment-post>
+</section>
+<section class="preview-container" *ngIf="previewPost !== null">
+  <h2>Preview</h2>
+  <comment-post [data]="previewPost"></comment-post>
+</section>
+<table class="leave-comment">
+  <tr class="header-row">
+    <td colspan="2">Leave a comment:</td>
+  </tr>
+  <tr class="row">
+    <td class="first-cell">Username:</td>
+    <td>
+      <input class="username" maxlength="15" size="75" name="username" tabindex="1" type="text" [(ngModel)]="username" [disabled]="posting">
+    </td>
+  </tr>
+  <tr class="row">
+    <td>Message:</td>
+    <td>
+      <textarea-with-tags [(message)]="message" [disabled]="posting"></textarea-with-tags>
+      <br>
+      <label for="private" title="If the comment is set as private, only the site admin can see it.">
+      <input id="private" name="private" [checked]="private" (change)="private = !private" type="checkbox">Private comment</label>
+    </td>
+  </tr>
+  <tr class="row">
+    <td colspan="2" style="text-align:center;">
+      <div class="error" *ngIf="postError">{{postError}}</div>
+      <button (click)="postComment(true)" [class.disabled]="posting" title="Shows what the comment would look like if posted.">Preview</button>
+      <button (click)="postComment()" [class.disabled]="posting">Submit</button>
+    </td>
+  </tr>
+</table>

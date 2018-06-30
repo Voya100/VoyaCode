@@ -1,0 +1,17 @@
+@import "../../../sass/variables";
+
+:host{
+  @extend %main-content;
+}
+
+iframe{
+  width: 800px;
+  height: 560px;
+  border: none;
+  margin: auto;
+  display: block;
+}
+
+h1{
+  text-align: center;
+}

@@ -1,0 +1,18 @@
+<a routerLink="add" class="button add-blog">Add blog</a>
+
+<h2>Blogs</h2>
+
+<span *ngIf="error">{{error}}</span>
+<span *ngIf="success">{{success}}</span>
+
+<table class="blog-table">
+  <tr *ngFor="let blog of blogs">
+    <td><a routerLink="/blogs/{{blog.id}}">{{blog.date}}: {{blog.name}}</a></td>
+    <td class="button-cell">
+      <a routerLink="edit/{{blog.id}}" class="button">Edit</a>
+    </td>
+    <td class="button-cell">
+      <button class="button" (click)="deleteBlog(blog.id, blog.name)">Remove</button>
+    </td>
+  </tr>
+</table>

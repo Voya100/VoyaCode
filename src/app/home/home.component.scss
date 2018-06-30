@@ -1,0 +1,49 @@
+@import "../../sass/variables";
+
+:host{
+  @extend %main-content;
+}
+
+section{
+  @extend %clearfix;
+  width: 100%;
+  box-sizing: border-box;
+  margin:auto; 
+}
+
+.main-content{
+  box-sizing: border-box;
+  width: 65%;
+  float: left;
+}
+
+aside{
+  @extend %bordered-box;
+  box-sizing: border-box;
+  width: 33%;
+  float: right;
+  margin-right: 0px;
+  padding: 10px;
+  li{
+    list-style-position: inside;
+  }
+}
+
+.framework-table{
+  width: 100%;
+  td{
+    vertical-align: top;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .main-content, aside{
+    width:100%;
+    float: none;
+    margin-left: 0px;
+  }
+  aside{
+    margin-top: 8px;
+  }
+}

@@ -1,0 +1,14 @@
+<header>
+  <div id="site_logo">
+    <a *ngIf="!auth.loggedIn && auth.hasUser" routerLink="login">Login</a>
+    <a *ngIf="auth.loggedIn" routerLink="admin">Admin</a>
+    <img src="/images/logo_text.png" alt="Site logo">
+  </div>
+  <nav>
+    <a routerLink="">Home</a>
+    <a routerLink="blogs">Blogs</a>
+    <a routerLink="projects">Projects</a>
+    <a routerLink="projects/other-projects">Other projects</a>
+    <a routerLink="comments">Comments</a>
+  </nav>
+</header>
