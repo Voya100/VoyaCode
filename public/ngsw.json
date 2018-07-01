@@ -26,7 +26,7 @@
         "/common.13d3ca68319f65ff40a0.js",
         "/favicon.ico",
         "/index.html",
-        "/main.a4b399670bfa1d4d54e2.js",
+        "/main.e80dd9ba4ea044956917.js",
         "/polyfills.b5438d70cdb25862cb38.js",
         "/runtime.d499e8318c3995a83b02.js",
         "/styles.56365a81f805f81433eb.css"
@@ -169,7 +169,7 @@
       ],
       "strategy": "freshness",
       "maxSize": 3,
-      "maxAge": 2592000000,
+      "maxAge": 604800000,
       "version": 1
     }
   ],
@@ -264,8 +264,8 @@
     "/images/rock-paper-scissors/scissors1.png": "532a10e0ed528ff00fa6a3d19e602a515b90d13b",
     "/images/rock-paper-scissors/scissors2.png": "4df454770b6e06ce1e3dbcf7d08c719b15a2f98d",
     "/images/rss.png": "1581ac7a3a3007283d99a81ee7d5112bdffdc162",
-    "/index.html": "6e58c25f1e2959677d1b75149e98b02bfb46b9bb",
-    "/main.a4b399670bfa1d4d54e2.js": "2b9e46d100a0e8fa652d59c8443af379138c8856",
+    "/index.html": "a7335241e8e9e62d24206fcd8ac06105bc4369e8",
+    "/main.e80dd9ba4ea044956917.js": "7400ef00f159ebf276d4c19bc0620f7c16be15f5",
     "/manifest.json": "5fd66d0d1f3c7866195b79ff563b2b7954325087",
     "/polyfills.b5438d70cdb25862cb38.js": "d78082f39bb061c2d2fd5cb57b35b75932dfdc6e",
     "/projects/slay-the-dragon/old/img/bandit_arm.png": "b985f5e962b027b5760828ad8aaf5640c6a0b2f1",

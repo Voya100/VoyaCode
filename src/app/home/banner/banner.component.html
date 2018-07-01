@@ -5,11 +5,11 @@
     </a>
   </div>
   <div class="button-container">
-    <button class="left" (click)="change(this.id-1, true)">
+    <button class="left" (click)="change(this.id-1, true)" aria-label="left">
       <span class="left-arrow"></span>
     </button>
-    <button class="circle" *ngFor="let project of projects; let i = index" [class.active]="i === id" (click)="change(i, true)"></button>
-    <button class="right" (click)="change(this.id+1, true)">
+    <button class="circle" *ngFor="let project of projects; let i = index" [class.active]="i === id" (click)="change(i, true)" [attr.aria-label]="i"></button>
+    <button class="right" (click)="change(this.id+1, true)" aria-label="right">
       <span class="right-arrow"></span>
     </button>
   </div>
