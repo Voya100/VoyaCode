@@ -7,7 +7,8 @@ import { BlogsService } from '../../../shared/services/blogs.service';
 
 @Component({
   selector: 'add-blog',
-  templateUrl: 'add-blog.component.html'
+  templateUrl: 'add-blog.component.html',
+  styleUrls: ['add-blog.component.scss']
 })
 export class AddBlogComponent {
   public routeParamSub: Subscription;

@@ -8,7 +8,8 @@ import { BlogsService } from '../../../shared/services/blogs.service';
 
 @Component({
   selector: 'edit-blog',
-  templateUrl: 'edit-blog.component.html'
+  templateUrl: 'edit-blog.component.html',
+  styleUrls: ['edit-blog.component.scss']
 })
 export class EditBlogComponent implements OnInit, OnDestroy {
   public routeParamSub: Subscription;
