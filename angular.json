@@ -22,7 +22,15 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": [{ "glob": "**/*", "input": "src/assets/", "output": "/" }],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "/"
+              },
+              "src/manifest.json",
+              "src/browserconfig.xml"
+            ],
             "styles": ["src/styles.scss"],
             "scripts": []
           },

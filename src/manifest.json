@@ -1,0 +1,29 @@
+{
+  "name": "Voya Code",
+  "short_name": "Voya Code",
+  "theme_color": "#99d4ff",
+  "background_color": "#99d4ff",
+  "description": "A website for Voya's hobby projects",
+  "dir": "ltr",
+  "display": "standalone",
+  "lang": "en-US",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "images/favicons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicons/android-chrome-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    }
+  ]
+}
