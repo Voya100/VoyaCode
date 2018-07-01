@@ -14,6 +14,7 @@ import { HomeModule } from './home/home.module';
 import { ScrollbarModule } from './shared/components/scrollbar/scrollbar.module';
 import { MainFooterComponent } from './shared/main-footer/main-footer.component';
 import { MainHeaderComponent } from './shared/main-header/main-header.component';
+import { MaterialModule } from './shared/material/material.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    MaterialModule,
     ScrollbarModule,
     SharedModule,
     HomeModule,

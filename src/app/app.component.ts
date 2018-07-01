@@ -1,4 +1,5 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 import {
   ActivatedRoute,
@@ -9,6 +10,7 @@ import {
   NavigationStart,
   Router
 } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
 import { filter, map, mergeMap } from 'rxjs/operators';
 
 import { ScrollbarComponent } from './shared/components/scrollbar/scrollbar.component';
@@ -33,8 +35,14 @@ export class AppComponent implements OnInit, AfterViewChecked {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
-    private analytics: AnalyticsService
-  ) {}
+    private analytics: AnalyticsService,
+    private updateService: SwUpdate,
+    private snackBar: MatSnackBar
+  ) {
+    this.updateService.available.subscribe(event => {
+      this.promptWebsiteUpdate();
+    });
+  }
 
   ngOnInit() {
     // Change title when navigating to new page
@@ -97,5 +105,22 @@ export class AppComponent implements OnInit, AfterViewChecked {
         this.loadingOpen = true;
       }
     }, 100);
+  }
+
+  promptWebsiteUpdate() {
+    // Service worker has fetched newer version of the site,
+    // asks whether user would like to refresh
+    this.snackBar
+      .open('An updated version of the website is available.', 'Refresh', {
+        announcementMessage: 'You can update the website to the newest version by refreshing.',
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        duration: 30000
+      })
+      .onAction()
+      .subscribe(async () => {
+        await this.updateService.activateUpdate();
+        document.location.reload();
+      });
   }
 }
