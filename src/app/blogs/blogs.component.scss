@@ -27,13 +27,18 @@ aside {
   text-align: center;
   button {
     @extend %button;
-    padding: 7px;
     margin: 2px;
     margin-top: 5px;
+    padding: 7px;
     line-height: 1;
   }
   label {
     @extend %nodrag;
+    input {
+      position: relative;
+      bottom: 1px;
+      vertical-align: middle;
+    }
   }
 }
 
@@ -55,9 +60,9 @@ aside {
 
 a.button {
   @extend %a-button;
-  padding: 7px;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 7px;
 }
 
 a.icon:hover {
