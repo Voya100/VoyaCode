@@ -45,15 +45,22 @@ export class AppComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-    // Change title when navigating to new page
+    // Change title when navigating to new page and handle analytics
     this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd),
-        map(() => this.activatedRoute),
-        map(route => {
+        map((event: NavigationEnd) => {
+          let route = this.activatedRoute;
           while (route.firstChild) {
             route = route.firstChild;
           }
+          // Add url data to route from event
+          route.data = route.data.pipe(
+            map(data => {
+              data.url = event.urlAfterRedirects;
+              return data;
+            })
+          );
           return route;
         }),
         filter(route => route.outlet === 'primary'),
@@ -61,6 +68,12 @@ export class AppComponent implements OnInit, AfterViewChecked {
       )
       .subscribe(event => {
         this.titleService.setTitle('Voya Code' + (event['title'] ? ' - ' + event['title'] : ''));
+        // Sent analytics only if they aren't disabled for the page
+        // A possible reason could be that the url contains information that could be used
+        // to identify the user (e.g. email, even when not in plain text)
+        if (event.analytics !== false) {
+          this.analytics.pageView(event.urlAfterRedirects);
+        }
       });
 
     // There may be a way to combine these subscribes, but I'm not sure what's the best way to do it.
@@ -85,7 +98,6 @@ export class AppComponent implements OnInit, AfterViewChecked {
     if (event instanceof NavigationEnd) {
       this.loading = false;
       this.loadingOpen = false;
-      this.analytics.pageView(event.urlAfterRedirects);
     }
 
     // Set loading state to false in both of the below events to hide the spinner in case a request fails
