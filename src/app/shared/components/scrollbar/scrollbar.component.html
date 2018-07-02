@@ -1,10 +1,10 @@
-<div class="scrollbar-container-outer" #outer [class.grabbing]="dragging">
+<div class="scrollbar-container-outer" #outer>
   <div class="scrollbar-container-middle" #middle (scroll)="scrollHandler()" [scrollTop]="middleScroll">
     <div class="scrollbar-container-inner" #inner [style.min-width]="innerWidth + 'px'">
       <ng-content></ng-content>
     </div>
   </div>
-  <div [class.hide]="hide" class="scrollbar-track" #track (click)="trackClickHandler($event)">
+  <div [class.hide]="hide" [class.grabbing]="dragging" class="scrollbar-track" #track (click)="trackClickHandler($event)">
     <div class="scrollbar-handle" #handle [style.top]="handleTop + 'px'" [style.height]="handleHeight + 'px'" (mousedown)="handleMouseDownHandler($event)"></div>
   </div>
 </div>

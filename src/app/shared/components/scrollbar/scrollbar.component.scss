@@ -40,7 +40,8 @@ $borderWidth: 1px;
   top: 0;
   background-color: transparent;
   transition: background-color 0.2s linear 0s, opacity 0.2s linear 0s;
-  &:hover {
+  &:hover,
+  &.grabbing {
     background-color: white;
     .scrollbar-handle {
       width: 11px;
