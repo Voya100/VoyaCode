@@ -3,7 +3,7 @@
   "short_name": "Voya Code",
   "theme_color": "#99d4ff",
   "background_color": "#99d4ff",
-  "description": "A website for Voya's hobby projects",
+  "description": "Interesting programming projects and blogs (Angular + Node).",
   "dir": "ltr",
   "display": "standalone",
   "lang": "en-US",
