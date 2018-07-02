@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import * as _ from 'lodash';
+import { inRange } from 'lodash-es';
 
 @Component({
   selector: 'hex-input',
@@ -55,7 +55,7 @@ export class HexInputComponent {
     const red = this.fromHex(hex.slice(0, 2));
     const green = this.fromHex(hex.slice(2, 4));
     const blue = this.fromHex(hex.slice(4, 6));
-    return [red, green, blue].filter(number => _.inRange(number, 0, 256));
+    return [red, green, blue].filter(number => inRange(number, 0, 256));
   }
 
   private fromHex(value: string) {

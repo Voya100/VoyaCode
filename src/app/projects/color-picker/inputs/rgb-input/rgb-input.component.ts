@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import * as _ from 'lodash';
+import { inRange, some } from 'lodash-es';
 
 @Component({
   selector: 'rgb-input',
@@ -32,7 +32,7 @@ export class RgbInputComponent {
 
   rgbChanged(value: string) {
     const rgbValues = this.getValues(value);
-    if (rgbValues.length !== 3 || _.some(rgbValues, number => !_.inRange(number, 0, 256))) {
+    if (rgbValues.length !== 3 || some(rgbValues, number => !inRange(number, 0, 256))) {
       return;
     }
     this.cache = value;
