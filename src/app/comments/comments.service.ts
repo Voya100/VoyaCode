@@ -9,7 +9,8 @@ import { CommentData } from './comment-data';
 
 @Injectable()
 export class CommentsService {
-  private url: string = '/api/comments';
+  private readonly url: string = '/api/comments';
+  private readonly previewUrl: string = '/api/comments/preview';
 
   constructor(private http: HttpClient, private auth: AuthService) {}
 
@@ -25,13 +26,13 @@ export class CommentsService {
   // Posts a comment to server - comment validation is handled by server, and it can be rejected.
   // Returns observable with object {error: errorString, data: commentData}
   // errorString is an empty string, if no errors are found and comment post is successful.
-  postComment(username: string, message: string, privateM: boolean, preview: boolean = false): Observable<any> {
+  postComment(username: string, message: string, isPrivate: boolean, preview: boolean = false): Observable<any> {
+    const url = preview ? this.previewUrl : this.url;
     const data = {
       username,
       message,
-      private: privateM ? '1' : '0',
-      preview: preview ? '1' : '0'
+      isPrivate
     };
-    return this.http.post(this.url, data).pipe(catchError(err => throwError(err.error.message || err.message)));
+    return this.http.post(url, data).pipe(catchError(err => throwError(err.error.message || err.message)));
   }
 }

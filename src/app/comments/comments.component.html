@@ -26,13 +26,13 @@
     <td>
       <textarea-with-tags [(message)]="message" [disabled]="posting"></textarea-with-tags>
       <br>
-      <label for="private" title="If the comment is set as private, only the site admin can see it.">
-        <input id="private" name="private" [checked]="private" (change)="private = !private" type="checkbox">Private comment</label>
+      <label for="is-private" title="If the comment is set as private, only the site admin can see it.">
+        <input id="is-private" name="is-private" [checked]="isPrivate" (change)="isPrivate = !isPrivate" type="checkbox">Private comment</label>
     </td>
   </tr>
   <tr class="row">
     <td colspan="2" style="text-align:center;">
-      <div class="error" *ngIf="postError">{{postError}}</div>
+      <div class="error" *ngFor="let postError of postErrors">{{postError}}</div>
       <button (click)="postComment(true)" [class.disabled]="posting" title="Shows what the comment would look like if posted.">Preview</button>
       <button (click)="postComment()" [class.disabled]="posting">Submit</button>
     </td>

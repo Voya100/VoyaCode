@@ -15,9 +15,9 @@ export class CommentsComponent implements OnInit {
 
   username: string = '';
   message: string = '';
-  private: boolean = false;
+  isPrivate: boolean = false;
 
-  postError: string = '';
+  postErrors: string[] = [];
 
   previewPost: CommentData = undefined;
 
@@ -36,9 +36,9 @@ export class CommentsComponent implements OnInit {
           message:
             // tslint:disable-next-line:max-line-length
             "Connection to server failed and comments couldn't be fetched. Check your internet connection and try again. If problem persists, contact the admin.",
-          private: false,
-          post_time: '',
-          update_time: ''
+          isPrivate: false,
+          postTime: '',
+          updateTime: ''
         });
       }
     );
@@ -51,9 +51,9 @@ export class CommentsComponent implements OnInit {
     if (!this.posting) {
       // Prevent posting while comment is being posted
       this.posting = true;
-      this.postError = '';
+      this.postErrors = [];
 
-      this.commentService.postComment(this.username, this.message, this.private, preview).subscribe(
+      this.commentService.postComment(this.username, this.message, this.isPrivate, preview).subscribe(
         data => {
           if (preview) {
             this.previewPost = data.data;
@@ -65,7 +65,7 @@ export class CommentsComponent implements OnInit {
           this.posting = false;
         },
         error => {
-          this.postError = error;
+          this.postErrors = Array.isArray(error) ? error : [error];
           this.posting = false;
         }
       );
