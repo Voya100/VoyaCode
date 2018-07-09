@@ -32,7 +32,7 @@ export class AuthService {
   login(username: string, password: string): Observable<boolean> {
     const body = { username, password };
 
-    return this.http.post<LoginResponse>('/api/login', body).pipe(
+    return this.http.post<LoginResponse>('/api/auth/login', body).pipe(
       map(response => {
         const token = response && response.token;
         if (token) {
@@ -55,7 +55,7 @@ export class AuthService {
     }
     const headers = new HttpHeaders({ Authorization: 'Bearer ' + token });
     const options = { headers };
-    return this.http.get('/api/check-login', options).pipe(
+    return this.http.get('/api/auth/check-login', options).pipe(
       map((res: Response) => {
         this.loggedIn = true;
         return true;
