@@ -23,8 +23,7 @@ const routes: Routes = [
     loadChildren: './cookie-policy/cookie-policy.module#CookiePolicyModule',
     data: { title: 'Cookie Policy' }
   },
-  { path: '404', loadChildren: './not-found/not-found.module#NotFoundModule', data: { title: 'Page not found' } },
-  { path: '**', redirectTo: '/404' }
+  { path: '**', loadChildren: './not-found/not-found.module#NotFoundModule', data: { title: 'Page not found' } }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
