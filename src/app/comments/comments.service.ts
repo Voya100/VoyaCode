@@ -33,6 +33,9 @@ export class CommentsService {
       message,
       isPrivate
     };
-    return this.http.post(url, data).pipe(catchError(err => throwError(err.error.message || err.message)));
+    const token = this.auth.token;
+    const headers = new HttpHeaders(token ? { Authorization: 'Bearer ' + token } : {});
+    const options = { headers };
+    return this.http.post(url, data, options).pipe(catchError(err => throwError(err.error.message || err.message)));
   }
 }
