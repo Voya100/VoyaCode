@@ -2,7 +2,7 @@
 
 <h2>Blogs</h2>
 
-<span *ngIf="error">{{error}}</span>
+<span *ngFor="let error of errors">{{error}}</span>
 <span *ngIf="success">{{success}}</span>
 
 <table class="blog-table">

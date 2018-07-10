@@ -15,7 +15,8 @@
   </tr>
   <tr class="row">
     <td colspan="2" style="text-align:center;">
-      <div class="error" *ngIf="error || previewError">{{error || previewError}}</div>
+      <div class="error" *ngFor="let error of errors">{{error}}</div>
+      <div class="error" *ngFor="let previewError of previewErrors">{{previewError}}</div>
       <div class="success" *ngIf="success">{{success}}</div>
       <button (click)="getPreview()" [class.disabled]="loading || previewLoading" [disabled]="loading" title="Shows what the blog would look like if posted.">Preview</button>
       <button (click)="submitPress()" [class.disabled]="loading" [disabled]="loading">Submit</button>

@@ -72,7 +72,10 @@ export class BlogsService {
     const token = this.auth.token;
     const headers = new HttpHeaders(token ? { Authorization: 'Bearer ' + token } : {});
     const options = { headers };
-    return this.http.post(this.url + '/preview', { name, text }, options).pipe(map((res: { data: Blog }) => res.data));
+    return this.http.post(this.url + '/preview', { name, text }, options).pipe(
+      map((res: { data: Blog }) => res.data),
+      catchError(err => observableThrowError(err.error.message || err.message))
+    );
   }
 
   addBlog(name: string, text: string) {
@@ -83,7 +86,8 @@ export class BlogsService {
     return this.http.post(this.url, { name, text }, options).pipe(
       map(() => {
         return 'Blog added successfully.';
-      })
+      }),
+      catchError(err => observableThrowError(err.error.message || err.message))
     );
   }
 
@@ -95,7 +99,8 @@ export class BlogsService {
     return this.http.put(this.url + '/' + id, { name, text }, options).pipe(
       map(() => {
         return 'Blog edited successfully.';
-      })
+      }),
+      catchError(err => observableThrowError(err.error.message || err.message))
     );
   }
 
@@ -106,7 +111,8 @@ export class BlogsService {
     return this.http.delete(this.url + '/' + id, options).pipe(
       map(() => {
         return 'Blog deleted successfully.';
-      })
+      }),
+      catchError(err => observableThrowError(err.error.message || err.message))
     );
   }
 

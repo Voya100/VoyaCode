@@ -15,23 +15,22 @@ export class AddBlogComponent {
 
   public previewBlog: Blog;
   public loading: boolean = false;
-  public error: string;
+  public errors: string[];
   public success: string;
 
   constructor(private blogsService: BlogsService) {}
 
   addBlog(blog: Blog) {
     this.loading = true;
-    this.error = '';
+    this.errors = [];
     this.success = '';
     this.blogsService.addBlog(blog.name, blog.text).subscribe(
       (res: string) => {
-        console.log('res', res);
         this.success = res;
         this.loading = false;
       },
-      (err: Response) => {
-        this.error = err.json().message;
+      (err: string | string[]) => {
+        this.errors = Array.isArray(err) ? err : [err];
         this.loading = false;
       }
     );

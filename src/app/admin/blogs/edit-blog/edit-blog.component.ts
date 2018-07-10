@@ -17,7 +17,7 @@ export class EditBlogComponent implements OnInit, OnDestroy {
   public blog: Blog;
   public previewBlog: Blog;
   public loading: boolean = false;
-  public error: string;
+  public errors: string[];
   public success: string;
 
   constructor(private route: ActivatedRoute, private blogsService: BlogsService) {}
@@ -38,15 +38,15 @@ export class EditBlogComponent implements OnInit, OnDestroy {
 
   editBlog() {
     this.loading = true;
-    this.error = '';
+    this.errors = [];
     this.success = '';
     this.blogsService.editBlog(this.blog.id, this.blog.name, this.blog.text).subscribe(
       (res: string) => {
         this.success = res;
         this.loading = false;
       },
-      (err: HttpErrorResponse) => {
-        this.error = err.error.message;
+      (err: string | string[]) => {
+        this.errors = Array.isArray(err) ? err : [err];
         this.loading = false;
       }
     );

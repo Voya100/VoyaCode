@@ -15,7 +15,7 @@ import { BlogsService } from '../../shared/services/blogs.service';
 export class AdminBlogsComponent implements OnInit {
   public blogs: Blog[] = [];
   public loading: boolean = false;
-  public error: string;
+  public errors: string[] = [];
   public success: string;
 
   constructor(private blogsService: BlogsService, private dialog: MatDialog) {}
@@ -31,7 +31,7 @@ export class AdminBlogsComponent implements OnInit {
       }
 
       this.loading = true;
-      this.error = '';
+      this.errors = [];
       this.success = '';
 
       this.blogsService.deleteBlog(id).subscribe(
@@ -39,8 +39,8 @@ export class AdminBlogsComponent implements OnInit {
           this.success = 'Blog "' + name + '" successfully deleted.';
           this.getBlogs();
         },
-        (err: HttpErrorResponse) => {
-          this.error = err.error.message;
+        (err: string | string[]) => {
+          this.errors = Array.isArray(err) ? err : [err];
           this.loading = false;
         }
       );
@@ -65,7 +65,7 @@ export class AdminBlogsComponent implements OnInit {
         this.loading = false;
       },
       err => {
-        this.error = err;
+        this.errors = ['Blog loading failed.'];
         this.loading = false;
       }
     );
