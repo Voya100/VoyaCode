@@ -6,7 +6,7 @@ The website code uses Angular CLI project structure. Actual Angular code can be 
 
 [public/](https://github.com/Voya100/VoyaCode/tree/master/public) directory contains the actual website that is seen by the users. It includes some static assets (such as images) and the minified app build that Angular CLI produces. The compile result is included in the repository because this same repository is also used for deployment purposes.
 
-This repository doesn't include files used by the nodejs backend.
+The website also has a Node.js backend created with Nest framework, repository of which you can find [here](https://github.com/Voya100/VoyaCode-Server).
 
 If you have any improvement suggestions (or suggestions for future coding projects), feel free to suggest. :)
 
