@@ -25,7 +25,6 @@
     <td>Message:</td>
     <td>
       <textarea-with-tags [(message)]="message" [disabled]="posting"></textarea-with-tags>
-      <br>
       <label for="is-private" title="If the comment is set as private, only the site admin can see it.">
         <input id="is-private" name="is-private" [checked]="isPrivate" (change)="isPrivate = !isPrivate" type="checkbox">Private comment</label>
     </td>
