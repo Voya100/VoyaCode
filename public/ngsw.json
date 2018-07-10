@@ -9,11 +9,11 @@
       "urls": [
         "/1.97cc10486542d99b0370.js",
         "/10.3dc1e5a6a47c1524c846.js",
-        "/11.7f5145dc87f9411cf955.js",
+        "/11.478f192258eed57a357e.js",
         "/12.fdb947d8eae41d3d3015.js",
         "/13.64d766bddb491659b682.js",
         "/14.e12a3d35c009fabdd18f.js",
-        "/15.6cb689578b1d3a103f1e.js",
+        "/15.92709b357c6024fe75ba.js",
         "/16.15281278aff59a0aca26.js",
         "/2.d05df574d876710b21b8.js",
         "/3.fd6170fb95a54104dfed.js",
@@ -21,14 +21,14 @@
         "/5.4d6aacbb53b50718e76d.js",
         "/6.a05bfe2445b1c81c1eb5.js",
         "/7.77cf9dea6f742762535f.js",
-        "/8.fb7e1b3467f7351b676a.js",
+        "/8.a04ac8fe98334724de48.js",
         "/9.ed4dd4b202898492bb3d.js",
         "/common.d34a440780dce364f462.js",
         "/favicon.ico",
         "/index.html",
-        "/main.cfcef11a68b1d3b5bb9d.js",
+        "/main.c88ae51d879a9ac736d8.js",
         "/polyfills.b5438d70cdb25862cb38.js",
-        "/runtime.1d6dea2ecc07a10cb65b.js",
+        "/runtime.32370bda6cc2946fee0f.js",
         "/styles.56365a81f805f81433eb.css"
       ],
       "patterns": []
@@ -176,11 +176,11 @@
   "hashTable": {
     "/1.97cc10486542d99b0370.js": "1b5c4e906d7605e50e3dbd1bd9a98efecd7566bc",
     "/10.3dc1e5a6a47c1524c846.js": "e922341ef99421a844daf5cc0d55f29ad23beb1e",
-    "/11.7f5145dc87f9411cf955.js": "94d46cfeb6e8dc2768c5698373f98b89739e6efa",
+    "/11.478f192258eed57a357e.js": "fb67b6e0f380f12d3e09af3a663c7f2f6e6341f6",
     "/12.fdb947d8eae41d3d3015.js": "a0420dd5fd557134d82708149f88b11b7ddf9081",
     "/13.64d766bddb491659b682.js": "df638afac133a6cc0113de671fb0746576b99b98",
     "/14.e12a3d35c009fabdd18f.js": "748720819889dc8109f28056b149d8ad7997999a",
-    "/15.6cb689578b1d3a103f1e.js": "a4a72d324116150b1aac7cdcdab5eb3a7518a536",
+    "/15.92709b357c6024fe75ba.js": "c059b7b57b7ca06e3626f01b1cab9b35038daaa8",
     "/16.15281278aff59a0aca26.js": "ff73c9441002b4114c991eae703dbb8de6b3f798",
     "/2.d05df574d876710b21b8.js": "fefffd34626b7cbaa4b5db0028716a04be5b4a51",
     "/3.fd6170fb95a54104dfed.js": "ce9082003564efa3b3526e7ac2502c490ea36c13",
@@ -189,7 +189,7 @@
     "/5.4d6aacbb53b50718e76d.js": "e6d3ef7a9c99955fc30b4abbbc6814c5c0846d8a",
     "/6.a05bfe2445b1c81c1eb5.js": "9724824ea4f7007b8d483015d4bba474fc46af70",
     "/7.77cf9dea6f742762535f.js": "051c110f8d21247e871521ca0f6a9403f1d94f57",
-    "/8.fb7e1b3467f7351b676a.js": "14f038992fa6d0504c87cbc49db9db125d431b2d",
+    "/8.a04ac8fe98334724de48.js": "6509ce07e36a5c6e180284ae8a0d5d1c7302dd12",
     "/9.ed4dd4b202898492bb3d.js": "8e64bf6b74f2ac66e63b61576e83c9464edb4d70",
     "/blog-content/img/hangman.jpg": "7a003a2ff8c0c29fdd82d5e66ee05f6c4be9216a",
     "/browserconfig.xml": "cff6893901210aab9a8751b3d0464cfb4efca3f7",
@@ -264,8 +264,8 @@
     "/images/rock-paper-scissors/scissors1.png": "532a10e0ed528ff00fa6a3d19e602a515b90d13b",
     "/images/rock-paper-scissors/scissors2.png": "4df454770b6e06ce1e3dbcf7d08c719b15a2f98d",
     "/images/rss.png": "1581ac7a3a3007283d99a81ee7d5112bdffdc162",
-    "/index.html": "495a95cc3b7676cd33903c464cab40d6f384fd2a",
-    "/main.cfcef11a68b1d3b5bb9d.js": "5e9b2cfb9ffd1c768777ac1f4feb14ed7af7c89c",
+    "/index.html": "366c17f3cd2d1bb4e76f7242930c2a8c7f3dcefe",
+    "/main.c88ae51d879a9ac736d8.js": "2d0de93b5a65d52aa51fe931ce890a3a3debbfa2",
     "/manifest.json": "3ede291ef34a1692122102f2cc903d8eb4d2344f",
     "/polyfills.b5438d70cdb25862cb38.js": "d78082f39bb061c2d2fd5cb57b35b75932dfdc6e",
     "/projects/slay-the-dragon/old/img/bandit_arm.png": "b985f5e962b027b5760828ad8aaf5640c6a0b2f1",
@@ -314,7 +314,7 @@
     "/projects/slay-the-dragon/old/sound/rat_hit.wav": "e061a3b1a70863b105bed4be1298a47cd431e3a5",
     "/projects/slay-the-dragon/old/sound/sword.wav": "0129d78e1b6e046aa915f7ee452476c033965701",
     "/projects/slay-the-dragon/old/sound/wood_blade.wav": "55b1d64cf9cdf64fbfd8c656744391a842b4553a",
-    "/runtime.1d6dea2ecc07a10cb65b.js": "869e2c15a1612ccceb0c0b23dc9e551ed9854c9e",
+    "/runtime.32370bda6cc2946fee0f.js": "9b0556fda4d93c6623b0e6489427b43d25b9ec55",
     "/styles.56365a81f805f81433eb.css": "60d71dbc8fc96a3831574361d92c76e0b38b6c55"
   },
   "navigationUrls": [
@@ -333,6 +333,14 @@
     {
       "positive": false,
       "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/blogs\\/rss$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/api\\/.*$"
     }
   ]
 }
