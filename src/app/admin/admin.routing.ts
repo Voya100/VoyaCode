@@ -7,7 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
-    children: [{ path: 'blogs', loadChildren: './blogs/admin-blogs.module#AdminBlogsModule', data: { title: 'Admin' } }]
+    children: [
+      { path: '', redirectTo: 'blogs' },
+      { path: 'blogs', loadChildren: './blogs/admin-blogs.module#AdminBlogsModule', data: { title: 'Admin' } }
+    ]
   }
 ];
 
