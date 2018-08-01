@@ -19,8 +19,37 @@
       </div>
     </div>
 
-    <a routerLink="subscribe" title="Subscribe to blog newsletter to stay up to date with latest blog releases." class="button">Subscribe to newsletter</a>
-    <br>
+    <a routerLink="subscribe" title="Subscribe to blog newsletter to stay up to date with the latest blog releases." class="button subscribe-button">Subscribe to email newsletter</a>
+    <div *ngIf="!hasPushSubscription">
+      <button (click)="subscribeToPushNotifications()" class="subscribe-button" title="Subscribe to push notifications to get notified when a new blog is released.">Subscribe to push notifications</button>
+
+      <p *ngIf="pushSubscriptionState === pushSubscriptionStates.InProgress">
+        Subscribing...
+      </p>
+      <p *ngIf="pushSubscriptionState === pushSubscriptionStates.Successful">
+        Successfully unsubscribed from push notifications.
+      </p>
+      <p *ngIf="pushSubscriptionState === pushSubscriptionStates.Failed">
+        Push subscription failed. If you have previously disabled notifications, you may need to re-enable them from your browser's
+        settings. Find out how
+        <a href="https://pushassist.com/knowledgebase/how-to-enable-or-disable-push-notifications-on-chrome-firefox-safari-b/">here</a>.
+      </p>
+    </div>
+    <div *ngIf="hasPushSubscription">
+      <button (click)="unsubscribeFromPushNotifications()" class="subscribe-button" title="If you no longer wish to receive notifications of new blog releases, you can unsubscribe by clicking this button.">Unsubscribe from push notifications</button>
+      <p *ngIf="pushSubscriptionState === pushSubscriptionStates.InProgress">
+        Unsubscribing...
+      </p>
+      <p *ngIf="pushSubscriptionState === pushSubscriptionStates.Successful">
+        Successfully subscribed to push notifications. You will now get notified when new blogs are published.
+      </p>
+      <p *ngIf="pushSubscriptionState === pushSubscriptionStates.Failed">
+        Unsubscription failed. Please make sure that you have a working internet connection. If issue persists, contact the site
+        admin through the
+        <a routerLink="/comments">comments section</a>. You can also disable notifications from
+        <a href="https://pushassist.com/knowledgebase/how-to-enable-or-disable-push-notifications-on-chrome-firefox-safari-b/">browser settings</a>.
+      </p>
+    </div>
     <a href="/blogs/rss" class="icon">
       <img id="rss" alt="RSS" title="Blog RSS feed" src="images/rss.png">
     </a>

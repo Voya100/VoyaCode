@@ -60,9 +60,29 @@ aside {
 
 a.button {
   @extend %a-button;
-  margin-top: 10px;
-  margin-bottom: 10px;
+}
+
+button {
+  @extend %button;
+}
+
+a.button,
+button {
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 7px;
+}
+
+.subscribe-button {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 235px;
+  font-size: 100%;
+  line-height: 1.4;
+}
+
+aside p {
+  margin: 6px 1px;
 }
 
 a.icon:hover {
