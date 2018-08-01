@@ -12,6 +12,7 @@ import { TextAreaWithtagsComponent } from './components/textarea-with-tags/texta
 
 import { VCodeMouseDragDirective } from './directives/vcode-mouse-drag/vcode-mouse-drag.directive';
 import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
+import { PushService } from './services/push.service';
 
 @NgModule({
   imports: [
@@ -36,6 +37,6 @@ import { CapitalizePipe } from './pipes/capitalize/capitalize.pipe';
     VCodeMouseDragDirective,
     CapitalizePipe
   ],
-  providers: [AnalyticsService, BlogsService]
+  providers: [AnalyticsService, BlogsService, PushService]
 })
 export class SharedModule {}
