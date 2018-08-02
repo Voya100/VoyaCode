@@ -29,7 +29,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     HomeModule,
     routing,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/sw-master.js', { enabled: environment.production })
   ],
   declarations: [AppComponent, MainHeaderComponent, MainFooterComponent],
   bootstrap: [AppComponent]
