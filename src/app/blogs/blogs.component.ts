@@ -88,14 +88,12 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
   }
 
   async subscribeToPushNotifications() {
-    console.log('subscribe');
     this.pushSubscriptionState = PushSubscriptionStateMessage.InProgress;
     try {
       await this.pushService.subscribeToBlogNotifications();
       this.hasPushSubscription = this.pushService.isSubscribedToTopic('blogs');
       this.pushSubscriptionState = PushSubscriptionStateMessage.Successful;
     } catch (err) {
-      // TODO: Already registered message
       console.warn(err);
       this.pushSubscriptionState = this.pushService.notificationPermissionDenied
         ? PushSubscriptionStateMessage.PermissionDenied

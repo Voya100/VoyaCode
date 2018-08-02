@@ -9,9 +9,9 @@ import { BlogUnsubscribeComponent } from './unsubscribe/blog-unsubscribe.compone
 
 const routes: Routes = [
   { path: '', component: BlogsComponent },
-  { path: 'subscribe', component: BlogSubscribeConfirmComponent },
-  { path: 'subscribe/:email', component: BlogSubscribeComponent, data: { analytics: false } },
-  { path: 'unsubscribe/:email', component: BlogUnsubscribeComponent, data: { analytics: false } },
+  { path: 'email-newsletter/subscribe', component: BlogSubscribeConfirmComponent },
+  { path: 'email-newsletter/subscribe/:email', component: BlogSubscribeComponent, data: { analytics: false } },
+  { path: 'email-newsletter/unsubscribe/:email', component: BlogUnsubscribeComponent, data: { analytics: false } },
   { path: ':id', component: BlogComponent }
 ];
 

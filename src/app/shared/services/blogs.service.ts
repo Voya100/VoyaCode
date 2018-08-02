@@ -117,21 +117,21 @@ export class BlogsService {
   }
 
   sendSubscribeConfirmation(email: string): Observable<string> {
-    return this.http.post<BasicResponse>(this.url + '/subscribe', { email }).pipe(
+    return this.http.post<BasicResponse>(this.url + '/email-newsletter/subscribe', { email }).pipe(
       map(res => res.message),
       catchError(err => observableThrowError(err.error.message || err.message))
     );
   }
 
   subscribe(encodedEmail: string) {
-    return this.http.post<BasicResponse>(this.url + '/subscribe/' + encodedEmail, {}).pipe(
+    return this.http.post<BasicResponse>(this.url + '/email-newsletter/subscribe/' + encodedEmail, {}).pipe(
       map(res => res.message),
       catchError(err => observableThrowError(err.error.message || err.message))
     );
   }
 
   unsubscribe(encodedEmail: string) {
-    return this.http.post<BasicResponse>(this.url + '/unsubscribe/' + encodedEmail, {}).pipe(
+    return this.http.post<BasicResponse>(this.url + '/email-newsletter/unsubscribe/' + encodedEmail, {}).pipe(
       map(res => res.message),
       catchError(err => observableThrowError(err.error.message || err.message))
     );
