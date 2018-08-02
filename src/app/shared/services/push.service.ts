@@ -29,6 +29,11 @@ export class PushService {
     return false;
   }
 
+  notificationPermissionDenied(): boolean {
+    // Notification's static properties are added in TypeScript 3.0, which angular cli doesn't support yet
+    return (Notification as any).permission === 'denied';
+  }
+
   async subscribeToBlogNotifications() {
     const subscriber = await this.swPush
       .requestSubscription({

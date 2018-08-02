@@ -31,10 +31,13 @@
       <p *ngIf="pushSubscriptionState === pushSubscriptionStates.Successful">
         Successfully unsubscribed from push notifications.
       </p>
-      <p *ngIf="pushSubscriptionState === pushSubscriptionStates.Failed">
-        Push subscription failed. If you have previously disabled notifications, you may need to re-enable them from your browser's
-        settings. Find out how
+      <p *ngIf="pushSubscriptionState === pushSubscriptionStates.PermissionDenied">
+        Push permission is currently denied. You'll need to re-enable them from your browser's settings. Find out how
         <a href="https://pushassist.com/knowledgebase/how-to-enable-or-disable-push-notifications-on-chrome-firefox-safari-b/">here</a>.
+      </p>
+      <p *ngIf="pushSubscriptionState === pushSubscriptionStates.Failed">
+        Push subscription failed. Please make sure that you have enabled
+        <a href="https://pushassist.com/knowledgebase/how-to-enable-or-disable-push-notifications-on-chrome-firefox-safari-b/">hpush permissions</a> on your browser.
       </p>
     </div>
     <div *ngIf="hasPushSubscription">

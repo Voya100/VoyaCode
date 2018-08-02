@@ -16,6 +16,7 @@ enum PushSubscriptionStateMessage {
   InProgress,
   AlreadyRegistered,
   Successful,
+  PermissionDenied,
   Failed
 }
 
@@ -45,7 +46,8 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
   // Get blogs from BlogsService
   ngOnInit() {
     this.blogsService.getBlogs().subscribe(blogs => this.blogInit(blogs));
-    this.hasPushSubscription = this.pushService.isSubscribedToTopic('blogs');
+    this.hasPushSubscription =
+      this.pushService.isSubscribedToTopic('blogs') && !this.pushService.notificationPermissionDenied;
   }
 
   // To prevent "expression has changed after it was checked" exception
@@ -95,7 +97,9 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
     } catch (err) {
       // TODO: Already registered message
       console.warn(err);
-      this.pushSubscriptionState = PushSubscriptionStateMessage.Failed;
+      this.pushSubscriptionState = this.pushService.notificationPermissionDenied
+        ? PushSubscriptionStateMessage.PermissionDenied
+        : PushSubscriptionStateMessage.Failed;
     }
   }
 
@@ -106,8 +110,10 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
       this.hasPushSubscription = this.pushService.isSubscribedToTopic('blogs');
       this.pushSubscriptionState = PushSubscriptionStateMessage.Successful;
     } catch (err) {
-      // TODO: Already registered message
-      console.warn(err);
+      if (err.message === 'Subscription does not exist or is already removed.') {
+        this.hasPushSubscription = false;
+        return;
+      }
       this.pushSubscriptionState = PushSubscriptionStateMessage.Failed;
     }
   }
