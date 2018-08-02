@@ -38,6 +38,10 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
 
   constructor(private blogsService: BlogsService, private pushService: PushService, private cdRef: ChangeDetectorRef) {}
 
+  get pushSubscriptionSupported() {
+    return this.pushService.browserSupportsPushNotifications();
+  }
+
   // Get blogs from BlogsService
   ngOnInit() {
     this.blogsService.getBlogs().subscribe(blogs => this.blogInit(blogs));

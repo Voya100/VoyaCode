@@ -22,6 +22,13 @@ export class PushService {
     this.storage.set(this.topicStorageKey, topics);
   }
 
+  browserSupportsPushNotifications(): boolean {
+    if ('Notification' in window && 'PushManager' in window && navigator.serviceWorker) {
+      return true;
+    }
+    return false;
+  }
+
   async subscribeToBlogNotifications() {
     const subscriber = await this.swPush
       .requestSubscription({

@@ -21,7 +21,9 @@
 
     <a routerLink="subscribe" title="Subscribe to blog newsletter to stay up to date with the latest blog releases." class="button subscribe-button">Subscribe to email newsletter</a>
     <div *ngIf="!hasPushSubscription">
-      <button (click)="subscribeToPushNotifications()" class="subscribe-button" title="Subscribe to push notifications to get notified when a new blog is released.">Subscribe to push notifications</button>
+      <button (click)="subscribeToPushNotifications()" [disabled]="!pushSubscriptionSupported" class="subscribe-button" [title]="pushSubscriptionSupported ?'Subscribe to push notifications to get notified when a new blog is released.' : 'Push notifications not supported by the browser.'">
+        Subscribe to push notifications
+      </button>
 
       <p *ngIf="pushSubscriptionState === pushSubscriptionStates.InProgress">
         Subscribing...
