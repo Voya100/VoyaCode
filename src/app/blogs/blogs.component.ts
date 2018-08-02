@@ -47,7 +47,7 @@ export class BlogsComponent implements OnInit, AfterViewChecked {
   ngOnInit() {
     this.blogsService.getBlogs().subscribe(blogs => this.blogInit(blogs));
     this.hasPushSubscription =
-      this.pushService.isSubscribedToTopic('blogs') && !this.pushService.notificationPermissionDenied;
+      this.pushService.isSubscribedToTopic('blogs') && !this.pushService.notificationPermissionDenied();
   }
 
   // To prevent "expression has changed after it was checked" exception
