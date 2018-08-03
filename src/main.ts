@@ -14,7 +14,7 @@ platformBrowserDynamic()
     // Service worker is registered here instead of AppModule because it doesn't work
     // (https://github.com/angular/angular-cli/issues/8779)
     if ('serviceWorker' in navigator && environment.production) {
-      navigator.serviceWorker.register('/sw-master.js');
+      return navigator.serviceWorker.register('/sw-master.js');
     }
   })
   .catch(err => console.log(err));

@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { LocalStorageService } from 'angular-2-local-storage';
-
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { SwPush } from '@angular/service-worker';
+import { LocalStorageService } from 'angular-2-local-storage';
 import { environment } from 'environments/environment';
+
+import { take, timeout } from 'rxjs/operators';
 
 export enum PushError {
   SUBSCRIPTION_REJECTED = 'SUBSCRIPTION_REJECTED'
@@ -23,15 +24,24 @@ export class PushService {
   }
 
   browserSupportsPushNotifications(): boolean {
-    if ('Notification' in window && 'PushManager' in window && navigator.serviceWorker) {
+    if (
+      'Notification' in window &&
+      'PushManager' in window &&
+      navigator.serviceWorker &&
+      navigator.serviceWorker.controller // Checks that service worker is active
+    ) {
       return true;
     }
     return false;
   }
-
+  // Note: Notification permission can also be 'default', hence 2 separate methods instead of 1 boolean
   notificationPermissionDenied(): boolean {
     // Notification's static properties are added in TypeScript 3.0, which angular cli doesn't support yet
     return (Notification as any).permission === 'denied';
+  }
+
+  notificationPermissionGranted(): boolean {
+    return (Notification as any).permission === 'granted';
   }
 
   async subscribeToBlogNotifications() {
@@ -40,6 +50,7 @@ export class PushService {
         serverPublicKey: environment.vapidPublicKey
       })
       .catch(e => {
+        console.warn('push subscription error', e);
         throw new Error(PushError.SUBSCRIPTION_REJECTED);
       });
     console.warn(subscriber);
@@ -48,18 +59,14 @@ export class PushService {
   }
 
   async unsubscribeFromBlogNotifications() {
-    // Endpoint is required, so subscription needs to be requested
-    // If user is already subscribed, it shouldn't give a confirmation pop-up
-    const subscriber = await this.swPush
-      .requestSubscription({
-        serverPublicKey: environment.vapidPublicKey
-      })
-      .catch(e => {
-        throw new Error(PushError.SUBSCRIPTION_REJECTED);
-      });
-    const result = await this.http.post<{ message: string }>('/api/blogs/push/unsubscribe', subscriber).toPromise();
+    // Singular topic can be removed from the server only if user hasn't removed permission
+    // If permission is removed, backend will remove subscription automatically
+    if (this.notificationPermissionGranted()) {
+      const subscriber = await this.swPush.subscription.pipe(take(1), timeout(1000)).toPromise();
+      await this.http.post<{ message: string }>('/api/blogs/push/unsubscribe', subscriber).toPromise();
+    }
     this.removeTopicFromStorage('blogs');
-    return result;
+    return { message: 'Successfully unsubscribed.' };
   }
 
   isSubscribedToTopic(topic: string) {
