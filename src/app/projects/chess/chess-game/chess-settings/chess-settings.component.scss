@@ -1,22 +1,26 @@
-@import "../../chess-variables";
+@import '../../chess-variables';
 
-:host{
+:host {
   width: 320px;
   height: 280px;
+  font-size: 14px;
+  @media screen and (max-width: 500px) {
+    font-size: 10px;
+  }
 }
 
-h1{
+h1 {
   margin: 7px 0;
 }
 
-table{
-  margin:auto;
+table {
+  margin: auto;
 }
 
-td{
-  padding:5px;
+td {
+  padding: 5px;
 }
 
-input{
+input {
   font-family: monospace;
 }

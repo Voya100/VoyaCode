@@ -5,41 +5,41 @@
 }
 
 header {
-  text-align: center;
-  margin: 0 8px;
   min-width: $min_width - 16px;
+  margin: 0 8px;
+  text-align: center;
 }
 
 nav {
-  @extend %nodrag;
-  max-width: $max_width;
-  width: 100%;
-  padding: 0;
   display: flex;
-  margin: auto;
   box-sizing: border-box;
+  width: 100%;
+  max-width: $max_width;
+  margin: auto;
+  padding: 0;
   background: $color_main2;
   border-color: $color_dark2;
   border-style: solid;
   border-width: 2px 1px 2px 1px;
   font-family: $header_font;
+  @extend %nodrag;
   a {
-    box-sizing: border-box;
-    padding: 6px 3px;
-    border-left: 1px solid $color_dark2;
-    border-right: 1px solid $color_dark2;
-
-    font-size: 120%;
-    color: inherit;
-    text-decoration: none;
-    text-align: center;
 
     display: flex;
+    box-sizing: border-box;
+    padding: 6px 3px;
+    align-items: center;
+    border-left: 1px solid $color_dark2;
+    border-right: 1px solid $color_dark2;
+    color: inherit;
     flex-basis: 20%;
     flex-grow: 1;
     flex-shrink: 1;
+
+    font-size: 120%;
     justify-content: center;
-    align-items: center;
+    text-align: center;
+    text-decoration: none;
 
     &:hover {
       background: $color_main1;
@@ -49,19 +49,19 @@ nav {
 
 #site_logo {
   display: inline-block;
-  position: relative;
-  text-align: center;
+  width: 100%;
   min-width: $min_width;
   max-width: $max_width;
-  width: 100%;
+  position: relative;
+  text-align: center;
 
   img {
-    width: 300px;
     height: 75px;
+    width: 300px;
     max-width: 100%;
     @media screen and(max-width: 450px) {
-      width: 200px;
       height: 50px;
+      width: 200px;
     }
   }
 
@@ -69,5 +69,9 @@ nav {
     position: absolute;
     top: 50px;
     right: 20px;
+    text-decoration: none;
+    @media screen and(max-width: 450px) {
+      top: 30px;
+    }
   }
 }

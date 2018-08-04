@@ -1,22 +1,21 @@
-@import "../../../sass/variables";
+@import '../../../sass/variables';
 
-.interface{
+.interface {
   z-index: 10;
   font-family: $header-font;
   box-sizing: border-box;
   @extend %nodrag;
 }
 
-.interface li{
-	background: #eeeeee;
+.interface li {
+  background: #eeeeee;
   border: 2px solid black;
   border-radius: 5px;
   cursor: pointer;
   font-family: $main_font;
-  height: 16px;
   margin: 6px;
   padding: 0.4em;
   font-size: 90%;
   list-style-type: none;
-  text-align:center;
+  text-align: center;
 }
