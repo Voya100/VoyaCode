@@ -39,7 +39,7 @@ export class ScrollbarComponent implements AfterViewInit {
       return;
     }
     setTimeout(() => {
-      this.setDimensions(true);
+      this.setDimensions();
       // Before script is loaded, width should be 100 % so that page fills the screen before
       // dimensions are set.
       // 100 % width however causes scrollbar to appear. Once dimensions are set, the scrollbar
