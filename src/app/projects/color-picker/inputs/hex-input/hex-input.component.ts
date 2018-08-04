@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { inRange } from 'lodash-es';
+import inRange from 'lodash/inRange';
 
 @Component({
   selector: 'hex-input',
