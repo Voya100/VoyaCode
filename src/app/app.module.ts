@@ -8,7 +8,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { routing } from './app.routing';
 import { AuthModule } from './authentication/auth.module';
 import { HomeModule } from './home/home.module';
 import { ScrollbarModule } from './shared/components/scrollbar/scrollbar.module';
@@ -17,10 +16,13 @@ import { MainHeaderComponent } from './shared/main-header/main-header.component'
 import { MaterialModule } from './shared/material/material.module';
 import { SharedModule } from './shared/shared.module';
 
+import { routing } from './app.routing';
+
 @NgModule({
   imports: [
     AuthModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    routing,
     BrowserAnimationsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
@@ -28,7 +30,6 @@ import { SharedModule } from './shared/shared.module';
     ScrollbarModule,
     SharedModule,
     HomeModule,
-    routing,
     ServiceWorkerModule.register('/sw-master.js', { enabled: environment.production })
   ],
   declarations: [AppComponent, MainHeaderComponent, MainFooterComponent],

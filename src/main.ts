@@ -8,7 +8,8 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic()
+document.addEventListener('DOMContentLoaded', () => {
+  platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .then(() => {
     // Service worker is registered here instead of AppModule because it doesn't work
@@ -18,3 +19,4 @@ platformBrowserDynamic()
     }
   })
   .catch(err => console.log(err));
+});
