@@ -1,4 +1,5 @@
-import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { AfterViewChecked, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 import {
@@ -22,14 +23,17 @@ import { AnalyticsService } from './shared/services/analytics.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewChecked {
-  @ViewChild(ScrollbarComponent) scrollbar: ScrollbarComponent;
-  @ViewChild('main') main: ElementRef;
+  @ViewChild(ScrollbarComponent)
+  scrollbar: ScrollbarComponent;
+  @ViewChild('main')
+  main: ElementRef;
 
   loadingOpen: boolean = true;
   error: boolean = true;
   height: number = 0;
 
   private loading: boolean = true;
+  private isBrowser: boolean;
 
   constructor(
     private router: Router,
@@ -37,8 +41,10 @@ export class AppComponent implements OnInit, AfterViewChecked {
     private titleService: Title,
     private analytics: AnalyticsService,
     private updateService: SwUpdate,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    @Inject(PLATFORM_ID) platformId
   ) {
+    this.isBrowser = isPlatformBrowser(platformId);
     this.updateService.available.subscribe(event => {
       this.promptWebsiteUpdate();
     });
@@ -83,7 +89,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    if (this.main.nativeElement.clientHeight !== this.height) {
+    if (this.main.nativeElement.clientHeight !== this.height && this.isBrowser) {
       this.height = this.main.nativeElement.clientHeight;
       setTimeout(() => this.scrollbar.update());
     }
@@ -96,7 +102,8 @@ export class AppComponent implements OnInit, AfterViewChecked {
       this.showLoading();
     }
     if (event instanceof NavigationEnd) {
-      this.loading = false;
+      // Loading indicator should show on app shell
+      this.loading = false || !this.isBrowser;
       this.loadingOpen = false;
     }
 

@@ -59,6 +59,7 @@
       }
     ],
     "prefer-const": true,
+    "prefer-inline-decorator": { "severity": "off" },
     "prefer-template": false,
     "quotemark": false,
     "radix": true,

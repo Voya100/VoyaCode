@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatProgressSpinnerModule } from '@angular/material';
+import { MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, MatProgressSpinnerModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -32,6 +32,8 @@ import { routing } from './app.routing';
     HomeModule,
     ServiceWorkerModule.register('/sw-master.js', { enabled: environment.production })
   ],
+  // Force spinner animations on pre-rendered app shell
+  providers: [{ provide: MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, useValue: { diameter: 100, _forceAnimations: true } }],
   declarations: [AppComponent, MainHeaderComponent, MainFooterComponent],
   bootstrap: [AppComponent]
 })

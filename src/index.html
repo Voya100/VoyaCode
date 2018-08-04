@@ -19,6 +19,13 @@
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
   <link rel="mask-icon" href="images/favicons/safari-pinned-tab.svg" color="#2586cc">
   <link rel="shortcut icon" href="favicon.ico">
+  <noscript>
+    <style>
+      .js-required {
+        display: none
+      }
+    </style>
+  </noscript>
   <script>
     var ga = false;
     if (window.location.hostname !== 'localhost') {
@@ -32,21 +39,17 @@
   </script>
 
   <script>
-    window.onload = function () {
+    window.addEventListener('load', function () {
       if (screen.width < 360) {
         var mvp = document.getElementById('vp');
         mvp.setAttribute('content', 'width=360');
       }
-    }
+    });
   </script>
 </head>
 
 <body>
   <voya-app></voya-app>
-  <noscript style="text-align: center">
-    <h1>JavaScript required</h1>
-    <p>Voya Code requires JavaScript to run. Please enable JavaScript and refresh the page.</p>
-  </noscript>
 </body>
 
 </html>

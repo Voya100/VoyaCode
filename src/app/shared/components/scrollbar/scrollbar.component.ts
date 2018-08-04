@@ -45,6 +45,7 @@ export class ScrollbarComponent implements AfterViewInit {
       // 100 % width however causes scrollbar to appear. Once dimensions are set, the scrollbar
       // will disappear when middle width is set to auto
       this.middle.nativeElement.style.width = 'auto';
+      this.middle.nativeElement.style['y-scroll'] = 'scroll';
     });
   }
 

@@ -20,9 +20,10 @@ $borderWidth: 1px;
   position: absolute;
   left: 0;
   height: 100%;
+  width: 100%;
   display: flex;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .scrollbar-container-inner {
