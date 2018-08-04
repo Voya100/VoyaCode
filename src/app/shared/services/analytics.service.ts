@@ -18,7 +18,7 @@ export class AnalyticsService {
     return this.isBrowser && window['ga'];
   }
 
-  constructor(private storage: LocalStorageService, @Inject(PLATFORM_ID) private platformId) {
+  constructor(private storage: LocalStorageService, @Inject(PLATFORM_ID) platformId) {
     this.isBrowser = isPlatformBrowser(platformId);
     const acception = storage.get('acceptsCookies');
     if (acception === null) {
