@@ -1,5 +1,5 @@
 <div class="scrollbar-container-outer" #outer>
-  <div class="scrollbar-container-middle" #middle (scroll)="scrollHandler()" [scrollTop]="middleScroll">
+  <div class="scrollbar-container-middle" #middle (scroll)="scrollHandler()" [scrollTop]="middleScroll" style="width: 100%;">
     <div class="scrollbar-container-inner" #inner [style.min-width]="innerWidth + 'px'">
       <ng-content></ng-content>
     </div>

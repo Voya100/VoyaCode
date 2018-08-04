@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, HostListener, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'scrollbar',
@@ -27,8 +28,24 @@ export class ScrollbarComponent implements AfterViewInit {
   innerWidth: number = 0;
   middleScroll: number = 0;
 
+  isBrowser: boolean;
+
+  constructor(@Inject(PLATFORM_ID) private platformId) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
+
   ngAfterViewInit() {
-    setTimeout(() => this.setDimensions());
+    if (!this.isBrowser) {
+      return;
+    }
+    setTimeout(() => {
+      this.setDimensions(true);
+      // Before script is loaded, width should be 100 % so that page fills the screen before
+      // dimensions are set.
+      // 100 % width however causes scrollbar to appear. Once dimensions are set, the scrollbar
+      // will disappear when middle width is set to auto
+      this.middle.nativeElement.style.width = 'auto';
+    });
   }
 
   // Updates scrollbar (used by other classes)
