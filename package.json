@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json",
     "build": "ng run voyacode:app-shell:production",
+    "postbuild": "concat public/ngsw-worker.js src/sw-custom.js -o public/sw-master.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -37,8 +38,8 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.7.2",
-    "@angular/cli": "^6.1.2",
+    "@angular-devkit/build-angular": "^0.8.0-beta.1",
+    "@angular/cli": "^6.2.0-beta.1",
     "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
     "@types/google.analytics": "0.0.39",
