@@ -29,9 +29,7 @@
                 "output": "/"
               },
               "src/manifest.json",
-              "src/browserconfig.xml",
-              "src/sw-master.js",
-              "src/sw-custom.js"
+              "src/browserconfig.xml"
             ],
             "styles": ["src/styles.scss"],
             "scripts": []
