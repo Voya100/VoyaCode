@@ -18,7 +18,7 @@
         "/18.93162337c7ba8e210016.js",
         "/19.ede97fd72e1c16162ade.js",
         "/20.aa37a12cc81176f1d6a3.js",
-        "/5.802d5ebbdb74081b2d7c.js",
+        "/5.d5c0eb53cfd93e32c0dc.js",
         "/6.1cc217cb68997afbd208.js",
         "/7.cb613d690602ab2909eb.js",
         "/8.8bf378723a84e81c05ec.js",
@@ -28,7 +28,7 @@
         "/index.html",
         "/main.df5935dccd118b6668a6.js",
         "/polyfills.b6d07945610fce446851.js",
-        "/runtime.3696e6d6d589e272cfa1.js",
+        "/runtime.e0564e0e9500069e677d.js",
         "/styles.978495735eb5cab14182.css"
       ],
       "patterns": []
@@ -186,7 +186,7 @@
     "/19.ede97fd72e1c16162ade.js": "b3f02bbf4708c25f6de59703b820a3caabc302c7",
     "/20.aa37a12cc81176f1d6a3.js": "a773e1c73e7f2335015243015425af67099c048d",
     "/3rdpartylicenses.txt": "5ff26b75201e52891443997dbb9d6006fae8a8ed",
-    "/5.802d5ebbdb74081b2d7c.js": "d3e71866b1025ab9b1a386e2b68b817341fcdc33",
+    "/5.d5c0eb53cfd93e32c0dc.js": "dbbe517738be887edc23ad031dd828ae295b5b02",
     "/6.1cc217cb68997afbd208.js": "3b433cfbaf23c94263da76cf501ea42bede15b8b",
     "/7.cb613d690602ab2909eb.js": "7f145f5798f5352fbd453da349c053f2ebb3ae83",
     "/8.8bf378723a84e81c05ec.js": "48c30e367f6801eb02bcb5c910c0fb3e51e50cef",
@@ -264,7 +264,7 @@
     "/images/rock-paper-scissors/scissors1.png": "532a10e0ed528ff00fa6a3d19e602a515b90d13b",
     "/images/rock-paper-scissors/scissors2.png": "4df454770b6e06ce1e3dbcf7d08c719b15a2f98d",
     "/images/rss.png": "1581ac7a3a3007283d99a81ee7d5112bdffdc162",
-    "/index.html": "db85e4e241e01cd102ee7065a75843d738e80b5e",
+    "/index.html": "74a7b8fc0ce8bf08663ab70036f6f2ecf1a2dd5b",
     "/main.df5935dccd118b6668a6.js": "afa3600457d30d44e9b54dedc45bc8d66a2eaec0",
     "/manifest.json": "3ede291ef34a1692122102f2cc903d8eb4d2344f",
     "/polyfills.b6d07945610fce446851.js": "75e0c754e275ae978d845b738ac579f202cb30cd",
@@ -314,7 +314,7 @@
     "/projects/slay-the-dragon/old/sound/rat_hit.wav": "e061a3b1a70863b105bed4be1298a47cd431e3a5",
     "/projects/slay-the-dragon/old/sound/sword.wav": "0129d78e1b6e046aa915f7ee452476c033965701",
     "/projects/slay-the-dragon/old/sound/wood_blade.wav": "55b1d64cf9cdf64fbfd8c656744391a842b4553a",
-    "/runtime.3696e6d6d589e272cfa1.js": "b707f4a6a027e75e6aba084f0b603a0c41601ee7",
+    "/runtime.e0564e0e9500069e677d.js": "fcbcb11de5adf6fbbb8cfce8887574feb9f45bf6",
     "/styles.978495735eb5cab14182.css": "e17bd685412d36477a5a6345755b8daa123e1195"
   },
   "navigationUrls": [

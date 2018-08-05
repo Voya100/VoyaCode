@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -37,9 +38,9 @@ export class LoginComponent implements OnInit {
       loginSuccess => {
         this.router.navigate(['/admin']);
       },
-      err => {
+      (err: HttpErrorResponse) => {
         this.loading = false;
-        this.error = 'Username or password is incorrect';
+        this.error = err.error.message || err.message;
       }
     );
   }
