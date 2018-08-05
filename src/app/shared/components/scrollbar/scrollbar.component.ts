@@ -7,11 +7,16 @@ import { AfterViewInit, Component, ElementRef, HostListener, Inject, PLATFORM_ID
   styleUrls: ['scrollbar.component.scss']
 })
 export class ScrollbarComponent implements AfterViewInit {
-  @ViewChild('outer') outer: ElementRef;
-  @ViewChild('middle') middle: ElementRef;
-  @ViewChild('inner') inner: ElementRef;
-  @ViewChild('track') track: ElementRef;
-  @ViewChild('handle') handle: ElementRef;
+  @ViewChild('outer')
+  outer: ElementRef;
+  @ViewChild('middle')
+  middle: ElementRef;
+  @ViewChild('inner')
+  inner: ElementRef;
+  @ViewChild('track')
+  track: ElementRef;
+  @ViewChild('handle')
+  handle: ElementRef;
 
   hide: boolean = false;
   dragging: boolean = false;
@@ -45,7 +50,7 @@ export class ScrollbarComponent implements AfterViewInit {
       // 100 % width however causes scrollbar to appear. Once dimensions are set, the scrollbar
       // will disappear when middle width is set to auto
       this.middle.nativeElement.style.width = 'auto';
-      this.middle.nativeElement.style['y-scroll'] = 'scroll';
+      this.middle.nativeElement.style['overflow-y'] = 'scroll';
     });
   }
 
