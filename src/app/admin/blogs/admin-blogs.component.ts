@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Blog } from '../../blogs/blog';
 import { ConfirmationDialogComponent } from '../../shared/material/confirmation-dialog/confirmation-dialog.component';

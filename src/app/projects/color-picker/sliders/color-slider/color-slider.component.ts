@@ -21,7 +21,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ColorSliderComponent implements AfterViewInit, OnChanges {
-  @ViewChild('sliderCanvas') sliderCanvas: ElementRef;
+  @ViewChild('sliderCanvas', { static: true }) sliderCanvas: ElementRef;
   context: CanvasRenderingContext2D;
 
   @Input() width: number;

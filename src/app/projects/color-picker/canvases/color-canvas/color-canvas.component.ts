@@ -20,7 +20,7 @@ import { colorChannel } from '../../enums';
   styleUrls: ['./color-canvas.component.scss']
 })
 export class ColorCanvasComponent implements AfterViewInit, OnChanges {
-  @ViewChild('colorCanvas') colorCanvas: ElementRef;
+  @ViewChild('colorCanvas', { static: true }) colorCanvas: ElementRef;
   context: CanvasRenderingContext2D;
 
   @Output() selectColor: EventEmitter<number[]> = new EventEmitter();

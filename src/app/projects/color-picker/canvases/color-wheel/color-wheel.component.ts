@@ -26,7 +26,7 @@ import { colorChannel } from '../../enums';
   styleUrls: ['./color-wheel.component.scss']
 })
 export class ColorWheelComponent implements AfterViewInit, OnChanges {
-  @ViewChild('colorWheel') colorCanvas: ElementRef;
+  @ViewChild('colorWheel', { static: true }) colorCanvas: ElementRef;
   context: CanvasRenderingContext2D;
 
   @Output() selectColor: EventEmitter<number[]> = new EventEmitter();

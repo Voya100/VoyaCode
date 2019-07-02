@@ -22,7 +22,7 @@ import { RpsGameLogicService } from './rps-game-logic.service';
     SharedModule,
     CommonModule,
     FormsModule,
-    LocalStorageModule.withConfig({
+    LocalStorageModule.forRoot({
       prefix: 'voyacode-rock-paper-scissors',
       storageType: 'localStorage'
     })

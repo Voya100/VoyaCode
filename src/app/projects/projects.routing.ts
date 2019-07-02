@@ -7,29 +7,37 @@ const routes: Routes = [
   { path: '', component: ProjectsComponent },
   {
     path: 'other-projects',
-    loadChildren: './other-projects/other-projects.module#OtherProjectsModule',
+    loadChildren: () => import('./other-projects/other-projects.module').then(m => m.OtherProjectsModule),
     data: { title: 'Other Projects' }
   },
   {
     path: 'rock-paper-scissors',
-    loadChildren: './rock-paper-scissors/rock-paper-scissors.module#RockPaperScissorsModule',
+    loadChildren: () => import('./rock-paper-scissors/rock-paper-scissors.module').then(m => m.RockPaperScissorsModule),
     data: { title: 'Rock, Paper, Scissors' }
   },
   {
     path: 'slay-the-dragon',
-    loadChildren: './slay-the-dragon/slay-the-dragon.module#SlayTheDragonModule',
+    loadChildren: () => import('./slay-the-dragon/slay-the-dragon.module').then(m => m.SlayTheDragonModule),
     data: { title: 'Slay the Dragon' }
   },
-  { path: 'chess', loadChildren: './chess/chess.module#ChessModule', data: { title: 'Chess' } },
+  {
+    path: 'chess',
+    loadChildren: () => import('./chess/chess.module').then(m => m.ChessModule),
+    data: { title: 'Chess' }
+  },
   {
     path: 'snow-machine',
-    loadChildren: './snow-machine/snow-machine.module#SnowMachineModule',
+    loadChildren: () => import('./snow-machine/snow-machine.module').then(m => m.SnowMachineModule),
     data: { title: 'Snow Machine' }
   },
-  { path: 'hangman', loadChildren: './hangman/hangman.module#HangmanModule', data: { title: 'Hangman' } },
+  {
+    path: 'hangman',
+    loadChildren: () => import('./hangman/hangman.module').then(m => m.HangmanModule),
+    data: { title: 'Hangman' }
+  },
   {
     path: 'color-picker',
-    loadChildren: './color-picker/color-picker.module#ColorPickerModule',
+    loadChildren: () => import('./color-picker/color-picker.module').then(m => m.ColorPickerModule),
     data: { title: 'Color picker' }
   }
 ];

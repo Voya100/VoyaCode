@@ -9,7 +9,11 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: '', redirectTo: 'blogs' },
-      { path: 'blogs', loadChildren: './blogs/admin-blogs.module#AdminBlogsModule', data: { title: 'Admin' } }
+      {
+        path: 'blogs',
+        loadChildren: () => import('./blogs/admin-blogs.module').then(m => m.AdminBlogsModule),
+        data: { title: 'Admin' }
+      }
     ]
   }
 ];

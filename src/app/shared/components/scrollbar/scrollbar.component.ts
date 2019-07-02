@@ -7,15 +7,15 @@ import { AfterViewInit, Component, ElementRef, HostListener, Inject, PLATFORM_ID
   styleUrls: ['scrollbar.component.scss']
 })
 export class ScrollbarComponent implements AfterViewInit {
-  @ViewChild('outer')
+  @ViewChild('outer', { static: true })
   outer: ElementRef;
-  @ViewChild('middle')
+  @ViewChild('middle', { static: true })
   middle: ElementRef;
-  @ViewChild('inner')
+  @ViewChild('inner', { static: true })
   inner: ElementRef;
-  @ViewChild('track')
+  @ViewChild('track', { static: true })
   track: ElementRef;
-  @ViewChild('handle')
+  @ViewChild('handle', { static: true })
   handle: ElementRef;
 
   hide: boolean = false;

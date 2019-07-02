@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { CommentData } from './comment-data';
-
 import { CommentsService } from './comments.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { CommentsService } from './comments.service';
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
-  @ViewChild('messageBox') messageBox: ElementRef;
+  @ViewChild('messageBox', { static: false }) messageBox: ElementRef;
 
   comments: CommentData[] = [];
 

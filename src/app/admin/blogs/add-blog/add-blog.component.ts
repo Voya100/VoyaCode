@@ -1,5 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Response } from '@angular/http';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Blog } from '../../../blogs/blog';

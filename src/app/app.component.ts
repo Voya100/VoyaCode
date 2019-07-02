@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { AfterViewChecked, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import {
   ActivatedRoute,
@@ -23,9 +23,9 @@ import { AnalyticsService } from './shared/services/analytics.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewChecked {
-  @ViewChild(ScrollbarComponent)
+  @ViewChild(ScrollbarComponent, { static: true })
   scrollbar: ScrollbarComponent;
-  @ViewChild('main')
+  @ViewChild('main', { static: true })
   main: ElementRef;
 
   loadingOpen: boolean = true;
