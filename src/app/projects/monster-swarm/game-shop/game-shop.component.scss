@@ -1,0 +1,85 @@
+:host {
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  margin: 8px 0;
+}
+
+/*
+This is required so that money and exit remain absolutely
+positioned to the window
+*/
+.game-shop-inner-container {
+  box-sizing: border-box;
+  max-height: 100%;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+#game-shop h2 {
+  font-size: 1.2em;
+}
+
+#game-shop h3 {
+  font-size: 1.1em;
+}
+
+.upgrade-container {
+  width: 470px;
+  margin-bottom: 5px;
+}
+
+.upgrade {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 30%;
+  padding: 2px;
+  vertical-align: top;
+}
+
+.buy-upgrade {
+  display: block;
+}
+
+.buy-upgrade button {
+  margin: 0;
+}
+
+.upgrade-button {
+  display: block;
+  width: 80px;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.shop-money {
+  position: absolute;
+  right: 50px;
+}
+
+#shop-money-value {
+  display: inline-block;
+  min-width: 30px;
+  cursor: default;
+}
+
+#close-shop {
+  width: 26px;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+
+.shop-money,
+#close-shop {
+  box-sizing: border-box;
+  height: 30px;
+  padding: 3px;
+  top: 15px;
+  background: white;
+  border: 2px solid silver;
+  border-radius: 10px;
+}

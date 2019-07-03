@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./monster-swarm-game.component.scss']
 })
 export class MonsterSwarmGameComponent implements OnInit {
+  shopOpen = false;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
