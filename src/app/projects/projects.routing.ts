@@ -39,6 +39,11 @@ const routes: Routes = [
     path: 'color-picker',
     loadChildren: () => import('./color-picker/color-picker.module').then(m => m.ColorPickerModule),
     data: { title: 'Color picker' }
+  },
+  {
+    path: 'monster-swarm',
+    loadChildren: () => import('./monster-swarm/monster-swarm.module').then(m => m.MonsterSwarmModule),
+    data: { title: 'Monster Swarm' }
   }
 ];
 

@@ -1,0 +1,26 @@
+@import '../../../sass/variables';
+
+:host {
+  @extend %main-content;
+}
+
+h2 {
+  text-align: center;
+}
+
+.container {
+  margin: auto;
+  max-width: 650px;
+
+  @extend %bordered-box;
+
+  @media screen and (max-width: 660px) {
+    max-width: 470px;
+  }
+  @media screen and (max-width: 600px) {
+    max-width: 420px;
+  }
+  @media screen and (max-width: 450px) {
+    width: 330px;
+  }
+}
