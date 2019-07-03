@@ -32,7 +32,8 @@
               "src/browserconfig.xml"
             ],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "showCircularDependencies": false
           },
           "configurations": {
             "production": {
