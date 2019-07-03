@@ -66,7 +66,7 @@ export class ScrollbarComponent implements AfterViewInit {
     this.handleTop = this.trackHeight * (this.middle.nativeElement.scrollTop / this.innerHeight);
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   setDimensions() {
     this.outerHeight = this.outer.nativeElement.offsetHeight;
     this.outerWidth = this.outer.nativeElement.offsetWidth;

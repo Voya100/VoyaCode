@@ -8,7 +8,7 @@ import { Blog } from './blog';
   pure: false
 })
 export class BlogFilterPipe implements PipeTransform {
-  transform(blogs: Blog[], years: any[]): any {
+  transform(blogs: Blog[], years: { [key: number]: boolean }): any {
     return blogs.filter((blog: any) => !years.hasOwnProperty(blog.year) || years[blog.year]);
   }
 }
