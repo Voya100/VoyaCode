@@ -39,5 +39,6 @@ testem.log
 Thumbs.db
 
 server/
+public/
 public/stats.json
 .vscode/settings.json
