@@ -65,7 +65,7 @@ export class Pawn extends Piece{
   // True if pawn can use en passant against a piece on tile
   canUseEnPassant(tile: Tile){
     if(tile.isEnemyOf(this) && tile.piece.type === 'pawn'){
-      const enemyPawn = <Pawn> tile.piece;
+      const enemyPawn = tile.piece as Pawn;
       return enemyPawn.isEnPassantable();
     }
   }

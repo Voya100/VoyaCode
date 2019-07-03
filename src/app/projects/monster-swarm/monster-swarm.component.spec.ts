@@ -1,17 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MonsterSwarmComponent } from './monster-swarm.component';
+import { MonsterSwarmModule } from './monster-swarm.module';
 
 describe('MonsterSwarmComponent', () => {
   let component: MonsterSwarmComponent;
   let fixture: ComponentFixture<MonsterSwarmComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MonsterSwarmComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [MonsterSwarmModule]
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MonsterSwarmComponent);

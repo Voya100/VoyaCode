@@ -242,7 +242,7 @@ export class Tile{
 
     // Encourages promotion near end of the game (when king chase loops are likely)
     if(piece.type === 'pawn'){
-      const pawn = <Pawn> piece;
+      const pawn = piece as Pawn;
       const promotionY = piece.white ? 0 : 7;
       const distanceFromPromotion = Math.abs(promotionY - pawn.y());
 

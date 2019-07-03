@@ -17,6 +17,7 @@
     "lib": ["es2017", "dom"],
     "paths": {
       "@voyacode/*": ["app/*"]
-    }
+    },
+    "types": ["jest"]
   }
 }
