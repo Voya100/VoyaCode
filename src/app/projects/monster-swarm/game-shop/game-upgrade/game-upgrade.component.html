@@ -1,0 +1,12 @@
+<div class="upgrade">
+  {{ upgradeCategory.title }} {{ currentUpgrade && currentUpgrade.value }}
+  <span *ngIf="!isFinalUpgrade()" title="Next upgrade value">({{ nextUpgrade.value }})</span>
+  <span *ngIf="isFinalUpgrade()">(Max)</span>
+  <div *ngIf="!isFinalUpgrade()">
+    <button class="upgrade-button" [disabled]="isDisabled()" (click)="buy()">
+      Upgrade
+      <br />
+      Cost: {{ nextUpgrade.cost }}
+    </button>
+  </div>
+</div>

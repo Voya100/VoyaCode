@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MonsterSwarmModule } from '../monster-swarm.module';
+
 import { GameShopComponent } from './game-shop.component';
+import { GameShopService } from './game-shop.service';
 
 describe('GameShopComponent', () => {
   let component: GameShopComponent;
@@ -8,7 +11,8 @@ describe('GameShopComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GameShopComponent]
+      imports: [MonsterSwarmModule],
+      providers: [GameShopService]
     }).compileComponents();
   });
 
