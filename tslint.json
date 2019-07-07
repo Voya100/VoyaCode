@@ -60,6 +60,7 @@
     ],
     "prefer-const": true,
     "prefer-inline-decorator": { "severity": "off" },
+    "prefer-conditional-expression": false,
     "prefer-template": false,
     "quotemark": false,
     "radix": true,
