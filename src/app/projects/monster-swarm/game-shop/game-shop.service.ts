@@ -5,6 +5,8 @@ import { ShopState, ShopUpgrade } from './game-shop.interfaces';
 import { GameUpgradeCategory } from './game-upgrade-category';
 import { createPlayerUpgrades, createWeaponShopItems } from './shop-items';
 
+const SHOP_STATE_KEY = 'monster-swarm-shop-state';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +37,18 @@ export class GameShopService {
     return this.money;
   }
 
+  async fetchShopState() {
+    // TODO: Fetch from server
+    const state: ShopState = JSON.parse(window.localStorage.getItem('monster-swarm-shop-state'));
+    if (state) {
+      this.fromJSON(state);
+    }
+  }
+
+  async saveShopState() {
+    window.localStorage.setItem(SHOP_STATE_KEY, JSON.stringify(this.toJSON()));
+  }
+
   toJSON() {
     return {
       money: this.money,
@@ -43,6 +57,9 @@ export class GameShopService {
     };
   }
 
+  /**
+   * Initialises service state from JSON
+   */
   fromJSON(state: ShopState) {
     this.money = state.money;
     this.playerUpgrades.fromJSON(state.playerUpgrades);
