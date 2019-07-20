@@ -15,6 +15,11 @@ export class Weapon {
   barrelColor: string;
   shootingInterval: number;
 
+  // Abstract implementation
+  static get WEAPON_NAME(): string {
+    throw new Error('Weapon name not defined');
+  }
+
   // projectiles: [{Projectile, angle, projectileAngle}]
   constructor(projectiles: ProjectileDefinition[], shootingRate: number, weaponConfig: WeaponConfig = {}) {
     this.projectiles = projectiles;

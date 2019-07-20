@@ -24,3 +24,8 @@ export interface WeaponConfig {
   spreadAngle?: number;
   color?: string;
 }
+
+export const DAMAGE = 'damage';
+export const SPEED = 'speed';
+export const RATE = 'rate';
+export const BULLETS = 'bullets';

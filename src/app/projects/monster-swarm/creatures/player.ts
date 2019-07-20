@@ -4,6 +4,9 @@ import { Creature } from './creature';
 import { Coordinate, MoveDirection } from './creatures.interfaces';
 
 export class Player extends Creature {
+  static readonly HEALTH_PROPERTY = 'health';
+  static readonly SPEED_PROPETY = 'speed';
+
   maxHealth: number;
   weapon: Weapon;
   moveDirection: MoveDirection;

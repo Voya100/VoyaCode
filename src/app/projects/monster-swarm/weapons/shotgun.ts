@@ -7,6 +7,8 @@ import { WeaponConfig } from './weapons.interfaces';
 // Shoots multiple projectiles that are spread evenly on given spread angle
 // The angle can be even 2 PI, in which case it will shoot in all directions
 export class Shotgun extends Weapon {
+  static readonly WEAPON_NAME = 'Shotgun';
+
   startAngle: number;
   angleDifference: number;
 
