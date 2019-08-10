@@ -6,6 +6,7 @@ import { SharedModule } from '@voyacode/shared/shared.module';
 import { GameAreaComponent } from './game-area/game-area.component';
 import { GameShopComponent } from './game-shop/game-shop.component';
 import { GameUpgradeComponent } from './game-shop/game-upgrade/game-upgrade.component';
+import { HiscoresComponent } from './hiscores/hiscores.component';
 import { MonsterSwarmGameComponent } from './monster-swarm-game/monster-swarm-game.component';
 import { MonsterSwarmComponent } from './monster-swarm.component';
 import { routing } from './monster-swarm.routing';
@@ -16,7 +17,8 @@ import { routing } from './monster-swarm.routing';
     MonsterSwarmGameComponent,
     GameShopComponent,
     GameAreaComponent,
-    GameUpgradeComponent
+    GameUpgradeComponent,
+    HiscoresComponent
   ],
   imports: [CommonModule, SharedModule, FormsModule, routing]
 })
