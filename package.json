@@ -33,7 +33,7 @@
     "lodash": "^4.17.10",
     "rxjs": "^6.2.2",
     "systemjs": "^0.21.4",
-    "underscore": "^1.8.3",
+    "underscore": "^1.12.1",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.26"
   },
